@@ -30,53 +30,63 @@ public class  Main extends Application {
         stage = primaryStage;
 
         Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
-        stage.setTitle("Hello World");
+        stage.setTitle("Menu Principal");
         stage.setScene(new Scene(root, 1000, 800));
         stage.show();
     }
 
     public void switchScene(String fxmlFile) {
         try {
-        if (fxmlFile.equals("/views/VueQuestion.fxml")) {
-            CardStack c = new CardStack();
-            CardStackSeed cs = new CardStackSeed(c);
-            cs.seed();
+            if (fxmlFile.equals("/views/VueQuestion.fxml")) {
+                CardStack c = new CardStack();
+                CardStackSeed cs = new CardStackSeed(c);
+                cs.seed();
 
-            Partie p = new Partie(new Player(),c);
+                Partie p = new Partie(new Player(),c);
+                p.setCurrentCard(new Card("première carte", "Première question",
+                        "Première réponse"));
+                BorderPane root = new BorderPane();
 
-            p.setCurrentCard(new Card("première carte", "Première question",
-                    "Première réponse"));
-            BorderPane root = new BorderPane();
-
-
-            FXMLLoader loader2 = new FXMLLoader();
-            loader2.setLocation(getClass().getResource("/views/VueQuestion.fxml"));
-            loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
-            Parent VueQuestion = null;
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/views/VueQuestion.fxml"));
+                loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
+                Parent VueQuestion = null;
 
                 VueQuestion = loader2.load();
 
-            root.setTop(VueQuestion);
-            p.init();
-            stage.setTitle("Hello World");
-            stage.setScene(new Scene(root, 1000, 800));
-            stage.show();
+                root.setTop(VueQuestion);
 
-        }
+                stage.setTitle("Apprentissage");
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.show();
 
-        if (fxmlFile.equals("/views/VueMenu.fxml")) {
-            Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
+            }
+            if (fxmlFile.equals("/views/VueMenu.fxml")) {
+                Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
 
-            stage.setTitle("Hello World");
-            stage.setScene(new Scene(root, 1000, 800));
-            stage.show();
+                stage.setTitle("Menu Principal");
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.show();
 
-        }
+            }
+            if (fxmlFile.equals("/views/VueCreation.fxml")) {
+                Parent root = FXMLLoader.load(getClass().getResource("/views/VueCreation.fxml"));
+
+                stage.setTitle("Creation");
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.show();
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
+    public void closeStage() {
+        stage.close();
+    }
 
 
     public static void main(String[] args) {

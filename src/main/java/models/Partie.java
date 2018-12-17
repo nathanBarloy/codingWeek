@@ -28,6 +28,7 @@ public class Partie extends Observable{
     }
 
     public void valider() {
+
         this.CurrentCard.setType("reponse");
         setChanged();
         notifyObservers();
