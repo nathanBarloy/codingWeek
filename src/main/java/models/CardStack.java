@@ -1,5 +1,7 @@
 package models;
 
+import launch.Main;
+
 import java.util.LinkedList;
 
 public class CardStack {
@@ -38,7 +40,13 @@ public class CardStack {
     }
 
     public Card pop(){
-        return cardStack.pop();
+        if (cardStack.size() > 0){
+            return cardStack.pop();
+        }
+        else{
+            System.out.println("coucou");
+            return null;
+        }
     }
 
     public int getNbCards(){
