@@ -1,4 +1,3 @@
-package SaltyCard.src.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,7 +11,7 @@ import models;
 
 
 
-public class CardTest {
+public class JSONTest {
 
     private Card card;
 
@@ -28,8 +27,8 @@ public class CardTest {
 
     @Test
     public void card() {
-        assertNotNull("card pas créée", card);
+        assertNotNull("carde pas créée", card);
         assertEquals("name ", card.getName(), "la vérité blesse");
-
+        System.out.println
     }
 }
