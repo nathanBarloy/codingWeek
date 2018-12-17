@@ -2,16 +2,18 @@ package views;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import models.Partie;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class ControllerCard implements Observer {
+    private Partie partie;
     @FXML
     private Label LabelQuestion;
 
-    public ControllerCard() {
-
+    public ControllerCard(Partie p) {
+        this.partie = p;
     }
 
     @Override
