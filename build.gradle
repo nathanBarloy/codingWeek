@@ -15,7 +15,7 @@ plugins {
 }
 
 // Define the main class for the application
-//mainClassName = 'eu.telecomnancy.App'
+mainClassName = 'Main'
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
@@ -38,3 +38,12 @@ repositories {
 
   }
 }*/
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/java"]
+            includes = ["**/*.fxml"]
+        }
+    }
+}

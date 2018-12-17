@@ -1,25 +1,18 @@
-package views;
 
 
-public class Main {
-
-    public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
-    }
-
-}
-/*
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.net.URL;
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("VueMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/VueMenu.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 1000, 800));
         primaryStage.show();
@@ -32,4 +25,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-*/
