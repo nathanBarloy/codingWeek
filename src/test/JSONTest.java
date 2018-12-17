@@ -8,26 +8,32 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import models.*;
+import json.*;
+
+import java.io.IOException;
 
 
-
-public class CardTest {
+public class JSONTest {
 
     private Card card;
+    private JSONParser jsonParser;
 
     @Before
     public void initialiser() throws Exception {
         card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3");
+        jsonParser=new JSONParser();
+
     }
 
     @After
     public void nettoyer() throws Exception {
         card = null;
+        jsonParser = null;
     }
 
     @Test
-    public void card() {
-
+    public void card() throws IOException {
+        jsonParser.cardToJson(card);
         assertNotNull("card pas créée", card);
         assertEquals("name ", card.getName(), "la vérité blesse");
 
