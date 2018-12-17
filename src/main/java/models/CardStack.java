@@ -13,6 +13,9 @@ public class CardStack {
         this.description=description;
         cardStack = new LinkedList<Card>();
     }
+    public CardStack() {
+        cardStack = new LinkedList<Card>();
+    }
 
     public String getName() {
         return name;
@@ -39,7 +42,10 @@ public class CardStack {
     }
 
     public int getNbCards(){
-        return cardStack.size();
+        if (cardStack!=null) {
+            return cardStack.size();
+        }
+        return 0;
     }
 
 
