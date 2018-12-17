@@ -69,7 +69,7 @@ public class ControllerVueQuestion implements Observer {
                 bSize0)));
 
 
-        Image image1 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
+        Image image1 = new Image("http://studio.oiseau-libre.net/Images/_DSC7330-(1).jpg");
         //final URL imageURL = getClass().getResource("../ressources/fond.jpg");
         //final Image image1 = new Image(imageURL.toExternalForm());
 
