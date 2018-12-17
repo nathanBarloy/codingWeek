@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ControllerVueQuestion">
    <children>
-      <BorderPane fx:id="pane" layoutX="-7.0" layoutY="-6.0" prefHeight="410.0" prefWidth="609.0">
+      <BorderPane fx:id="borderpane" layoutX="-7.0" layoutY="-6.0" prefHeight="410.0" prefWidth="609.0" style="-fx-background-image: fond.jpg;">
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -31,7 +31,7 @@
             <Button fx:id="BouttonNvQuest" mnemonicParsing="false" onAction="#NvQuest" prefHeight="33.0" prefWidth="187.0" text="Nouvelle question" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <BorderPane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane fx:id="pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: fond.jpg;" BorderPane.alignment="CENTER">
                <center>
                   <Label fx:id="LabelQuestion" text="Première Question" BorderPane.alignment="CENTER" />
                </center>
