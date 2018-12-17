@@ -1,4 +1,4 @@
-package sample;
+package flashcards.sample;
 
 public class Controller {
 }

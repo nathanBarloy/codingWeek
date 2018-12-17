@@ -1,4 +1,4 @@
-package models;
+package flashcards.models;
 
 public class CardPile {
 }
