@@ -2,6 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="codingweek_grp014_main" target="1.8" />
+      <module name="codingweek_grp014_test" target="1.8" />
       <module name="pcd2k18-gradle-bootstrap_main" target="1.8" />
       <module name="pcd2k18-gradle-bootstrap_test" target="1.8" />
     </bytecodeTargetLevel>

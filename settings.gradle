@@ -7,4 +7,4 @@
  * in the user guide at https://docs.gradle.org/4.10.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'pcd2k18-gradle-bootstrap'
+rootProject.name = 'codingweek_grp014'

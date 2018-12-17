@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pcd2k18-gradle-bootstrap.iml" filepath="$PROJECT_DIR$/pcd2k18-gradle-bootstrap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pcd2k18-gradle-bootstrap_main.iml" filepath="$PROJECT_DIR$/.idea/modules/pcd2k18-gradle-bootstrap_main.iml" group="pcd2k18-gradle-bootstrap" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pcd2k18-gradle-bootstrap_test.iml" filepath="$PROJECT_DIR$/.idea/modules/pcd2k18-gradle-bootstrap_test.iml" group="pcd2k18-gradle-bootstrap" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codingweek_grp014.iml" filepath="$PROJECT_DIR$/.idea/modules/codingweek_grp014.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codingweek_grp014_main.iml" filepath="$PROJECT_DIR$/.idea/modules/codingweek_grp014_main.iml" group="codingweek_grp014" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codingweek_grp014_test.iml" filepath="$PROJECT_DIR$/.idea/modules/codingweek_grp014_test.iml" group="codingweek_grp014" />
     </modules>
   </component>
 </project>
