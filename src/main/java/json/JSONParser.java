@@ -17,7 +17,7 @@ public class JSONParser {
 
     public String cardToJson(Card card) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("./file.json"), card);
+        mapper.writeValue(new File("JSONS/file.json"), card);
         return mapper.writeValueAsString(card);
     }
 
