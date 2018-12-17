@@ -36,23 +36,23 @@ public class Main extends Application {
 
     public void switchScene(String fxmlFile) {
 
+        try {
+
         if (fxmlFile.equals("../views/VueQuestion.fxml")) {
 
+            FXMLLoader loader2 = new FXMLLoader();
+            loader2.setLocation(getClass().getResource("../views/VueQuestion.fxml"));
             Partie p = new Partie(new Player(), new CardStack());
             p.setCurrentCard(new Card("première carte", "Première question",
                     "Première réponse"));
             BorderPane root = new BorderPane();
 
 
-            FXMLLoader loader2 = new FXMLLoader();
-            loader2.setLocation(getClass().getResource("../views/VueQuestion.fxml"));
             loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
             Parent VueQuestion = null;
-            try {
-                VueQuestion = loader2.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            VueQuestion = loader2.load();
+
             root.setTop(VueQuestion);
 
             stage.setTitle("Hello World");
@@ -60,6 +60,17 @@ public class Main extends Application {
             stage.show();
 
         }
+        if(fxmlFile.equals("../views/VueMenu.fxml")) {
+            Parent root = FXMLLoader.load(getClass().getResource("../views/VueMenu.fxml"));
+            stage.setTitle("Hello World");
+            stage.setScene(new Scene(root, 1000, 800));
+            stage.show();
+        }
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
     }
 
 
