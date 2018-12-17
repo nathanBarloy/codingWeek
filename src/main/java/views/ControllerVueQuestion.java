@@ -43,13 +43,13 @@ public class ControllerVueQuestion implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         Card carte = partie.getCurrentCard();
-        System.out.println(carte.getQuestion());
+        //System.out.println(carte.getQuestion());
         if (carte.getType().equals("question")) {
-            System.out.println("question");
+            //System.out.println("question");
             this.LabelQuestion.setText(carte.getQuestion());
         }
         if (carte.getType().equals("reponse")) {
-            System.out.println("reponse");
+            //System.out.println("reponse");
             this.LabelQuestion.setText(carte.getAnswer());
         }
     }
