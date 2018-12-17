@@ -1,4 +1,4 @@
-package models;
+package SaltyCard.src.main.java.models;
 
 import java.util.LinkedList;
 

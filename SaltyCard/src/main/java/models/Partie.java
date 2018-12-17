@@ -1,4 +1,6 @@
-package models;
+package SaltyCard.src.main.java.models;
+
+import SaltyCard.src.main.java.views.ControllerVueQuestion;
 
 public class Partie {
     private Player player;
@@ -11,6 +13,7 @@ public class Partie {
     }
 
 
+    public void addObserver(ControllerVueQuestion controllerVueQuestion) {
 
-
+    }
 }

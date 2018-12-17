@@ -1,9 +1,9 @@
-package views;
+package SaltyCard.src.main.java.views;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import models.Partie;
-import sample.Main;
+import SaltyCard.src.main.java.models.Partie;
+import SaltyCard.src.main.java.Main;
 
 import java.util.Observable;
 import java.util.Observer;

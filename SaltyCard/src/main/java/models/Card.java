@@ -1,4 +1,4 @@
-package models;
+package SaltyCard.src.main.java.models;
 
 public class Card {
     private  String name;
