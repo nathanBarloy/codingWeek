@@ -22,3 +22,5 @@ gradle-app.setting
 
 # End of https://www.gitignore.io/api/gradle
 out/
+.idea/libraries/jfxrt.xml
+.idea/modules
