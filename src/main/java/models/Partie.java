@@ -34,7 +34,6 @@ public class Partie extends Observable{
     }
 
     public void init() {
-        System.out.println("here");
         setChanged();
         notifyObservers();
     }
@@ -50,8 +49,7 @@ public class Partie extends Observable{
             setChanged();
             notifyObservers();
         } else {
-            System.out.println("launching");
-            Main.main.switchScene("../views/VueMenu.fxml");
+            Main.main.switchScene("/views/VueMenu.fxml");
         }
     }
 

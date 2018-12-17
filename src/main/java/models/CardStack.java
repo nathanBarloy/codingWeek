@@ -44,7 +44,6 @@ public class CardStack {
             return cardStack.pop();
         }
         else{
-            System.out.println("coucou");
             return null;
         }
     }

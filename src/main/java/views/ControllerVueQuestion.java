@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import launch.Main;
 import models.*;
 
 import javafx.fxml.FXML;
@@ -52,7 +53,6 @@ public class ControllerVueQuestion implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (this.init ==  -1) {
-            System.out.println("débile");
             Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
 
             //final URL imageURL = getClass().getResource("../ressources/fond.jpg");
@@ -94,16 +94,20 @@ public class ControllerVueQuestion implements Observer {
                     bSize)));
         }
         if (this.init == 1) {
-            System.out.println("gros con");
             Card carte = partie.getCurrentCard();
-            //System.out.println(carte.getQuestion());
-            if (carte.getType().equals("question")) {
-                //System.out.println("question");
-                this.LabelQuestion.setText(carte.getQuestion());
+            if (carte != null) {
+                //System.out.println(carte.getQuestion());
+                if (carte.getType().equals("question")) {
+                    //System.out.println("question");
+                    this.LabelQuestion.setText(carte.getQuestion());
+                }
+                if (carte.getType().equals("reponse")) {
+                    //System.out.println("reponse");
+                    this.LabelQuestion.setText(carte.getAnswer());
+                }
             }
-            if (carte.getType().equals("reponse")) {
-                //System.out.println("reponse");
-                this.LabelQuestion.setText(carte.getAnswer());
+            else{
+                Main.main.switchScene("/views/VueMenu.fxml");
             }
         }
         this.init = 1;
