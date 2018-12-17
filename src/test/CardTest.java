@@ -1,14 +1,13 @@
-package src.test;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import SaltyCard.src.main.java.models.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import models;
-
+import models.*;
 
 
 
@@ -28,6 +27,7 @@ public class CardTest {
 
     @Test
     public void card() {
+        
         assertNotNull("card pas créée", card);
         assertEquals("name ", card.getName(), "la vérité blesse");
 

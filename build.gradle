@@ -48,5 +48,11 @@ sourceSets {
             includes = ["**/*.fxml"]
         }
     }
+    test{
+        java {
+            srcDirs = ["src/test"]
+        }
+
+    }
 }
 
