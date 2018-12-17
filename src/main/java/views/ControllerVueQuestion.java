@@ -4,10 +4,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import models.*;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.BorderPane;
 
 
 import java.io.IOException;
@@ -42,6 +43,20 @@ public class ControllerVueQuestion implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        Image image1 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
+        BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
+
+        Background background2 = new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                bSize));
+
+        this.pane.setBackground(new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                bSize)));
         Card carte = partie.getCurrentCard();
         //System.out.println(carte.getQuestion());
         if (carte.getType().equals("question")) {
