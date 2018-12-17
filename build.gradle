@@ -15,7 +15,7 @@ plugins {
 }
 
 // Define the main class for the application
-mainClassName = 'Main'
+mainClassName = 'launch.Main'
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
@@ -34,7 +34,7 @@ repositories {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'Main'
+        attributes 'Main-Class': 'launch.Main'
 
     }
 }
