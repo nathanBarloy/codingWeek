@@ -8,7 +8,7 @@ public class Card {
 
     public Card (String name, String question, String answer){
         this.name=name;
-        this.text=text;
+        this.text=question;
         this.answer=answer;
     }
 

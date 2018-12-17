@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ControllerVueQuestion implements Observer{
+public class ControllerVueQuestion implements Observer {
     private Partie partie;
 
     @FXML
@@ -32,19 +32,26 @@ public class ControllerVueQuestion implements Observer{
         this.partie.addObserver(this);
     }
 
-    public void NvQuest(){
+    public void NvQuest() {
         this.partie.NvQuest();
     }
-    public void valider(){
+
+    public void valider() {
         this.partie.valider();
     }
+
     @Override
     public void update(Observable o, Object arg) {
         Card carte = partie.getCurrentCard();
-        if (carte.getType().equals("question"))
-        this.LabelQuestion.setText(carte.getQuestion());
-        if (carte.getType().equals("reponse"))
+        System.out.println(carte.getQuestion());
+        if (carte.getType().equals("question")) {
+            System.out.println("question");
+            this.LabelQuestion.setText(carte.getQuestion());
+        }
+        if (carte.getType().equals("reponse")) {
+            System.out.println("reponse");
             this.LabelQuestion.setText(carte.getAnswer());
-
+        }
     }
+
 }

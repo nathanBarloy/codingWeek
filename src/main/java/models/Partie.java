@@ -42,7 +42,9 @@ public class Partie extends Observable{
     }
 
     public void NvQuest() {
-
         this.CurrentCard = cardStack.pop();
+        this.CurrentCard.setType("question");
+        setChanged();
+        notifyObservers();
     }
 }
