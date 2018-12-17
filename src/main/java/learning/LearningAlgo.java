@@ -12,12 +12,11 @@ public class LearningAlgo {
     private CardStack cardstack;
     private LinkedList<Card> cardlistshow;
 
-    LearningAlgo (CardStack cardstack ){
+    LearningAlgo (CardStack cardstack ) {
         this.cardstack = cardstack;
     }
 
     public Card getCard(){
-        cardlistshow  = new LinkedList<Card>();
         return cardstack.pop();
 
     }

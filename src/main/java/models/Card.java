@@ -5,6 +5,10 @@ public class Card {
     private  String text;
     private  String answer;
     public String type = "question";
+    public int succes ;
+    public int fail ;
+    private int  user_succes;
+    private int user_fail;
 
     public Card (String name, String question, String answer){
         this.name=name;
