@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ControllerVueQuestion">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ControllerVueQuestion">
    <children>
-      <BorderPane fx:id="pane" layoutX="-7.0" layoutY="-6.0" prefHeight="410.0" prefWidth="609.0">
-         <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="LabelNom" text="Nom du Joueur" />
-                  <Label text="Informations du joueur" />
-               </children>
-            </HBox>
-         </top>
+      <BorderPane fx:id="pane" prefHeight="800.0" prefWidth="1000.0">
          <bottom>
             <HBox layoutX="500.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -25,16 +21,37 @@
             </HBox>
          </bottom>
          <right>
-            <Button fx:id="BoutonValider" mnemonicParsing="false" onAction="#valider" prefHeight="61.0" prefWidth="218.0" text="Valider?" BorderPane.alignment="CENTER" />
+            <Button fx:id="BoutonValider" mnemonicParsing="false" onAction="#valider" prefHeight="100.0" prefWidth="220.0" text="Valider?" BorderPane.alignment="CENTER" />
          </right>
          <left>
-            <Button fx:id="BouttonNvQuest" mnemonicParsing="false" onAction="#NvQuest" prefHeight="33.0" prefWidth="187.0" text="Nouvelle question" BorderPane.alignment="CENTER" />
+            <Button fx:id="BouttonNvQuest" mnemonicParsing="false" onAction="#NvQuest" prefHeight="100.0" prefWidth="220.0" text="Nouvelle question" BorderPane.alignment="CENTER" />
          </left>
          <center>
             <BorderPane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <Label fx:id="LabelQuestion" text="Première Question" BorderPane.alignment="CENTER" />
+                  <Label fx:id="LabelQuestion" text="Première Question" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="26.0" />
+                     </font></Label>
                </center>
+               <top>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <left>
+                        <Label prefHeight="40.0" prefWidth="150.0" text="Nom Joueur" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </left>
+                     <right>
+                        <Label text="Informations Joueur" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </right>
+                  </BorderPane>
+               </top>
             </BorderPane>
          </center>
       </BorderPane>
