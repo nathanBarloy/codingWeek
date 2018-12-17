@@ -13,8 +13,13 @@ public class Card {
     public String getName() {
         return name;
     }
+    
 
-    public String getTexte() {
-        return texte;
+    public String getText() {
+        return text;
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }
