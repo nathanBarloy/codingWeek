@@ -32,12 +32,12 @@ repositories {
     jcenter()
 }
 
-/*jar{
-  manifest{
-    attributes'Main-Class': 'eu.telecomnancy.App'
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
 
-  }
-}*/
+    }
+}
 
 sourceSets {
     main {

@@ -38,6 +38,6 @@ public class Partie extends Observable{
     }
 
     public void NvQuest() {
-        this.CurrentCard = cardStack.pop();
+        pull this.CurrentCard = cardStack.pop();
     }
 }
