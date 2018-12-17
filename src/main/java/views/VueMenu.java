@@ -5,7 +5,14 @@ import launch.Main;
 public class VueMenu {
 
     public void lancerModeTest() {
-        System.out.println("salut");
-        Main.main.switchScene("../views/VueQuestion.fxml");
+        Main.main.switchScene("/views/VueQuestion.fxml");
+    }
+
+    public void lancerModeCreation() {
+
+    }
+
+    public void quitter() {
+
     }
 }
