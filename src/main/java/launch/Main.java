@@ -15,7 +15,7 @@ import views.*;
 
 import java.io.IOException;
 
-public class Main extends Application {
+public class  Main extends Application {
 
     private Stage stage;
     public static Main main;
