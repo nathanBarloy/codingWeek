@@ -21,7 +21,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        System.out.print("lol");
         Partie p =  new Partie(new Player(), new CardStack());
         CardStackSeed cardStackSeed = new CardStackSeed(p.getCardStack());
         cardStackSeed.seed();
