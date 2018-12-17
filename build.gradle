@@ -23,6 +23,8 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+    compile 'org.json:json:20180813'
+    compile group: 'org.openjfx', name: 'javafx-fxml', version: '11'
 }
 
 // In this section you declare where to find the dependencies of your project
