@@ -1,5 +1,6 @@
 
 package models;
+import launch.Main;
 import models.*;
 import views.ControllerVueQuestion;
 import models.Player;
@@ -42,7 +43,14 @@ public class Partie extends Observable{
     }
 
     public void NvQuest() {
-
         this.CurrentCard = cardStack.pop();
+        if (this.CurrentCard != null) {
+            this.CurrentCard.setType("question");
+            setChanged();
+            notifyObservers();
+        } else {
+            System.out.println("launching");
+            Main.main.switchScene("../views/VueMenu.fxml");
+        }
     }
 }

@@ -10,11 +10,12 @@ import models.Card;
 import models.CardStack;
 import models.Partie;
 import models.Player;
+import seeds.CardStackSeed;
 import views.*;
 
 import java.io.IOException;
 
-public class Main extends Application {
+public class  Main extends Application {
 
     private Stage stage;
     public static Main main;
@@ -37,8 +38,11 @@ public class Main extends Application {
     public void switchScene(String fxmlFile) {
 
         if (fxmlFile.equals("../views/VueQuestion.fxml")) {
+            CardStack c = new CardStack();
+            CardStackSeed cs = new CardStackSeed(c);
+            cs.seed();
 
-            Partie p = new Partie(new Player(), new CardStack());
+            Partie p = new Partie(new Player(),c);
             p.setCurrentCard(new Card("première carte", "Première question",
                     "Première réponse"));
             BorderPane root = new BorderPane();

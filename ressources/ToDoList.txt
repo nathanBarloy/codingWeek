@@ -1,2 +1,0 @@
--exporter en JSON (Alexis)
--Faire l'algo d'apprentissage (Olivier) 

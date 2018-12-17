@@ -31,7 +31,11 @@
             <Button fx:id="BouttonNvQuest" mnemonicParsing="false" onAction="#NvQuest" prefHeight="33.0" prefWidth="187.0" text="Nouvelle question" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <Label fx:id="LabelQuestion" prefHeight="16.0" prefWidth="137.0" text="Question" BorderPane.alignment="CENTER" />
+            <BorderPane fx:id="pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Label fx:id="LabelQuestion" text="Première Question" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
          </center>
       </BorderPane>
    </children>
