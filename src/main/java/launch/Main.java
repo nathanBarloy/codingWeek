@@ -28,11 +28,30 @@ public class  Main extends Application {
         }
 
         stage = primaryStage;
+        CardStack c = new CardStack();
+        CardStackSeed cs = new CardStackSeed(c);
+        cs.seed();
+        Partie p = new Partie(new Player(),c);
 
+        FXMLLoader loader2 = new FXMLLoader();
+        loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
+        loader2.setControllerFactory(iC -> new VueMenu(p));
+        Parent VueMenu = null;
+
+        VueMenu = loader2.load();
+        p.init();
+
+
+        stage.setTitle("Menu Principal");
+        stage.setScene(new Scene(VueMenu, 1000, 800));
+        stage.show();
+
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
         stage.setTitle("Menu Principal");
         stage.setScene(new Scene(root, 1000, 800));
         stage.show();
+        */
     }
 
     public void switchScene(String fxmlFile) {
@@ -62,10 +81,22 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueMenu.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
+                CardStack c = new CardStack();
+                CardStackSeed cs = new CardStackSeed(c);
+                cs.seed();
+                Partie p = new Partie(new Player(),c);
+
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
+                loader2.setControllerFactory(iC -> new VueMenu(p));
+                Parent VueMenu = null;
+
+                VueMenu = loader2.load();
+                p.init();
+
 
                 stage.setTitle("Menu Principal");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(VueMenu, 1000, 800));
                 stage.show();
 
             }
