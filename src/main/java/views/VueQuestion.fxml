@@ -18,9 +18,9 @@
             </HBox>
          </top>
          <bottom>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox layoutX="500.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Informations sur la partie" />
+                  <Label layoutX="500.0" text="Informations sur la partie" />
                </children>
             </HBox>
          </bottom>
@@ -28,7 +28,7 @@
             <Button fx:id="BoutonValider" mnemonicParsing="false" onAction="#valider" prefHeight="61.0" prefWidth="218.0" text="Valider?" BorderPane.alignment="CENTER" />
          </right>
          <left>
-            <Button fx:id="BouttonNvQuest" mnemonicParsing="false" onAction="#NvQuest" prefHeight="33.0" prefWidth="129.0" text="Nouvelle question" BorderPane.alignment="CENTER" />
+            <Button fx:id="BouttonNvQuest" mnemonicParsing="false" onAction="#NvQuest" prefHeight="33.0" prefWidth="187.0" text="Nouvelle question" BorderPane.alignment="CENTER" />
          </left>
          <center>
             <Label fx:id="LabelQuestion" prefHeight="16.0" prefWidth="137.0" text="Question" BorderPane.alignment="CENTER" />

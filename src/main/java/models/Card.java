@@ -30,6 +30,17 @@ public class Card {
 
     public void setType(String type) {
         this.type = type;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }
