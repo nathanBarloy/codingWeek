@@ -29,7 +29,7 @@ public class  Main extends Application {
 
         stage = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("../views/VueMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
         stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 800));
         stage.show();
@@ -43,27 +43,28 @@ public class  Main extends Application {
             cs.seed();
 
             Partie p = new Partie(new Player(),c);
+
             p.setCurrentCard(new Card("première carte", "Première question",
                     "Première réponse"));
             BorderPane root = new BorderPane();
 
 
             FXMLLoader loader2 = new FXMLLoader();
-            loader2.setLocation(getClass().getResource("../views/VueQuestion.fxml"));
+            loader2.setLocation(getClass().getResource("/views/VueQuestion.fxml"));
             loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
             Parent VueQuestion = null;
 
                 VueQuestion = loader2.load();
 
             root.setTop(VueQuestion);
-
+            p.init();
             stage.setTitle("Hello World");
             stage.setScene(new Scene(root, 1000, 800));
             stage.show();
 
         }
-        if (fxmlFile.equals("../views/VueMenu.fxml")) {
-            Parent root = FXMLLoader.load(getClass().getResource("../views/VueMenu.fxml"));
+        if (fxmlFile.equals("/views/VueMenu.fxml")) {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
             stage.setTitle("Hello World");
             stage.setScene(new Scene(root, 1000, 800));
             stage.show();

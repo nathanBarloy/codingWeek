@@ -34,6 +34,7 @@ public class Partie extends Observable{
     }
 
     public void init() {
+        System.out.println("here");
         setChanged();
         notifyObservers();
     }
@@ -52,5 +53,10 @@ public class Partie extends Observable{
             System.out.println("launching");
             Main.main.switchScene("../views/VueMenu.fxml");
         }
+    }
+
+    public void initImg() {
+        setChanged();
+        notifyObservers();
     }
 }
