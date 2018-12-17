@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import models.Card;
 import models.CardStack;
 import models.Partie;
 import models.Player;
@@ -21,6 +22,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         System.out.print("lol");
         Partie p =  new Partie(new Player(), new CardStack());
+        p.setCurrentCard(new Card("première carte","Première question",
+                "Première réponse"));
         BorderPane root = new BorderPane();
 
         /*

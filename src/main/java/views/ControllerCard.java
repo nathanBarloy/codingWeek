@@ -17,6 +17,7 @@ public class ControllerCard implements Observer {
         this.partie = p;
         this.partie.addObserver(this);
 
+
     }
 
     @Override

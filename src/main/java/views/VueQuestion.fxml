@@ -28,8 +28,11 @@
             <Button fx:id="BoutonValider" mnemonicParsing="false" onAction="#valider" prefHeight="61.0" prefWidth="218.0" text="Valider?" BorderPane.alignment="CENTER" />
          </right>
          <left>
-            <Button fx:id="BouttonInit" mnemonicParsing="false" onAction="#InitPremiereCard" prefHeight="33.0" prefWidth="129.0" text="Commencer!" BorderPane.alignment="CENTER" />
+            <Button fx:id="BouttonNvQuest" mnemonicParsing="false" onAction="#NvQuest" prefHeight="33.0" prefWidth="129.0" text="Nouvelle question" BorderPane.alignment="CENTER" />
          </left>
+         <center>
+            <Label fx:id="LabelQuestion" prefHeight="16.0" prefWidth="137.0" text="Question" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

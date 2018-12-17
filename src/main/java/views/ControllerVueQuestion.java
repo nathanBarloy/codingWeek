@@ -23,31 +23,28 @@ public class ControllerVueQuestion implements Observer{
     @FXML
     private Label LabelNom;
 
+    @FXML
+    private Label LabelQuestion;
+
     public ControllerVueQuestion(Partie partie) {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
     }
 
-    public void InitPremiereCard(){
-        this.partie.init();
+    public void NvQuest(){
+        this.partie.NvQuest();
     }
     public void valider(){
         this.partie.valider();
     }
     @Override
     public void update(Observable o, Object arg) {
-        Card carte = new Card("une question","quelle est la 101 décimale de pi?","1");
-        FXMLLoader loader2 = new FXMLLoader();
-        loader2.setLocation(getClass().getResource("VueCard.fxml"));
-        loader2.setControllerFactory(iC->new ControllerCard(this.partie));
-        Parent VueQuestion = null;
-        try {
-            VueQuestion = loader2.load();
-            this.pane.setCenter(VueQuestion);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Card carte = partie.getCurrentCard();
+        if (carte.getType().equals("question"))
+        this.LabelQuestion.setText(carte.getQuestion());
+        if (carte.getType().equals("reponse"))
+            this.LabelQuestion.setText(carte.getAnswer());
 
     }
 }

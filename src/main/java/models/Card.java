@@ -4,8 +4,9 @@ public class Card {
     private  String name;
     private  String text;
     private  String answer;
+    public String type = "question";
 
-    public Card (String name, String text, String answer){
+    public Card (String name, String question, String answer){
         this.name=name;
         this.text=text;
         this.answer=answer;
@@ -15,11 +16,20 @@ public class Card {
         return name;
     }
 
-    public String getText() {
+    public String getQuestion() {
         return text;
     }
 
     public String getAnswer() {
         return answer;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+
     }
 }

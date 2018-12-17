@@ -10,6 +10,7 @@ public class Partie extends Observable{
     private Player player;
     private CardStack cardStack;
     private int nbCards;
+    private Card CurrentCard;
 
     public Partie(Player player, CardStack cardStack) {
         this.player = player;
@@ -17,7 +18,12 @@ public class Partie extends Observable{
         this.nbCards = cardStack.getNbCards();
     }
 
+    public Card getCurrentCard() {
+        return CurrentCard;
+    }
+
     public void valider() {
+        this.CurrentCard.setType("reponse");
         setChanged();
         notifyObservers();
     }
@@ -25,5 +31,13 @@ public class Partie extends Observable{
     public void init() {
         setChanged();
         notifyObservers();
+    }
+
+    public void setCurrentCard(Card card) {
+        this.CurrentCard = card;
+    }
+
+    public void NvQuest() {
+        this.CurrentCard = cardStack.pop();
     }
 }
