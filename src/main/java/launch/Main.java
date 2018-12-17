@@ -47,13 +47,12 @@ public class  Main extends Application {
                         "Première réponse"));
                 BorderPane root = new BorderPane();
 
-
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource("/views/VueQuestion.fxml"));
                 loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
                 Parent VueQuestion = null;
 
-                    VueQuestion = loader2.load();
+                VueQuestion = loader2.load();
 
                 root.setTop(VueQuestion);
 
