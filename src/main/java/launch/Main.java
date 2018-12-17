@@ -53,7 +53,7 @@ public class  Main extends Application {
                 Parent VueQuestion = null;
 
                 VueQuestion = loader2.load();
-
+                p.init();
                 root.setTop(VueQuestion);
 
                 stage.setTitle("Apprentissage");
