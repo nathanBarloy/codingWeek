@@ -5,15 +5,15 @@ public class Card {
     private  String text;
     private  String answer;
 
-    Card (String name, String text, String answer){
+    public Card (String name, String text, String answer){
         this.name=name;
-        this.texte=texte;
+        this.text=text;
+        this.answer=answer;
     }
 
     public String getName() {
         return name;
     }
-
 
     public String getText() {
         return text;
