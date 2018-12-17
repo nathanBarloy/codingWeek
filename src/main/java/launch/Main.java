@@ -37,7 +37,7 @@ public class  Main extends Application {
 
     public void switchScene(String fxmlFile) {
         try {
-        if (fxmlFile.equals("../views/VueQuestion.fxml")) {
+        if (fxmlFile.equals("/views/VueQuestion.fxml")) {
             CardStack c = new CardStack();
             CardStackSeed cs = new CardStackSeed(c);
             cs.seed();
@@ -63,8 +63,10 @@ public class  Main extends Application {
             stage.show();
 
         }
+
         if (fxmlFile.equals("/views/VueMenu.fxml")) {
             Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
+
             stage.setTitle("Hello World");
             stage.setScene(new Scene(root, 1000, 800));
             stage.show();
