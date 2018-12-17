@@ -1,15 +1,15 @@
+
 package SaltyCard.src.main.java.views;
+import SaltyCard.src.main.java.models.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import SaltyCard.src.main.java.models.Partie;
-import SaltyCard.src.main.java.Main;
+
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class ControllerVueQuestion implements Observer{
-    private Main m;
     private Partie p;
 
     @FXML
