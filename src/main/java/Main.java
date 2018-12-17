@@ -10,6 +10,7 @@ import models.Card;
 import models.CardStack;
 import models.Partie;
 import models.Player;
+import seeds.CardStackSeed;
 import views.*;
 
 
@@ -22,6 +23,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         System.out.print("lol");
         Partie p =  new Partie(new Player(), new CardStack());
+        CardStackSeed cardStackSeed = new CardStackSeed(p.getCardStack());
+        cardStackSeed.seed();
         p.setCurrentCard(new Card("première carte","Première question",
                 "Première réponse"));
         BorderPane root = new BorderPane();
