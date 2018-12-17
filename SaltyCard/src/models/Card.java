@@ -13,7 +13,7 @@ public class Card {
     public String getName() {
         return name;
     }
-    
+
 
     public String getText() {
         return text;
