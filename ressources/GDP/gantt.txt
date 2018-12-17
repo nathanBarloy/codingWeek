@@ -1,0 +1,50 @@
+@startgantt
+[Création du projet intellij] lasts 1 days
+[Mise en place des configurations] lasts 1 days 
+[Création d'une interface basique] lasts 2 days 
+[Création des permières classes nécessaires] lasts 1 days 
+[Implémentation] lasts 1 days 
+[Création d'un algorithme de recommdantion simple] lasts 1 days 
+[Amélioartion de l'aglo en terme de plaisir] lasts 1 days 
+[Amélioration de l'algo en terme d'efficacité] lasts 1 days 
+[Amélioration de l'algo en combinant] lasts 1 days 
+[Import export des cartes] lasts 2 days 
+[Création des profils utilisateur] lasts 2 days 
+[Création de l'animation des cartes] lasts 1 days 
+[Esthéisme] lasts 1 days 
+[Création vidéo]  lasts 1 days 
+[Montage] lasts 1 days 
+[tests globales] lasts 1 days 
+
+
+
+
+[Création du projet intellij] --> [Mise en place des configurations]
+
+
+[Mise en place des configurations] --> [Création d'une interface basique]
+[Mise en place des configurations] --> [Création des permières classes nécessaires]
+
+[Création d'une interface basique] --> [Implémentation] 
+[Création des permières classes nécessaires] --> [Implémentation]
+[Première version] happens at [Implémentation]'s end
+[Implémentation] --> [Création d'un algorithme de recommdantion simple] 
+[Implémentation] -->[Import export des cartes] 
+[Import export des cartes] -->[Esthéisme] 
+[Esthéisme] --> [Création de l'animation des cartes]
+ 
+[Import export des cartes]--> [tests globales]
+[Esthéisme] --> [Création vidéo] 
+[Création vidéo] --> [Montage]
+
+
+[Import export des cartes] --> [Création des profils utilisateur]
+[Création d'un algorithme de recommdantion simple] -->[Amélioartion de l'aglo en terme de plaisir] 
+[Amélioartion de l'aglo en terme de plaisir] --> [Amélioration de l'algo en terme d'efficacité] 
+[Amélioration de l'algo en terme d'efficacité] -->[Amélioration de l'algo en combinant]
+
+
+
+
+
+@endgantt
