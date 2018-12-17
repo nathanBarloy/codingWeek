@@ -9,10 +9,10 @@ public class VueMenu {
     }
 
     public void lancerModeCreation() {
-
+        Main.main.switchScene("/views/VueCreation.fxml");
     }
 
     public void quitter() {
-
+        Main.main.closeStage();
     }
 }

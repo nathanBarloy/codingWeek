@@ -28,6 +28,7 @@ public class Partie extends Observable{
     }
 
     public void valider() {
+
         this.CurrentCard.setType("reponse");
         setChanged();
         notifyObservers();
@@ -50,7 +51,7 @@ public class Partie extends Observable{
             notifyObservers();
         } else {
             System.out.println("launching");
-            Main.main.switchScene("../views/VueMenu.fxml");
+            Main.main.switchScene("/views/VueMenu.fxml");
         }
     }
 }
