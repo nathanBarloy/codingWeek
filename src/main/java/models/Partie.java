@@ -4,7 +4,9 @@ import models.*;
 import views.ControllerVueQuestion;
 import models.Player;
 
-public class Partie {
+import java.util.Observable;
+
+public class Partie extends Observable{
     private Player player;
     private CardStack cardStack;
     private int nbCards;
@@ -15,8 +17,13 @@ public class Partie {
         this.nbCards = cardStack.getNbCards();
     }
 
+    public void valider() {
+        setChanged();
+        notifyObservers();
+    }
 
-    public void addObserver(ControllerVueQuestion controllerVueQuestion) {
-
+    public void init() {
+        setChanged();
+        notifyObservers();
     }
 }

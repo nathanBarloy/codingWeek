@@ -13,11 +13,14 @@ public class ControllerCard implements Observer {
     private Label LabelQuestion;
 
     public ControllerCard(Partie p) {
+        super();
         this.partie = p;
+        this.partie.addObserver(this);
+
     }
 
     @Override
     public void update(Observable o, Object arg) {
-
+        this.LabelQuestion.setText("lol");
     }
 }
