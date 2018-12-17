@@ -1,8 +1,8 @@
-package views;
+package SaltyCard.src.main.java.views;
+import SaltyCard.src.main.java.models.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import models.Partie;
 
 import java.util.Observable;
 import java.util.Observer;
