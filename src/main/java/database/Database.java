@@ -41,7 +41,7 @@ public class Database {
         for (CardStack cardstack : this.listCardStack) {
             if (cardstack.getName().equals(name)) {
                 mylistCardStack.add(cardstack);
-                System.out.println("cardstackname =" +cardstack.getName() + "name = "+ name );
+                //System.out.println("cardstackname =" +cardstack.getName() + "name = "+ name );
 
             }
         }

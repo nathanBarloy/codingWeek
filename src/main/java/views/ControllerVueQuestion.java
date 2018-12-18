@@ -168,15 +168,9 @@ public class ControllerVueQuestion implements Observer {
             }
 
             if (this.init == 1) {
-                //Card carte = partie.getCurrentCard();
+                Card carte = partie.getCurrentCard("test1");
 
-                partie.setDatabase();
-                Database database = partie.getDatabase();
-                //en dur
-                List<CardStack>  cardStackList = database.getCardStack("test1");
-                CardStack cardStack = cardStackList.get(0);
-                //fin de en dur
-                Card carte = cardStack.getCard();
+
 
 
                 if (carte != null) {
