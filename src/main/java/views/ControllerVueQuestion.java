@@ -2,8 +2,6 @@
 package views;
 
 
-import javafx.animation.*;
-import database.Database;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PathTransition;
@@ -14,18 +12,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.*;
-import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.util.Duration;
 import launch.Main;
 import models.*;
 
@@ -85,7 +79,7 @@ public class ControllerVueQuestion implements Observer {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
-        this.size = this.partie.getCardStack().getSize();
+        this.size = this.partie.getCardList().getSize();
         //this.progress = -1/this.size;
         this.progress = 0;
     }
@@ -252,8 +246,8 @@ public class ControllerVueQuestion implements Observer {
                 partie.setDatabase();
                 Database database = partie.getDatabase();
                 //en dur
-                List<CardStack>  cardStackList = database.getCardStack("test1");
-                CardStack cardStack = cardStackList.get(0);
+                List<CardList>  cardStackList = database.getCardList("test1");
+                CardList cardStack = cardStackList.get(0);
                 //fin de en dur
                 Card carte = cardStack.getCard();
 */

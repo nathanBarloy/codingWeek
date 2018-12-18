@@ -1,7 +1,6 @@
 package queries;
 
-import models.CardStack;
-import models.Player;
+import models.CardList;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -9,18 +8,18 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
-public class QueryDelStackCard extends Query {
+public class QueryDelCardStack extends Query {
 
-    private CardStack cardStack;
+    private CardList cardStack;
 
-    public QueryDelStackCard(CardStack cardStack) {
+    public QueryDelCardStack(CardList cardStack) {
         super("delCardStack");
-        this.cardStack = this.cardStack;
+        this.cardStack = cardStack;
     }
 
 
     public void send() throws IOException {
-        {
+
 
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("name", cardStack.getName()));
@@ -38,7 +37,7 @@ public class QueryDelStackCard extends Query {
 
                 }
             }
-        }
+
 
     }
 }

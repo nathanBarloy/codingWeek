@@ -1,19 +1,18 @@
 package database;
 
-import models.CardStack;
+import models.CardList;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Database {
     private List<String> listdecks;
-    private List<CardStack>  listCardStack;
+    private List<CardList> listCardList;
 
 
     public Database() {
     listdecks=new ArrayList<String>();
-    listCardStack = new ArrayList<CardStack>();
+    listCardList = new ArrayList<CardList>();
     }
 
     public List<String> getListStack() {
@@ -24,27 +23,27 @@ public class Database {
         this.listdecks = liststack;
     }
 
-    public List<CardStack> getListCardStack() {
-        return listCardStack;
+    public List<CardList> getListCardList() {
+        return listCardList;
     }
 
-    public void setListCardStack(List<CardStack> listCardSatck) {
-        this.listCardStack = listCardStack;
+    public void setListCardList(List<CardList> listCardSatck) {
+        this.listCardList = listCardList;
     }
 
-    public void add(CardStack CardStack) {
-        this.listCardStack.add(CardStack);
+    public void add(CardList CardList) {
+        this.listCardList.add(CardList);
     }
 
-    public List<CardStack> getCardStack (String name){
-        List<CardStack> mylistCardStack = new ArrayList<CardStack>();
-        for (CardStack cardstack : this.listCardStack) {
+    public List<CardList> getCardStack (String name){
+        List<CardList> mylistCardList = new ArrayList<CardList>();
+        for (CardList cardstack : this.listCardList) {
             if (cardstack.getName().equals(name)) {
-                mylistCardStack.add(cardstack);
+                mylistCardList.add(cardstack);
                 //System.out.println("cardstackname =" +cardstack.getName() + "name = "+ name );
 
             }
         }
-        return mylistCardStack;
+        return mylistCardList;
     }
 }

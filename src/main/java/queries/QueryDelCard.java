@@ -20,7 +20,7 @@ public class QueryDelCard extends Query {
 
 
     public void send() throws IOException {
-        {
+
 
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("name", card.getName()));
@@ -38,7 +38,7 @@ public class QueryDelCard extends Query {
 
                 }
             }
-        }
+
 
     }
 }

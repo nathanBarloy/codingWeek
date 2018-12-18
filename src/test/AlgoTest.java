@@ -4,7 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import learning.LearningAlgo;
 import models.Card;
-import models.CardStack;
+import models.CardList;
 import models.Player;
 import org.junit.After;
 import org.junit.Before;
@@ -22,7 +22,7 @@ public class AlgoTest {
         card1 = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player);
         card2 = new Card("sql", "Qui est le génie du sql? ", "Alexis" , player);
         card3 = new Card("temps", "Quelle heure est-il? ", "L'heure d'une petite pause", player );
-        CardStack cardstack = new CardStack( "test" , "pour test ", player);
+        CardList cardstack = new CardList( "test" , "pour test ", player);
         cardstack.add(card1);
         cardstack.add(card2);
         cardstack.add(card3);

@@ -1,10 +1,8 @@
 package models;
 
-import launch.Main;
-
 import java.util.ArrayList;
 
-public class CardStack {
+public class CardList {
     private Player author;
     private String name;
     private String description;
@@ -14,10 +12,10 @@ public class CardStack {
 
 
 
-    public CardStack() {
+    public CardList() {
         cardStack = new ArrayList<Card>();
     }
-    public CardStack(String name, String description, Player author) {
+    public CardList(String name, String description, Player author) {
         this.author = author;
         this.name=name;
         this.description=description;
@@ -31,7 +29,7 @@ public class CardStack {
     }
 
     //copy du stack
-    public CardStack(CardStack another) {
+    public CardList(CardList another) {
         this.name=another.name;
         this.description=another.description;
         this.cardStack = new ArrayList<Card>();
@@ -61,12 +59,7 @@ public class CardStack {
     }
 
     public Card pop(){
-        if (this.index < len){
-            return cardStack.get(index);
-        }
-        else{
-            return null;
-        }
+        return getnextCard();
     }
 
     public int getNbCards(){

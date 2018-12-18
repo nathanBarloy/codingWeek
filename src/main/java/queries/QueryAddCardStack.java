@@ -1,7 +1,6 @@
 package queries;
 
-import models.CardStack;
-import models.Player;
+import models.CardList;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -9,23 +8,23 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
-public class QueryAddStackCard extends Query {
+public class QueryAddCardStack extends Query {
 
-    private CardStack cardStack;
+    private CardList cardList;
 
-    public QueryAddStackCard(CardStack cardStack) {
+    public QueryAddCardStack(CardList cardList) {
         super("addCardStack");
-        this.cardStack =cardStack;
+        this.cardList = cardList;
     }
 
 
     public void send() throws IOException {
-        {
+
 
 // Request parameters and other properties.
-            params.add(new BasicNameValuePair("name", cardStack.getName()));
-            params.add(new BasicNameValuePair("description", cardStack.getDescription()));
-            params.add(new BasicNameValuePair("author", cardStack.getAuthor().getUsername()));
+            params.add(new BasicNameValuePair("name", cardList.getName()));
+            params.add(new BasicNameValuePair("description", cardList.getDescription()));
+            params.add(new BasicNameValuePair("author", cardList.getAuthor().getUsername()));
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
@@ -40,7 +39,7 @@ public class QueryAddStackCard extends Query {
 
                 }
             }
-        }
+
 
     }
 }
