@@ -19,7 +19,7 @@ public class QueryDelUser extends Query {
 
 
     public void send() throws IOException {
-        {
+
 
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("username", player.getUsername()));
@@ -37,7 +37,7 @@ public class QueryDelUser extends Query {
 
                 }
             }
-        }
+
 
     }
 }

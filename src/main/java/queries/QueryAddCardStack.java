@@ -9,18 +9,18 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
-public class QueryAddStackCard extends Query {
+public class QueryAddCardStack extends Query {
 
     private CardStack cardStack;
 
-    public QueryAddStackCard(CardStack cardStack) {
+    public QueryAddCardStack(CardStack cardStack) {
         super("addCardStack");
         this.cardStack =cardStack;
     }
 
 
     public void send() throws IOException {
-        {
+
 
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("name", cardStack.getName()));
@@ -40,7 +40,7 @@ public class QueryAddStackCard extends Query {
 
                 }
             }
-        }
+
 
     }
 }
