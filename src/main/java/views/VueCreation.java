@@ -16,7 +16,7 @@ import java.util.Observer;
 public class VueCreation implements Observer {
 
     private Partie partie;
-    String nomCarte,questionCarte,reponseCarte;
+    String nomCarte,questionCarte,reponseCarte,nomDeck;
     boolean init;
 
     @FXML
@@ -46,12 +46,16 @@ public class VueCreation implements Observer {
         questionCarte = question.getText();
         reponseCarte = reponse.getText();
         nomCarte = nom.getText();
+        nomDeck = (String) menuDeck.getValue();
+
         //System.out.println(questionCarte + "\n" + reponseCarte + "\n" + nomCarte);
-        if ( !(questionCarte.equals("") || reponseCarte.equals("") || nomCarte.equals("")) ) {
+        if ( !(questionCarte.equals("") || reponseCarte.equals("") || nomCarte.equals("") || nomDeck==null) ) {
             question.setText("");
             reponse.setText("");
             nom.setText("");
 
+        } else {
+            
         }
     }
 
