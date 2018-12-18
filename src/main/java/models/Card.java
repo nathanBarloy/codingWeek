@@ -5,15 +5,21 @@ public class Card {
     private  String text;
     private  String answer;
     public String type = "question";
+    private Player author;
     private int succes ;
     private int fail ;
     private int  user_succes;
     private int user_fail;
 
-    public Card (String name, String question, String answer){
+    public Player getAuthor() {
+        return author;
+    }
+
+    public Card (String name, String question, String answer, Player player){
         this.name=name;
         this.text=question;
         this.answer=answer;
+        this.author=author;
     }
 
     public String getName() {

@@ -6,6 +6,7 @@ import database.Database;
 import learning.LearningAlgo;
 import models.Card;
 import models.CardStack;
+import models.Player;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,23 +17,24 @@ public class DatabaseTest {
     private Database databaseresultat1;
     private Database databaseresultat2;
     private Database databaseresultat3;
-
+    private Player player;
     @Before
     public void initialiser() throws Exception {
-        Card card1 = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3");
-        Card card2 = new Card("sql", "Qui est le génie du sql? ", "Alexis");
-        Card card3 = new Card("temps", "Quelle heure est-il? ", "L'heure d'une petite pause");
-        CardStack cardstack1 = new CardStack("test1", "pour test ");
-        cardstack1.push(card1);
-        cardstack1.push(card2);
-        cardstack1.push(card3);
+        player = new Player("Alexis","az");
+        Card card1 = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player);
+        Card card2 = new Card("sql", "Qui est le génie du sql? ", "Alexis", player);
+        Card card3 = new Card("temps", "Quelle heure est-il? ", "L'heure d'une petite pause", player);
+        CardStack cardstack1 = new CardStack("test1", "pour test ", player);
+        cardstack1.add(card1);
+        cardstack1.add(card2);
+        cardstack1.add(card3);
 
 
-        CardStack cardstack2 = new CardStack("test2", "pour test ");
-        CardStack cardstack3 = new CardStack("test3", "pour test ");
-        CardStack cardstack4 = new CardStack("test3", "pour test ");
-        CardStack cardstack5 = new CardStack("test2", "pour test ");
-        CardStack cardstack6 = new CardStack("test1", "pour test ");
+        CardStack cardstack2 = new CardStack("test2", "pour test ",player);
+        CardStack cardstack3 = new CardStack("test3", "pour test ", player);
+        CardStack cardstack4 = new CardStack("test3", "pour test ", player);
+        CardStack cardstack5 = new CardStack("test2", "pour test ", player);
+        CardStack cardstack6 = new CardStack("test1", "pour test ",player);
 
         database = new Database();
         database.add(cardstack1);
