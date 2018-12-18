@@ -56,24 +56,24 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void ParfaitAction(){
-        this.but = true;
+        //this.but = true;
         this.partie.buttons();
-        //radioMoyen.setSelected(false);
-        //radioIdk.setSelected(false);
+        RadioMoyen.setSelected(false);
+        RadioIdk.setSelected(false);
     }
 
     public void MoyenAction(){
-        this.but = true;
+        //this.but = true;
         this.partie.buttons();
-        //radioParfait.setSelected(false);
-        //radioIdk.setSelected(false);
+        RadioParfait.setSelected(false);
+        RadioIdk.setSelected(false);
     }
 
     public void IdkAction(){
-        this.but = true;
+        //this.but = true;
         this.partie.buttons();
-        //radioParfait.setSelected(false);
-        //radioMoyen.setSelected(false);
+        RadioParfait.setSelected(false);
+        RadioMoyen.setSelected(false);
     }
 
     public void NvQuest() {
@@ -86,32 +86,6 @@ public class ControllerVueQuestion implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (this.but == true) {
-            if (RadioParfait.isSelected()) {
-                System.out.println("parfait");
-                //RadioParfait.requestFocus();
-                RadioMoyen.setSelected(false);
-                RadioIdk.setSelected(false);
-                this.but = false;
-            }
-
-            if (RadioMoyen.isSelected()) {
-                System.out.println("moyen");
-                //RadioParfait.requestFocus();
-                RadioParfait.setSelected(false);
-                RadioIdk.setSelected(false);
-                this.but = false;
-            }
-
-            if (RadioIdk.isSelected()) {
-                System.out.println("idk");
-                //RadioParfait.requestFocus();
-                RadioIdk.setSelected(true);
-                RadioParfait.setSelected(false);
-                RadioMoyen.setSelected(false);
-                this.but = false;
-            }
-        } else {
             if (this.init == -1) {
                 Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
 
@@ -171,6 +145,6 @@ public class ControllerVueQuestion implements Observer {
             }
             this.init = 1;
         }
-    }
+
 
 }
