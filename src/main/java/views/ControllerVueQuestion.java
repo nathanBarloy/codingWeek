@@ -3,6 +3,12 @@ package views;
 
 
 import javafx.animation.*;
+import database.Database;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
+
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,10 +29,7 @@ import javafx.util.Duration;
 import launch.Main;
 import models.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class ControllerVueQuestion implements Observer {
     private ArrayList<String> liste = new ArrayList<String>();
@@ -105,6 +108,10 @@ public class ControllerVueQuestion implements Observer {
         RadioMoyen.setSelected(false);
     }
 
+    public void retour() {
+        Main.main.switchScene("/views/VueMenu.fxml");
+    }
+
     public void NvQuest() {
         this.partie.NvQuest();
     }
@@ -173,8 +180,37 @@ public class ControllerVueQuestion implements Observer {
             }
 
             if (this.init == 1) {
+                String txt = "";
+                Object object = this.choicebox.getValue();
                 Card carte = partie.getCurrentCard();
+                if (object == null){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERREUR");
+                    alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
+                    String message = "";
+
+                    alert.setContentText(message);
+                    alert.showAndWait();
+                }
+                else{
+                    txt = o.toString();
+                    System.out.println("choix deck : "+ txt);
+
+                }
+
+
+/*
+                partie.setDatabase();
+                Database database = partie.getDatabase();
+                //en dur
+                List<CardStack>  cardStackList = database.getCardStack("test1");
+                CardStack cardStack = cardStackList.get(0);
+                //fin de en dur
+                Card carte = cardStack.getCard();
+*/
+
                 if (carte != null) {
+
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
 
@@ -219,19 +255,17 @@ public class ControllerVueQuestion implements Observer {
 
                                 @Override
                                 public void handle(ActionEvent actionEvent) {
+                                    RondAvancement.setProgress(0);
                                     LabelQuestion.setText(carte.getAnswer());
                                     System.out.println("finished");
                                 }
                             });
-                            System.out.println("mdr:" + mdr);
                             Anim.play();
-                            //this.mdr = 1;
-                            //carte.setType("reponse");
                         }
                     }
                     if (carte.getType().equals("reponse") || this.mdr == 1) {
                         this.mdr = -1;
-                        this.RondAvancement.setProgress(0f);
+                        //this.RondAvancement.setProgress(0f);
                         //System.out.println("reponse");
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
