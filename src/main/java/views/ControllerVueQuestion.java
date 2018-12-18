@@ -3,7 +3,9 @@ package views;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -19,12 +21,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.TimeUnit;
 
 public class ControllerVueQuestion implements Observer {
+    private double progress = 0.0;
     private Partie partie;
     private boolean but;
     private int init = -1;
 
+    @FXML
+    private ProgressBar ProgressBar;
+
+    @FXML
+    private ChoiceBox BarreDeroulante;
     @FXML
     private RadioButton RadioParfait;
 
@@ -48,11 +57,14 @@ public class ControllerVueQuestion implements Observer {
 
     @FXML
     private Label LabelQuestion;
+    private double size;
 
     public ControllerVueQuestion(Partie partie) {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
+        this.size = this.partie.getCardStack().getSize();
+        this.progress = -1/this.size;
     }
 
     public void ParfaitAction(){
@@ -81,7 +93,10 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void valider() {
-        this.partie.valider();
+
+        if (!this.LabelQuestion.getText().equals("NotStartedYet")){
+            partie.valider();
+        }
     }
 
     @Override
@@ -132,6 +147,8 @@ public class ControllerVueQuestion implements Observer {
                 if (carte != null) {
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
+                        progress += 1/size;
+                        this.ProgressBar.setProgress(progress);
                         //System.out.println("question");
                         this.LabelQuestion.setText(carte.getQuestion());
                     }
@@ -140,7 +157,16 @@ public class ControllerVueQuestion implements Observer {
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
                 } else {
-                    Main.main.switchScene("/views/VueMenu.fxml");
+                    this.progress += 1/size;
+                    this.ProgressBar.setProgress(progress);
+                    try {
+                        Thread.sleep(1000);
+                        Main.main.switchScene("/views/VueMenu.fxml");
+                    } catch (InterruptedException e) {
+                        System.out.println("exception on waiting");
+                        e.printStackTrace();
+                    }
+
                 }
             }
             this.init = 1;

@@ -40,7 +40,7 @@
                   <AnchorPane prefHeight="457.0" prefWidth="536.0" BorderPane.alignment="CENTER">
                      <children>
                         <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#55708a" height="200.0" layoutX="36.0" layoutY="-9.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
-                        <Label fx:id="LabelQuestion" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="49.0" prefHeight="84.0" prefWidth="304.0" text="Question">
+                        <Label fx:id="LabelQuestion" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="49.0" prefHeight="84.0" prefWidth="304.0" text="NotStartedYet">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -54,7 +54,7 @@
                <bottom>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ProgressBar layoutX="221.0" layoutY="41.0" prefHeight="25.0" prefWidth="209.0" progress="0.0" />
+                        <ProgressBar fx:id="ProgressBar" layoutX="221.0" layoutY="41.0" prefHeight="25.0" prefWidth="209.0" progress="0.0" />
                         <Label alignment="CENTER" layoutY="40.0" prefHeight="27.0" prefWidth="221.0" text="Your Progress" textAlignment="CENTER" />
                         <ProgressBar layoutX="223.0" layoutY="86.0" prefHeight="24.0" prefWidth="210.0" progress="0.0" />
                         <Label layoutX="-6.0" layoutY="92.0" prefHeight="16.0" prefWidth="227.0" text="Pourcentage de bonne réponse : " />
@@ -93,7 +93,7 @@
                <center>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ChoiceBox layoutX="313.0" layoutY="29.0" prefHeight="26.0" prefWidth="220.0" />
+                        <ChoiceBox fx:id="BarreDeroulante" layoutX="313.0" layoutY="29.0" prefHeight="26.0" prefWidth="220.0" />
                      </children>
                   </Pane>
                </center>
