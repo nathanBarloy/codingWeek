@@ -89,4 +89,19 @@ public class HTTPTest {
         Thread.sleep(100);
 
     }
+
+    @Test
+    public void getters() throws IOException, InterruptedException {
+        query = new QueryGetUserList();
+        query.send();
+        Thread.sleep(100);
+        query = new QueryGetCardList();
+
+        query.send();
+        Thread.sleep(100);
+        query = new QueryGetCardStackList();
+        query.send();
+        Thread.sleep(100);
+
+    }
 }
