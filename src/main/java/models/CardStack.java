@@ -15,6 +15,13 @@ public class CardStack {
         this.description=description;
         cardStack = new LinkedList<Card>();
     }
+
+    //copy du stack
+    public CardStack(CardStack another) {
+        this.name=another.name;
+        this.description=another.description;
+        cardStack = another.cardStack;
+    }
     public CardStack() {
         cardStack = new LinkedList<Card>();
     }

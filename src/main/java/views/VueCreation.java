@@ -58,7 +58,9 @@ public class VueCreation implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (init) {
+
             menuDeck.setItems(FXCollections.observableArrayList(
+
                     "deck 1",
                     "deck 2"
             ));
