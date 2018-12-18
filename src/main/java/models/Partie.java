@@ -20,6 +20,7 @@ public class Partie extends Observable{
     public Partie(Player player, CardStack cardStack) {
         this.player = player;
         this.cardStack = cardStack;
+
         this.nbCards = cardStack.getNbCards();
     }
 

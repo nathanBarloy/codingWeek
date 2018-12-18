@@ -19,6 +19,8 @@ public class  Main extends Application {
 
     private Stage stage;
     public static Main main;
+    private CardStack cardStack;
+    private Card card ;
 
 
     @Override
@@ -28,10 +30,10 @@ public class  Main extends Application {
         }
 
         stage = primaryStage;
-        CardStack c = new CardStack();
-        CardStackSeed cs = new CardStackSeed(c);
+        cardStack= new CardStack();
+        CardStackSeed cs = new CardStackSeed(cardStack);
         cs.seed();
-        Partie p = new Partie(new Player(),c);
+        Partie p = new Partie(new Player(),cardStack);
 
         FXMLLoader loader2 = new FXMLLoader();
         loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
@@ -57,11 +59,11 @@ public class  Main extends Application {
     public void switchScene(String fxmlFile) {
         try {
             if (fxmlFile.equals("/views/VueQuestion.fxml")) {
-                CardStack c = new CardStack();
-                CardStackSeed cs = new CardStackSeed(c);
+                cardStack= new CardStack();
+                CardStackSeed cs = new CardStackSeed(cardStack);
                 cs.seed();
 
-                Partie p = new Partie(new Player(),c);
+                Partie p = new Partie(new Player(),cardStack);
                 p.setCurrentCard(new Card("première carte", "Première question",
                         "Première réponse"));
                 BorderPane root = new BorderPane();
@@ -81,10 +83,10 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueMenu.fxml")) {
-                CardStack c = new CardStack();
-                CardStackSeed cs = new CardStackSeed(c);
+                CardStack cardstack= new CardStack();
+                CardStackSeed cs = new CardStackSeed(cardStack);
                 cs.seed();
-                Partie p = new Partie(new Player(),c);
+                Partie p = new Partie(new Player(),cardStack);
 
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
