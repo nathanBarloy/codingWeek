@@ -11,7 +11,7 @@ import java.io.IOException;
 public class JSONParser {
     private JSONObject json;
 
-    
+
 
     public String cardToJson(Card card) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
