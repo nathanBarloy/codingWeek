@@ -1,12 +1,10 @@
 
 package views;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import launch.Main;
@@ -33,7 +31,7 @@ public class ControllerVueQuestion implements Observer {
     private ProgressBar ProgressBar;
 
     @FXML
-    private ChoiceBox BarreDeroulante;
+    private ChoiceBox choicebox;
     @FXML
     private RadioButton RadioParfait;
 
@@ -107,6 +105,11 @@ public class ControllerVueQuestion implements Observer {
                 //final URL imageURL = getClass().getResource("../ressources/fond");
                 //final Image image1 = new Image(imageURL.toExternalForm());
 
+                this.choicebox.setTooltip(new Tooltip("Select the language"));
+                this.choicebox.setItems(FXCollections.observableArrayList(
+                        "New Document", new Separator(),"Open ",
+                        new Separator(), "Save", "Save as")
+                );
 
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
 
@@ -142,6 +145,7 @@ public class ControllerVueQuestion implements Observer {
                     BackgroundPosition.CENTER,
                     bSize)));*/
             }
+
             if (this.init == 1) {
                 Card carte = partie.getCurrentCard();
                 if (carte != null) {

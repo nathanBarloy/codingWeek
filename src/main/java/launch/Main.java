@@ -65,9 +65,7 @@ public class  Main extends Application {
 
                 Partie p = new Partie(new Player(),cardStack);
                 p.setCurrentCard(cardStack.getCard());
-
                 BorderPane root = new BorderPane();
-
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource("/views/VueQuestion.fxml"));
                 loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
