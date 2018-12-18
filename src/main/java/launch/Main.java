@@ -120,6 +120,13 @@ public class  Main extends Application {
                 stage.setScene(new Scene(root, 1000, 800));
                 stage.show();
             }
+            if (fxmlFile.equals("/views/VueInscription.fxml")) {
+                Parent root = FXMLLoader.load(getClass().getResource("/views/VueInscription.fxml"));
+                stage.setTitle("Inscription");
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.show();
+            }
+
 
         } catch (IOException e) {
             e.printStackTrace();
