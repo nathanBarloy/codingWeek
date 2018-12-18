@@ -7,6 +7,7 @@ import models.*;
 import views.ControllerVueQuestion;
 import models.Player;
 
+import java.util.List;
 import java.util.Observable;
 
 public class Partie extends Observable{
@@ -39,9 +40,19 @@ public class Partie extends Observable{
 
         return CurrentCard;
     }
-    public Card getCurrentCard( String namedeck) {
-        return cardStack.pop(); //sera récupéré en sql après
 
+
+
+    public Card getCurrentCard( String namedeck) {
+        return CurrentCard; //sera récupéré en sql après
+/*
+        //en dur
+        List<CardStack> cardStackList = database.getCardStack("test1");
+        CardStack cardStack = cardStackList.get(0);
+        //fin de en dur
+        Card card = cardStack.getCard();
+        return card;
+*/
     }
 
     public Player getPlayer() {
