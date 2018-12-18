@@ -5,8 +5,8 @@ public class Card {
     private  String text;
     private  String answer;
     public String type = "question";
-    public int succes ;
-    public int fail ;
+    private int succes ;
+    private int fail ;
     private int  user_succes;
     private int user_fail;
 
@@ -46,5 +46,41 @@ public class Card {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public int getSucces() {
+        return succes;
+    }
+
+    public void setSucces(int succes) {
+        this.succes = succes;
+    }
+
+    public int getFail() {
+        return fail;
+    }
+
+    public void setFail(int fail) {
+        this.fail = fail;
+    }
+
+    public int getUser_succes() {
+        return user_succes;
+    }
+
+    public void setUser_succes(int user_succes) {
+        this.user_succes = user_succes;
+    }
+
+    public int getUser_fail() {
+        return user_fail;
+    }
+
+    public void setUser_fail(int user_fail) {
+        this.user_fail = user_fail;
     }
 }
