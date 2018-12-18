@@ -13,7 +13,7 @@ public class LearningAlgo {
     private LinkedList<Card> cardlistshow;
 
     public LearningAlgo (CardStack cardstack ) {
-        this.cardstack = cardstack;
+        this.cardstack = new CardStack(cardstack);
     }
 
     public Card getCard(){

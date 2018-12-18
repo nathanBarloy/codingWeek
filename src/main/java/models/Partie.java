@@ -1,6 +1,8 @@
 
 package models;
+import database.Database;
 import launch.Main;
+import learning.LearningAlgo;
 import models.*;
 import views.ControllerVueQuestion;
 import models.Player;
@@ -12,12 +14,14 @@ public class Partie extends Observable{
     private CardStack cardStack;
     private int nbCards;
     private Card CurrentCard;
+    private Database database;
+    private LearningAlgo learningAlgo;
     //----------------------------------------------------------------------------------------------
     //Constructeur
     public Partie(Player player, CardStack cardStack) {
         this.player = player;
         this.cardStack = cardStack;
-
+        this.database = new Database();
         this.nbCards = cardStack.getNbCards();
     }
     //-----------------------------------------------------------------------------------------------
@@ -31,9 +35,9 @@ public class Partie extends Observable{
 
         return CurrentCard;
     }
-    public Card getCurrentCard( CardStack cardStack) {
-
-        return cardStack.pop();
+    public Card getCurrentCard( String namedeck) {
+        return cardStack.pop(); //sera récupéré en sql après
+        
     }
 
     public Player getPlayer() {
