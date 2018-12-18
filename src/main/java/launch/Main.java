@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import learning.LearningAlgo;
 import models.Card;
 import models.CardStack;
 import models.Partie;
@@ -22,7 +23,7 @@ public class  Main extends Application {
     public static Main main;
     private CardStack cardStack;
     private Card card ;
-    private Database database;
+
 
 
     @Override
@@ -36,7 +37,7 @@ public class  Main extends Application {
         CardStackSeed cs = new CardStackSeed(cardStack);
         cs.seed();
         Partie p = new Partie(new Player(),cardStack);
-        database = new Database();
+
 
         FXMLLoader loader2 = new FXMLLoader();
         loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
