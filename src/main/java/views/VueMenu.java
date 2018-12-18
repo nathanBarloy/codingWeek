@@ -31,6 +31,10 @@ public class VueMenu implements Observer{
         Main.main.closeStage();
     }
 
+    public void deconnexion() {
+        Main.main.switchScene("/views/VueLogin.fxml");
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");

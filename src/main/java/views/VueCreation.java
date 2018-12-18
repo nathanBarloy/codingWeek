@@ -26,7 +26,7 @@ public class VueCreation implements Observer {
     private TextField nom;
 
     @FXML
-    private ChoiceBox menuDeck;
+    private ComboBox menuDeck;
 
     public VueCreation(Partie partie) {
         super();
@@ -74,6 +74,10 @@ public class VueCreation implements Observer {
             alert.showAndWait();
 
         }
+    }
+
+    public void supprimerCarte() {
+
     }
 
     @Override
