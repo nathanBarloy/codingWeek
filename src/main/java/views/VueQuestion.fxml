@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -29,7 +30,11 @@
          <center>
             <BorderPane fx:id="pane" prefHeight="388.0" prefWidth="560.0" BorderPane.alignment="CENTER">
                <top>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ChoiceBox fx:id="choicebox" layoutX="229.0" layoutY="48.0" prefHeight="26.0" prefWidth="220.0" />
+                        <Label layoutX="24.0" layoutY="53.0" prefHeight="16.0" prefWidth="165.0" text="Choisissez un deck, fdp" />
+                     </children></Pane>
                </top>
                <left>
                   <AnchorPane prefHeight="457.0" prefWidth="536.0" BorderPane.alignment="CENTER">
@@ -64,6 +69,7 @@
                               <Font name="System Italic" size="14.0" />
                            </font>
                         </Button>
+                        <ProgressIndicator fx:id="RondAvancement" layoutX="18.0" layoutY="-32.0" prefHeight="85.0" prefWidth="107.0" progress="0.0" />
                      </children>
                   </Pane>
                </right>
@@ -86,11 +92,7 @@
                   </Label>
                </right>
                <center>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <ChoiceBox fx:id="choicebox" layoutX="313.0" layoutY="29.0" prefHeight="26.0" prefWidth="220.0" />
-                     </children>
-                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </top>

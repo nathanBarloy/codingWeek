@@ -28,6 +28,8 @@ public class ControllerVueQuestion implements Observer {
     private int init = -1;
 
     @FXML
+    private ProgressIndicator RondAvancement;
+    @FXML
     private ProgressBar ProgressBar;
 
     @FXML
@@ -107,9 +109,9 @@ public class ControllerVueQuestion implements Observer {
 
                 this.choicebox.setTooltip(new Tooltip("Select the language"));
                 this.choicebox.setItems(FXCollections.observableArrayList(
-                        "New Document", new Separator(),"Open ",
-                        new Separator(), "Save", "Save as")
-                );
+                        "deck 1",
+                        "deck 2"
+                ));
 
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
 
