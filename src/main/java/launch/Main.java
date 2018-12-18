@@ -103,11 +103,24 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueCreation.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource("/views/VueCreation.fxml"));
+                CardStack c = new CardStack();
+                CardStackSeed cs = new CardStackSeed(c);
+                cs.seed();
+                Partie p = new Partie(new Player(),c);
+
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/views/VueCreation.fxml"));
+                loader2.setControllerFactory(iC -> new VueCreation(p));
+                Parent VueCreation = null;
+
+                VueCreation = loader2.load();
+                p.init();
+
 
                 stage.setTitle("Creation");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(VueCreation, 1000, 800));
                 stage.show();
+
             }
 
 

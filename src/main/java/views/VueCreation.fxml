@@ -28,16 +28,45 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextArea prefHeight="200.0" prefWidth="200.0">
+                  <Label text="Question">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="question" prefHeight="180.0" prefWidth="581.0" promptText="Question" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
                   </TextArea>
-                  <TextArea prefHeight="178.0" prefWidth="943.0">
+                  <Label text="Réponse">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="reponse" prefHeight="180.0" prefWidth="943.0" promptText="Réponse" wrapText="true">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets bottom="70.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
                   </TextArea>
+                  <Label text="Nom de la carte">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nom" promptText="Nom">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
                </children></VBox>
          </center>
          <right>
