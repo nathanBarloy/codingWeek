@@ -32,6 +32,9 @@
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
                   </Label>
                   <TextArea fx:id="question" prefHeight="180.0" prefWidth="581.0" promptText="Question" wrapText="true">
                      <VBox.margin>
@@ -79,23 +82,23 @@
                </BorderPane.margin>
             </Button>
          </right>
-         <left>
-            <ComboBox prefWidth="150.0" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="20.0" right="40.0" />
-               </BorderPane.margin>
-            </ComboBox>
-         </left>
          <top>
             <Label text="Menu de création de carte" BorderPane.alignment="CENTER">
                <font>
                   <Font size="40.0" />
                </font>
                <BorderPane.margin>
-                  <Insets top="50.0" />
+                  <Insets top="30.0" />
                </BorderPane.margin>
             </Label>
          </top>
+         <left>
+            <ChoiceBox fx:id="menuDeck" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" right="40.0" />
+               </BorderPane.margin>
+            </ChoiceBox>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
