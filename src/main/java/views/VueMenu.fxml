@@ -18,12 +18,12 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#lancerModeTest" prefHeight="60.0" prefWidth="220.0" text="Mode Test">
+                  <Button mnemonicParsing="false" onAction="#lancerModeTest" prefHeight="60.0" prefWidth="270.0" text="Mode Entraînement">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#lancerModeCreation" prefHeight="60.0" prefWidth="220.0" text="Mode Creation">
+                  <Button mnemonicParsing="false" onAction="#lancerModeCreation" prefHeight="60.0" prefWidth="270.0" text="Mode Creation">
                      <font>
                         <Font size="24.0" />
                      </font>

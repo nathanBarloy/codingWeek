@@ -1,6 +1,7 @@
 
 package models;
 import database.Database;
+import javafx.scene.control.Alert;
 import launch.Main;
 import learning.LearningAlgo;
 import models.*;
@@ -125,6 +126,13 @@ public class Partie extends Observable{
             setChanged();
             notifyObservers();
         } else {
+            Alert alertt = new Alert(Alert.AlertType.ERROR);
+            alertt.setTitle("ERREUR");
+            alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
+            String mmessage = "";
+
+            alertt.setContentText(mmessage);
+            alertt.showAndWait();
             Main.main.switchScene("/views/VueMenu.fxml");
         }
     }
