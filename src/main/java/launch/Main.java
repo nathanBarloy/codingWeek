@@ -62,8 +62,7 @@ public class  Main extends Application {
                 cs.seed();
 
                 Partie p = new Partie(new Player(),c);
-                p.setCurrentCard(new Card("première carte", "Première question",
-                        "Première réponse"));
+                p.setCurrentCard(c.getCard());
                 BorderPane root = new BorderPane();
 
                 FXMLLoader loader2 = new FXMLLoader();

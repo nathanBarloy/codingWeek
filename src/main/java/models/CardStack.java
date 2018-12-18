@@ -56,5 +56,11 @@ public class CardStack {
     }
 
 
+    public double getSize() {
+        return this.cardStack.size();
+    }
 
+    public Card getCard() {
+        return this.cardStack.getFirst();
+    }
 }

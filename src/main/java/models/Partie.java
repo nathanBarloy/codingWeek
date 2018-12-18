@@ -60,7 +60,7 @@ public class Partie extends Observable{
     }
 
     public void buttons() {
-        setChanged();
-        notifyObservers();
+        //setChanged();
+        //notifyObservers();
     }
 }
