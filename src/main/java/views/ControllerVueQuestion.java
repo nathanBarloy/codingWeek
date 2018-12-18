@@ -77,6 +77,7 @@ public class ControllerVueQuestion implements Observer {
     private Label LabelQuestion;
     private double size;
     private static int mdr = -1;
+    private boolean done;
 
     public ControllerVueQuestion(Partie partie) {
         super();
@@ -160,7 +161,7 @@ public class ControllerVueQuestion implements Observer {
 
                 this.choicebox.setTooltip(new Tooltip("Select the language"));
                 this.choicebox.setItems(FXCollections.observableArrayList(
-                        "deck 1",
+                        new Label("deck1").getText(),
                         "deck 2"
                 ));
 
@@ -181,24 +182,27 @@ public class ControllerVueQuestion implements Observer {
 
             if (this.init == 1) {
                 String txt = "";
-                Object object = this.choicebox.getValue();
-                Card carte = partie.getCurrentCard();
-                if (object == null){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("ERREUR");
-                    alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
-                    String message = "";
+                String object = (String) this.choicebox.getValue();
 
-                    alert.setContentText(message);
-                    alert.showAndWait();
+                if (object == null){
+                    if(this.done == false) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("ERREUR");
+                        alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
+                        String message = "";
+
+                        alert.setContentText(message);
+                        alert.showAndWait();
+                    }
+                    this.done = true;
                 }
                 else{
-                    txt = o.toString();
-                    System.out.println("choix deck : "+ txt);
+                    //txt = object.getText();
+                    System.out.println("choix deck : "+ object);
 
                 }
 
-
+                Card carte = partie.getCurrentCard(object);
 /*
                 partie.setDatabase();
                 Database database = partie.getDatabase();
@@ -257,7 +261,7 @@ public class ControllerVueQuestion implements Observer {
                                 @Override
                                 public void handle(ActionEvent actionEvent) {
                                     RondAvancement.setProgress(0);
-                                    LabelQuestion.setText(carte.getAnswer());
+                                    partie.valider();
                                     System.out.println("finished");
                                 }
                             });
@@ -274,7 +278,15 @@ public class ControllerVueQuestion implements Observer {
                     this.progress += 1/size;
                     this.ProgressBar.setProgress(progress);
                     try {
-                        Thread.sleep(1000);
+                    Alert alertt = new Alert(Alert.AlertType.ERROR);
+                    alertt.setTitle("ERREUR");
+                    alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
+                    String mmessage = "";
+
+                    alertt.setContentText(mmessage);
+                    alertt.showAndWait();
+
+                        Thread.sleep(3000);
                         Main.main.switchScene("/views/VueMenu.fxml");
                     } catch (InterruptedException e) {
                         System.out.println("exception on waiting");
