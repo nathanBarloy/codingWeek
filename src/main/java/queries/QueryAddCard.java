@@ -31,13 +31,13 @@ public class QueryAddCard extends Query {
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
-            HttpResponse response = httpClient.execute(request);
-            HttpEntity entity = response.getEntity();
+            HttpResponse httpResponse = httpClient.execute(request);
+            HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null) {
                 try  {
                     this.response = entity.getContent();
-                    System.out.println(response.toString());
+                    System.out.println(getResponse());
                 }catch (Exception e){
 
                 }
