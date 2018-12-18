@@ -12,7 +12,7 @@ public class LearningAlgo {
     private CardStack cardstack;
     private LinkedList<Card> cardlistshow;
 
-    LearningAlgo (CardStack cardstack ) {
+    public LearningAlgo (CardStack cardstack ) {
         this.cardstack = cardstack;
     }
 

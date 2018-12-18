@@ -32,4 +32,5 @@ public class CardTest {
         assertEquals("name ", card.getName(), "la vérité blesse");
 
     }
+
 }
