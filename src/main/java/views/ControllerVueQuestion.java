@@ -2,11 +2,10 @@
 package views;
 
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.*;
 import javafx.scene.transform.Rotate;
@@ -74,6 +73,7 @@ public class ControllerVueQuestion implements Observer {
     @FXML
     private Label LabelQuestion;
     private double size;
+    private static int mdr = -1;
 
     public ControllerVueQuestion(Partie partie) {
         super();
@@ -116,6 +116,33 @@ public class ControllerVueQuestion implements Observer {
         }
     }
 
+    public int animation(){
+        this.PaneAnim.setVisible(true);
+        Image image0 = new Image("http://www.vanilladome.fr/perso/087/001.png");
+        ImageView img = new ImageView();
+        img.setImage(image0);
+        img.setFitHeight(250);
+        img.setFitWidth(250);
+        this.PaneAnim.getChildren().add(img);
+        CubicCurve cubicCurve = new CubicCurve();
+        Path path = new Path();
+        path.getElements().add(new MoveTo(150,150));
+        path.getElements().add(new CubicCurveTo(400, 40, 175, 250, 400, 100));
+        path.getElements().add(new CubicCurveTo(100, 120, 50, 240, -100, -200));
+
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.millis(750));
+        pathTransition.setPath(path);
+        pathTransition.setNode(PaneAnim);
+        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        //pathTransition.setCycleCount(Timeline.INDEFINITE);
+        pathTransition.setAutoReverse(true);
+
+        pathTransition.play();
+
+        return 1;
+
+    }
     @Override
     public void update(Observable o, Object arg) {
             if (this.init == -1) {
@@ -143,26 +170,6 @@ public class ControllerVueQuestion implements Observer {
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundPosition.CENTER,
                         bSize0)));
-
-            /*
-            Image image1 = new Image("http://studio.oiseau-libre.net/Images/_DSC7330-(1).jpg");
-            //final URL imageURL = getClass().getResource("../ressources/fond");
-            //final Image image1 = new Image(imageURL.toExternalForm());
-
-
-            BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
-
-            Background background2 = new Background(new BackgroundImage(image1,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.CENTER,
-                    bSize));
-
-            this.pane.setBackground(new Background(new BackgroundImage(image1,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.CENTER,
-                    bSize)));*/
             }
 
             if (this.init == 1) {
@@ -170,46 +177,11 @@ public class ControllerVueQuestion implements Observer {
                 if (carte != null) {
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
-                        this.PaneAnim.setVisible(true);
-                        Image image0 = new Image("http://www.vanilladome.fr/perso/087/001.png");
-                        ImageView img = new ImageView();
-                        img.setImage(image0);
-                        this.PaneAnim.getChildren().add(img);
-                        CubicCurve cubicCurve = new CubicCurve();
 
-                        //Setting properties to cubic curve
-                        /*cubicCurve.setStartX(100.0f);
-                        cubicCurve.setStartY(150.0f);
-                        cubicCurve.setControlX1(400.0f);
-                        cubicCurve.setControlY1(40.0f);
-                        cubicCurve.setControlX2(175.0f);
-                        cubicCurve.setControlY2(250.0f);
-                        cubicCurve.setEndX(500.0f);
-                        cubicCurve.setEndY(150.0f);*/
-                        Path path = new Path();
-                        path.getElements().add(new MoveTo(150,150));
-                        path.getElements().add(new CubicCurveTo(400, 40, 175, 250, 700, 300));
-                        path.getElements().add(new CubicCurveTo(100, 120, 50, 240, 0, -200));
-                        path.getElements().add(new CubicCurveTo(0,0,0,0,0,-200));
-
-                        PathTransition pathTransition = new PathTransition();
-                        pathTransition.setDuration(Duration.millis(200));
-                        pathTransition.setPath(path);
-                        pathTransition.setNode(PaneAnim);
-                        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-                        //pathTransition.setCycleCount(Timeline.INDEFINITE);
-                        pathTransition.setAutoReverse(true);
-
-                        long startTime = System.currentTimeMillis();
-                        long elapsedTime = 0L;
-                        pathTransition.play();
-                        while (elapsedTime < 1) {
-                            //perform db poll/check
-                            elapsedTime = (new Date()).getTime() - startTime;
-                        }
-
+                        int a = this.animation();
                         //this.PaneAnim.getChildren().remove(img);
-                        this.PaneAnim.setVisible(false);
+                        //this.PaneAnim.getChildren().remove(img);
+                        //this.PaneAnim.setVisible(false);
 
                         /*
                         final Timeline timeline = new Timeline();
@@ -228,15 +200,38 @@ public class ControllerVueQuestion implements Observer {
                         String temp ="mdr";//= this.LabelQuestion.getText();
                         this.LabelQuestion.setText(carte.getQuestion());
                         if (!temp.equals("NotStartedYet")) {
+                            this.mdr = -1;
                             //System.out.println("label : " + this.LabelQuestion.getText());
-                            for (int i = 0; i < 3; i++) {
-                                    //System.out.println("here");
-                                    this.RondAvancement.setProgress(0.25F);
-                                    //Thread.sleep(1);
-                            }
+                            float f = 0;
+                            final Timeline Anim = new Timeline();
+                            //timeline.setCycleCount(Timeline.FINITE);
+                            Anim.setAutoReverse(false);
+                            final KeyValue kv = new KeyValue(this.RondAvancement.progressProperty(), 1);
+                            final KeyFrame kf = new KeyFrame(Duration.millis(5000), kv);
+                            Anim.getKeyFrames().add(kf);/*
+                            Anim.statusProperty().addListener((obs, oldStatus, newStatus) ->
+                                    new PauseTransition(Duration.millis(1000))
+                                    //System.out.println("here")
+                                    //this.mdr++
+                                    );*/
+                            Anim.setOnFinished(new EventHandler<ActionEvent>() {
+
+
+                                @Override
+                                public void handle(ActionEvent actionEvent) {
+                                    LabelQuestion.setText(carte.getAnswer());
+                                    System.out.println("finished");
+                                }
+                            });
+                            System.out.println("mdr:" + mdr);
+                            Anim.play();
+                            //this.mdr = 1;
+                            //carte.setType("reponse");
                         }
                     }
-                    if (carte.getType().equals("reponse")) {
+                    if (carte.getType().equals("reponse") || this.mdr == 1) {
+                        this.mdr = -1;
+                        this.RondAvancement.setProgress(0f);
                         //System.out.println("reponse");
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
