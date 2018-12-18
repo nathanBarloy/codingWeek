@@ -2,18 +2,20 @@ package models;
 
 import launch.Main;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class CardStack {
 
     private String name;
     private String description;
-    private LinkedList<Card> cardStack;
+    private ArrayList<Card> cardStack;
+    int index;
+    int len;
 
     public CardStack(String name, String description) {
         this.name=name;
         this.description=description;
-        cardStack = new LinkedList<Card>();
+        cardStack = new ArrayList<Card>();
     }
 
     //copy du stack
@@ -23,7 +25,7 @@ public class CardStack {
         cardStack = another.cardStack;
     }
     public CardStack() {
-        cardStack = new LinkedList<Card>();
+        cardStack = new ArrayList<Card>();
     }
 
     public String getName() {
@@ -42,13 +44,13 @@ public class CardStack {
         this.description = description;
     }
 
-    public void push(Card card){
-        cardStack.push(card);
+    public void add(Card card){
+        cardStack.add(card);
     }
 
     public Card pop(){
-        if (cardStack.size() > 0){
-            return cardStack.pop();
+        if (this.index < len){
+            return cardStack.get(index);
         }
         else{
             return null;
@@ -56,10 +58,8 @@ public class CardStack {
     }
 
     public int getNbCards(){
-        if (cardStack!=null) {
-            return cardStack.size();
-        }
-        return 0;
+
+        return len;
     }
 
 
@@ -68,6 +68,9 @@ public class CardStack {
     }
 
     public Card getCard() {
-        return this.cardStack.getFirst();
+        if (this.index < len) {
+            return this.cardStack.get(index);
+        }
+        else return null;
     }
 }
