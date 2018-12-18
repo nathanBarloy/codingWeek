@@ -16,6 +16,8 @@ public class Partie extends Observable{
     private Card CurrentCard;
     private Database database;
     private LearningAlgo learningAlgo;
+
+
     //----------------------------------------------------------------------------------------------
     //Constructeur
     public Partie(Player player, CardStack cardStack) {
@@ -23,6 +25,8 @@ public class Partie extends Observable{
         this.cardStack = cardStack;
         this.database = new Database();
         this.nbCards = cardStack.getNbCards();
+
+
     }
     //-----------------------------------------------------------------------------------------------
     //Getter
@@ -37,7 +41,7 @@ public class Partie extends Observable{
     }
     public Card getCurrentCard( String namedeck) {
         return cardStack.pop(); //sera récupéré en sql après
-        
+
     }
 
     public Player getPlayer() {
@@ -57,6 +61,13 @@ public class Partie extends Observable{
     }
 
     public void setCardStack(CardStack cardStack) {
+        Card card1 = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3");
+        Card card2 = new Card("sql", "Qui est le génie du sql? ", "Alexis" );
+        Card card3 = new Card("temps", "Quelle heure est-il? ", "L'heure d'une petite pause" );
+        CardStack cardstack = new CardStack( "test" , "pour test ");
+        cardstack.push(card1);
+        cardstack.push(card2);
+        cardstack.push(card3);
         this.cardStack = cardStack;
     }
 
