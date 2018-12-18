@@ -180,7 +180,6 @@ public class ControllerVueQuestion implements Observer {
             }
 
             if (this.init == 1) {
-<<<<<<< HEAD
                 String txt = "";
                 Object object = this.choicebox.getValue();
                 Card carte = partie.getCurrentCard();
