@@ -1,5 +1,6 @@
 package launch;
 
+import database.Database;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,7 @@ public class  Main extends Application {
     public static Main main;
     private CardStack cardStack;
     private Card card ;
+    private Database database;
 
 
     @Override
@@ -34,6 +36,7 @@ public class  Main extends Application {
         CardStackSeed cs = new CardStackSeed(cardStack);
         cs.seed();
         Partie p = new Partie(new Player(),cardStack);
+        database = new Database();
 
         FXMLLoader loader2 = new FXMLLoader();
         loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));

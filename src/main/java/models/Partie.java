@@ -31,6 +31,10 @@ public class Partie extends Observable{
 
         return CurrentCard;
     }
+    public Card getCurrentCard( CardStack cardStack) {
+
+        return cardStack.pop();
+    }
 
     public Player getPlayer() {
         return player;
