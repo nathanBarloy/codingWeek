@@ -20,8 +20,8 @@ public class HTTPTest {
     private Player player2;
     private Card card1;
     private Card card2;
-    private CardStack cardStack1;
-    private CardStack cardStack2;
+    private CardList cardStack1;
+    private CardList cardStack2;
     private Query query;
 
 
@@ -29,8 +29,8 @@ public class HTTPTest {
     public void initialiser() throws Exception {
         player1 = new Player("Alexei","Le plus sexy");
         player2 = new Player("Vladimir","Le plus sexy");
-        cardStack1= new CardStack("c1", "azerty", player1);
-        cardStack2= new CardStack("c2", "azerty", player1);
+        cardStack1= new CardList("c1", "azerty", player1);
+        cardStack2= new CardList("c2", "azerty", player1);
         card1 = new Card("card1", "oui ?", "oui.",player1);
         card2 = new Card("card2", "non ?", "non.",player1);
 

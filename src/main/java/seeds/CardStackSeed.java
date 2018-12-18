@@ -1,23 +1,23 @@
 package seeds;
 
 import models.Card;
-import models.CardStack;
+import models.CardList;
 import models.Player;
 
 public class CardStackSeed {
 
     private Player player;
-    private CardStack cardStack;
+    private CardList cardList;
 
-    public CardStackSeed(CardStack cardStack, Player player) {
+    public CardStackSeed(CardList cardList, Player player) {
         this.player=player;
-        this.cardStack = cardStack;
+        this.cardList = cardList;
     }
 
     public void seed(){
-        cardStack.push(new Card("Carte 1", "Quel est le goût du sel ?", "Salé",player));
-        cardStack.push(new Card("Carte 2", "Quelle est la couleur du cheval blanc d'Henry IV ?", "Couleur sel", player));
-        cardStack.push(new Card("Carte 3", "Appréciez vous la crinière dorée de ce cher Olivier ?", "Je suis salé", player));
+        cardList.add(new Card("Carte 1", "Quel est le goût du sel ?", "Salé",player));
+        cardList.add(new Card("Carte 2", "Quelle est la couleur du cheval blanc d'Henry IV ?", "Couleur sel", player));
+        cardList.add(new Card("Carte 3", "Appréciez vous la crinière dorée de ce cher Olivier ?", "Je suis salé", player));
     }
 
 }

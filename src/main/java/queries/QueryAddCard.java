@@ -42,7 +42,7 @@ public class QueryAddCard extends Query {
 
                 }
             }
-        
+
 
     }
 }

@@ -1,7 +1,6 @@
 package queries;
 
-import models.CardStack;
-import models.Player;
+import models.CardList;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -11,9 +10,9 @@ import java.io.IOException;
 
 public class QueryDelCardStack extends Query {
 
-    private CardStack cardStack;
+    private CardList cardStack;
 
-    public QueryDelCardStack(CardStack cardStack) {
+    public QueryDelCardStack(CardList cardStack) {
         super("delCardStack");
         this.cardStack = cardStack;
     }
