@@ -3,10 +3,7 @@ package views;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import launch.Main;
 import models.Partie;
 
@@ -16,7 +13,7 @@ import java.util.Observer;
 public class VueCreation implements Observer {
 
     private Partie partie;
-    String nomCarte,questionCarte,reponseCarte;
+    String nomCarte,questionCarte,reponseCarte,nomDeck;
     boolean init;
 
     @FXML
@@ -46,11 +43,35 @@ public class VueCreation implements Observer {
         questionCarte = question.getText();
         reponseCarte = reponse.getText();
         nomCarte = nom.getText();
+        nomDeck = (String) menuDeck.getValue();
+
         //System.out.println(questionCarte + "\n" + reponseCarte + "\n" + nomCarte);
-        if ( !(questionCarte.equals("") || reponseCarte.equals("") || nomCarte.equals("")) ) {
+        if ( !(questionCarte.equals("") || reponseCarte.equals("") || nomCarte.equals("") || nomDeck==null) ) {
             question.setText("");
             reponse.setText("");
             nom.setText("");
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERREUR");
+            alert.setHeaderText("Vous ne pouvez pas encore valider");
+            String message = "";
+            if (questionCarte.equals("")) {
+                message += "La carte n'a pas de question\n";
+            }
+            if (reponseCarte.equals("")) {
+                message += "La carte n'a pas de réponse\n";
+            }
+            if (nomCarte.equals("")) {
+                message+= "La carte n'a pas de nom\n";
+            }
+            if (nomDeck==null) {
+                message += "aucun deck n'a été choisi\n";
+            }
+
+            alert.setContentText(message);
+
+            alert.showAndWait();
 
         }
     }
