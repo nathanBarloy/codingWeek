@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import launch.Main;
@@ -25,6 +26,18 @@ public class ControllerVueQuestion implements Observer {
     private int init = -1;
 
     @FXML
+    private RadioButton radioParfait;
+
+    @FXML
+    private RadioButton radioMoyen;
+
+    @FXML
+    private RadioButton radioIdk;
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    @FXML
     private BorderPane borderpane;
 
     @FXML
@@ -42,6 +55,21 @@ public class ControllerVueQuestion implements Observer {
         this.partie.addObserver(this);
     }
 
+    public void ParfaitAction(){
+        radioMoyen.setSelected(false);
+        radioIdk.setSelected(false);
+    }
+
+    public void MoyenAction(){
+        radioParfait.setSelected(false);
+        radioIdk.setSelected(false);
+    }
+
+    public void IdkAction(){
+        radioParfait.setSelected(false);
+        radioMoyen.setSelected(false);
+    }
+
     public void NvQuest() {
         this.partie.NvQuest();
     }
@@ -55,7 +83,7 @@ public class ControllerVueQuestion implements Observer {
         if (this.init ==  -1) {
             Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
 
-            //final URL imageURL = getClass().getResource("../ressources/fond.jpg");
+            //final URL imageURL = getClass().getResource("../ressources/fond");
             //final Image image1 = new Image(imageURL.toExternalForm());
 
 
@@ -67,15 +95,15 @@ public class ControllerVueQuestion implements Observer {
                     BackgroundPosition.CENTER,
                     bSize0));
 
-            this.borderpane.setBackground(new Background(new BackgroundImage(image0,
+            this.anchorPane.setBackground(new Background(new BackgroundImage(image0,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,
                     bSize0)));
 
-
+            /*
             Image image1 = new Image("http://studio.oiseau-libre.net/Images/_DSC7330-(1).jpg");
-            //final URL imageURL = getClass().getResource("../ressources/fond.jpg");
+            //final URL imageURL = getClass().getResource("../ressources/fond");
             //final Image image1 = new Image(imageURL.toExternalForm());
 
 
@@ -91,7 +119,7 @@ public class ControllerVueQuestion implements Observer {
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,
-                    bSize)));
+                    bSize)));*/
         }
         if (this.init == 1) {
             Card carte = partie.getCurrentCard();
