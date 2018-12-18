@@ -1,6 +1,10 @@
 package views;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import launch.Main;
@@ -13,6 +17,7 @@ public class VueCreation implements Observer {
 
     private Partie partie;
     String nomCarte,questionCarte,reponseCarte;
+    boolean init;
 
     @FXML
     private TextArea question;
@@ -23,8 +28,12 @@ public class VueCreation implements Observer {
     @FXML
     private TextField nom;
 
+    @FXML
+    private ChoiceBox menuDeck;
+
     public VueCreation(Partie partie) {
         super();
+        init = true;
         this.partie = partie;
         this.partie.addObserver(this);
     }
@@ -48,6 +57,15 @@ public class VueCreation implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        if (init) {
 
+            menuDeck.setItems(FXCollections.observableArrayList(
+
+                    "deck 1",
+                    "deck 2"
+            ));
+        } else {
+
+        }
     }
 }
