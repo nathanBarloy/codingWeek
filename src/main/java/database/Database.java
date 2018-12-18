@@ -13,6 +13,7 @@ public class Database {
 
     public Database() {
     listdecks=new ArrayList<String>();
+    listCardStack = new ArrayList<CardStack>();
     }
 
     public List<String> getListStack() {
@@ -20,7 +21,7 @@ public class Database {
     }
 
     public void setListStack(List<String> liststack) {
-        this.listdecks = listdecks;
+        this.listdecks = liststack;
     }
 
     public List<CardStack> getListCardStack() {
@@ -31,7 +32,19 @@ public class Database {
         this.listCardStack = listCardStack;
     }
 
-    public void addCardStack(CardStack CardStack) {
+    public void add(CardStack CardStack) {
         this.listCardStack.add(CardStack);
+    }
+
+    public List<CardStack> getCardStack (String name){
+        List<CardStack> mylistCardStack = new ArrayList<CardStack>();
+        for (CardStack cardstack : this.listCardStack) {
+            if (cardstack.getName().equals(name)) {
+                mylistCardStack.add(cardstack);
+                //System.out.println("cardstackname =" +cardstack.getName() + "name = "+ name );
+
+            }
+        }
+        return mylistCardStack;
     }
 }
