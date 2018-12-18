@@ -61,10 +61,10 @@ public class VueCreation implements Observer {
         if (init) {
             System.out.println(menuDeck);
 
-            /*menuDeck.setItems(FXCollections.observableArrayList(
+            menuDeck.setItems(FXCollections.observableArrayList(
                     "deck 1",
                     "deck 2"
-            ))*/
+            ));
         } else {
 
         }
