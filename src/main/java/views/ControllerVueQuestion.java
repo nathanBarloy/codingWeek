@@ -105,6 +105,10 @@ public class ControllerVueQuestion implements Observer {
         RadioMoyen.setSelected(false);
     }
 
+    public void retour() {
+        Main.main.switchScene("/views/VueMenu.fxml");
+    }
+
     public void NvQuest() {
         this.partie.NvQuest();
     }
