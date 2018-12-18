@@ -52,7 +52,10 @@ public class Partie extends Observable{
         return nbCards;
     }
 
-    //-----------------------------------------------------------------------------------------------
+    public Database getDatabase() {
+        return database;
+    }
+//-----------------------------------------------------------------------------------------------
     //Setter
 
 
@@ -70,6 +73,34 @@ public class Partie extends Observable{
         cardstack.push(card3);
         this.cardStack = cardStack;
     }
+
+    public void setDatabase() {
+        Card card1 = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3");
+        Card card2 = new Card("sql", "Qui est le génie du sql? ", "Alexis");
+        Card card3 = new Card("temps", "Quelle heure est-il? ", "L'heure d'une petite pause");
+        CardStack cardstack1 = new CardStack("test1", "pour test ");
+        cardstack1.push(card1);
+        cardstack1.push(card2);
+        cardstack1.push(card3);
+
+
+        CardStack cardstack2 = new CardStack("test2", "pour test ");
+        CardStack cardstack3 = new CardStack("test3", "pour test ");
+        CardStack cardstack4 = new CardStack("test3", "pour test ");
+        CardStack cardstack5 = new CardStack("test2", "pour test ");
+
+        database = new Database();
+        database.add(cardstack1);
+        database.add(cardstack2);
+        database.add(cardstack3);
+        database.add(cardstack4);
+        database.add(cardstack5);
+
+
+    }
+
+    //fin du code en dur
+    //------------------------------------------------------------------------------------------------------------------
 
     public void setPlayer(Player player) {
         this.player = player;

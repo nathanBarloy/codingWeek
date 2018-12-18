@@ -2,6 +2,7 @@
 package views;
 
 
+import database.Database;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PathTransition;
@@ -24,10 +25,7 @@ import javafx.util.Duration;
 import launch.Main;
 import models.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class ControllerVueQuestion implements Observer {
     private ArrayList<String> liste = new ArrayList<String>();
@@ -170,7 +168,17 @@ public class ControllerVueQuestion implements Observer {
             }
 
             if (this.init == 1) {
-                Card carte = partie.getCurrentCard();
+                //Card carte = partie.getCurrentCard();
+
+                partie.setDatabase();
+                Database database = partie.getDatabase();
+                //en dur
+                List<CardStack>  cardStackList = database.getCardStack("test1");
+                CardStack cardStack = cardStackList.get(0);
+                //fin de en dur
+                Card carte = cardStack.getCard();
+
+
                 if (carte != null) {
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
