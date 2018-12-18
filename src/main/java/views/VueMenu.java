@@ -35,7 +35,7 @@ public class VueMenu implements Observer{
     public void update(Observable o, Object arg) {
         Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
 
-        //final URL imageURL = getClass().getResource("../ressources/fond.jpg");
+        //final URL imageURL = getClass().getResource("../ressources/fond");
         //final Image image1 = new Image(imageURL.toExternalForm());
 
 
