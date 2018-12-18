@@ -31,6 +31,11 @@ public class ControllerVueQuestion implements Observer {
     private Partie partie;
     private boolean but;
     private int init = -1;
+    private int NbBonnesReponses = 0;
+    private int NbMoyenReponses = 0;
+
+    @FXML
+    private ProgressBar BonneReponsesBarre;
 
     @FXML
     private Rectangle RectangleCarte;
@@ -114,7 +119,12 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void valider() {
-
+        if (RadioParfait.isSelected()){
+            this.NbBonnesReponses++;
+        }
+        if (RadioMoyen.isSelected()){
+            this.NbMoyenReponses++;
+        }
         if (!this.LabelQuestion.getText().equals("NotStartedYet")){
             partie.valider();
         }
@@ -258,6 +268,8 @@ public class ControllerVueQuestion implements Observer {
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
 
+                        this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
+
                         int a = this.animation2();
                         //int b = this.animation3();
                         //this.PaneAnim.getChildren().remove(img);
@@ -301,8 +313,13 @@ public class ControllerVueQuestion implements Observer {
                                 @Override
                                 public void handle(ActionEvent actionEvent) {
                                     RondAvancement.setProgress(0);
-                                    partie.valider();
-                                    System.out.println("finished");
+                                    try {
+                                        partie.valider();
+                                    }
+                                    catch (Exception e){
+                                        //System.out.println("caught exception");
+                                    }
+                                    //System.out.println("finished");
                                 }
                             });
                             Anim.play();
