@@ -24,7 +24,7 @@ public class AlgoTest {
         cardstack.push(card1);
         cardstack.push(card2);
         cardstack.push(card3);
-         learningAlgo = new LearningAlgo(cardstack);
+        learningAlgo = new LearningAlgo(cardstack);
 
     }
 
