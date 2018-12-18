@@ -22,6 +22,14 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#supprimerCarte" prefHeight="60.0" prefWidth="180.0" text="Supprimer">
+                     <HBox.margin>
+                        <Insets left="500.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </bottom>
@@ -93,11 +101,20 @@
             </Label>
          </top>
          <left>
-            <ChoiceBox fx:id="menuDeck" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="20.0" right="40.0" />
-               </BorderPane.margin>
-            </ChoiceBox>
+            <VBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="200.0" prefWidth="260.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ComboBox fx:id="menuDeck" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="50.0" left="20.0" right="40.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="menuCarte" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="40.0" top="50.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
          </left>
       </BorderPane>
    </children>

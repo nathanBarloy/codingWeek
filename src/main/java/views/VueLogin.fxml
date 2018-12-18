@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueLogin">
+   <children>
+      <BorderPane layoutX="-2.0" layoutY="-4.0" prefHeight="800.0" prefWidth="1000.0">
+         <top>
+            <Label text="FLASHCARDS" textFill="#f80000" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="MathJax_Math-Regular" size="48.0" />
+               </font>
+            </Label>
+         </top>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Nathan Barloy">
+                     <HBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Kinnari Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Aurélien Delage">
+                     <HBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Kinnari Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Alexis El-Mrini">
+                     <HBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Kinnari Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Olivier Gouellin">
+                     <HBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Kinnari Italic" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="178.0" prefWidth="1000.0">
+                     <children>
+                        <TextField fx:id="utilisateur" prefHeight="60.0" prefWidth="300.0" promptText="Utilisateur">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="70.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="motdepasse1" prefHeight="60.0" prefWidth="300.0" promptText="Mot de passe">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="70.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#connexion" prefHeight="60.0" prefWidth="220.0" text="Connexion" textFill="#2477eb">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

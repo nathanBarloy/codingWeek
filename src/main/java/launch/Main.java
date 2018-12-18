@@ -20,6 +20,7 @@ import java.io.IOException;
 public class  Main extends Application {
 
     private Stage stage;
+    private String name;
     public static Main main;
     private CardStack cardStack;
     private Card card ;
@@ -31,6 +32,7 @@ public class  Main extends Application {
         if (main==null) {
             main = this;
         }
+
         player=new Player("Nathane","Il est incroyable");
         stage = primaryStage;
         cardStack= new CardStack("Default", "Deck avec des cartes par défaut",player);
@@ -39,25 +41,11 @@ public class  Main extends Application {
         Partie p = new Partie(player,cardStack);
 
 
-        FXMLLoader loader2 = new FXMLLoader();
-        loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
-        loader2.setControllerFactory(iC -> new VueMenu(p));
-        Parent VueMenu = null;
-
-        VueMenu = loader2.load();
-        p.init();
-
-
-        stage.setTitle("Menu Principal");
-        stage.setScene(new Scene(VueMenu, 1000, 800));
-        stage.show();
-
-        /*
-        Parent root = FXMLLoader.load(getClass().getResource("/views/VueMenu.fxml"));
-        stage.setTitle("Menu Principal");
+        Parent root = FXMLLoader.load(getClass().getResource("/views/VueLogin.fxml"));
+        stage.setTitle("Connexion");
         stage.setScene(new Scene(root, 1000, 800));
         stage.show();
-        */
+
     }
 
     public void switchScene(String fxmlFile) {
@@ -126,13 +114,25 @@ public class  Main extends Application {
                 stage.show();
 
             }
-
+            if (fxmlFile.equals("/views/VueLogin.fxml")) {
+                Parent root = FXMLLoader.load(getClass().getResource("/views/VueLogin.fxml"));
+                stage.setTitle("Connexion");
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.show();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void closeStage() {
         stage.close();

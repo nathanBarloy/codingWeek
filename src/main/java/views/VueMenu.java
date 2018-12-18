@@ -31,6 +31,10 @@ public class VueMenu implements Observer{
         Main.main.closeStage();
     }
 
+    public void deconnexion() {
+        Main.main.switchScene("/views/VueLogin.fxml");
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
@@ -39,18 +43,18 @@ public class VueMenu implements Observer{
         //final Image image1 = new Image(imageURL.toExternalForm());
 
 
-        BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
+        BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
         Background background1 = new Background(new BackgroundImage(image0,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
+                BackgroundPosition.DEFAULT,
                 bSize0));
 
         this.borderpane.setBackground(new Background(new BackgroundImage(image0,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
+                BackgroundPosition.DEFAULT,
                 bSize0)));
     }
 }
