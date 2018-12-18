@@ -15,7 +15,16 @@ public class Partie extends Observable{
     private Card CurrentCard;
     private Database database;
     private LearningAlgo learningAlgo;
+    private String QuestEnCours;
+    private String RepEnCours;
 
+    public String getQuestEnCours() {
+        return QuestEnCours;
+    }
+
+    public String getRepEnCours() {
+        return RepEnCours;
+    }
 
     //----------------------------------------------------------------------------------------------
     //Constructeur
@@ -150,4 +159,11 @@ public class Partie extends Observable{
     }
 
 
+    public void setRepEnCours(String repEnCours) {
+        RepEnCours = repEnCours;
+    }
+
+    public void setQuestEnCours(String questEnCours) {
+        QuestEnCours = questEnCours;
+    }
 }
