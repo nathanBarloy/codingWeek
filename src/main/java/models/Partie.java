@@ -58,4 +58,9 @@ public class Partie extends Observable{
         setChanged();
         notifyObservers();
     }
+
+    public void buttons() {
+        setChanged();
+        notifyObservers();
+    }
 }

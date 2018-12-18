@@ -22,17 +22,17 @@ import java.util.Observer;
 
 public class ControllerVueQuestion implements Observer {
     private Partie partie;
-
+    private boolean but;
     private int init = -1;
 
     @FXML
-    private RadioButton radioParfait;
+    private RadioButton RadioParfait;
 
     @FXML
-    private RadioButton radioMoyen;
+    private RadioButton RadioMoyen;
 
     @FXML
-    private RadioButton radioIdk;
+    private RadioButton RadioIdk;
 
     @FXML
     private AnchorPane anchorPane;
@@ -56,18 +56,24 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void ParfaitAction(){
-        radioMoyen.setSelected(false);
-        radioIdk.setSelected(false);
+        this.but = true;
+        this.partie.buttons();
+        //radioMoyen.setSelected(false);
+        //radioIdk.setSelected(false);
     }
 
     public void MoyenAction(){
-        radioParfait.setSelected(false);
-        radioIdk.setSelected(false);
+        this.but = true;
+        this.partie.buttons();
+        //radioParfait.setSelected(false);
+        //radioIdk.setSelected(false);
     }
 
     public void IdkAction(){
-        radioParfait.setSelected(false);
-        radioMoyen.setSelected(false);
+        this.but = true;
+        this.partie.buttons();
+        //radioParfait.setSelected(false);
+        //radioMoyen.setSelected(false);
     }
 
     public void NvQuest() {
@@ -80,26 +86,52 @@ public class ControllerVueQuestion implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (this.init ==  -1) {
-            Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
+        if (this.but == true) {
+            if (RadioParfait.isSelected()) {
+                System.out.println("parfait");
+                //RadioParfait.requestFocus();
+                RadioMoyen.setSelected(false);
+                RadioIdk.setSelected(false);
+                this.but = false;
+            }
 
-            //final URL imageURL = getClass().getResource("../ressources/fond");
-            //final Image image1 = new Image(imageURL.toExternalForm());
+            if (RadioMoyen.isSelected()) {
+                System.out.println("moyen");
+                //RadioParfait.requestFocus();
+                RadioParfait.setSelected(false);
+                RadioIdk.setSelected(false);
+                this.but = false;
+            }
+
+            if (RadioIdk.isSelected()) {
+                System.out.println("idk");
+                //RadioParfait.requestFocus();
+                RadioIdk.setSelected(true);
+                RadioParfait.setSelected(false);
+                RadioMoyen.setSelected(false);
+                this.but = false;
+            }
+        } else {
+            if (this.init == -1) {
+                Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
+
+                //final URL imageURL = getClass().getResource("../ressources/fond");
+                //final Image image1 = new Image(imageURL.toExternalForm());
 
 
-            BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
+                BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
 
-            Background background1 = new Background(new BackgroundImage(image0,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.CENTER,
-                    bSize0));
+                Background background1 = new Background(new BackgroundImage(image0,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundPosition.CENTER,
+                        bSize0));
 
-            this.anchorPane.setBackground(new Background(new BackgroundImage(image0,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.CENTER,
-                    bSize0)));
+                this.anchorPane.setBackground(new Background(new BackgroundImage(image0,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundPosition.CENTER,
+                        bSize0)));
 
             /*
             Image image1 = new Image("http://studio.oiseau-libre.net/Images/_DSC7330-(1).jpg");
@@ -120,25 +152,25 @@ public class ControllerVueQuestion implements Observer {
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,
                     bSize)));*/
-        }
-        if (this.init == 1) {
-            Card carte = partie.getCurrentCard();
-            if (carte != null) {
-                //System.out.println(carte.getQuestion());
-                if (carte.getType().equals("question")) {
-                    //System.out.println("question");
-                    this.LabelQuestion.setText(carte.getQuestion());
-                }
-                if (carte.getType().equals("reponse")) {
-                    //System.out.println("reponse");
-                    this.LabelQuestion.setText(carte.getAnswer());
+            }
+            if (this.init == 1) {
+                Card carte = partie.getCurrentCard();
+                if (carte != null) {
+                    //System.out.println(carte.getQuestion());
+                    if (carte.getType().equals("question")) {
+                        //System.out.println("question");
+                        this.LabelQuestion.setText(carte.getQuestion());
+                    }
+                    if (carte.getType().equals("reponse")) {
+                        //System.out.println("reponse");
+                        this.LabelQuestion.setText(carte.getAnswer());
+                    }
+                } else {
+                    Main.main.switchScene("/views/VueMenu.fxml");
                 }
             }
-            else{
-                Main.main.switchScene("/views/VueMenu.fxml");
-            }
+            this.init = 1;
         }
-        this.init = 1;
     }
 
 }
