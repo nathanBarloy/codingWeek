@@ -14,13 +14,15 @@ import java.io.IOException;
 
 
 public class JSONTest {
-
+    private Player player;
     private Card card;
     private JSONParser jsonParser;
 
     @Before
     public void initialiser() throws Exception {
-        card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3");
+        player = new Player("Alexis","az");
+
+        card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player);
         jsonParser=new JSONParser();
 
     }

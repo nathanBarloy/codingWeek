@@ -27,9 +27,6 @@ public class CardStack {
         this.description=another.description;
         cardStack = another.cardStack;
     }
-    public CardStack() {
-        cardStack = new LinkedList<Card>();
-    }
 
     public String getName() {
         return name;

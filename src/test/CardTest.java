@@ -14,15 +14,17 @@ import models.*;
 public class CardTest {
 
     private Card card;
-
+    private Player player;
     @Before
     public void initialiser() throws Exception {
-        card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3");
+        player = new Player("Alexis","az");
+        card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player);
     }
 
     @After
     public void nettoyer() throws Exception {
         card = null;
+        player=null;
     }
 
     @Test
