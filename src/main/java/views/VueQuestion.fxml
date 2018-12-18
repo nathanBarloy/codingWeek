@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -12,10 +17,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ControllerVueQuestion">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ControllerVueQuestion">
    <children>
 
-      <BorderPane fx:id="borderpane" prefHeight="800.0" prefWidth="1000.0">
+      <BorderPane fx:id="borderpane" prefHeight="800.0" prefWidth="1017.0">
          <bottom>
             <HBox layoutX="500.0" prefHeight="100.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
@@ -95,7 +100,7 @@
             </BorderPane>
          </top>
          <right>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="616.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
          </right>
          <left>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
