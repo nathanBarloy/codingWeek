@@ -3,10 +3,7 @@ package views;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import launch.Main;
 import models.Partie;
 
@@ -55,7 +52,27 @@ public class VueCreation implements Observer {
             nom.setText("");
 
         } else {
-            
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERREUR");
+            alert.setHeaderText("Vous ne pouvez pas encore valider");
+            String message = "";
+            if (questionCarte.equals("")) {
+                message += "La carte n'a pas de question\n";
+            }
+            if (reponseCarte.equals("")) {
+                message += "La carte n'a pas de réponse\n";
+            }
+            if (nomCarte.equals("")) {
+                message+= "La carte n'a pas de nom\n";
+            }
+            if (nomDeck==null) {
+                message += "aucun deck n'a été choisi\n";
+            }
+
+            alert.setContentText(message);
+
+            alert.showAndWait();
+
         }
     }
 
