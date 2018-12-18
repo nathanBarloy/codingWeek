@@ -36,7 +36,6 @@ public class VueCreation implements Observer {
         init = true;
         this.partie = partie;
         this.partie.addObserver(this);
-        partie.init();
     }
 
     public void retour() {
@@ -59,9 +58,9 @@ public class VueCreation implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (init) {
-            System.out.println(menuDeck);
 
             menuDeck.setItems(FXCollections.observableArrayList(
+
                     "deck 1",
                     "deck 2"
             ));
