@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="views.VueCreation"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueCreation">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="1000.0">
+         <bottom>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#retour" prefHeight="60.0" prefWidth="150.0" text="Retour" textAlignment="CENTER">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <TextArea prefHeight="178.0" prefWidth="943.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TextArea>
+               </children></VBox>
+         </center>
+         <right>
+            <Button mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="149.0" text="Valider" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets left="40.0" right="20.0" />
+               </BorderPane.margin>
+            </Button>
+         </right>
+         <left>
+            <ComboBox prefWidth="150.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" right="40.0" />
+               </BorderPane.margin>
+            </ComboBox>
+         </left>
+         <top>
+            <Label text="Menu de création de carte" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+      </BorderPane>
+   </children>
 </AnchorPane>
