@@ -27,32 +27,44 @@ public class Partie extends Observable{
         return cardStack;
     }
 
-
-
-    public void setCardStack(CardStack cardStack) {
-        this.cardStack = cardStack;
-    }
-
     public Card getCurrentCard() {
 
         return CurrentCard;
     }
 
-    public void valider() {
-
-        this.CurrentCard.setType("reponse");
-        setChanged();
-        notifyObservers();
+    public Player getPlayer() {
+        return player;
     }
+
+    public int getNbCards() {
+        return nbCards;
+    }
+
     //-----------------------------------------------------------------------------------------------
     //Setter
-    public void init() {
-        setChanged();
-        notifyObservers();
-    }
+
 
     public void setCurrentCard(Card card) {
         this.CurrentCard = card;
+    }
+
+    public void setCardStack(CardStack cardStack) {
+        this.cardStack = cardStack;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setNbCards(int nbCards) {
+        this.nbCards = nbCards;
+    }
+    //----------------------------------------------------------------------------------------------
+    //Autres fonctions
+
+    public void init() {
+        setChanged();
+        notifyObservers();
     }
 
     public void NvQuest() {
@@ -64,6 +76,12 @@ public class Partie extends Observable{
         } else {
             Main.main.switchScene("/views/VueMenu.fxml");
         }
+    }
+    public void valider() {
+
+        this.CurrentCard.setType("reponse");
+        setChanged();
+        notifyObservers();
     }
 
     public void initImg() {
