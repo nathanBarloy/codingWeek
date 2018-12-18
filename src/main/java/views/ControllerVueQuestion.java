@@ -38,6 +38,8 @@ public class ControllerVueQuestion implements Observer {
     private boolean but;
     private int init = -1;
 
+    @FXML
+    private Rectangle RectangleCarte;
 
     @FXML
     private Pane PaneAnim;
@@ -151,6 +153,49 @@ public class ControllerVueQuestion implements Observer {
         return 1;
 
     }
+
+    public int animation2(){
+        final Timeline timeline = new Timeline();
+        //timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setAutoReverse(true);
+        final KeyValue kv = new KeyValue(this.RectangleCarte.scaleYProperty(), 0.01);
+        final KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
+        final KeyValue kv2 = new KeyValue(this.RectangleCarte.scaleXProperty(), 0.01);
+        final KeyFrame kf2 = new KeyFrame(Duration.millis(200), kv2);
+        timeline.getKeyFrames().add(kf);
+        timeline.getKeyFrames().add(kf2);
+        timeline.setOnFinished(new EventHandler<ActionEvent>() {
+
+
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                final Timeline timeline2 = new Timeline();
+                timeline2.setAutoReverse(true);
+                final KeyValue kv = new KeyValue(RectangleCarte.scaleXProperty(), 1);
+                final KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
+                final KeyValue kv2 = new KeyValue(RectangleCarte.scaleYProperty(), 1);
+                final KeyFrame kf2 = new KeyFrame(Duration.millis(200), kv2);
+                timeline2.getKeyFrames().add(kf);
+                timeline2.getKeyFrames().add(kf2);
+                timeline2.play();
+            }
+        });
+        timeline.play();
+        return 1;
+    }
+
+    public int animation3(){
+        final Timeline timeline2 = new Timeline();
+        timeline2.setAutoReverse(true);
+        final KeyValue kv2 = new KeyValue(this.RectangleCarte.scaleYProperty(), 1000);
+        final KeyFrame kf2 = new KeyFrame(Duration.millis(500), kv2);
+        timeline2.getKeyFrames().add(kf2);
+        timeline2.play();
+        return 1;
+    }
+
+
+
     @Override
     public void update(Observable o, Object arg) {
             if (this.init == -1) {
@@ -219,7 +264,8 @@ public class ControllerVueQuestion implements Observer {
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
 
-                        int a = this.animation();
+                        int a = this.animation2();
+                        //int b = this.animation3();
                         //this.PaneAnim.getChildren().remove(img);
                         //this.PaneAnim.getChildren().remove(img);
                         //this.PaneAnim.setVisible(false);
