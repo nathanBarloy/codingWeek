@@ -2,6 +2,7 @@ package views;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import launch.Main;
 import models.Partie;
 
 import java.util.Observable;
@@ -16,6 +17,9 @@ public class VueCard implements Observer {
 
     private Partie partie;
 
+    public void Retour(){
+        Main.main.switchScene("/views/VueCreation.fxml", this.partie);
+    }
     public VueCard(Partie p){
         super();
         this.partie = p;
