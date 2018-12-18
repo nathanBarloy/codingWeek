@@ -12,19 +12,29 @@ public class Partie extends Observable{
     private CardStack cardStack;
     private int nbCards;
     private Card CurrentCard;
-
-    public CardStack getCardStack() {
-        return cardStack;
-    }
-
+    //----------------------------------------------------------------------------------------------
+    //Constructeur
     public Partie(Player player, CardStack cardStack) {
         this.player = player;
         this.cardStack = cardStack;
 
         this.nbCards = cardStack.getNbCards();
     }
+    //-----------------------------------------------------------------------------------------------
+    //Getter
+    public CardStack getCardStack() {
+
+        return cardStack;
+    }
+
+
+
+    public void setCardStack(CardStack cardStack) {
+        this.cardStack = cardStack;
+    }
 
     public Card getCurrentCard() {
+
         return CurrentCard;
     }
 
@@ -34,7 +44,8 @@ public class Partie extends Observable{
         setChanged();
         notifyObservers();
     }
-
+    //-----------------------------------------------------------------------------------------------
+    //Setter
     public void init() {
         setChanged();
         notifyObservers();
@@ -64,4 +75,6 @@ public class Partie extends Observable{
         setChanged();
         notifyObservers();
     }
+
+
 }
