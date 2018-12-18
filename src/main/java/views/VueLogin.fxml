@@ -52,7 +52,7 @@
                         <Font name="Kinnari Italic" size="24.0" />
                      </font>
                   </Label>
-                  <Label text="Olivier Gouellin">
+                  <Label text="Olivier Gouellain">
                      <HBox.margin>
                         <Insets left="40.0" right="40.0" />
                      </HBox.margin>
@@ -90,6 +90,22 @@
                      <font>
                         <Font size="30.0" />
                      </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#inscription" prefHeight="60.0" prefWidth="220.0" text="Inscription">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#quitter" prefHeight="60.0" prefWidth="220.0" text="Quitter">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
                   </Button>
                </children>
             </VBox>
