@@ -5,15 +5,20 @@ import launch.Main;
 import java.util.LinkedList;
 
 public class CardStack {
-
+    private Player author;
     private String name;
     private String description;
     private LinkedList<Card> cardStack;
 
-    public CardStack(String name, String description) {
+    public CardStack(String name, String description, Player author) {
+        this.author = author;
         this.name=name;
         this.description=description;
         cardStack = new LinkedList<Card>();
+    }
+
+    public Player getAuthor() {
+        return author;
     }
 
     //copy du stack

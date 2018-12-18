@@ -7,14 +7,13 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
-import java.io.InputStream;
 
-public class QueryAddUser extends Query {
+public class QueryDelUser extends Query {
 
-    Player player;
+    private Player player;
 
-    public QueryAddUser(String action, Player player) {
-        super(action);
+    public QueryDelUser(Player player) {
+        super("delUser");
         this.player=player;
     }
 
@@ -24,7 +23,6 @@ public class QueryAddUser extends Query {
 
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("username", player.getUsername()));
-            params.add(new BasicNameValuePair("description", player.getDescription()));
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
