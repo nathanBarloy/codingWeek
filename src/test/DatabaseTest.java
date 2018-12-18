@@ -25,9 +25,9 @@ public class DatabaseTest {
         Card card2 = new Card("sql", "Qui est le génie du sql? ", "Alexis", player);
         Card card3 = new Card("temps", "Quelle heure est-il? ", "L'heure d'une petite pause", player);
         CardStack cardstack1 = new CardStack("test1", "pour test ", player);
-        cardstack1.push(card1);
-        cardstack1.push(card2);
-        cardstack1.push(card3);
+        cardstack1.add(card1);
+        cardstack1.add(card2);
+        cardstack1.add(card3);
 
 
         CardStack cardstack2 = new CardStack("test2", "pour test ",player);

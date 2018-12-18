@@ -2,19 +2,28 @@ package models;
 
 import launch.Main;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class CardStack {
     private Player author;
     private String name;
     private String description;
-    private LinkedList<Card> cardStack;
+    private ArrayList<Card> cardStack;
+    int index;
+    int len;
 
+
+
+    public CardStack() {
+        cardStack = new ArrayList<Card>();
+    }
     public CardStack(String name, String description, Player author) {
         this.author = author;
         this.name=name;
         this.description=description;
-        cardStack = new LinkedList<Card>();
+        cardStack = new ArrayList<Card>();
+        this.index =0;
+        len =0 ;
     }
 
     public Player getAuthor() {
@@ -25,8 +34,10 @@ public class CardStack {
     public CardStack(CardStack another) {
         this.name=another.name;
         this.description=another.description;
-        cardStack = another.cardStack;
+        this.cardStack = new ArrayList<Card>();
+        this.cardStack = another.cardStack;
     }
+
 
     public String getName() {
         return name;
@@ -44,13 +55,14 @@ public class CardStack {
         this.description = description;
     }
 
-    public void push(Card card){
-        cardStack.push(card);
+    public void add(Card card){
+        cardStack.add(card);
+        this.len ++;
     }
 
     public Card pop(){
-        if (cardStack.size() > 0){
-            return cardStack.pop();
+        if (this.index < len){
+            return cardStack.get(index);
         }
         else{
             return null;
@@ -58,10 +70,8 @@ public class CardStack {
     }
 
     public int getNbCards(){
-        if (cardStack!=null) {
-            return cardStack.size();
-        }
-        return 0;
+
+        return len;
     }
 
 
@@ -70,6 +80,21 @@ public class CardStack {
     }
 
     public Card getCard() {
-        return this.cardStack.getFirst();
+
+        if (this.index < len) {
+
+            return this.cardStack.get(index);
+        }
+
+        else return null;
+    }
+    public Card getnextCard() {
+        index ++;
+        if (this.index < len) {
+
+            return this.cardStack.get(index);
+        }
+
+        else return null;
     }
 }
