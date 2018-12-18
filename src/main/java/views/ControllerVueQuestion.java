@@ -1,32 +1,48 @@
 
 package views;
+
+
+import database.Database;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
+
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.*;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.util.Duration;
 import launch.Main;
 import models.*;
 
-import javafx.fxml.FXML;
-
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
 
 public class ControllerVueQuestion implements Observer {
+    private ArrayList<String> liste = new ArrayList<String>();
     private double progress = 0.0;
     private Partie partie;
     private boolean but;
     private int init = -1;
 
+
+    @FXML
+    private Pane PaneAnim;
+
+    @FXML
+    private Rectangle RecAnim;
+
+    @FXML
+    private ProgressIndicator RondAvancement;
     @FXML
     private ProgressBar ProgressBar;
 
@@ -62,7 +78,8 @@ public class ControllerVueQuestion implements Observer {
         this.partie = partie;
         this.partie.addObserver(this);
         this.size = this.partie.getCardStack().getSize();
-        this.progress = -1/this.size;
+        //this.progress = -1/this.size;
+        this.progress = 0;
     }
 
     public void ParfaitAction(){
@@ -86,6 +103,10 @@ public class ControllerVueQuestion implements Observer {
         RadioMoyen.setSelected(false);
     }
 
+    public void retour() {
+        Main.main.switchScene("/views/VueMenu.fxml");
+    }
+
     public void NvQuest() {
         this.partie.NvQuest();
     }
@@ -107,9 +128,9 @@ public class ControllerVueQuestion implements Observer {
 
                 this.choicebox.setTooltip(new Tooltip("Select the language"));
                 this.choicebox.setItems(FXCollections.observableArrayList(
-                        "New Document", new Separator(),"Open ",
-                        new Separator(), "Save", "Save as")
-                );
+                        "deck 1",
+                        "deck 2"
+                ));
 
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
 
@@ -147,14 +168,85 @@ public class ControllerVueQuestion implements Observer {
             }
 
             if (this.init == 1) {
-                Card carte = partie.getCurrentCard();
+                //Card carte = partie.getCurrentCard();
+
+                partie.setDatabase();
+                Database database = partie.getDatabase();
+                //en dur
+                List<CardStack>  cardStackList = database.getCardStack("test1");
+                CardStack cardStack = cardStackList.get(0);
+                //fin de en dur
+                Card carte = cardStack.getCard();
+
+
                 if (carte != null) {
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
+                        this.PaneAnim.setVisible(true);
+                        Image image0 = new Image("http://www.vanilladome.fr/perso/087/001.png");
+                        ImageView img = new ImageView();
+                        img.setImage(image0);
+                        this.PaneAnim.getChildren().add(img);
+                        CubicCurve cubicCurve = new CubicCurve();
+
+                        //Setting properties to cubic curve
+                        /*cubicCurve.setStartX(100.0f);
+                        cubicCurve.setStartY(150.0f);
+                        cubicCurve.setControlX1(400.0f);
+                        cubicCurve.setControlY1(40.0f);
+                        cubicCurve.setControlX2(175.0f);
+                        cubicCurve.setControlY2(250.0f);
+                        cubicCurve.setEndX(500.0f);
+                        cubicCurve.setEndY(150.0f);*/
+                        Path path = new Path();
+                        path.getElements().add(new MoveTo(150,150));
+                        path.getElements().add(new CubicCurveTo(400, 40, 175, 250, 700, 300));
+                        path.getElements().add(new CubicCurveTo(100, 120, 50, 240, 0, -200));
+                        path.getElements().add(new CubicCurveTo(0,0,0,0,0,-200));
+
+                        PathTransition pathTransition = new PathTransition();
+                        pathTransition.setDuration(Duration.millis(200));
+                        pathTransition.setPath(path);
+                        pathTransition.setNode(PaneAnim);
+                        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+                        //pathTransition.setCycleCount(Timeline.INDEFINITE);
+                        pathTransition.setAutoReverse(true);
+
+                        long startTime = System.currentTimeMillis();
+                        long elapsedTime = 0L;
+                        pathTransition.play();
+                        while (elapsedTime < 1) {
+                            //perform db poll/check
+                            elapsedTime = (new Date()).getTime() - startTime;
+                        }
+
+                        //this.PaneAnim.getChildren().remove(img);
+                        this.PaneAnim.setVisible(false);
+
+                        /*
+                        final Timeline timeline = new Timeline();
+                        //timeline.setCycleCount(Timeline.FINITE);
+                        timeline.setAutoReverse(true);
+                        final KeyValue kv = new KeyValue(this.RecAnim.scaleYProperty(), 5);
+                        final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv);
+                        timeline.getKeyFrames().add(kf);
+                        timeline.play();
+                         */
+
+                        this.RondAvancement.setProgress(0.0F);
                         progress += 1/size;
                         this.ProgressBar.setProgress(progress);
                         //System.out.println("question");
+                        String temp ="mdr";//= this.LabelQuestion.getText();
                         this.LabelQuestion.setText(carte.getQuestion());
+                        if (!temp.equals("NotStartedYet")) {
+                            //System.out.println("label : " + this.LabelQuestion.getText());
+                            for (int i = 0; i < 3; i++) {
+                                    //System.out.println("here");
+                                    this.RondAvancement.setProgress(0.25F);
+                                    //Thread.sleep(1);
+                            }
+                        }
                     }
                     if (carte.getType().equals("reponse")) {
                         //System.out.println("reponse");
