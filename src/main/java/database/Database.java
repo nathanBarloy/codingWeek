@@ -1,5 +1,6 @@
 package database;
 
+import models.Card;
 import models.CardList;
 
 import java.util.ArrayList;
@@ -33,6 +34,15 @@ public class Database {
 
     public void add(CardList CardList) {
         this.listCardList.add(CardList);
+    }
+
+    public void add(String NomDeck, Card card) {
+        for (int  i = 0;i<this.listCardList.size();i++){
+            if (this.listCardList.get(i).getName().equals(NomDeck)){
+                this.listCardList.get(i).add(card);
+            }
+        }
+
     }
 
     public List<CardList> getCardStack (String name){
