@@ -120,6 +120,25 @@ public class HTTPTest {
         Thread.sleep(100);
         System.out.println("Toi existe-t-il ? " + query.getResponse());
         //assertTrue(query.getResponse().contains("0"));
-
+        query = new QueryCheckCardName("politesse");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("La carte politesse existe-t-elle ? " + query.getResponse());
+        //assertTrue(query.getResponse().contains("1"));
+        query = new QueryCheckCardName("impolitesse");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("La carte impolitesse existe-t-elle ? " + query.getResponse());
+        //assertTrue(query.getResponse().contains("0"));
+        query = new QueryCheckCardStackName("SaltyStack");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("La cardstack SaltyStack existe-t-elle ? " + query.getResponse());
+        //assertTrue(query.getResponse().contains("1"));
+        query = new QueryCheckUsername("impolitesse");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("La cardstack impolitesse existe-t-elle ? " + query.getResponse());
+        //assertTrue(query.getResponse().contains("0"));
     }
 }

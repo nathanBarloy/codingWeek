@@ -27,6 +27,10 @@ public class VueMenu implements Observer{
         this.partie.addObserver(this);
     }
 
+    public void evaluation(){
+        Main.main.switchScene("/views/VueEvalQuestion.fxml",this.partie);
+    }
+
     public void ConsulterDecks(){
         Main.main.switchScene("/views/Decks.fxml",this.partie);
     }

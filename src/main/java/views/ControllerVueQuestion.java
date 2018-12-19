@@ -84,7 +84,7 @@ public class ControllerVueQuestion implements Observer {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
-        this.size = this.partie.getCardList().getSize();
+        this.size = this.partie.getCardList().size();
         //this.progress = -1/this.size;
         this.progress = 0;
     }
@@ -143,7 +143,6 @@ public class ControllerVueQuestion implements Observer {
         path.getElements().add(new MoveTo(150,150));
         path.getElements().add(new CubicCurveTo(400, 40, 175, 250, 400, 100));
         path.getElements().add(new CubicCurveTo(100, 120, 50, 240, -100, -200));
-
         PathTransition pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.millis(750));
         pathTransition.setPath(path);

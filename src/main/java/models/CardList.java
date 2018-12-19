@@ -27,6 +27,14 @@ public class CardList implements Iterable<Card>{
         len = 0;
     }
 
+    public CardList(String name, String description) {
+        this.name = name;
+        this.description = description;
+        cardStack = new ArrayList<Card>();
+        this.index = 0;
+        len = 0;
+    }
+
     public Player getAuthor() {
         return author;
     }
@@ -75,7 +83,7 @@ public class CardList implements Iterable<Card>{
     }
 
 
-    public double getSize() {
+    public double size() {
 
         return this.cardStack.size();
     }
@@ -103,6 +111,15 @@ public class CardList implements Iterable<Card>{
         } else return null;
     }
 
+    public Card popCard(int index ) {
+        Card card;
+        card = this.cardStack.remove(index);
+        return card ;
+    }
+
+
+
+
 
     public boolean endCardList(){
         /*renvoie si on a lu toutes les cartes */
@@ -127,5 +144,23 @@ public class CardList implements Iterable<Card>{
             temp.add(c.getName());
         }
         return temp;
+    }
+
+    public void sort(){
+        //sort en n² (améliorable)
+        ArrayList<Card> mycardstack = new ArrayList<Card>();
+        Card min ;
+        while (this.cardStack.size() > 0) {
+            min = this.cardStack.get(0);
+            for (Card card : this.cardStack) {
+                if ((card.getUser_fail()+1)/(card.getUser_succes()+1)< (min.getUser_fail()+1/min.getUser_succes()+1)){
+                    min = card;
+                }
+            }
+            this.cardStack.remove(min);
+            mycardstack.add(min);
+
+        }
+
     }
 }
