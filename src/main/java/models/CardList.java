@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CardList implements Iterable<Card>{
-    private Player author;
+    private String author;
     private String name;
     private String description;
     private ArrayList<Card> cardStack;
@@ -18,8 +18,17 @@ public class CardList implements Iterable<Card>{
         cardStack = new ArrayList<Card>();
     }
 
-    public CardList(String name, String description, Player author) {
+    public CardList(String name, String description, String author) {
         this.author = author;
+        this.name = name;
+        this.description = description;
+        cardStack = new ArrayList<Card>();
+        this.index = 0;
+        len = 0;
+    }
+
+    public CardList(String name, String description, Player author) {
+        this.author = author.getUsername();
         this.name = name;
         this.description = description;
         cardStack = new ArrayList<Card>();
@@ -33,9 +42,10 @@ public class CardList implements Iterable<Card>{
         cardStack = new ArrayList<Card>();
         this.index = 0;
         len = 0;
+        this.author="SaltyCard";
     }
 
-    public Player getAuthor() {
+    public String getAuthor() {
         return author;
     }
 

@@ -31,6 +31,8 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
     // https://mvnrepository.com/artifact/commons-io/commons-io
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    // https://mvnrepository.com/artifact/org.codehaus.mojo.signature/java16-jrockit
+    compile group: 'org.codehaus.mojo.signature', name: 'java16-jrockit', version: '1.0', ext: 'pom'
 
 }
 

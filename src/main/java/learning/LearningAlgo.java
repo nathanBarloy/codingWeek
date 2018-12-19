@@ -5,7 +5,6 @@ import models.CardList;
 
 import java.util.ArrayList;
 
-import static oracle.jrockit.jfr.events.Bits.intValue;
 
 public class LearningAlgo {
     /*gère la selection des cartes à afficher*/
@@ -25,11 +24,11 @@ public class LearningAlgo {
             cardlistshow = new CardList();
             cardList.sort();
 
-            int rotation = intValue(this.cardList.size() / 10);
+            int rotation = 1 ;//intValue(this.cardList.size() / 10);
             int rotationindex = 0;
             while (this.cardList.size() > 0) {
 
-                cardlistshow.add(this.cardList.popCard(intValue(rotationindex * this.cardList.size() / rotation)));
+                cardlistshow.add(this.cardList.popCard(1/*intValue(rotationindex * this.cardList.size() / rotation)*/));
 
             }
             return cardlistshow;

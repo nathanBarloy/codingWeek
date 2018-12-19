@@ -13,7 +13,7 @@ public class QueryPing extends Query {
 
     public QueryPing() {
         super("ping");
-        
+
     }
 
 

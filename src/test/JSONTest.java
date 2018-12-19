@@ -22,7 +22,7 @@ public class JSONTest {
     public void initialiser() throws Exception {
         player = new Player("Alexis","az");
 
-        card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player);
+        card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player.getUsername());
         jsonParser=new JSONParser();
 
     }
