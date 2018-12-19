@@ -10,6 +10,7 @@ public class Stat {
     }
 
     public int getStat(Card card ) {
+
         return card.getUser_succes();
     }
 }
