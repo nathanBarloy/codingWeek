@@ -15,8 +15,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VueDecks implements Observer {
-    @FXML
-    private ComboBox BoxSupprimer;
 
     @FXML
     private ComboBox comboBox;
@@ -40,6 +38,7 @@ public class VueDecks implements Observer {
 
     public void Choisir(){
         this.choix = true;
+        //String temp = (String) this.listeView.getItems().get(listeView.getEditingIndex());
         String temp = (String) this.comboBox.getValue();
         if (temp != null){
             this.CurrentDeck = temp;
@@ -59,7 +58,7 @@ public class VueDecks implements Observer {
     }
     public void SupprimerCarte(){
         this.supress= true;
-        String temp = (String) this.BoxSupprimer.getValue();
+        String temp = (String) listeView.getSelectionModel().getSelectedItem();
         if (temp ==  null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -108,7 +107,6 @@ public class VueDecks implements Observer {
             }
             System.out.println("items:"+items.toString());
             this.listeView.setItems(items);
-            this.BoxSupprimer.setItems(items);
             this.choix = false;
         }
         if (this.supress){
