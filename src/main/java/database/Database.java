@@ -166,4 +166,20 @@ public class Database {
         return new ArrayList<String>();
     }
 
+    public void reset() {
+        for (CardList c1 : listCardList){
+            System.out.println("c1.size(): "+c1.size());
+            c1.resetIndex();
+            c1.resetType();
+        }
+    }
+
+    public Card pop(String test1) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals(test1)){
+                return c1.pop();
+            }
+        }
+        return null;
+    }
 }

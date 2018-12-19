@@ -253,15 +253,10 @@ public class ControllerVueQuestion implements Observer {
                 }
 
                 Card carte = partie.getCurrentCard(object);
-/*
-                partie.setDatabase();
-                Database database = partie.getDatabase();
-                //en dur
-                List<CardList>  cardStackList = database.getCardList("test1");
-                CardList cardStack = cardStackList.get(0);
-                //fin de en dur
-                Card carte = cardStack.getCard();
-*/
+
+
+
+
 
 
                 if (carte != null) {
@@ -333,9 +328,13 @@ public class ControllerVueQuestion implements Observer {
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
                 } else {
+                    System.out.println("here");
                     this.progress += 1/size;
                     this.ProgressBar.setProgress(progress);
-                    //try {
+                    this.init = 1000;
+                    this.partie.reset();
+                    /*
+                    try {
                     Alert alertt = new Alert(Alert.AlertType.ERROR);
                     alertt.setTitle("ERREUR");
                     alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");

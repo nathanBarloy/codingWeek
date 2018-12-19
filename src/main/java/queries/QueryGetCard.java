@@ -1,6 +1,5 @@
 package queries;
 
-import models.Card;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -8,12 +7,14 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
-public class QueryPing extends Query {
+public class QueryGetCard extends Query {
 
 
-    public QueryPing() {
-        super("ping");
+    private String name;
 
+    public QueryGetCard(String name) {
+        super("getCard");
+        this.name=name;
     }
 
 
@@ -21,6 +22,8 @@ public class QueryPing extends Query {
 
 
 // Request parameters and other properties.
+            params.add(new BasicNameValuePair("name", name));
+            request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
             HttpResponse httpResponse = httpClient.execute(request);

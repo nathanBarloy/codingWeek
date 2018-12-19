@@ -131,6 +131,18 @@ public class HTTPTest {
         query.send();
         Thread.sleep(100);
         System.out.println("CardLists :" + query.getResponse());
+        query = new QueryGetUser("SaltyCard");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("User SaltyMan :" + query.getResponse());
+        query = new QueryGetCard("Cheval");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("Card Cheval :" + query.getResponse());
+        query = new QueryGetCardStack("SaltyStack");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("Cardlist SaltyStack :" + query.getResponse());
 
     }
 

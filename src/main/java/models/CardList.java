@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CardList implements Iterable<Card>{
-    private Player author;
+    private String author;
     private String name;
     private String description;
     private ArrayList<Card> cardStack;
@@ -18,8 +18,17 @@ public class CardList implements Iterable<Card>{
         cardStack = new ArrayList<Card>();
     }
 
-    public CardList(String name, String description, Player author) {
+    public CardList(String name, String description, String author) {
         this.author = author;
+        this.name = name;
+        this.description = description;
+        cardStack = new ArrayList<Card>();
+        this.index = 0;
+        len = 0;
+    }
+
+    public CardList(String name, String description, Player author) {
+        this.author = author.getUsername();
         this.name = name;
         this.description = description;
         cardStack = new ArrayList<Card>();
@@ -33,9 +42,10 @@ public class CardList implements Iterable<Card>{
         cardStack = new ArrayList<Card>();
         this.index = 0;
         len = 0;
+        this.author="SaltyCard";
     }
 
-    public Player getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
@@ -74,9 +84,21 @@ public class CardList implements Iterable<Card>{
     }
 
     public Card pop() {
-        return getnextCard();
-    }
+        if (!(this.index <= len-1)){
+            //System.out.println("endcardlist");
+            return null;
 
+        }
+        else {
+            //System.out.println("index =" +index );
+            index ++;
+            return this.cardStack.get(index-1);
+
+        }
+    }
+    public void resetIndex(){
+        this.index = 0;
+    }
     public int getNbCards() {
 
         return len;
@@ -103,6 +125,7 @@ public class CardList implements Iterable<Card>{
         } else return null;
     }
 
+
     public Card getnextCard() {
         this.index++;
         if (this.index < len) {
@@ -122,7 +145,7 @@ public class CardList implements Iterable<Card>{
 
 
     public boolean endCardList(){
-        /*renvoie si on a lu toutes les cartes */
+        /*renvoie  true si on a lu toutes les cartes  false sinon*/
         return !(this.index < len-1);
     }
 
@@ -166,5 +189,11 @@ public class CardList implements Iterable<Card>{
 
     public void supprime(Card card) {
         this.cardStack.remove(card);
+    }
+
+    public void resetType() {
+        for (Card c : this.cardStack) {
+            c.setType("question");
+        }
     }
 }

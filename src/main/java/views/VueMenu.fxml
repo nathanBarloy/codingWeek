@@ -22,7 +22,7 @@
                <children>
                   <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#lancerModeCreation" prefHeight="60.0" prefWidth="250.0" text="Mode Entrainement">
+                        <Button mnemonicParsing="false" onAction="#lancerModeTest" prefHeight="60.0" prefWidth="250.0" text="Mode Entrainement">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>

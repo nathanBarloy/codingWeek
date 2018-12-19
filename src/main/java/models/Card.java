@@ -4,22 +4,32 @@ public class Card {
     private  String name;
     private  String text;
     private  String answer;
-    public String type = "question";
-    private Player author;
+    private String type;
+    private String author;
     private int succes ;
     private int fail ;
     private int  user_succes;
     private int user_fail;
 
-    public Player getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public Card (String name, String question, String answer, Player player){
+    public Card (String name, String question, String answer, String player){
         this.name=name;
         this.text=question;
         this.answer=answer;
         this.author=player;
+        this.type = "question";
+
+    }
+    public Card (String name, String question, String answer, Player player){
+        this.name=name;
+        this.text=question;
+        this.answer=answer;
+        //this.author=player.getUsername();
+        this.type = "question";
+
     }
 
     public String getName() {

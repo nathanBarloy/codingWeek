@@ -24,7 +24,7 @@ public class QueryAddCardStack extends Query {
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("name", cardList.getName()));
             params.add(new BasicNameValuePair("description", cardList.getDescription()));
-            params.add(new BasicNameValuePair("author", cardList.getAuthor().getUsername()));
+            params.add(new BasicNameValuePair("author", cardList.getAuthor()));
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.

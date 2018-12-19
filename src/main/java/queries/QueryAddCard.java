@@ -27,7 +27,7 @@ public class QueryAddCard extends Query {
             params.add(new BasicNameValuePair("question", card.getQuestion()));
             params.add(new BasicNameValuePair("answer", card.getAnswer()));
             params.add(new BasicNameValuePair("type", card.getType()));
-            params.add(new BasicNameValuePair("author", card.getAuthor().getUsername()));
+            params.add(new BasicNameValuePair("author", card.getAuthor()));
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.

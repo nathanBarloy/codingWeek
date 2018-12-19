@@ -87,15 +87,7 @@ public class Partie extends Observable{
 
 
     public Card getCurrentCard( String namedeck) {
-        return CurrentCard; //sera récupéré en sql après
-/*
-        //en dur
-        List<CardList> cardStackList = database.getCardList("test1");
-        CardList cardList = cardStackList.get(0);
-        //fin de en dur
-        Card card = cardList.getCard();
-        return card;
-*/
+        return CurrentCard;
     }
 
     public Player getPlayer() {
@@ -157,7 +149,8 @@ public class Partie extends Observable{
     }
 
     public void NvQuest() {
-        this.CurrentCard = cardList.pop();
+        this.CurrentCard = this.database.pop("test1");
+
         if (this.CurrentCard != null) {
             this.CurrentCard.setType("question");
             setChanged();
@@ -209,7 +202,9 @@ public class Partie extends Observable{
     }
 
     public Card getCard(String temp, String currentDeck) {
+
         return this.database.getCard(temp,currentDeck);
+
     }
 
     public void Choisir() {
@@ -227,5 +222,9 @@ public class Partie extends Observable{
 
     public void setDeckEnCours(String deckEnCours) {
         this.deckEnCours = deckEnCours;
+    }
+
+    public void reset() {
+        this.database.reset();
     }
 }

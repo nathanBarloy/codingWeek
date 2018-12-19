@@ -20,15 +20,16 @@ public class JSONParser {
         mapper.writeValue(new File("JSONS/file.json"), card);
         return mapper.writeValueAsString(card);
     }
-    /*
-    public Card JsonToCard(String pathname){
-        JSONParser parser = new JSONParser();
-        try{
-            Object obj = parser.parse(s);
-            JSONArray array = (JSONArray)obj;
-        Card card = new Card();
 
-        return card
-    }*/
+    public Card JsonToCard(String jsonCard){
+        json = new JSONObject(jsonCard);
+
+        String name=json.getString("name");
+        String question=json.getString("question");
+        String answer=json.getString("answer");
+        String author=json.getString("author");
+        String type=json.getString("type");
+        return new Card(name,question,answer,author);
+    }
 
 }
