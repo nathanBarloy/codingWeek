@@ -94,10 +94,13 @@ public class ControllerVueEvalQuestion implements Observer {
     }
 
     public void NvQuest() {
+
         this.partie.NvQuest();
+
     }
 
     public void valider() {
+        this.partie.timeout=true;
         if (!this.LabelQuestion.getText().equals("NotStartedYet")){
             partie.valider();
         }
@@ -300,7 +303,7 @@ public class ControllerVueEvalQuestion implements Observer {
                             public void handle(ActionEvent actionEvent) {
                                 RondAvancement.setProgress(0);
                                 try {
-                                    partie.timeout = true;
+                                    partie.timeout = false;
                                     partie.valider();
                                 }
                                 catch (Exception e){
@@ -335,9 +338,9 @@ public class ControllerVueEvalQuestion implements Observer {
                         img.setY(-100);
 
 
-
-                        this.RecPane.getChildren().add(img);
-
+                        if (this.partie.timeout) {
+                            this.RecPane.getChildren().add(img);
+                        }
                         Timeline timeline = new Timeline();
                         //timeline.setCycleCount(Timeline.INDEFINITE);
                         timeline.setAutoReverse(true);
@@ -361,14 +364,13 @@ public class ControllerVueEvalQuestion implements Observer {
                                 RecPane.getChildren().remove(img);
                             }
                         });
-                        if (!this.partie.timeout) {
                             timeline.play();
-                        }
                         this.partie.timeout = false;
                     }
 
                     if (!temp.equals(rep)){
-                        this.partie.timeout = false;
+
+
                         Image image0 = new Image("/resources/img/SmileyTriste.png");
                         ImageView img = new ImageView();
                         img.setImage(image0);
@@ -378,9 +380,9 @@ public class ControllerVueEvalQuestion implements Observer {
                         img.setY(-100);
 
 
-
-                        this.RecPane.getChildren().add(img);
-
+                        if (this.partie.timeout) {
+                            this.RecPane.getChildren().add(img);
+                        }
                         Timeline timeline = new Timeline();
                         //timeline.setCycleCount(Timeline.INDEFINITE);
                         timeline.setAutoReverse(true);
@@ -405,6 +407,7 @@ public class ControllerVueEvalQuestion implements Observer {
                             }
                         });
                         timeline.play();
+                        this.partie.timeout = false;
                     }
                     this.LabelQuestion.setText(carte.getAnswer());
                 }

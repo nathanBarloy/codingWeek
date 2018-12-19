@@ -73,8 +73,8 @@ public class VueMenu implements Observer{
                     BackgroundPosition.DEFAULT,
                     bSize0)));
 
-
-            //label.setText("Bienvenue " + partie.getPlayer().getUsername());
+            System.out.println(label);
+            label.setText("Bienvenue " + partie.getPlayer().getUsername());
             init = false;
         } else {
 

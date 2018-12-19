@@ -22,6 +22,7 @@ public class Partie extends Observable{
     private String RepEnCours;
     private String NameEnCours;
     public boolean timeout = false;
+    private String deckEnCours;
 
 
     public String getNameEnCours() { return NameEnCours; }
@@ -46,6 +47,22 @@ public class Partie extends Observable{
 
 
     }
+
+    public Partie(Player player) {
+        this.player = player;
+        this.cardList = new CardList("Default","Deck avec des cartes par défaut");
+        CardStackSeed cs = new CardStackSeed(cardList);
+        cs.seed();
+        this.database = new Database();
+        this.nbCards = cardList.getNbCards();
+        this.database.setDatabase();
+        System.out.println(this.database.getListCardList().size() + "decks par défault");
+    }
+
+    public Partie() {
+        this(new Player("perso test"));
+    }
+
     //-----------------------------------------------------------------------------------------------
     //Getter
 
@@ -70,15 +87,7 @@ public class Partie extends Observable{
 
 
     public Card getCurrentCard( String namedeck) {
-        return CurrentCard; //sera récupéré en sql après
-/*
-        //en dur
-        List<CardList> cardStackList = database.getCardList("test1");
-        CardList cardList = cardStackList.get(0);
-        //fin de en dur
-        Card card = cardList.getCard();
-        return card;
-*/
+        return CurrentCard;
     }
 
     public Player getPlayer() {
@@ -141,6 +150,7 @@ public class Partie extends Observable{
 
     public void NvQuest() {
         this.CurrentCard = cardList.pop();
+
         if (this.CurrentCard != null) {
             this.CurrentCard.setType("question");
             setChanged();
@@ -157,7 +167,6 @@ public class Partie extends Observable{
         }
     }
     public void valider() {
-
         this.CurrentCard.setType("reponse");
         setChanged();
         notifyObservers();
@@ -192,7 +201,9 @@ public class Partie extends Observable{
     }
 
     public Card getCard(String temp, String currentDeck) {
+
         return this.database.getCard(temp,currentDeck);
+
     }
 
     public void Choisir() {
@@ -202,5 +213,13 @@ public class Partie extends Observable{
 
     public ArrayList<String> getListeCarte(String currentDeck) {
         return this.database.getListeCarte(currentDeck);
+    }
+
+    public String getDeckEnCours() {
+        return this.deckEnCours;
+    }
+
+    public void setDeckEnCours(String deckEnCours) {
+        this.deckEnCours = deckEnCours;
     }
 }

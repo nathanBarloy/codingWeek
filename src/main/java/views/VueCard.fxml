@@ -9,13 +9,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueCard">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueCard">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="607.0">
+      <BorderPane prefHeight="807.0" prefWidth="1000.0">
          <center>
-            <Pane prefHeight="293.0" prefWidth="514.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="798.0" prefWidth="1028.0" BorderPane.alignment="CENTER">
                <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="400.0" prefWidth="607.0">
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="807.0" prefWidth="1000.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="166.0" prefWidth="562.0">
                            <children>
@@ -24,21 +24,26 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#75828d" height="109.0" layoutX="144.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="293.0" />
-                              <Label fx:id="LabelQuestion" layoutX="248.0" layoutY="86.0" prefHeight="33.0" prefWidth="85.0" text="Label" />
+                              <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#75828d" height="208.0" layoutX="144.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="596.0" />
+                              <Label fx:id="LabelQuestion" layoutX="414.0" layoutY="127.0" prefHeight="33.0" prefWidth="85.0" text="Label" />
                               <Label fx:id="LabelNom" contentDisplay="CENTER" layoutX="224.0" layoutY="7.0" prefHeight="23.0" prefWidth="110.0" text="Label" textAlignment="CENTER" />
+                              <Button layoutX="760.0" layoutY="127.0" mnemonicParsing="false" onAction="#Retour" prefHeight="51.0" prefWidth="107.0" text="Retour">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="486.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="771.0">
                            <children>
                               <Label layoutX="14.0" layoutY="77.0" prefHeight="33.0" prefWidth="103.0" text="Réponse :">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#6c7175" height="109.0" layoutX="147.0" layoutY="39.0" stroke="BLACK" strokeType="INSIDE" width="293.0" />
-                              <Label fx:id="LabelReponse" layoutX="256.0" layoutY="76.0" prefHeight="44.0" prefWidth="93.0" text="Label" />
-                              <Button layoutX="495.0" layoutY="74.0" mnemonicParsing="false" onAction="#Valider" prefHeight="48.0" prefWidth="96.0" text="Valider">
+                              <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#6c7175" height="197.0" layoutX="146.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="589.0" />
+                              <Label fx:id="LabelReponse" layoutX="453.0" layoutY="113.0" prefHeight="44.0" prefWidth="93.0" text="Label" />
+                              <Button layoutX="769.0" layoutY="111.0" mnemonicParsing="false" onAction="#Valider" prefHeight="48.0" prefWidth="96.0" text="Valider">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -51,14 +56,7 @@
             </Pane>
          </center>
          <right>
-            <Pane prefHeight="206.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button layoutX="79.0" layoutY="81.0" mnemonicParsing="false" onAction="#Retour" prefHeight="51.0" prefWidth="107.0" text="Retour">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Button>
-               </children>
-            </Pane>
+            <Pane prefHeight="206.0" prefWidth="161.0" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
    </children>

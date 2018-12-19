@@ -20,9 +20,8 @@ public class  Main extends Application {
     private Stage stage;
     private String name;
     public static Main main;
-    private CardList cardList;
-    private Card card ;
-    private Player player;
+    private Partie p;
+
 
 
     @Override
@@ -31,13 +30,8 @@ public class  Main extends Application {
             main = this;
         }
 
-        player=new Player("Nathane","Il est incroyable");
+        p = new Partie();
         stage = primaryStage;
-        cardList = new CardList("Default", "Deck avec des cartes par défaut",player);
-        CardStackSeed cs = new CardStackSeed(cardList, player);
-        cs.seed();
-        Partie p = new Partie(player, cardList);
-
 
         FXMLLoader loader2 = new FXMLLoader();
         loader2.setLocation(getClass().getResource("/views/VueLogin.fxml"));
@@ -58,12 +52,8 @@ public class  Main extends Application {
         try {
 
             if (fxmlFile.equals("/views/VueEvalQuestion.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
-                p.setCurrentCard(cardList.getCard());
+                p.setCurrentCard(p.getCardList().getCard());
                 BorderPane root = new BorderPane();
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -81,12 +71,8 @@ public class  Main extends Application {
             }
 
             if (fxmlFile.equals("/views/VueQuestion.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
-                p.setCurrentCard(cardList.getCard());
+                p.setCurrentCard(p.getCardList().getCard());
                 BorderPane root = new BorderPane();
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -103,11 +89,7 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueMenu.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
 
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -166,11 +148,7 @@ public class  Main extends Application {
 
 
             if (fxmlFile.equals("/views/VueCreation.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCreation(p));
@@ -187,11 +165,7 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueLogin(p));
@@ -222,12 +196,8 @@ public class  Main extends Application {
     public void switchScene(String fxmlFile) {
         try {
             if (fxmlFile.equals("/views/VueQuestion.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
-                p.setCurrentCard(cardList.getCard());
+                p.setCurrentCard(p.getCardList().getCard());
                 BorderPane root = new BorderPane();
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -244,11 +214,8 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueMenu.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
+                System.out.println("JE SUIS LA");
 
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -267,7 +234,7 @@ public class  Main extends Application {
 
             if (fxmlFile.equals("/views/VueCard.fxml")) {
 
-                Partie p = new Partie(player, cardList);
+
 
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -287,7 +254,7 @@ public class  Main extends Application {
 
             if (fxmlFile.equals("/views/Decks.fxml")) {
 
-                Partie p = new Partie(player, cardList);
+
 
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -309,11 +276,7 @@ public class  Main extends Application {
 
 
             if (fxmlFile.equals("/views/VueCreation.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCreation(p));
@@ -330,11 +293,7 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-                cardList = new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player, cardList);
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueLogin(p));
@@ -351,11 +310,7 @@ public class  Main extends Application {
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {
 
-                cardList= new CardList("default","always the same",player);
-                CardStackSeed cs = new CardStackSeed(cardList,player);
-                cs.seed();
 
-                Partie p = new Partie(player,cardList);
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueInscription(p));

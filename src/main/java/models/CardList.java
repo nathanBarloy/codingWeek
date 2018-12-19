@@ -84,7 +84,17 @@ public class CardList implements Iterable<Card>{
     }
 
     public Card pop() {
-        return getnextCard();
+        if (!(this.index <= len-1)){
+            //System.out.println("endcardlist");
+            return null;
+
+        }
+        else {
+            //System.out.println("index =" +index );
+            index ++;
+            return this.cardStack.get(index-1);
+
+        }
     }
 
     public int getNbCards() {
@@ -113,6 +123,7 @@ public class CardList implements Iterable<Card>{
         } else return null;
     }
 
+
     public Card getnextCard() {
         this.index++;
         if (this.index < len) {
@@ -132,7 +143,7 @@ public class CardList implements Iterable<Card>{
 
 
     public boolean endCardList(){
-        /*renvoie si on a lu toutes les cartes */
+        /*renvoie  true si on a lu toutes les cartes  false sinon*/
         return !(this.index < len-1);
     }
 
