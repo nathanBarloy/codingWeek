@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import models.*;
 import json.*;
+import queries.*;
+
 
 import java.io.IOException;
 
@@ -17,6 +19,7 @@ public class JSONTest {
     private Player player;
     private Card card;
     private JSONParser jsonParser;
+    private Query query;
 
     @Before
     public void initialiser() throws Exception {
@@ -35,9 +38,11 @@ public class JSONTest {
 
     @Test
     public void card() throws IOException {
-        jsonParser.cardToJson(card);
-        assertNotNull("card pas créée", card);
-        assertEquals("name ", card.getName(), "la vérité blesse");
+        query = new QueryGetCard("Cheval");
+        query.send();
+
+        card=jsonParser.JsonToCard(query.getResponse());
+        System.out.println(card.toString());
 
     }
 }
