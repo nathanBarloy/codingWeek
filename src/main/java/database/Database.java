@@ -53,21 +53,21 @@ public class Database {
 
     public String addCard(String NomDeck, Card card) {
         String a =  "-1";
-        System.out.println("j'ajoute une carte,début");
+        //System.out.println("j'ajoute une carte,début");
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(NomDeck)){
                 this.listCardList.get(i).add(card);
                 Query query = new QueryAddCard(card);
 
                 try {
-                    System.out.println("j'ajoute une carte dans le deck" + NomDeck);
-                    System.out.println();
+                    //System.out.println("j'ajoute une carte dans le deck" + NomDeck);
+                    //System.out.println();
                     query.send();
                     a = query.getResponse();
                     return a;
                 } catch (IOException e) {
                     e.printStackTrace();
-                    System.out.println("bug sur l'envoi de la requête");
+                    //System.out.println("bug sur l'envoi de la requête");
                 }
 
             }
@@ -121,16 +121,16 @@ public class Database {
             if (this.listCardList.get(i).getName().equals(nomDeck)){
                 this.listCardList.get(i).supprime(card);
                 Query query = new QueryDelCard(card);
-                System.out.println("je supprime la carte : " + card.getName());
+                //System.out.println("je supprime la carte : " + card.getName());
 
                 try {
                     query.send();
                     a = query.getResponse();
-                    System.out.println(a);
+                    //System.out.println(a);
                     return a;
                 } catch (IOException e) {
                     e.printStackTrace();
-                    System.out.println("bug sur l'envoi de la requête");
+                    //System.out.println("bug sur l'envoi de la requête");
                 }
 
                 }
@@ -168,7 +168,7 @@ public class Database {
 
     public void reset() {
         for (CardList c1 : listCardList){
-            System.out.println("c1.size(): "+c1.size());
+            //System.out.println("c1.size(): "+c1.size());
             c1.resetIndex();
             c1.resetType();
         }
