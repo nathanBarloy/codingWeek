@@ -138,7 +138,7 @@ public class  Main extends Application {
                 partie.init();
 
 
-                stage.setTitle("Menu Principal");
+                stage.setTitle("Vue des Decks");
                 stage.setScene(new Scene(VueDeck, 1000, 800));
                 stage.show();
 
@@ -165,7 +165,7 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-
+                p = new Partie();
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueLogin(p));
@@ -264,7 +264,7 @@ public class  Main extends Application {
                 p.init();
 
 
-                stage.setTitle("Menu Principal");
+                stage.setTitle("Vue des Decks");
                 stage.setScene(new Scene(VueDeck, 1000, 800));
                 stage.show();
 
@@ -292,7 +292,7 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-
+                p = new Partie();
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueLogin(p));

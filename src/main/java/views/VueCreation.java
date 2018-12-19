@@ -19,6 +19,9 @@ public class VueCreation implements Observer {
     boolean init;
 
     @FXML
+    private TextField newdeck;
+
+    @FXML
     private TextArea question;
 
     @FXML
@@ -35,6 +38,12 @@ public class VueCreation implements Observer {
         init = true;
         this.partie = partie;
         this.partie.addObserver(this);
+    }
+
+    public void AjouterDeck(){
+        System.out.println("AjouterDeck");
+        this.partie.addDeck(this.newdeck.getText());
+        this.newdeck.setText("");
     }
 
     public void retour() {

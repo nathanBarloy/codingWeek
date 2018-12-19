@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class JSONParser {
+public class JSONCardParser {
 
 
 
@@ -27,6 +27,7 @@ public class JSONParser {
         String name=jsonCard.getString("name");
         String question=jsonCard.getString("question");
         String answer=jsonCard.getString("answer");
+
         String author=jsonCard.getString("author");
         String type=jsonCard.getString("type");
         return new Card(name,question,answer,author);
@@ -41,8 +42,6 @@ public class JSONParser {
         JSONArray jsonList= new JSONArray(jsonCardList);
         int n= jsonList.length();
         Card[] cardList= new Card[n];
-
-
 
         for(int i=0;i<n;i++) {
 

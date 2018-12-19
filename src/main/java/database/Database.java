@@ -183,7 +183,17 @@ public class Database {
         return null;
     }
 
-    public void deleteCardList(CardList cardList){
+
+    public void deleteCardList(CardList cardList) {
         this.listCardList.remove(cardList);
+    }
+    public void addDeck(String s, String une_description, String text) {
+        this.listCardList.add(new CardList(s,une_description,text));
+        System.out.println("addDeck:" + this.listCardList.size());
+    }
+
+    public String getFirstDeck() {
+        return listCardList.get(0).getName();
+
     }
 }

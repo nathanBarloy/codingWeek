@@ -20,9 +20,9 @@ public class CardStackSeed {
     }
 
     public void seed(String nom){
-        cardList.add(new Card("Carte 1" + nom, "Quel est le goût du sel ?", "Salé",player));
-        cardList.add(new Card("Carte 2" + nom, "Quelle est la couleur du cheval blanc d'Henry IV ?", "Couleur sel", player));
-        cardList.add(new Card("Carte 3" + nom, "Appréciez vous la crinière dorée de ce cher Olivier ?", "Je suis salé", player));
+        cardList.add(new Card("Carte 1" + nom, "Quel est le goût du sel ?" + nom , "Salé" + nom,player));
+        cardList.add(new Card("Carte 2" + nom, "Quelle est la couleur du cheval blanc d'Henry IV ?" + nom, "Couleur sel" + nom, player));
+        cardList.add(new Card("Carte 3" + nom, "Appréciez vous la crinière dorée de ce cher Olivier ?" + nom, "Je suis salé" + nom, player));
     }
 
     public void seed(){
