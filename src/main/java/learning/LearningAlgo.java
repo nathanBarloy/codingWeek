@@ -49,6 +49,7 @@ public class LearningAlgo {
         //System.out.println(this.cardList.pop().getName());
 
         if (this.cardList.endCardList() ){
+            //System.out.println("fin du deck");
             this.cardList = this.cardList.generateCardListNotLearn();
             return this.cardList.pop();
         }
