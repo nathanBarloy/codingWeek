@@ -47,5 +47,6 @@ public class VueCard implements Observer {
         this.LabelQuestion.setText(this.partie.getQuestEnCours());
         this.LabelReponse.setText(this.partie.getRepEnCours());
         this.LabelNom.setText(this.partie.getNameEnCours());
+        this.NomDeck = this.partie.getDeckEnCours();
     }
 }

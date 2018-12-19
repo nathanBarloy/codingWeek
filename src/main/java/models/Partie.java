@@ -22,6 +22,7 @@ public class Partie extends Observable{
     private String RepEnCours;
     private String NameEnCours;
     public boolean timeout = false;
+    private String deckEnCours;
 
 
     public String getNameEnCours() { return NameEnCours; }
@@ -157,7 +158,6 @@ public class Partie extends Observable{
         }
     }
     public void valider() {
-
         this.CurrentCard.setType("reponse");
         setChanged();
         notifyObservers();
@@ -202,5 +202,13 @@ public class Partie extends Observable{
 
     public ArrayList<String> getListeCarte(String currentDeck) {
         return this.database.getListeCarte(currentDeck);
+    }
+
+    public String getDeckEnCours() {
+        return this.deckEnCours;
+    }
+
+    public void setDeckEnCours(String deckEnCours) {
+        this.deckEnCours = deckEnCours;
     }
 }
