@@ -24,7 +24,7 @@ public class VueDecks implements Observer {
 
 
     private Partie partie;
-    private boolean init;
+    private boolean init, deldeck;
     private boolean choix = false;
     private String CurrentDeck;
     private boolean supress = false;
@@ -34,6 +34,7 @@ public class VueDecks implements Observer {
         this.partie = p;
         this.partie.addObserver(this);
         this.init = true;
+        deldeck = false;
     }
 
     public void Choisir(){
@@ -46,13 +47,13 @@ public class VueDecks implements Observer {
             this.partie.Choisir();
         }
         else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            /*Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setHeaderText("Vous n'avez pas choisi de deck");
             String message = "";
 
             alert.setContentText(message);
-            alert.showAndWait();
+            alert.showAndWait();*/
         }
 
     }
@@ -89,6 +90,9 @@ public class VueDecks implements Observer {
         String temp = (String) this.comboBox.getValue();
         if (temp!=null) {
             // Supprime le deck FDP
+            partie.deleteCardList(temp);
+            comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
+            comboBox.setValue(null);
         }
     }
 
@@ -100,7 +104,9 @@ public class VueDecks implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (this.init){
-            this.comboBox.getItems().addAll(this.partie.getListeDeck());
+
+            comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
+
             //tests.
             //this.getviews = true;
             this.init = false;
@@ -118,6 +124,7 @@ public class VueDecks implements Observer {
             ObservableList<String> items =FXCollections.observableArrayList ();
             items.addAll(this.partie.getListeCarte(CurrentDeck));
             this.listeView.setItems(items);
+            supress = false;
         }
     }
 }

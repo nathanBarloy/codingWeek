@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 
 import learning.LearningAlgo;
@@ -50,8 +51,11 @@ public class AlgoTest {
         assertEquals("deuxièmecarte" ,  card2 ,learningAlgo.generateCard());
         assertEquals("troisièmecarte" , card3 ,learningAlgo.generateCard());
         card1.setState(3);
+
         assertEquals("permièrecarte2" , card1 ,learningAlgo.generateCard());
         */
+
+
 
     }
 }

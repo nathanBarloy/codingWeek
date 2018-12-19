@@ -161,7 +161,7 @@ public class Partie extends Observable{
         } else {
             Alert alertt = new Alert(Alert.AlertType.ERROR);
             alertt.setTitle("ERREUR");
-            alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
+            alertt.setHeaderText("Vous avez fini le deck!");
             String mmessage = "";
 
             alertt.setContentText(mmessage);
@@ -236,6 +236,7 @@ public class Partie extends Observable{
     }
     public void deleteCardList(String name) {
         this.database.deleteCardList(name);
+        init();
     }
 
     public void addDeck(String text) {

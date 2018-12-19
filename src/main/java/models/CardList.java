@@ -212,7 +212,7 @@ public class CardList implements Iterable<Card>{
     public CardList generateCardListNotLearn() {
         CardList cardList = new CardList();
         for (Card card : this.cardStack) {
-            System.out.println(card.getName() +card.getState());
+            //System.out.println(card.getName() +card.getState());
             if (card.getState()<3) {
                 cardList.add(card);
             }
