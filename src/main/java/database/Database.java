@@ -16,26 +16,32 @@ public class Database {
     private List<CardList> listCardList;
 
 
+    //Construceur
     public Database() {
     listdecks=new ArrayList<String>();
     listCardList = new ArrayList<CardList>();
     }
-
+    //------------------------------------------------------------------------------------------------------------------
+    //getter
     public List<String> getListStack() {
         return listdecks;
-    }
-
-    public void setListStack(List<String> liststack) {
-        this.listdecks = liststack;
     }
 
     public List<CardList> getListCardList() {
         return listCardList;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+    //Setter
     public void setListCardList(List<CardList> listCardSatck) {
         this.listCardList = listCardList;
     }
+    public void setListStack(List<String> liststack) {
+        this.listdecks = liststack;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //ajout
 
     public void add(CardList CardList) {
         this.listCardList.add(CardList);
@@ -63,6 +69,10 @@ public class Database {
         return a;
     }
 
+    public void addCardCardList(String nameCardList , Card card){
+        getCardList (nameCardList).get(0).add(card);
+    }
+    //-----------------------------------------------------------------------------------------------------------------
     public ArrayList<CardList> getCardList (String name){
         ArrayList<CardList> mylistCardList = new ArrayList<CardList>();
         for (CardList cardstack : this.listCardList) {
@@ -74,6 +84,7 @@ public class Database {
     }
 
     public String SupressCard(String nomDeck, Card card) {
+        if (card != null){
         String a =  "-1";
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(nomDeck)){
@@ -89,9 +100,11 @@ public class Database {
                     System.out.println("bug sur l'envoi de la requête");
                 }
 
+                }
             }
+            return a;
         }
-        return a;
+        return null;
     }
 
     public Card getCard(String temp, String currentDeck) {
@@ -105,5 +118,18 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public ArrayList<String> getDeckName() {
+        return (ArrayList<String>) listdecks;
+    }
+
+    public ArrayList<String> getListeCarte(String currentDeck) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals((currentDeck))) {
+                return c1.getListeCarte();
+            }
+        }
+        return new ArrayList<String>();
     }
 }

@@ -1,8 +1,11 @@
 package models;
 
-import java.util.ArrayList;
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 
-public class CardList {
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class CardList implements Iterable<Card>{
     private Player author;
     private String name;
     private String description;
@@ -26,6 +29,10 @@ public class CardList {
 
     public Player getAuthor() {
         return author;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     //copy du stack
@@ -89,7 +96,7 @@ public class CardList {
     }
 
     public Card getnextCard() {
-        index++;
+        this.index++;
         if (this.index < len) {
 
             return this.cardStack.get(index);
@@ -98,7 +105,8 @@ public class CardList {
 
 
     public boolean endCardList(){
-        return !(this.index < len);
+        /*renvoie si on a lu toutes les cartes */
+        return !(this.index < len-1);
     }
 
     @Override
@@ -106,5 +114,18 @@ public class CardList {
         return "CardList{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public Iterator<Card> iterator() {
+        return this.cardStack.iterator();
+    }
+
+    public ArrayList<String> getListeCarte() {
+        ArrayList<String> temp = new ArrayList<String>();
+        for (Card c : this.cardStack){
+            temp.add(c.getName());
+        }
+        return temp;
     }
 }

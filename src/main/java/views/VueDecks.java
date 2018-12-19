@@ -27,7 +27,7 @@ public class VueDecks implements Observer {
 
     private Partie partie;
     private boolean init;
-    private boolean getviews;
+    private boolean choix = false;
     private String CurrentDeck;
 
     public VueDecks(Partie p){
@@ -37,6 +37,10 @@ public class VueDecks implements Observer {
         this.init = true;
     }
 
+    public void Choisir(){
+        this.choix = true;
+        this.partie.Choisir();
+    }
     public void SupprimerCarte(){
         String temp = (String) this.BoxSupprimer.getValue();
         if (temp ==  null){
@@ -61,7 +65,7 @@ public class VueDecks implements Observer {
             }
             else {
                 this.partie.getCard(temp,CurrentDeck);
-                this.partie.SupprimerCard(this.CurrentDeck, card)
+                this.partie.SupprimerCard(this.CurrentDeck, this.partie.getCard(temp,this.CurrentDeck));
             }
         }
     }
@@ -78,12 +82,14 @@ public class VueDecks implements Observer {
                             "Deck 3"
                     ));
             //tests.
-            this.getviews = true;
+            //this.getviews = true;
+            this.init = false;
         }
-        if (this.getviews){
-            ObservableList<String> items =FXCollections.observableArrayList (
-                    "NomCarte1", "NomCarte2", "NomCarte3", "NomCarte4","NomCarte5",
-                    "NomCarte6","NomCarte7","NomCarte8");
+        if (this.choix){
+            System.out.println("here");
+            ObservableList<String> items =FXCollections.observableArrayList ();
+            items.addAll(this.partie.getListeCarte(CurrentDeck));
+            System.out.println("items:"+items.toString());
             this.listeView.setItems(items);
         }
     }

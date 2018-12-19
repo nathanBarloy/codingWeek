@@ -57,7 +57,7 @@ public class  Main extends Application {
                 p.setCurrentCard(cardList.getCard());
                 BorderPane root = new BorderPane();
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueQuestion.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
                 Parent VueQuestion = null;
 
@@ -78,7 +78,7 @@ public class  Main extends Application {
                 Partie p = new Partie(player, cardList);
 
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueMenu(p));
                 Parent VueMenu = null;
 
@@ -96,7 +96,7 @@ public class  Main extends Application {
 
                 System.out.println(partie.getQuestEnCours());
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueCard.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCard(partie));
                 Parent VueMenu = null;
 
@@ -115,7 +115,7 @@ public class  Main extends Application {
 
 
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/Decks.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueDecks(partie));
                 Parent VueDeck = null;
 
@@ -140,7 +140,7 @@ public class  Main extends Application {
 
                 Partie p = new Partie(player, cardList);
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueCreation.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCreation(p));
                 p.init();
                 Parent VueCreation = null;
@@ -155,13 +155,13 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource("/views/VueLogin.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
                 stage.setTitle("Connexion");
                 stage.setScene(new Scene(root, 1000, 800));
                 stage.show();
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource("/views/VueInscription.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
                 stage.setTitle("Inscription");
                 stage.setScene(new Scene(root, 1000, 800));
                 stage.show();
@@ -184,7 +184,7 @@ public class  Main extends Application {
                 p.setCurrentCard(cardList.getCard());
                 BorderPane root = new BorderPane();
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueQuestion.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new ControllerVueQuestion(p));
                 Parent VueQuestion = null;
 
@@ -205,7 +205,7 @@ public class  Main extends Application {
                 Partie p = new Partie(player, cardList);
 
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueMenu.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueMenu(p));
                 Parent VueMenu = null;
 
@@ -224,7 +224,7 @@ public class  Main extends Application {
                 Partie p = new Partie(player, cardList);
 
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueCard.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCard(p));
                 Parent VueMenu = null;
 
@@ -244,7 +244,7 @@ public class  Main extends Application {
                 Partie p = new Partie(player, cardList);
 
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/Decks.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueDecks(p));
                 Parent VueDeck = null;
 
@@ -269,7 +269,7 @@ public class  Main extends Application {
 
                 Partie p = new Partie(player, cardList);
                 FXMLLoader loader2 = new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/views/VueCreation.fxml"));
+                loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCreation(p));
                 p.init();
                 Parent VueCreation = null;
@@ -284,15 +284,31 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource("/views/VueLogin.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
                 stage.setTitle("Connexion");
                 stage.setScene(new Scene(root, 1000, 800));
                 stage.show();
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource("/views/VueInscription.fxml"));
+
+                cardList= new CardList("default","always the same",player);
+                CardStackSeed cs = new CardStackSeed(cardList,player);
+                cs.seed();
+
+                Partie p = new Partie(player,cardList);
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new VueInscription(p));
+                p.init();
+                Parent vueInscription = null;
+
+
+                vueInscription = loader2.load();
+                p.init();
+
+
                 stage.setTitle("Inscription");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(vueInscription, 1000, 800));
                 stage.show();
             }
 

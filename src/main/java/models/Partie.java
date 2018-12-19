@@ -6,6 +6,7 @@ import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class Partie extends Observable{
@@ -127,6 +128,11 @@ public class Partie extends Observable{
     public void setNbCards(int nbCards) {
         this.nbCards = nbCards;
     }
+    //------------------------------------------------------------------------------------------------------------------
+    //adder
+    public void addCardCardList(String nameCardList , Card card) {
+        this.database.addCardCardList(nameCardList ,  card);
+    }
     //----------------------------------------------------------------------------------------------
     //Autres fonctions
 
@@ -178,11 +184,25 @@ public class Partie extends Observable{
         QuestEnCours = questEnCours;
     }
 
+    public ArrayList<String> getDeckName() {
+        ArrayList<String> res = database.getDeckName();
+        return res;
+    }
+
     public void setNameEnCours(String nameEnCours) {
         this.NameEnCours = nameEnCours;
     }
 
-    public void getCard(String temp, String currentDeck) {
+    public Card getCard(String temp, String currentDeck) {
         return this.database.getCard(temp,currentDeck);
+    }
+
+    public void Choisir() {
+        setChanged();
+        notifyObservers();
+    }
+
+    public ArrayList<String> getListeCarte(String currentDeck) {
+        return this.database.getListeCarte(currentDeck);
     }
 }

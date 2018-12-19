@@ -9,11 +9,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueDecks">
+
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1000.0">
-         <left>
-            <ComboBox fx:id="comboBox" prefWidth="150.0" BorderPane.alignment="CENTER" />
-         </left>
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -34,6 +32,14 @@
                </children>
             </Pane>
          </bottom>
+         <left>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ComboBox fx:id="comboBox" layoutX="25.0" layoutY="244.0" prefWidth="150.0" />
+                  <Button layoutX="69.0" layoutY="312.0" mnemonicParsing="false" onAction="#Choisir" text="Choisir" />
+               </children>
+            </Pane>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>

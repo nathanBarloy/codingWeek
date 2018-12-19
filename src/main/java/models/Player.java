@@ -9,6 +9,10 @@ public class Player {
         this.description = description;
     }
 
+    public Player(String username) {
+        this(username,"");
+    }
+
     public Player(){}
     public String getUsername() {
         return username;
