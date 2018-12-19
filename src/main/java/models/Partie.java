@@ -117,6 +117,9 @@ public class Partie extends Observable{
     }
     public void SupprimerCard(String NomDeck,Card card){
         this.database.SupressCard(NomDeck,card);
+        setChanged();
+        notifyObservers();
+
     }
     //fin du code en dur
     //------------------------------------------------------------------------------------------------------------------

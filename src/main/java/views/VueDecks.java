@@ -38,8 +38,22 @@ public class VueDecks implements Observer {
     }
 
     public void Choisir(){
-        this.choix = true;
-        this.partie.Choisir();
+        String temp = (String) this.comboBox.getValue();
+        if (temp != null){
+            this.CurrentDeck = temp;
+            this.choix = true;
+            this.partie.Choisir();
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Vous n'avez pas choisi de deck");
+            String message = "";
+
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
+
     }
     public void SupprimerCarte(){
         String temp = (String) this.BoxSupprimer.getValue();
@@ -89,8 +103,12 @@ public class VueDecks implements Observer {
             System.out.println("here");
             ObservableList<String> items =FXCollections.observableArrayList ();
             items.addAll(this.partie.getListeCarte(CurrentDeck));
+            if (this.CurrentDeck.equals("Deck 1")) {
+                items.add("test1");
+            }
             System.out.println("items:"+items.toString());
             this.listeView.setItems(items);
+            this.BoxSupprimer.setItems(items);
         }
     }
 }
