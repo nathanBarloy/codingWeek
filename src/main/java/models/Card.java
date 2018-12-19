@@ -11,7 +11,7 @@ public class Card {
     private int  user_succes;
     private int user_fail;
     private int state;
-
+    private int id;
     //------------------------------------------------------------------------------------------------------------------
     //Constructor
 
@@ -33,6 +33,15 @@ public class Card {
         this.type = "question";
 
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //getter
     public String getAuthor() {

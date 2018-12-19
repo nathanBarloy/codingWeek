@@ -238,6 +238,7 @@ public class Partie extends Observable{
     }
     public void deleteCardList(String name) {
         this.database.deleteCardList(name);
+        init();
     }
 
     public void addDeck(String text) {

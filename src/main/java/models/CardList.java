@@ -12,10 +12,19 @@ public class CardList implements Iterable<Card>{
     private ArrayList<Card> cardStack;
     int index;
     int len;
+    private ArrayList<Integer> cardIds;
 
 
     public CardList() {
         cardStack = new ArrayList<Card>();
+    }
+
+    public ArrayList<Integer> getCardIds() {
+        return cardIds;
+    }
+
+    public void setCardIds(ArrayList<Integer> cardIds) {
+        this.cardIds = cardIds;
     }
 
     public CardList(String name, String description, String author) {
@@ -23,6 +32,7 @@ public class CardList implements Iterable<Card>{
         this.name = name;
         this.description = description;
         cardStack = new ArrayList<Card>();
+        cardIds = new ArrayList<Integer>();
         this.index = 0;
         len = 0;
     }
@@ -32,6 +42,7 @@ public class CardList implements Iterable<Card>{
         this.name = name;
         this.description = description;
         cardStack = new ArrayList<Card>();
+        cardIds = new ArrayList<Integer>();
         this.index = 0;
         len = 0;
     }
@@ -80,6 +91,7 @@ public class CardList implements Iterable<Card>{
 
     public void add(Card card) {
         cardStack.add(card);
+        cardIds.add(card.getId());
         this.len++;
     }
 
@@ -174,6 +186,7 @@ public class CardList implements Iterable<Card>{
     public String toString() {
         return "CardList{" +
                 "name='" + name + '\'' +
+                "nombre de cartes : " + cardIds.size()+
                 '}';
     }
 
