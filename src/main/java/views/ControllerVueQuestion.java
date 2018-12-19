@@ -328,8 +328,11 @@ public class ControllerVueQuestion implements Observer {
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
                 } else {
+                    System.out.println("here");
                     this.progress += 1/size;
                     this.ProgressBar.setProgress(progress);
+                    this.init = 1000;
+                    this.partie.reset();/*
                     try {
                     Alert alertt = new Alert(Alert.AlertType.ERROR);
                     alertt.setTitle("ERREUR");
@@ -344,7 +347,7 @@ public class ControllerVueQuestion implements Observer {
                     } catch (InterruptedException e) {
                         System.out.println("exception on waiting");
                         e.printStackTrace();
-                    }
+                    }*/
 
                 }
             }
