@@ -18,6 +18,14 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#evaluation" prefHeight="53.0" prefWidth="268.0" text="Mode Evaluation">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#lancerModeCreation" prefHeight="60.0" prefWidth="270.0" text="Mode Creation">
                      <font>
                         <Font size="24.0" />

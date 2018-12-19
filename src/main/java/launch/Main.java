@@ -48,6 +48,30 @@ public class  Main extends Application {
 
     public void switchScene(String fxmlFile,Partie partie){//,String QuestCours,String RepCours) {
         try {
+
+            if (fxmlFile.equals("/views/VueEvalQuestion.fxml")) {
+                cardList = new CardList("default","always the same",player);
+                CardStackSeed cs = new CardStackSeed(cardList,player);
+                cs.seed();
+
+                Partie p = new Partie(player, cardList);
+                p.setCurrentCard(cardList.getCard());
+                BorderPane root = new BorderPane();
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new ControllerVueEvalQuestion(p));
+                Parent VueQuestion = null;
+
+                VueQuestion = loader2.load();
+                p.init();
+                root.setTop(VueQuestion);
+
+                stage.setTitle("Apprentissage");
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.show();
+
+            }
+
             if (fxmlFile.equals("/views/VueQuestion.fxml")) {
                 cardList = new CardList("default","always the same",player);
                 CardStackSeed cs = new CardStackSeed(cardList,player);
