@@ -23,7 +23,9 @@ public class  Main extends Application {
     public static Main main;
     private Partie p;
 
+    public void connexionn(){
 
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{

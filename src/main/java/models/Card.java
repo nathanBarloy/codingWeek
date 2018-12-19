@@ -116,7 +116,11 @@ public class Card {
     }
 
     public void setState(int state) {
-        this.state = state;
+        this.state = this.state + state;
+    }
+
+    public void setState(int state, int state2) {
+        this.state = state2;
     }
 
     @Override

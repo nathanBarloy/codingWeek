@@ -51,11 +51,11 @@ public class LearningAlgo {
         if (this.cardList.endCardList() ){
             //System.out.println("fin du deck");
             this.cardList = this.cardList.generateCardListNotLearn();
-            return this.cardList.pop();
+            return this.cardList.pop(0);
         }
 
         else {
-            Card card = this.cardList.pop();
+            Card card = this.cardList.pop(0);
             return card;
         }
 

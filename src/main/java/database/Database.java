@@ -177,13 +177,14 @@ public class Database {
             //System.out.println("c1.size(): "+c1.size());
             c1.resetIndex();
             c1.resetType();
+            c1.resetScores();
         }
     }
 
     public Card pop(String test1) {
         for (CardList c1 : listCardList){
             if (c1.getName().equals(test1)){
-                return c1.pop();
+                return c1.pop(0);
             }
         }
         return null;
@@ -213,4 +214,15 @@ public class Database {
     }
 
 
+    public void setScore(String currentDeck, Card carte,int score) {
+        for (CardList cardList : this.listCardList) {
+            if (cardList.getName().equals(currentDeck)) {
+                for (Card c : cardList){
+                    if (c.getName().equals(carte.getName())){
+                        c.setState(score);
+                    }
+                }
+            }
+        }
+    }
 }

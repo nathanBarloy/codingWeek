@@ -95,17 +95,39 @@ public class CardList implements Iterable<Card>{
         this.len++;
     }
 
-    public Card pop() {
-        if (!(this.index <= len-1)){
+    public Card pop(int NbOcc) {
+        if (len == 0){
+            return null;
+        }
+        if (NbOcc > 10*len){
+            return null;
+        }
+        else{
+            int a = (int) (Math.random()*(len-1));
+            if (this.cardStack.get(a).getState() <1){
+                return this.cardStack.get(a);
+            }
+            else{
+                return this.pop(NbOcc+1);
+            }
+        }
+
+        /*
             return null;
 
         }
         else {
             //System.out.println("index =" +index );
-            index ++;
-            return this.cardStack.get(index-1);
 
-        }
+            if(this.cardStack.get(index-1).getState()<1) {
+                return this.cardStack.get(index - 1);
+            }
+            else{
+                index++;
+            }
+
+        }*/
+
     }
     public void resetIndex(){
         this.index = 0;
@@ -221,6 +243,7 @@ public class CardList implements Iterable<Card>{
     }
 
 
+
     public void setCardStack(ArrayList<Card> list){
 
         for(Card x:list) {
@@ -232,4 +255,13 @@ public class CardList implements Iterable<Card>{
         }
 
     }
+
+
+    public void resetScores() {
+        for (Card c : this.cardStack) {
+            c.setState(0,0);
+        }
+    }
+
+
 }

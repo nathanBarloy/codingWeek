@@ -1,5 +1,7 @@
 package views;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -13,7 +15,9 @@ import queries.Query;
 import queries.QueryCheckUsername;
 
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.security.Key;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -56,6 +60,7 @@ public class VueLogin implements Observer {
 
     }
 
+
     public void quitter() {
         Main.main.closeStage();
     }
@@ -66,6 +71,7 @@ public class VueLogin implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
         Image image0 = new Image("/resources/img/flashcards.png");
 
         //final URL imageURL = getClass().getResource("../ressources/fond");
