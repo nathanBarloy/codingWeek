@@ -49,8 +49,6 @@ public class VueCreation implements Observer {
 
         //System.out.println(questionCarte + "\n" + reponseCarte + "\n" + nomCarte);
         if ( !(questionCarte.equals("") || reponseCarte.equals("") || nomCarte.equals("") || nomDeck==null) ) {
-            //Query checkNom = new
-            //if ()
 
             question.setText("");
             reponse.setText("");

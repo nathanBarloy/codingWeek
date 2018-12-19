@@ -335,7 +335,7 @@ public class ControllerVueQuestion implements Observer {
                 } else {
                     this.progress += 1/size;
                     this.ProgressBar.setProgress(progress);
-                    try {
+                    //try {
                     Alert alertt = new Alert(Alert.AlertType.ERROR);
                     alertt.setTitle("ERREUR");
                     alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
@@ -344,12 +344,12 @@ public class ControllerVueQuestion implements Observer {
                     alertt.setContentText(mmessage);
                     alertt.showAndWait();
 
-                        Thread.sleep(3000);
+                     /*   Thread.sleep(3000);
                         Main.main.switchScene("/views/VueMenu.fxml");
                     } catch (InterruptedException e) {
                         System.out.println("exception on waiting");
                         e.printStackTrace();
-                    }
+                    }*/
 
                 }
             }

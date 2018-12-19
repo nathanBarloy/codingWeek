@@ -6,7 +6,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
+import queries.Query;
+import queries.QueryDelUser;
 
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -48,6 +51,16 @@ public class VueMenu implements Observer{
 
     public void deconnexion() {
         Main.main.switchScene("/views/VueLogin.fxml");
+    }
+
+    public void supprimerCompte() {
+        Query del = new QueryDelUser(partie.getPlayer());
+        try {
+            del.send();
+            deconnexion();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
