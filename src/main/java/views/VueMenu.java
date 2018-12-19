@@ -1,6 +1,7 @@
 package views;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import launch.Main;
@@ -11,11 +12,17 @@ import java.util.Observer;
 
 public class VueMenu implements Observer{
     Partie partie;
+    boolean init;
+
     @FXML
     private BorderPane borderpane;
 
+    @FXML
+    private Label label;
+
     public VueMenu(Partie p){
         super();
+        init = true;
         this.partie = p;
         this.partie.addObserver(this);
     }
@@ -45,24 +52,32 @@ public class VueMenu implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        Image image0 = new Image("/resources/img/lotus.jpg");
+        if (init) {
+            Image image0 = new Image("/resources/img/lotus.jpg");
 
-        //final URL imageURL = getClass().getResource("../ressources/fond");
-        //final Image image1 = new Image(imageURL.toExternalForm());
+            //final URL imageURL = getClass().getResource("../ressources/fond");
+            //final Image image1 = new Image(imageURL.toExternalForm());
 
 
-        BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
+            BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
-        Background background1 = new Background(new BackgroundImage(image0,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                bSize0));
+            Background background1 = new Background(new BackgroundImage(image0,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    bSize0));
 
-        this.borderpane.setBackground(new Background(new BackgroundImage(image0,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                bSize0)));
+            this.borderpane.setBackground(new Background(new BackgroundImage(image0,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    bSize0)));
+
+
+            //label.setText("Bienvenue " + partie.getPlayer().getUsername());
+            init = false;
+        } else {
+
+        }
     }
 }
