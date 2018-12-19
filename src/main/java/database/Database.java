@@ -67,6 +67,10 @@ public class Database {
         return a;
     }
 
+    public void addCardCardList(String nameCardList , Card card){
+        getCardList (nameCardList).get(0).add(card);
+    }
+    //-----------------------------------------------------------------------------------------------------------------
     public ArrayList<CardList> getCardList (String name){
         ArrayList<CardList> mylistCardList = new ArrayList<CardList>();
         for (CardList cardstack : this.listCardList) {

@@ -124,6 +124,11 @@ public class Partie extends Observable{
     public void setNbCards(int nbCards) {
         this.nbCards = nbCards;
     }
+    //------------------------------------------------------------------------------------------------------------------
+    //adder
+    public void addCardCardList(String nameCardList , Card card) {
+        this.database.addCardCardList(nameCardList ,  card);
+    }
     //----------------------------------------------------------------------------------------------
     //Autres fonctions
 
