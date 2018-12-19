@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 
 import learning.LearningAlgo;
@@ -27,10 +28,8 @@ public class AlgoTest {
         cardstack.add(card2);
         cardstack.add(card3);
         learningAlgo = new LearningAlgo(cardstack);
-
-        System.out.println(card1.getName());
-        //System.out.println(cardstack.getCard().getName());
-       // System.out.println(cardstack.pop().getName());
+        //System.out.println(cardstack.pop().getName());
+        //System.out.println(card1.getName());
         //System.out.println(cardstack.pop().getName());
 
 
@@ -47,11 +46,19 @@ public class AlgoTest {
     @Test
     public void learningAlgo() {
 
-        //assertNotNull("card pas créée", learningAlgo);
-/*
-        assertEquals("permièrecarte", learningAlgo.getCard(), card1);
-        assertEquals("deuxièmecarte", learningAlgo.getCard(), card2);
-        assertEquals("troisièmecarte", learningAlgo.getCard(), card3);
-*/
+        assertNotNull("card pas créée", learningAlgo);
+        assertEquals("permièrecarte" , card1 ,learningAlgo.generateCard());
+        assertEquals("deuxièmecarte" ,  card2 ,learningAlgo.generateCard());
+        assertEquals("troisièmecarte" , card3 ,learningAlgo.generateCard());
+        card1.setState(3);
+        assertEquals("permièrecarte2" , card2 ,learningAlgo.generateCard());
+        assertEquals("deuxièmecarte1" ,  card3 ,learningAlgo.generateCard());
+        card2.setState(2);
+        assertEquals("2.2" , card2 ,learningAlgo.generateCard());
+        assertEquals("2.3" ,  card3 ,learningAlgo.generateCard());
+        card2.setState(3);
+        card3.setState(3);
+        assertNull("end" , learningAlgo.generateCard());
+
     }
 }

@@ -40,9 +40,13 @@ public abstract class Query {
 
     public abstract void send() throws IOException;
 
-    public String getResponse() throws IOException {
+    public String getResponse() {
         StringWriter writer = new StringWriter();
-        IOUtils.copy(response, writer, "UTF-8");
+        try{
+            IOUtils.copy(response, writer, "UTF-8");
+        }catch(IOException e){
+            System.out.println("Unable to create a String response from the HTTP response");
+        }
 
         return writer.toString().replaceAll("^\\s+","").replaceAll("\\s+$","");
     }

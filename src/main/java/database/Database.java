@@ -1,14 +1,12 @@
 package database;
 
+import json.JSONCardParser;
+import json.JSONCardStackParser;
 import models.Card;
 import models.CardList;
-import queries.Query;
-import queries.QueryAddCard;
+import queries.*;
 
 import seeds.CardStackSeed;
-
-import queries.QueryDelCard;
-import queries.QueryDelCardStack;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,12 +15,13 @@ import java.util.List;
 public class Database {
     private ArrayList<String> listdecks;
     private ArrayList<CardList> listCardList ;
-
+    private ArrayList<Card> listCard;
 
     //Construceur
     public Database() {
     listdecks=new ArrayList<String>();
     listCardList = new ArrayList<CardList>();
+    listCard = new ArrayList<Card>();
     }
     //------------------------------------------------------------------------------------------------------------------
     //getter
@@ -76,6 +75,7 @@ public class Database {
     }
 
     public void addCardCardList(String nameCardList , Card card){
+
         getCardList (nameCardList).get(0).add(card);
     }
     //-----------------------------------------------------------------------------------------------------------------
@@ -92,21 +92,23 @@ public class Database {
 
     //en dur
 
-    public void setDatabase() {
-        CardList cardstack1 = new CardList("test1", "pour test ");
-        CardStackSeed cardStackSeed1 = new CardStackSeed(cardstack1);
-        cardStackSeed1.seed(cardstack1.getName());
-        this.listCardList.add(cardstack1);
+    public void setDatabase() throws IOException {
+        Query query = new QueryGetCardStackList();
+        query.send();
+        String JSONresponse= query.getResponse();
+        CardList[] cardLists= JSONCardStackParser.JsonToCardStackList(JSONresponse);
+        for(CardList c:cardLists)
+            this.listCardList.add(c);
 
-        CardList cardstack2 = new CardList("test2", "pour test ");
-        CardStackSeed cardStackSeed2 = new CardStackSeed(cardstack2);
-        cardStackSeed2.seed(cardstack2.getName());
-        this.listCardList.add(cardstack2);
+        query = new QueryGetCardList();
+        query.send();
+        JSONresponse= query.getResponse();
+        Card[] cards= JSONCardParser.JsonToCardList(JSONresponse);
+        for(Card c:cards)
+            this.listCard.add(c);
 
-        CardList cardstack3 = new CardList("test3", "pour test ");
-        CardStackSeed cardStackSeed3 = new CardStackSeed(cardstack3);
-        cardStackSeed3.seed(cardstack3.getName());
-        this.listCardList.add(cardstack3);
+
+
 
 
 
@@ -183,6 +185,19 @@ public class Database {
         return null;
     }
 
+
+    public void deleteCardList(CardList cardList) {
+        this.listCardList.remove(cardList);
+    }
+    public void deleteCardList(String name) {
+        for (CardList cardList : this.listCardList) {
+            if (cardList.getName().equals(name)) {
+                this.listCardList.remove(cardList);
+                return;
+            }
+        }
+
+    }
     public void addDeck(String s, String une_description, String text) {
         this.listCardList.add(new CardList(s,une_description,text));
         System.out.println("addDeck:" + this.listCardList.size());
@@ -190,5 +205,8 @@ public class Database {
 
     public String getFirstDeck() {
         return listCardList.get(0).getName();
+
     }
+
+
 }
