@@ -49,7 +49,8 @@ public class AlgoTest {
         assertEquals("permièrecarte" , card1 ,learningAlgo.generateCard());
         assertEquals("deuxièmecarte" ,  card2 ,learningAlgo.generateCard());
         assertEquals("troisièmecarte" , card3 ,learningAlgo.generateCard());
-        //assertEquals("permièrecarte2" , card1 ,learningAlgo.generateCard());
+        card1.setState(3);
+        assertEquals("permièrecarte2" , card1 ,learningAlgo.generateCard());
 
 
     }

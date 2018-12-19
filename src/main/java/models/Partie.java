@@ -233,6 +233,9 @@ public class Partie extends Observable{
     public void deleteCardList(CardList cardList) {
         this.database.deleteCardList(cardList);
     }
+    public void deleteCardList(String name) {
+        this.database.deleteCardList(name);
+    }
 
     public void addDeck(String text) {
         this.database.addDeck(text,"une description",this.player.getUsername());

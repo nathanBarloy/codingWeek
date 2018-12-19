@@ -187,6 +187,15 @@ public class Database {
     public void deleteCardList(CardList cardList) {
         this.listCardList.remove(cardList);
     }
+    public void deleteCardList(String name) {
+        for (CardList cardList : this.listCardList) {
+            if (cardList.getName().equals(name)) {
+                this.listCardList.remove(cardList);
+                return;
+            }
+        }
+
+    }
     public void addDeck(String s, String une_description, String text) {
         this.listCardList.add(new CardList(s,une_description,text));
         System.out.println("addDeck:" + this.listCardList.size());
@@ -196,4 +205,6 @@ public class Database {
         return listCardList.get(0).getName();
 
     }
+
+
 }

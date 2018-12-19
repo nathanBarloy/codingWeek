@@ -85,7 +85,6 @@ public class CardList implements Iterable<Card>{
 
     public Card pop() {
         if (!(this.index <= len-1)){
-            System.out.println("endcardlist");
             return null;
 
         }
@@ -146,7 +145,7 @@ public class CardList implements Iterable<Card>{
 
     public boolean endCardList(){
         /*renvoie  true si on a lu toutes les cartes  false sinon*/
-        return !(this.index < len-1);
+        return !(this.index <= len-1);
     }
 
     @Override
