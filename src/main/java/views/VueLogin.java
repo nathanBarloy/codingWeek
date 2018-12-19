@@ -44,7 +44,7 @@ public class VueLogin implements Observer {
             partie.setPlayer(new Player(nom));
             Main.main.switchScene("/views/VueMenu.fxml");
         } else {
-            Main.main.switchScene("/views/VueMenu.fxml");
+            //Main.main.switchScene("/views/VueMenu.fxml");
         }
 
 

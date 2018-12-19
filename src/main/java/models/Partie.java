@@ -22,6 +22,7 @@ public class Partie extends Observable{
     private String RepEnCours;
     private String NameEnCours;
     public boolean timeout = false;
+    private String deckEnCours;
 
 
     public String getNameEnCours() { return NameEnCours; }
@@ -46,6 +47,22 @@ public class Partie extends Observable{
 
 
     }
+
+    public Partie(Player player) {
+        this.player = player;
+        this.cardList = new CardList("Default","Deck avec des cartes par défaut");
+        CardStackSeed cs = new CardStackSeed(cardList);
+        cs.seed();
+        this.database = new Database();
+        this.nbCards = cardList.getNbCards();
+        this.database.setDatabase();
+        System.out.println(this.database.getListCardList().size() + "decks par défault");
+    }
+
+    public Partie() {
+        this(new Player("perso test"));
+    }
+
     //-----------------------------------------------------------------------------------------------
     //Getter
 
@@ -150,7 +167,6 @@ public class Partie extends Observable{
         }
     }
     public void valider() {
-
         this.CurrentCard.setType("reponse");
         setChanged();
         notifyObservers();
@@ -197,5 +213,13 @@ public class Partie extends Observable{
 
     public ArrayList<String> getListeCarte(String currentDeck) {
         return this.database.getListeCarte(currentDeck);
+    }
+
+    public String getDeckEnCours() {
+        return this.deckEnCours;
+    }
+
+    public void setDeckEnCours(String deckEnCours) {
+        this.deckEnCours = deckEnCours;
     }
 }
