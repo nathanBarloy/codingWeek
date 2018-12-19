@@ -42,20 +42,7 @@ public class DatabaseTest {
         database.add(cardstack4);
         database.add(cardstack5);
         database.add(cardstack6);
-        /*
-        //resultat 1
-        databaseresultat1 = new Database();
-        databaseresultat1.add(cardstack1);
-        databaseresultat1.add(cardstack6);
 
-        //resultat 2
-        databaseresultat2 = new Database();
-        databaseresultat2.add(cardstack2);
-        databaseresultat2.add(cardstack5);
-
-        //resultat vide
-        databaseresultat3 = new Database();
-        */
 
 
     }

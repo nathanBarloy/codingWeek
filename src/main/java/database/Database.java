@@ -10,26 +10,32 @@ public class Database {
     private List<CardList> listCardList;
 
 
+    //Construceur
     public Database() {
     listdecks=new ArrayList<String>();
     listCardList = new ArrayList<CardList>();
     }
-
+    //------------------------------------------------------------------------------------------------------------------
+    //getter
     public List<String> getListStack() {
         return listdecks;
-    }
-
-    public void setListStack(List<String> liststack) {
-        this.listdecks = liststack;
     }
 
     public List<CardList> getListCardList() {
         return listCardList;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+    //Setter
     public void setListCardList(List<CardList> listCardSatck) {
         this.listCardList = listCardList;
     }
+    public void setListStack(List<String> liststack) {
+        this.listdecks = liststack;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //ajout
 
     public void add(CardList CardList) {
         this.listCardList.add(CardList);
