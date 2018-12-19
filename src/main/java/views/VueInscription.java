@@ -8,6 +8,7 @@ import models.Partie;
 import models.Player;
 import queries.Query;
 import queries.QueryAddUser;
+import queries.QueryCheckUsername;
 
 
 import java.io.IOException;
@@ -48,16 +49,31 @@ public class VueInscription implements Observer{
 
         if ( !(nom.length()<3 || mdp.length()<6 || !mdp.equals(confirm)) ) { //si informations sont correctes
             //ajouter utilisateur à la BDD
-            Player player = new Player(nom);
-            Query query = new QueryAddUser(player);
+            Query check = new QueryCheckUsername(nom);
+            String resp = "1";
             try {
-                query.send();
+                check.send();
+                resp = check.getResponse(); //on regarde si le nom entré existe déjà
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+            if (resp.equals("0")) { //si le nom n'existe pas (cas correct)
+                Player player = new Player(nom);
 
-            retour();
+                Query query = new QueryAddUser(player);
+                try {
+                    query.send();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                retour();
+
+            } else { //si le nom existe (erreur)
+
+            }
+
         } else {
 
         }
