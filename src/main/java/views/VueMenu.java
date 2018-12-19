@@ -6,7 +6,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
+import queries.Query;
+import queries.QueryDelUser;
 
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -50,6 +53,16 @@ public class VueMenu implements Observer{
         Main.main.switchScene("/views/VueLogin.fxml");
     }
 
+    public void supprimerCompte() {
+        Query del = new QueryDelUser(partie.getPlayer());
+        try {
+            del.send();
+            deconnexion();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         if (init) {
@@ -73,7 +86,7 @@ public class VueMenu implements Observer{
                     BackgroundPosition.DEFAULT,
                     bSize0)));
 
-            System.out.println(label);
+            //System.out.println(label);
             label.setText("Bienvenue " + partie.getPlayer().getUsername());
             init = false;
         } else {

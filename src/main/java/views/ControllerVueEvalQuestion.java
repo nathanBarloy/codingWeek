@@ -240,40 +240,15 @@ public class ControllerVueEvalQuestion implements Observer {
 
             Card carte = partie.getCurrentCard(object);
             this.c = carte;
-/*
-                partie.setDatabase();
-                Database database = partie.getDatabase();
-                //en dur
-                List<CardList>  cardStackList = database.getCardList("test1");
-                CardList cardStack = cardStackList.get(0);
-                //fin de en dur
-                Card carte = cardStack.getCard();
-*/
-
 
             if (carte != null) {
 
-                //System.out.println(carte.getQuestion());
                 if (carte.getType().equals("question")) {
                     this.partie.timeout = true;
 
                     this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
 
                     int a = this.animation2();
-                    //int b = this.animation3();
-                    //this.PaneAnim.getChildren().remove(img);
-                    //this.PaneAnim.getChildren().remove(img);
-                    //this.PaneAnim.setVisible(false);
-
-                        /*
-                        final Timeline timeline = new Timeline();
-                        //timeline.setCycleCount(Timeline.FINITE);
-                        timeline.setAutoReverse(true);
-                        final KeyValue kv = new KeyValue(this.RecAnim.scaleYProperty(), 5);
-                        final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv);
-                        timeline.getKeyFrames().add(kf);
-                        timeline.play();
-                         */
 
                     this.RondAvancement.setProgress(0.0F);
                     progress += 1/size;
@@ -290,12 +265,7 @@ public class ControllerVueEvalQuestion implements Observer {
                         Anim.setAutoReverse(false);
                         final KeyValue kv = new KeyValue(this.RondAvancement.progressProperty(), 1);
                         final KeyFrame kf = new KeyFrame(Duration.millis(15000), kv);
-                        Anim.getKeyFrames().add(kf);/*
-                            Anim.statusProperty().addListener((obs, oldStatus, newStatus) ->
-                                    new PauseTransition(Duration.millis(1000))
-                                    //System.out.println("here")
-                                    //this.mdr++
-                                    );*/
+                        Anim.getKeyFrames().add(kf);
                         Anim.setOnFinished(new EventHandler<ActionEvent>() {
 
 
@@ -304,7 +274,7 @@ public class ControllerVueEvalQuestion implements Observer {
                                 RondAvancement.setProgress(0);
                                 try {
                                     partie.timeout = false;
-                                    partie.valider();
+                                    //partie.valider();
                                 }
                                 catch (Exception e){
                                     //System.out.println("caught exception");
@@ -342,7 +312,6 @@ public class ControllerVueEvalQuestion implements Observer {
                             this.RecPane.getChildren().add(img);
                         }
                         Timeline timeline = new Timeline();
-                        //timeline.setCycleCount(Timeline.INDEFINITE);
                         timeline.setAutoReverse(true);
                         KeyValue kv = new KeyValue(this.RecPane.rotateProperty(), 0);
                         KeyFrame kf = new KeyFrame(Duration.millis(1000), kv);
@@ -352,15 +321,6 @@ public class ControllerVueEvalQuestion implements Observer {
 
                             @Override
                             public void handle(ActionEvent actionEvent) {
-                                /*final Timeline timeline2 = new Timeline();
-                                timeline2.setAutoReverse(true);
-                                final KeyValue kv = new KeyValue(RectangleCarte.scaleXProperty(), 1);
-                                final KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
-                                final KeyValue kv2 = new KeyValue(RectangleCarte.scaleYProperty(), 1);
-                                final KeyFrame kf2 = new KeyFrame(Duration.millis(200), kv2);
-                                timeline2.getKeyFrames().add(kf);
-                                timeline2.getKeyFrames().add(kf2);
-                                timeline2.play();*/
                                 RecPane.getChildren().remove(img);
                             }
                         });
@@ -384,7 +344,6 @@ public class ControllerVueEvalQuestion implements Observer {
                             this.RecPane.getChildren().add(img);
                         }
                         Timeline timeline = new Timeline();
-                        //timeline.setCycleCount(Timeline.INDEFINITE);
                         timeline.setAutoReverse(true);
                         KeyValue kv = new KeyValue(this.RecPane.rotateProperty(), 0);
                         KeyFrame kf = new KeyFrame(Duration.millis(1000), kv);
@@ -394,15 +353,6 @@ public class ControllerVueEvalQuestion implements Observer {
 
                             @Override
                             public void handle(ActionEvent actionEvent) {
-                                /*final Timeline timeline2 = new Timeline();
-                                timeline2.setAutoReverse(true);
-                                final KeyValue kv = new KeyValue(RectangleCarte.scaleXProperty(), 1);
-                                final KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
-                                final KeyValue kv2 = new KeyValue(RectangleCarte.scaleYProperty(), 1);
-                                final KeyFrame kf2 = new KeyFrame(Duration.millis(200), kv2);
-                                timeline2.getKeyFrames().add(kf);
-                                timeline2.getKeyFrames().add(kf2);
-                                timeline2.play();*/
                                 RecPane.getChildren().remove(img);
                             }
                         });
@@ -416,25 +366,12 @@ public class ControllerVueEvalQuestion implements Observer {
                 this.ProgressBar.setProgress(progress);
                 this.init = 1000;
                 this.partie.reset();
-                /*try {
-                    Alert alertt = new Alert(Alert.AlertType.ERROR);
-                    alertt.setTitle("ERREUR");
-                    alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
-                    String mmessage = "";
-
-                    alertt.setContentText(mmessage);
-                    alertt.showAndWait();
-
-                    Thread.sleep(3000);
-                    Main.main.switchScene("/views/VueMenu.fxml");
-                } catch (InterruptedException e) {
-                    System.out.println("exception on waiting");
-                    e.printStackTrace();
-                }*/
 
             }
         }
-        this.init = 1;
+        if (this.init == -1) {
+            this.init = 1;
+        }
     }
 
 
