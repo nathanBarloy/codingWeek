@@ -20,7 +20,7 @@ public class QueryAddUser extends Query {
 
 
     public void send() throws IOException {
-        {
+
 
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("username", player.getUsername()));
@@ -28,18 +28,18 @@ public class QueryAddUser extends Query {
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
-            HttpResponse response = httpClient.execute(request);
-            HttpEntity entity = response.getEntity();
+            HttpResponse httpResponse = httpClient.execute(request);
+            HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null) {
                 try  {
                     this.response = entity.getContent();
-                    System.out.println(response.toString());
+                    System.out.println(getResponse());
                 }catch (Exception e){
 
                 }
             }
-        }
+
 
     }
 }

@@ -3,18 +3,16 @@ package queries;
 import models.Player;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
-public class QueryDelUser extends Query {
+public class QueryGetCardStackList extends Query {
 
     private Player player;
 
-    public QueryDelUser(Player player) {
-        super("delUser");
-        this.player=player;
+    public QueryGetCardStackList() {
+        super("getCardStackList");
+
     }
 
 
@@ -22,8 +20,6 @@ public class QueryDelUser extends Query {
 
 
 // Request parameters and other properties.
-            params.add(new BasicNameValuePair("username", player.getUsername()));
-            request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
             HttpResponse httpResponse = httpClient.execute(request);

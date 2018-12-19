@@ -8,36 +8,38 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
-public class QueryDelStackCard extends Query {
+public class QueryAddCardStack extends Query {
 
     private CardList cardList;
 
-    public QueryDelStackCard(CardList cardList) {
-        super("delCardStack");
-        this.cardList = this.cardList;
+    public QueryAddCardStack(CardList cardList) {
+        super("addCardStack");
+        this.cardList = cardList;
     }
 
 
     public void send() throws IOException {
-        {
+
 
 // Request parameters and other properties.
             params.add(new BasicNameValuePair("name", cardList.getName()));
+            params.add(new BasicNameValuePair("description", cardList.getDescription()));
+            params.add(new BasicNameValuePair("author", cardList.getAuthor().getUsername()));
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
-            HttpResponse response = httpClient.execute(request);
-            HttpEntity entity = response.getEntity();
+            HttpResponse httpResponse = httpClient.execute(request);
+            HttpEntity entity = httpResponse.getEntity();
 
             if (entity != null) {
                 try  {
                     this.response = entity.getContent();
-                    System.out.println(response.toString());
+                    System.out.println(getResponse());
                 }catch (Exception e){
 
                 }
             }
-        }
+
 
     }
 }

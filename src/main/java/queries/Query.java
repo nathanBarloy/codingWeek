@@ -1,5 +1,6 @@
 package queries;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -12,6 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,5 +39,11 @@ public abstract class Query {
 
 
     public abstract void send() throws IOException;
+
+    public String getResponse() throws IOException {
+        StringWriter writer = new StringWriter();
+        IOUtils.copy(response, writer, "UTF-8");
+        return writer.toString();
+    }
 
 }
