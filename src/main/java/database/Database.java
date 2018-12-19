@@ -187,4 +187,8 @@ public class Database {
         this.listCardList.add(new CardList(s,une_description,text));
         System.out.println("addDeck:" + this.listCardList.size());
     }
+
+    public String getFirstDeck() {
+        return listCardList.get(0).getName();
+    }
 }

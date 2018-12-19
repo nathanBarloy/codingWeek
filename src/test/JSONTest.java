@@ -18,21 +18,21 @@ import java.io.IOException;
 public class JSONTest {
     private Player player;
     private Card[] cards;
-    private JSONParser jsonParser;
+
     private Query query;
 
     @Before
     public void initialiser() throws Exception {
         player = new Player("Alexis","az");
 
-        jsonParser=new JSONParser();
+
 
     }
 
     @After
     public void nettoyer() throws Exception {
         cards = null;
-        jsonParser = null;
+
     }
 
     @Test
@@ -40,7 +40,7 @@ public class JSONTest {
         query = new QueryGetCardList();
         query.send();
 
-        cards=jsonParser.JsonToCardList(query.getResponse());
+        cards=JSONParser.JsonToCardList(query.getResponse());
         for(Card c:cards)
             System.out.println(c.toString());
 

@@ -149,8 +149,9 @@ public class Partie extends Observable{
         notifyObservers();
     }
 
-    public void NvQuest() {
-        this.CurrentCard = this.database.pop("test1");
+    public void NvQuest(String deck) {
+        this.deckEnCours = deck;
+        this.CurrentCard = this.database.pop(deckEnCours);
 
         if (this.CurrentCard != null) {
             this.CurrentCard.setType("question");
@@ -233,5 +234,9 @@ public class Partie extends Observable{
         this.database.addDeck(text,"une description",this.player.getUsername());
         setChanged();
         notifyObservers();
+    }
+
+    public String getFirstDeck() {
+        return this.database.getFirstDeck();
     }
 }

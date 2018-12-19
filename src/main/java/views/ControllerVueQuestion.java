@@ -53,7 +53,7 @@ public class ControllerVueQuestion implements Observer {
     private ProgressBar ProgressBar;
 
     @FXML
-    private ChoiceBox choicebox;
+    private ComboBox choicebox;
     @FXML
     private RadioButton RadioParfait;
 
@@ -81,6 +81,7 @@ public class ControllerVueQuestion implements Observer {
     private static int mdr = -1;
     private boolean done;
     private boolean AChange;
+    private String currentDeck;
 
     public ControllerVueQuestion(Partie partie) {
         super();
@@ -117,8 +118,19 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void NvQuest() {
+        if (this.currentDeck == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ATTENTION");
+
+            alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
+            String message = "";
+
+            alert.setContentText(message);
+            alert.showAndWait();
+            this.currentDeck = this.partie.getFirstDeck();
+        }
         this.Anim.stop();
-        this.partie.NvQuest();
+        this.partie.NvQuest(this.currentDeck);
     }
 
     public void valider() {
@@ -133,6 +145,12 @@ public class ControllerVueQuestion implements Observer {
             partie.valider();
         }
     }
+
+    public void SwapDeck(){
+        this.partie.reset();
+        this.currentDeck = (String) this.choicebox.getValue();
+    }
+
 
     public int animation(){
         this.PaneAnim.setVisible(true);
@@ -213,11 +231,7 @@ public class ControllerVueQuestion implements Observer {
                 //final Image image1 = new Image(imageURL.toExternalForm());
 
                 this.choicebox.setTooltip(new Tooltip("Select the language"));
-                this.choicebox.setItems(FXCollections.observableArrayList(
-                        new Label("deck1").getText(),
-                        "deck 2"
-                ));
-
+                this.choicebox.getItems().addAll(this.partie.getListeDeck());
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
                 Background background1 = new Background(new BackgroundImage(image0,
@@ -239,7 +253,7 @@ public class ControllerVueQuestion implements Observer {
 
                 if (object == null){
                     if(this.done == false) {
-
+                        /*
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("ATTENTION");
 
@@ -248,6 +262,7 @@ public class ControllerVueQuestion implements Observer {
 
                         alert.setContentText(message);
                         alert.showAndWait();
+                        */
                     }
                     this.done = true;
                 }
@@ -257,7 +272,7 @@ public class ControllerVueQuestion implements Observer {
 
                 }
 
-                Card carte = partie.getCurrentCard(object);
+                Card carte = partie.getCurrentCard(currentDeck);
 
 
 
@@ -320,22 +335,6 @@ public class ControllerVueQuestion implements Observer {
                     this.init = 1000;
 
                     this.partie.reset();
-                    /*
-                    try {
-                    Alert alertt = new Alert(Alert.AlertType.ERROR);
-                    alertt.setTitle("ERREUR");
-                    alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
-                    String mmessage = "";
-
-                    alertt.setContentText(mmessage);
-                    alertt.showAndWait();
-
-                     /*   Thread.sleep(3000);
-                        Main.main.switchScene("/views/VueMenu.fxml");
-                    } catch (InterruptedException e) {
-                        System.out.println("exception on waiting");
-                        e.printStackTrace();
-                    }*/
 
 
                 }

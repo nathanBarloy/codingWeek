@@ -97,7 +97,7 @@ public class ControllerVueEvalQuestion implements Observer {
 
     public void NvQuest() {
         Anim.stop();
-        this.partie.NvQuest();
+        this.partie.NvQuest("test1");
 
     }
 
