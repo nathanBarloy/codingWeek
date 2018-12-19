@@ -4,6 +4,7 @@ import models.Card;
 import models.CardList;
 import queries.Query;
 import queries.QueryAddCard;
+import seeds.CardStackSeed;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class Database {
     private List<String> listdecks;
-    private List<CardList> listCardList;
+    private List<CardList> listCardList ;
 
 
     //Construceur
@@ -80,4 +81,28 @@ public class Database {
         }
         return mylistCardList;
     }
+
+    //en dur
+
+    public void setDatabase() {
+        CardList cardstack1 = new CardList("test1", "pour test ");
+        CardStackSeed cardStackSeed1 = new CardStackSeed(cardstack1);
+        cardStackSeed1.seed();
+        this.listCardList.add(cardstack1);
+
+        CardList cardstack2 = new CardList("test2", "pour test ");
+        CardStackSeed cardStackSeed2 = new CardStackSeed(cardstack2);
+        cardStackSeed2.seed();
+        this.listCardList.add(cardstack2);
+
+        CardList cardstack3 = new CardList("test3", "pour test ");
+        CardStackSeed cardStackSeed3 = new CardStackSeed(cardstack3);
+        cardStackSeed3.seed();
+        this.listCardList.add(cardstack3);
+
+
+
+    }
+
+    //
 }

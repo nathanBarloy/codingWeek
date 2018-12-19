@@ -24,6 +24,14 @@ public class CardList {
         len = 0;
     }
 
+    public CardList(String name, String description) {
+        this.name = name;
+        this.description = description;
+        cardStack = new ArrayList<Card>();
+        this.index = 0;
+        len = 0;
+    }
+
     public Player getAuthor() {
         return author;
     }
