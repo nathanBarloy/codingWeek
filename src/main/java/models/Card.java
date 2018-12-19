@@ -27,7 +27,7 @@ public class Card {
         this.name=name;
         this.text=question;
         this.answer=answer;
-        this.author=player.getUsername();
+        //this.author=player.getUsername();
         this.type = "question";
 
     }

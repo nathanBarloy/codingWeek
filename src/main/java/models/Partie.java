@@ -149,7 +149,7 @@ public class Partie extends Observable{
     }
 
     public void NvQuest() {
-        this.CurrentCard = cardList.pop();
+        this.CurrentCard = this.database.pop("test1");
 
         if (this.CurrentCard != null) {
             this.CurrentCard.setType("question");
@@ -221,5 +221,9 @@ public class Partie extends Observable{
 
     public void setDeckEnCours(String deckEnCours) {
         this.deckEnCours = deckEnCours;
+    }
+
+    public void reset() {
+        this.database.reset();
     }
 }

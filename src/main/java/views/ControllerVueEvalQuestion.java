@@ -414,7 +414,9 @@ public class ControllerVueEvalQuestion implements Observer {
             } else {
                 this.progress += 1/size;
                 this.ProgressBar.setProgress(progress);
-                try {
+                this.init = 1000;
+                this.partie.reset();
+                /*try {
                     Alert alertt = new Alert(Alert.AlertType.ERROR);
                     alertt.setTitle("ERREUR");
                     alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
@@ -428,7 +430,7 @@ public class ControllerVueEvalQuestion implements Observer {
                 } catch (InterruptedException e) {
                     System.out.println("exception on waiting");
                     e.printStackTrace();
-                }
+                }*/
 
             }
         }

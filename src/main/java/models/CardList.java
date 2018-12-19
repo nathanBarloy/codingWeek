@@ -96,7 +96,9 @@ public class CardList implements Iterable<Card>{
 
         }
     }
-
+    public void resetIndex(){
+        this.index = 0;
+    }
     public int getNbCards() {
 
         return len;
@@ -187,5 +189,11 @@ public class CardList implements Iterable<Card>{
 
     public void supprime(Card card) {
         this.cardStack.remove(card);
+    }
+
+    public void resetType() {
+        for (Card c : this.cardStack) {
+            c.setType("question");
+        }
     }
 }
