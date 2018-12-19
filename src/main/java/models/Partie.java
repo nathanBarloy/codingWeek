@@ -114,6 +114,9 @@ public class Partie extends Observable{
     public void addCard(String NomDeck,Card card){
         this.database.addCard(NomDeck,card);
     }
+    public void SupprimerCard(String NomDeck,Card card){
+        this.database.SupressCard(NomDeck,card);
+    }
     //fin du code en dur
     //------------------------------------------------------------------------------------------------------------------
 
@@ -177,5 +180,9 @@ public class Partie extends Observable{
 
     public void setNameEnCours(String nameEnCours) {
         this.NameEnCours = nameEnCours;
+    }
+
+    public void getCard(String temp, String currentDeck) {
+        return this.database.getCard(temp,currentDeck);
     }
 }

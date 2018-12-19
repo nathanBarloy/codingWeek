@@ -4,6 +4,8 @@ import models.Card;
 import models.CardList;
 import queries.Query;
 import queries.QueryAddCard;
+import queries.QueryDelCard;
+import queries.QueryDelCardStack;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -69,5 +71,39 @@ public class Database {
             }
         }
         return mylistCardList;
+    }
+
+    public String SupressCard(String nomDeck, Card card) {
+        String a =  "-1";
+        for (int  i = 0;i<this.listCardList.size();i++){
+            if (this.listCardList.get(i).getName().equals(nomDeck)){
+                this.listCardList.get(i).add(card);
+                Query query = new QueryDelCard(card);
+
+                try {
+                    query.send();
+                    a = query.getResponse();
+                    return a;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("bug sur l'envoi de la requête");
+                }
+
+            }
+        }
+        return a;
+    }
+
+    public Card getCard(String temp, String currentDeck) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals((currentDeck))) {
+                for (Card c : c1) {
+                    if (c.getName().equals(temp)){
+                        return c;
+                    }
+                }
+            }
+        }
+        return null;
     }
 }
