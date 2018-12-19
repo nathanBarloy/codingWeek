@@ -6,6 +6,7 @@ import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class Partie extends Observable{
@@ -165,5 +166,10 @@ public class Partie extends Observable{
 
     public void setQuestEnCours(String questEnCours) {
         QuestEnCours = questEnCours;
+    }
+
+    public ArrayList<String> getDeckName() {
+        ArrayList<String> res = database.getDeckName();
+        return res;
     }
 }

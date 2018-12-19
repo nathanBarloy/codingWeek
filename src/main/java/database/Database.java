@@ -44,4 +44,8 @@ public class Database {
         }
         return mylistCardList;
     }
+
+    public ArrayList<String> getDeckName() {
+        return (ArrayList<String>) listdecks;
+    }
 }
