@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import launch.Main;
 import models.Partie;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -89,11 +90,10 @@ public class VueCreation implements Observer {
     public void update(Observable o, Object arg) {
         if (init) {
 
-            menuDeck.setItems(FXCollections.observableArrayList(
+            ArrayList<String> deckList = partie.getDeckName();
+            menuDeck.setItems(FXCollections.observableArrayList( deckList ));
 
-                    "deck 1",
-                    "deck 2"
-            ));
+            
         } else {
 
         }

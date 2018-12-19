@@ -4,7 +4,11 @@ import models.Card;
 import models.CardList;
 import queries.Query;
 import queries.QueryAddCard;
+
 import seeds.CardStackSeed;
+
+import queries.QueryDelCard;
+import queries.QueryDelCardStack;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -82,6 +86,7 @@ public class Database {
         return mylistCardList;
     }
 
+
     //en dur
 
     public void setDatabase() {
@@ -105,4 +110,55 @@ public class Database {
     }
 
     //
+
+    public String SupressCard(String nomDeck, Card card) {
+        if (card != null){
+        String a =  "-1";
+        for (int  i = 0;i<this.listCardList.size();i++){
+            if (this.listCardList.get(i).getName().equals(nomDeck)){
+                this.listCardList.get(i).add(card);
+                Query query = new QueryDelCard(card);
+
+                try {
+                    query.send();
+                    a = query.getResponse();
+                    return a;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("bug sur l'envoi de la requête");
+                }
+
+                }
+            }
+            return a;
+        }
+        return null;
+    }
+
+    public Card getCard(String temp, String currentDeck) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals((currentDeck))) {
+                for (Card c : c1) {
+                    if (c.getName().equals(temp)){
+                        return c;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<String> getDeckName() {
+        return (ArrayList<String>) listdecks;
+    }
+
+    public ArrayList<String> getListeCarte(String currentDeck) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals((currentDeck))) {
+                return c1.getListeCarte();
+            }
+        }
+        return new ArrayList<String>();
+    }
+
 }
