@@ -28,7 +28,6 @@ public class QueryGetCardStackList extends Query {
             if (entity != null) {
                 try  {
                     this.response = entity.getContent();
-                    System.out.println(getResponse());
                 }catch (Exception e){
 
                 }
