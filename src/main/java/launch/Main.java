@@ -109,7 +109,7 @@ public class  Main extends Application {
 
             if (fxmlFile.equals("/views/VueCard.fxml")) {
 
-                System.out.println(partie.getQuestEnCours());
+                //System.out.println(partie.getQuestEnCours());
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCard(partie));
@@ -117,7 +117,7 @@ public class  Main extends Application {
 
                 VueMenu = loader2.load();
                 partie.init();
-                System.out.println(partie.getQuestEnCours());
+                //System.out.println(partie.getQuestEnCours());
 
 
                 stage.setTitle("Vue d'une Carte");
@@ -214,7 +214,7 @@ public class  Main extends Application {
             }
             if (fxmlFile.equals("/views/VueMenu.fxml")) {
 
-                System.out.println("JE SUIS LA");
+                //System.out.println("JE SUIS LA");
 
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -227,7 +227,6 @@ public class  Main extends Application {
                 stage.setTitle("Menu Principal");
                 stage.setScene(new Scene(VueMenu, 1000, 800));
                 p.init();
-
                 stage.show();
 
             }
@@ -243,7 +242,7 @@ public class  Main extends Application {
 
                 VueMenu = loader2.load();
                 p.init();
-                System.out.println(p.getQuestEnCours());
+                //System.out.println(p.getQuestEnCours());
 
 
                 stage.setTitle("Vue d'une Carte");

@@ -202,6 +202,7 @@ public class ControllerVueQuestion implements Observer {
     @Override
     public void update(Observable o, Object arg) {
             if (this.init == -1) {
+                this.partie.reset();
                 Image image0 = new Image("/resources/img/lotus.jpg");
 
                 //final URL imageURL = getClass().getResource("../ressources/fond");
@@ -260,28 +261,11 @@ public class ControllerVueQuestion implements Observer {
 
 
                 if (carte != null) {
-
-                    //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
 
                         this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
 
                         int a = this.animation2();
-                        //int b = this.animation3();
-                        //this.PaneAnim.getChildren().remove(img);
-                        //this.PaneAnim.getChildren().remove(img);
-                        //this.PaneAnim.setVisible(false);
-
-                        /*
-                        final Timeline timeline = new Timeline();
-                        //timeline.setCycleCount(Timeline.FINITE);
-                        timeline.setAutoReverse(true);
-                        final KeyValue kv = new KeyValue(this.RecAnim.scaleYProperty(), 5);
-                        final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv);
-                        timeline.getKeyFrames().add(kf);
-                        timeline.play();
-                         */
-
                         this.RondAvancement.setProgress(0.0F);
                         progress += 1/size;
                         this.ProgressBar.setProgress(progress);
@@ -310,7 +294,7 @@ public class ControllerVueQuestion implements Observer {
                                 public void handle(ActionEvent actionEvent) {
                                     RondAvancement.setProgress(0);
                                     try {
-                                        partie.valider();
+                                        //partie.valider();
                                     }
                                     catch (Exception e){
                                         //System.out.println("caught exception");
@@ -321,17 +305,17 @@ public class ControllerVueQuestion implements Observer {
                             Anim.play();
                         }
                     }
-                    if (carte.getType().equals("reponse") || this.mdr == 1) {
-                        this.mdr = -1;
+                    if (carte.getType().equals("reponse")) {
                         //this.RondAvancement.setProgress(0f);
                         //System.out.println("reponse");
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
                 } else {
-                    System.out.println("here");
+                    //System.out.println("here");
                     this.progress += 1/size;
                     this.ProgressBar.setProgress(progress);
                     this.init = 1000;
+
                     this.partie.reset();
                     /*
                     try {
@@ -350,9 +334,13 @@ public class ControllerVueQuestion implements Observer {
                         e.printStackTrace();
                     }*/
 
+
                 }
             }
+        if (this.init == -1) {
             this.init = 1;
+        }
+
         }
 
 
