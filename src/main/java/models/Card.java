@@ -106,6 +106,10 @@ public class Card {
         this.user_fail = user_fail;
     }
 
+    public void setState(int state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
