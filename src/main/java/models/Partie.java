@@ -46,6 +46,22 @@ public class Partie extends Observable{
 
 
     }
+
+    public Partie(Player player) {
+        this.player = player;
+        this.cardList = new CardList("Default","Deck avec des cartes par défaut");
+        CardStackSeed cs = new CardStackSeed(cardList);
+        cs.seed();
+        this.database = new Database();
+        this.nbCards = cardList.getNbCards();
+        this.database.setDatabase();
+        System.out.println(this.database.getListCardList().size() + "decks par défault");
+    }
+
+    public Partie() {
+        this(new Player("perso test"));
+    }
+
     //-----------------------------------------------------------------------------------------------
     //Getter
 
