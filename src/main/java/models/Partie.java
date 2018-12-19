@@ -70,6 +70,7 @@ public class Partie extends Observable{
         ArrayList<String> res = new ArrayList<String>();
         List<CardList> temp = this.database.getListCardList();
         for (CardList c : temp){
+            System.out.println("getListeDeck:" + c.getName());
             res.add(c.getName());
         }
         return res;
@@ -226,5 +227,11 @@ public class Partie extends Observable{
 
     public void reset() {
         this.database.reset();
+    }
+
+    public void addDeck(String text) {
+        this.database.addDeck(text,"une description",this.player.getUsername());
+        setChanged();
+        notifyObservers();
     }
 }

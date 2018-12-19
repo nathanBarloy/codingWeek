@@ -26,6 +26,7 @@ import models.*;
 import java.util.*;
 
 public class ControllerVueQuestion implements Observer {
+    final Timeline Anim = new Timeline();
     private ArrayList<String> liste = new ArrayList<String>();
     private double progress = 0.0;
     private Partie partie;
@@ -79,6 +80,7 @@ public class ControllerVueQuestion implements Observer {
     private double size;
     private static int mdr = -1;
     private boolean done;
+    private boolean AChange;
 
     public ControllerVueQuestion(Partie partie) {
         super();
@@ -115,10 +117,12 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void NvQuest() {
+        this.Anim.stop();
         this.partie.NvQuest();
     }
 
     public void valider() {
+        this.Anim.stop();
         if (RadioParfait.isSelected()){
             this.NbBonnesReponses++;
         }
@@ -262,7 +266,6 @@ public class ControllerVueQuestion implements Observer {
 
                 if (carte != null) {
                     if (carte.getType().equals("question")) {
-
                         this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
 
                         int a = this.animation2();
@@ -276,7 +279,6 @@ public class ControllerVueQuestion implements Observer {
                             this.mdr = -1;
                             //System.out.println("label : " + this.LabelQuestion.getText());
                             float f = 0;
-                            final Timeline Anim = new Timeline();
                             //timeline.setCycleCount(Timeline.FINITE);
                             Anim.setAutoReverse(false);
                             final KeyValue kv = new KeyValue(this.RondAvancement.progressProperty(), 1);
@@ -294,7 +296,7 @@ public class ControllerVueQuestion implements Observer {
                                 public void handle(ActionEvent actionEvent) {
                                     RondAvancement.setProgress(0);
                                     try {
-                                        //partie.valider();
+                                        valider();
                                     }
                                     catch (Exception e){
                                         //System.out.println("caught exception");
@@ -302,6 +304,7 @@ public class ControllerVueQuestion implements Observer {
                                     //System.out.println("finished");
                                 }
                             });
+                            this.AChange = false;
                             Anim.play();
                         }
                     }
