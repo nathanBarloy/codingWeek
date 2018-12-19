@@ -219,4 +219,17 @@ public class CardList implements Iterable<Card>{
         }
         return cardList;
     }
+
+
+    public void setCardStack(ArrayList<Card> list){
+
+        for(Card x:list) {
+            
+            if(cardIds.contains(x.getId())) {
+                cardStack.add(x);
+
+            }
+        }
+
+    }
 }

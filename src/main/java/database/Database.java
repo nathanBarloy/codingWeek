@@ -107,6 +107,10 @@ public class Database {
         for(Card c:cards)
             this.listCard.add(c);
 
+        for(CardList c:listCardList){
+            c.setCardStack(this.listCard);
+
+        }
 
 
 

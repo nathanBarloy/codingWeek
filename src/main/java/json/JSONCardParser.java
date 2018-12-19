@@ -27,10 +27,12 @@ public class JSONCardParser {
         String name=jsonCard.getString("name");
         String question=jsonCard.getString("question");
         String answer=jsonCard.getString("answer");
-
+        int id=jsonCard.getInt("id");
         String author=jsonCard.getString("author");
         String type=jsonCard.getString("type");
-        return new Card(name,question,answer,author);
+        Card c = new Card(name,question,answer,author);
+        c.setId(id);
+        return c;
     }
 
     public static Card JsonToCard(String jsonCard){
