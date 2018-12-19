@@ -252,6 +252,7 @@ public class ControllerVueEvalQuestion implements Observer {
 
                 //System.out.println(carte.getQuestion());
                 if (carte.getType().equals("question")) {
+                    this.partie.timeout = true;
 
                     this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
 
@@ -299,6 +300,7 @@ public class ControllerVueEvalQuestion implements Observer {
                             public void handle(ActionEvent actionEvent) {
                                 RondAvancement.setProgress(0);
                                 try {
+                                    partie.timeout = true;
                                     partie.valider();
                                 }
                                 catch (Exception e){
@@ -321,6 +323,7 @@ public class ControllerVueEvalQuestion implements Observer {
                     }
                     String rep = carte.getAnswer();
                     if(temp.equals(rep)){
+
                         this.NbBonnesReponses++;
 
                         Image image0 = new Image("/resources/img/smiley.png");
@@ -339,7 +342,50 @@ public class ControllerVueEvalQuestion implements Observer {
                         //timeline.setCycleCount(Timeline.INDEFINITE);
                         timeline.setAutoReverse(true);
                         KeyValue kv = new KeyValue(this.RecPane.rotateProperty(), 0);
-                        KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
+                        KeyFrame kf = new KeyFrame(Duration.millis(1000), kv);
+                        timeline.getKeyFrames().add(kf);
+                        timeline.setOnFinished(new EventHandler<ActionEvent>() {
+
+
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                /*final Timeline timeline2 = new Timeline();
+                                timeline2.setAutoReverse(true);
+                                final KeyValue kv = new KeyValue(RectangleCarte.scaleXProperty(), 1);
+                                final KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
+                                final KeyValue kv2 = new KeyValue(RectangleCarte.scaleYProperty(), 1);
+                                final KeyFrame kf2 = new KeyFrame(Duration.millis(200), kv2);
+                                timeline2.getKeyFrames().add(kf);
+                                timeline2.getKeyFrames().add(kf2);
+                                timeline2.play();*/
+                                RecPane.getChildren().remove(img);
+                            }
+                        });
+                        if (!this.partie.timeout) {
+                            timeline.play();
+                        }
+                        this.partie.timeout = false;
+                    }
+
+                    if (!temp.equals(rep)){
+                        this.partie.timeout = false;
+                        Image image0 = new Image("/resources/img/SmileyTriste.png");
+                        ImageView img = new ImageView();
+                        img.setImage(image0);
+                        img.setFitHeight(250);
+                        img.setFitWidth(250);
+                        img.setX(-100);
+                        img.setY(-100);
+
+
+
+                        this.RecPane.getChildren().add(img);
+
+                        Timeline timeline = new Timeline();
+                        //timeline.setCycleCount(Timeline.INDEFINITE);
+                        timeline.setAutoReverse(true);
+                        KeyValue kv = new KeyValue(this.RecPane.rotateProperty(), 0);
+                        KeyFrame kf = new KeyFrame(Duration.millis(1000), kv);
                         timeline.getKeyFrames().add(kf);
                         timeline.setOnFinished(new EventHandler<ActionEvent>() {
 
@@ -359,12 +405,6 @@ public class ControllerVueEvalQuestion implements Observer {
                             }
                         });
                         timeline.play();
-
-
-
-
-
-
                     }
                     this.LabelQuestion.setText(carte.getAnswer());
                 }

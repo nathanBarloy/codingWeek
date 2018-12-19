@@ -2,11 +2,13 @@
 package models;
 import database.Database;
 import javafx.scene.control.Alert;
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 public class Partie extends Observable{
@@ -19,7 +21,7 @@ public class Partie extends Observable{
     private String QuestEnCours;
     private String RepEnCours;
     private String NameEnCours;
-
+    public boolean timeout = false;
 
 
     public String getNameEnCours() { return NameEnCours; }
@@ -46,6 +48,15 @@ public class Partie extends Observable{
     }
     //-----------------------------------------------------------------------------------------------
     //Getter
+
+    public ArrayList<String> getListeDeck(){
+        ArrayList<String> res = new ArrayList<String>();
+        List<CardList> temp = this.database.getListCardList();
+        for (CardList c : temp){
+            res.add(c.getName());
+        }
+        return res;
+    }
     public CardList getCardList() {
 
         return cardList;

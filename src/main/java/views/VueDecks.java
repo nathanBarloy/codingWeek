@@ -29,6 +29,7 @@ public class VueDecks implements Observer {
     private boolean init;
     private boolean choix = false;
     private String CurrentDeck;
+    private boolean supress = false;
 
     public VueDecks(Partie p){
         super();
@@ -38,6 +39,7 @@ public class VueDecks implements Observer {
     }
 
     public void Choisir(){
+        this.choix = true;
         String temp = (String) this.comboBox.getValue();
         if (temp != null){
             this.CurrentDeck = temp;
@@ -56,6 +58,7 @@ public class VueDecks implements Observer {
 
     }
     public void SupprimerCarte(){
+        this.supress= true;
         String temp = (String) this.BoxSupprimer.getValue();
         if (temp ==  null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -78,7 +81,6 @@ public class VueDecks implements Observer {
                 alert.showAndWait();
             }
             else {
-                this.partie.getCard(temp,CurrentDeck);
                 this.partie.SupprimerCard(this.CurrentDeck, this.partie.getCard(temp,this.CurrentDeck));
             }
         }
@@ -90,11 +92,7 @@ public class VueDecks implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (this.init){
-            this.comboBox.getItems().addAll(FXCollections.observableArrayList(
-                            "Deck 1",
-                            "test1",
-                            "Deck 3"
-                    ));
+            this.comboBox.getItems().addAll(this.partie.getListeDeck());
             //tests.
             //this.getviews = true;
             this.init = false;
@@ -103,12 +101,20 @@ public class VueDecks implements Observer {
             System.out.println("here");
             ObservableList<String> items =FXCollections.observableArrayList ();
             items.addAll(this.partie.getListeCarte(CurrentDeck));
+            System.out.println(items.toString());
             if (this.CurrentDeck.equals("Deck 1")) {
+                System.out.println("fuck");
                 items.add("test1");
             }
             System.out.println("items:"+items.toString());
             this.listeView.setItems(items);
             this.BoxSupprimer.setItems(items);
+            this.choix = false;
+        }
+        if (this.supress){
+            ObservableList<String> items =FXCollections.observableArrayList ();
+            items.addAll(this.partie.getListeCarte(CurrentDeck));
+            this.listeView.setItems(items);
         }
     }
 }

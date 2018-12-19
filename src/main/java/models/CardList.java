@@ -163,4 +163,8 @@ public class CardList implements Iterable<Card>{
         }
 
     }
+
+    public void supprime(Card card) {
+        this.cardStack.remove(card);
+    }
 }

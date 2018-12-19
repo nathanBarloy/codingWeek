@@ -59,6 +59,7 @@ public class Database {
                 Query query = new QueryAddCard(card);
 
                 try {
+                    System.out.println("j'ajoute une carte");
                     query.send();
                     a = query.getResponse();
                     return a;
@@ -92,17 +93,17 @@ public class Database {
     public void setDatabase() {
         CardList cardstack1 = new CardList("test1", "pour test ");
         CardStackSeed cardStackSeed1 = new CardStackSeed(cardstack1);
-        cardStackSeed1.seed();
+        cardStackSeed1.seed(cardstack1.getName());
         this.listCardList.add(cardstack1);
 
         CardList cardstack2 = new CardList("test2", "pour test ");
         CardStackSeed cardStackSeed2 = new CardStackSeed(cardstack2);
-        cardStackSeed2.seed();
+        cardStackSeed2.seed(cardstack2.getName());
         this.listCardList.add(cardstack2);
 
         CardList cardstack3 = new CardList("test3", "pour test ");
         CardStackSeed cardStackSeed3 = new CardStackSeed(cardstack3);
-        cardStackSeed3.seed();
+        cardStackSeed3.seed(cardstack3.getName());
         this.listCardList.add(cardstack3);
 
 
@@ -116,12 +117,14 @@ public class Database {
         String a =  "-1";
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(nomDeck)){
-                this.listCardList.get(i).add(card);
+                this.listCardList.get(i).supprime(card);
                 Query query = new QueryDelCard(card);
+                System.out.println("je supprime la carte : " + card.getName());
 
                 try {
                     query.send();
                     a = query.getResponse();
+                    System.out.println(a);
                     return a;
                 } catch (IOException e) {
                     e.printStackTrace();
