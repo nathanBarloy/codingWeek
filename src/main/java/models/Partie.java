@@ -39,6 +39,8 @@ public class Partie extends Observable{
         this.cardList = cardList;
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
+        this.database.setDatabase();
+        System.out.println(this.database.getListCardList().size() + "decks par défault");
 
 
     }
@@ -92,25 +94,7 @@ public class Partie extends Observable{
         cardStackSeed.seed();
     }
 
-    public void setDatabase() {
-        CardList cardstack1 = new CardList("test1", "pour test ",player);
-        CardStackSeed cardStackSeed = new CardStackSeed(cardstack1,player);
-        cardStackSeed.seed();
 
-        CardList cardstack2 = new CardList("test2", "pour test ",player);
-        CardList cardstack3 = new CardList("test3", "pour test ",player);
-        CardList cardstack4 = new CardList("test3", "pour test ",player);
-        CardList cardstack5 = new CardList("test2", "pour test ",player);
-
-        database = new Database();
-        database.add(cardstack1);
-        database.add(cardstack2);
-        database.add(cardstack3);
-        database.add(cardstack4);
-        database.add(cardstack5);
-
-
-    }
 
     public void addCard(String NomDeck,Card card){
         this.database.addCard(NomDeck,card);

@@ -4,6 +4,9 @@ import models.Card;
 import models.CardList;
 import queries.Query;
 import queries.QueryAddCard;
+
+import seeds.CardStackSeed;
+
 import queries.QueryDelCard;
 import queries.QueryDelCardStack;
 
@@ -12,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private List<String> listdecks;
-    private List<CardList> listCardList;
+    private ArrayList<String> listdecks;
+    private ArrayList<CardList> listCardList ;
 
 
     //Construceur
@@ -23,7 +26,7 @@ public class Database {
     }
     //------------------------------------------------------------------------------------------------------------------
     //getter
-    public List<String> getListStack() {
+    public ArrayList<String> getListStack() {
         return listdecks;
     }
 
@@ -33,10 +36,10 @@ public class Database {
 
     //------------------------------------------------------------------------------------------------------------------
     //Setter
-    public void setListCardList(List<CardList> listCardSatck) {
+    public void setListCardList(ArrayList<CardList> listCardSatck) {
         this.listCardList = listCardList;
     }
-    public void setListStack(List<String> liststack) {
+    public void setListStack(ArrayList<String> liststack) {
         this.listdecks = liststack;
     }
 
@@ -82,6 +85,31 @@ public class Database {
         }
         return mylistCardList;
     }
+
+
+    //en dur
+
+    public void setDatabase() {
+        CardList cardstack1 = new CardList("test1", "pour test ");
+        CardStackSeed cardStackSeed1 = new CardStackSeed(cardstack1);
+        cardStackSeed1.seed();
+        this.listCardList.add(cardstack1);
+
+        CardList cardstack2 = new CardList("test2", "pour test ");
+        CardStackSeed cardStackSeed2 = new CardStackSeed(cardstack2);
+        cardStackSeed2.seed();
+        this.listCardList.add(cardstack2);
+
+        CardList cardstack3 = new CardList("test3", "pour test ");
+        CardStackSeed cardStackSeed3 = new CardStackSeed(cardstack3);
+        cardStackSeed3.seed();
+        this.listCardList.add(cardstack3);
+
+
+
+    }
+
+    //
 
     public String SupressCard(String nomDeck, Card card) {
         if (card != null){
@@ -132,4 +160,5 @@ public class Database {
         }
         return new ArrayList<String>();
     }
+
 }
