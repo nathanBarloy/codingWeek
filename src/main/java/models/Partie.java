@@ -112,7 +112,7 @@ public class Partie extends Observable{
     }
 
     public void addCard(String NomDeck,Card card){
-        this.database.add(NomDeck,card);
+        this.database.addCard(NomDeck,card);
     }
     //fin du code en dur
     //------------------------------------------------------------------------------------------------------------------
