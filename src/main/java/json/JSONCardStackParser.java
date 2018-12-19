@@ -8,6 +8,9 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
+
 
 
 public class JSONCardStackParser {
@@ -24,9 +27,11 @@ public class JSONCardStackParser {
     public static CardList JsonToCardStack(JSONObject jsonCardStack){
         String name=jsonCardStack.getString("name");
         String description=jsonCardStack.getString("description");
-
+        ArrayList<Integer> cardIds = JSONCardIdParser.JsonToCardId(jsonCardStack.getJSONArray("cardIds"));
         String author=jsonCardStack.getString("author");
-        return new CardList(name,description,author);
+        CardList cl = new CardList(name,description,author);
+        cl.setCardIds(cardIds);
+        return cl;
     }
 
     public static CardList JsonToCard(String jsonCardStack){
@@ -42,6 +47,8 @@ public class JSONCardStackParser {
         for(int i=0;i<n;i++) {
 
             cardList[i] = JsonToCardStack(jsonList.getJSONObject(i));
+
+
         }
         return cardList;
     }

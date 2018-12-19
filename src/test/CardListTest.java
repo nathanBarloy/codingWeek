@@ -21,7 +21,7 @@ public class CardListTest {
         this.cardList = new CardList("test","test");
         this.player = new Player("alexis","bonjour");
         CardStackSeed cardStackSeed = new CardStackSeed(this.cardList,this.player);
-        cardStackSeed.seed();
+        //cardStackSeed.seed();
     }
 
     @After
