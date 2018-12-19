@@ -98,7 +98,7 @@ public class CardList {
 
 
     public boolean endCardList(){
-        return !(this.index < len);
+        return (this.index <= len);
     }
 
     @Override

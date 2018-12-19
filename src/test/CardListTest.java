@@ -33,9 +33,11 @@ public class CardListTest {
 
         assertNotNull("card pas créée", cardList);
         assertEquals("carte1 ", "Carte 1", cardList.getCard().getName());
+        assertEquals("fin1 ", true, cardList.endCardList());
         assertEquals("carte2 ", "Carte 2" , cardList.getnextCard().getName());
+        assertEquals("fin2 ", true, cardList.endCardList());
         assertEquals("carte3", "Carte 3", cardList.getnextCard().getName());
-        assertEquals("fin ", false, cardList.endCardList());
+        assertEquals("fin3 ", true, cardList.endCardList());
 
 
     }
