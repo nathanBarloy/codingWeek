@@ -7,6 +7,7 @@ import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -37,7 +38,7 @@ public class Partie extends Observable{
 
     //----------------------------------------------------------------------------------------------
     //Constructeur
-    public Partie(Player player, CardList cardList) {
+    public Partie(Player player, CardList cardList) throws IOException {
         this.player = player;
         this.cardList = cardList;
         this.database = new Database();
@@ -48,7 +49,7 @@ public class Partie extends Observable{
 
     }
 
-    public Partie(Player player) {
+    public Partie(Player player) throws IOException {
         this.player = player;
         this.cardList = new CardList("Default","Deck avec des cartes par défaut");
         CardStackSeed cs = new CardStackSeed(cardList);
@@ -59,7 +60,7 @@ public class Partie extends Observable{
         //System.out.println(this.database.getListCardList().size() + "decks par défault");
     }
 
-    public Partie() {
+    public Partie() throws IOException {
         this(new Player("perso test"));
     }
 
