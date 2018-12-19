@@ -89,4 +89,11 @@ public class Card {
     public void setUser_fail(int user_fail) {
         this.user_fail = user_fail;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

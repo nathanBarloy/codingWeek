@@ -24,7 +24,7 @@
                   <Pane fx:id="retour" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <ChoiceBox fx:id="choicebox" layoutX="229.0" layoutY="48.0" prefHeight="26.0" prefWidth="220.0" />
-                        <Label layoutX="24.0" layoutY="53.0" prefHeight="16.0" prefWidth="165.0" text="Choisissez un deck, fdp" />
+                        <Label layoutX="24.0" layoutY="53.0" prefHeight="16.0" prefWidth="165.0" text="Choisissez un deck" />
                      </children></Pane>
                </top>
                <left>
