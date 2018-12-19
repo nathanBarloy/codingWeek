@@ -25,18 +25,26 @@
                         <Insets bottom="50.0" />
                      </VBox.margin>
                   </ComboBox>
+                  <Button mnemonicParsing="false" onAction="#supprimerDeck" prefWidth="160.0" text="Supprimer Deck" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </left>
          <right>
             <VBox alignment="CENTER" prefWidth="250.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#SupprimerCarte" prefHeight="60.0" prefWidth="150.0" text="Supprimmer la question" textAlignment="CENTER" wrapText="true">
+                  <Button mnemonicParsing="false" onAction="#SupprimerCarte" prefHeight="80.0" prefWidth="180.0" text="Supprimmer la question" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets top="50.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="17.0" />
+                        <Font size="23.0" />
                      </font></Button>
                </children>
             </VBox>
