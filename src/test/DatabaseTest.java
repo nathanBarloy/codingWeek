@@ -23,17 +23,17 @@ public class DatabaseTest {
         Card card1 = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player);
         Card card2 = new Card("sql", "Qui est le génie du sql? ", "Alexis", player);
         Card card3 = new Card("temps", "Quelle heure est-il? ", "L'heure d'une petite pause", player);
-        CardList cardstack1 = new CardList("test1", "pour test ", player);
+        CardList cardstack1 = new CardList("test1", "pour test1", player);
         cardstack1.add(card1);
         cardstack1.add(card2);
         cardstack1.add(card3);
 
 
-        CardList cardstack2 = new CardList("test2", "pour test ",player);
-        CardList cardstack3 = new CardList("test3", "pour test ", player);
-        CardList cardstack4 = new CardList("test3", "pour test ", player);
-        CardList cardstack5 = new CardList("test2", "pour test ", player);
-        CardList cardstack6 = new CardList("test1", "pour test ",player);
+        CardList cardstack2 = new CardList("test2", "pour test2",player);
+        CardList cardstack3 = new CardList("test3", "pour test3", player);
+        CardList cardstack4 = new CardList("test3", "pour test4", player);
+        CardList cardstack5 = new CardList("test2", "pour test5", player);
+        CardList cardstack6 = new CardList("test1", "pour test6",player);
 
         database = new Database();
         database.add(cardstack1);
@@ -42,19 +42,20 @@ public class DatabaseTest {
         database.add(cardstack4);
         database.add(cardstack5);
         database.add(cardstack6);
-
+        /*
         //resultat 1
         databaseresultat1 = new Database();
-        database.add(cardstack1);
-        database.add(cardstack6);
+        databaseresultat1.add(cardstack1);
+        databaseresultat1.add(cardstack6);
 
         //resultat 2
         databaseresultat2 = new Database();
-        database.add(cardstack2);
-        database.add(cardstack5);
+        databaseresultat2.add(cardstack2);
+        databaseresultat2.add(cardstack5);
 
         //resultat vide
         databaseresultat3 = new Database();
+        */
 
 
     }
@@ -68,9 +69,10 @@ public class DatabaseTest {
 
         assertNotNull("database pas créée", this.database);
         assertEquals("bugrecherche", database, database);
-/*
-        assertEquals("bug 1er errecherche ", databaseresultat1.getCardList("test1"), databaseresultat1);
-        assertEquals("bug 2eme recherche ", database.getCardList("test2"), databaseresultat2);
-        assertEquals("bug vide", database.getCardList("testpas de correpondance"), databaseresultat3);*/
+        assertEquals("bug 1er errecherche ", database.getCardList("test1").get(1).getName(), "test1");
+        assertEquals("bug 1er errecherche ", database.getCardList("test1").get(1).getDescription(), "pour test6");
+        assertEquals("bug 1er errecherche ", database.getCardList("test1").get(0).getDescription(), "pour test1");
+       // assertEquals("bug 2eme recherche ", database.getCardList("test2"), databaseresultat2);
+       // assertEquals("bug vide", database.getCardList("testpas de correpondance"), databaseresultat3);*/
     }
 }
