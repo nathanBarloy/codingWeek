@@ -35,6 +35,8 @@ public class HTTPTest {
         card1 = new Card("card1", "oui ?", "oui.",player1);
         card2 = new Card("card2", "non ?", "non.",player1);
 
+
+
     }
 
     @After
@@ -53,12 +55,14 @@ public class HTTPTest {
         query = new QueryAddUser(player1);
         query.send();
         Thread.sleep(100);
+        System.out.println("Reponse adduser 1 : "+query.getResponse());
         query = new QueryAddUser(player2);
         query.send();
         Thread.sleep(100);
         query = new QueryDelUser(player2);
         query.send();
         Thread.sleep(100);
+        System.out.println("Reponse deluser 1 : "+query.getResponse());
 
     }
 
@@ -67,12 +71,14 @@ public class HTTPTest {
         query = new QueryAddCard(card1);
         query.send();
         Thread.sleep(100);
+        System.out.println("Reponse addcard 1 : "+query.getResponse());
         query = new QueryAddCard(card2);
         query.send();
         Thread.sleep(100);
         query = new QueryDelCard(card1);
         query.send();
         Thread.sleep(100);
+        System.out.println("Reponse delcard 1 : "+query.getResponse());
 
     }
 
@@ -81,10 +87,29 @@ public class HTTPTest {
         query = new QueryAddCardStack(cardStack1);
         query.send();
         Thread.sleep(100);
+        System.out.println("Reponse addcardstack 1 : "+query.getResponse());
         query = new QueryAddCardStack(cardStack2);
 
         query.send();
         Thread.sleep(100);
+        query = new QueryDelCardStack(cardStack1);
+        query.send();
+        Thread.sleep(100);
+        System.out.println("Reponse delcardstack1 : "+query.getResponse());
+
+    }
+
+    @Test
+    public void cardCardStacks() throws IOException, InterruptedException {
+        query = new QueryAddCardCardStack(card2,cardStack2);
+        query.send();
+        Thread.sleep(100);
+        System.out.println("Reponse addcardcardstack 1 : "+query.getResponse());
+        query = new QueryAddCardCardStack(card2,cardStack2);
+
+        query.send();
+        Thread.sleep(100);
+        System.out.println("Reponse addcardcardstack 2 : "+query.getResponse());
         query = new QueryDelCardStack(cardStack1);
         query.send();
         Thread.sleep(100);
@@ -94,17 +119,18 @@ public class HTTPTest {
     @Test
     public void getters() throws IOException, InterruptedException {
         query = new QueryGetUserList();
-        System.out.println("Users :");
         query.send();
         Thread.sleep(100);
+        System.out.println("Users :" + query.getResponse());
         query = new QueryGetCardList();
-        System.out.println("Cards :");
         query.send();
         Thread.sleep(100);
+        System.out.println("Cards :" + query.getResponse());
         query = new QueryGetCardStackList();
-        System.out.println("CardLists :");
+
         query.send();
         Thread.sleep(100);
+        System.out.println("CardLists :" + query.getResponse());
 
     }
 

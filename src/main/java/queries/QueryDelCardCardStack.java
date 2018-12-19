@@ -1,5 +1,6 @@
 package queries;
 
+import models.Card;
 import models.CardList;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -10,11 +11,13 @@ import java.io.IOException;
 
 public class QueryDelCardCardStack extends Query {
 
-    private CardList cardStack;
+    private CardList cardList;
+    private Card card;
 
-    public QueryDelCardCardStack(CardList cardStack) {
+    public QueryDelCardCardStack(Card card, CardList cardList) {
         super("delCardCardStack");
-        this.cardStack = cardStack;
+        this.cardList = cardList;
+        this.card=card;
     }
 
 
@@ -22,7 +25,8 @@ public class QueryDelCardCardStack extends Query {
 
 
 // Request parameters and other properties.
-            params.add(new BasicNameValuePair("name", cardStack.getName()));
+            params.add(new BasicNameValuePair("cardname", card.getName()));
+            params.add(new BasicNameValuePair("cardstackname", cardList.getName()));
             request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 //Execute and get the response.
