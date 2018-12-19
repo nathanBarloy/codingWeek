@@ -35,13 +35,11 @@ public class Database {
         this.listCardList.add(CardList);
     }
 
-    public List<CardList> getCardList (String name){
-        List<CardList> mylistCardList = new ArrayList<CardList>();
+    public ArrayList<CardList> getCardList (String name){
+        ArrayList<CardList> mylistCardList = new ArrayList<CardList>();
         for (CardList cardstack : this.listCardList) {
             if (cardstack.getName().equals(name)) {
                 mylistCardList.add(cardstack);
-                //System.out.println("cardstackname =" +cardstack.getName() + "name = "+ name );
-
             }
         }
         return mylistCardList;

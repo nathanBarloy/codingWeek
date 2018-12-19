@@ -101,6 +101,10 @@ public class CardList {
         return !(this.index < len);
     }
 
-
-
+    @Override
+    public String toString() {
+        return "CardList{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
