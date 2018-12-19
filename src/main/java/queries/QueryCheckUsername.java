@@ -32,7 +32,6 @@ public class QueryCheckUsername extends Query {
             if (entity != null) {
                 try  {
                     this.response = entity.getContent();
-                    System.out.println(getResponse());
                 }catch (Exception e){
 
                 }
