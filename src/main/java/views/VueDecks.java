@@ -92,7 +92,7 @@ public class VueDecks implements Observer {
         if (this.init){
             this.comboBox.getItems().addAll(FXCollections.observableArrayList(
                             "Deck 1",
-                            "Deck 2 ",
+                            "test1",
                             "Deck 3"
                     ));
             //tests.

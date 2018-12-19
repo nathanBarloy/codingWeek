@@ -84,7 +84,7 @@ public class ControllerVueEvalQuestion implements Observer {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
-        this.size = this.partie.getCardList().getSize();
+        this.size = this.partie.getCardList().size();
         //this.progress = -1/this.size;
         this.progress = 0;
     }
