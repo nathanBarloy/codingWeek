@@ -35,7 +35,7 @@ public class Database {
         this.listCardList.add(CardList);
     }
 
-    public List<CardList> getCardStack (String name){
+    public List<CardList> getCardList (String name){
         List<CardList> mylistCardList = new ArrayList<CardList>();
         for (CardList cardstack : this.listCardList) {
             if (cardstack.getName().equals(name)) {

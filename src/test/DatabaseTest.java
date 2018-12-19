@@ -57,6 +57,8 @@ public class DatabaseTest {
         databaseresultat3 = new Database();
 
 
+        System.out.println(databaseresultat1.getCardList("test1").size());
+
     }
 
     @After
@@ -68,9 +70,8 @@ public class DatabaseTest {
 
         assertNotNull("database pas créée", this.database);
         assertEquals("bugrecherche", database, database);
-/*
-        assertEquals("bug 1er errecherche ", databaseresultat1.getCardList("test1"), databaseresultat1);
-        assertEquals("bug 2eme recherche ", database.getCardList("test2"), databaseresultat2);
-        assertEquals("bug vide", database.getCardList("testpas de correpondance"), databaseresultat3);*/
+        assertEquals("bug 1er errecherche ", databaseresultat1.getCardList("test1").get(1).toString(), databaseresultat1.getListCardList().get(1).toString());
+       // assertEquals("bug 2eme recherche ", database.getCardList("test2"), databaseresultat2);
+       // assertEquals("bug vide", database.getCardList("testpas de correpondance"), databaseresultat3);*/
     }
 }
