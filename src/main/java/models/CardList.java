@@ -58,7 +58,7 @@ public class CardList implements Iterable<Card>{
         this.name = another.name;
         this.description = another.description;
         this.cardStack = new ArrayList<Card>();
-        this.cardStack = another.cardStack;
+        this.cardStack = cardStack;
     }
 
 
@@ -85,7 +85,7 @@ public class CardList implements Iterable<Card>{
 
     public Card pop() {
         if (!(this.index <= len-1)){
-            //System.out.println("endcardlist");
+            System.out.println("endcardlist");
             return null;
 
         }
@@ -195,5 +195,16 @@ public class CardList implements Iterable<Card>{
         for (Card c : this.cardStack) {
             c.setType("question");
         }
+    }
+
+    public CardList generateCardListNotLearn() {
+        CardList cardList = new CardList();
+        for (Card card : this.cardStack) {
+            System.out.println(card.getName() +card.getState());
+            if (card.getState()<3) {
+                cardList.add(card);
+            }
+        }
+        return cardList;
     }
 }

@@ -182,4 +182,8 @@ public class Database {
         }
         return null;
     }
+
+    public void deleteCardList(CardList cardList){
+        this.listCardList.remove(cardList);
+    }
 }

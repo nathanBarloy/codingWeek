@@ -27,10 +27,8 @@ public class AlgoTest {
         cardstack.add(card2);
         cardstack.add(card3);
         learningAlgo = new LearningAlgo(cardstack);
-
-        System.out.println(card1.getName());
-        //System.out.println(cardstack.getCard().getName());
-       // System.out.println(cardstack.pop().getName());
+        //System.out.println(cardstack.pop().getName());
+        //System.out.println(card1.getName());
         //System.out.println(cardstack.pop().getName());
 
 
@@ -47,11 +45,12 @@ public class AlgoTest {
     @Test
     public void learningAlgo() {
 
-        //assertNotNull("card pas créée", learningAlgo);
-/*
-        assertEquals("permièrecarte", learningAlgo.getCard(), card1);
-        assertEquals("deuxièmecarte", learningAlgo.getCard(), card2);
-        assertEquals("troisièmecarte", learningAlgo.getCard(), card3);
-*/
+        assertNotNull("card pas créée", learningAlgo);
+        assertEquals("permièrecarte" , card1 ,learningAlgo.generateCard());
+        assertEquals("deuxièmecarte" ,  card2 ,learningAlgo.generateCard());
+        assertEquals("troisièmecarte" , card3 ,learningAlgo.generateCard());
+        //assertEquals("permièrecarte2" , card1 ,learningAlgo.generateCard());
+
+
     }
 }

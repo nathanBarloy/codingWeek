@@ -22,6 +22,7 @@ public class Card {
         this.answer=answer;
         this.author=player;
         this.type = "question";
+        this.state = 0;
 
     }
     public Card (String name, String question, String answer, Player player){

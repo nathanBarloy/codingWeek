@@ -227,4 +227,7 @@ public class Partie extends Observable{
     public void reset() {
         this.database.reset();
     }
+    public void deleteCardList(CardList cardList) {
+        this.database.deleteCardList( cardList);
+    }
 }
