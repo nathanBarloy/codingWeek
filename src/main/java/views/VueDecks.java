@@ -84,6 +84,15 @@ public class VueDecks implements Observer {
             }
         }
     }
+
+    public void supprimerDeck() {
+        String temp = (String) this.comboBox.getValue();
+        if (temp!=null) {
+            // Supprime le deck FDP
+        }
+    }
+
+
     public void Retour(){
         Main.main.switchScene("/views/VueMenu.fxml", this.partie);
     }

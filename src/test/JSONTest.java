@@ -18,6 +18,8 @@ import java.io.IOException;
 public class JSONTest {
     private Player player;
     private Card[] cards;
+    private Player[] users;
+    private CardList[] cardStacks;
 
     private Query query;
 
@@ -40,8 +42,22 @@ public class JSONTest {
         query = new QueryGetCardList();
         query.send();
 
-        cards=JSONParser.JsonToCardList(query.getResponse());
+        cards= JSONCardParser.JsonToCardList(query.getResponse());
         for(Card c:cards)
+            System.out.println(c.toString());
+
+        query = new QueryGetUserList();
+        query.send();
+
+        users= JSONUserParser.JsonToUserList(query.getResponse());
+        for(Player u:users)
+            System.out.println(u.toString());
+
+        query = new QueryGetCardStackList();
+        query.send();
+
+        cardStacks= JSONCardStackParser.JsonToCardStackList(query.getResponse());
+        for(CardList c:cardStacks)
             System.out.println(c.toString());
 
     }
