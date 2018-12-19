@@ -61,7 +61,7 @@ public class ControllerVueEvalQuestion implements Observer {
     private ProgressBar ProgressBar;
 
     @FXML
-    private ChoiceBox choicebox;
+    private ComboBox choicebox;
 
     @FXML
     private AnchorPane anchorPane;
@@ -81,6 +81,7 @@ public class ControllerVueEvalQuestion implements Observer {
     private static int mdr = -1;
     private boolean done;
     private Card c;
+    private String currentDeck;
 
     public ControllerVueEvalQuestion(Partie partie) {
         super();
@@ -97,10 +98,12 @@ public class ControllerVueEvalQuestion implements Observer {
 
     public void NvQuest() {
         Anim.stop();
-        this.partie.NvQuest("test1");
+        this.partie.NvQuest(this.currentDeck);
 
     }
-
+    public void SwapDeck(){
+        this.currentDeck = (String) this.choicebox.getValue();
+    }
     public void valider() {
         Anim.stop();
         if (!this.LabelQuestion.getText().equals("NotStartedYet")){
@@ -190,16 +193,13 @@ public class ControllerVueEvalQuestion implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (this.init == -1) {
+            this.partie.reset();
             Image image0 = new Image("/resources/img/lotus.jpg");
 
             //final URL imageURL = getClass().getResource("../ressources/fond");
             //final Image image1 = new Image(imageURL.toExternalForm());
 
-            this.choicebox.setTooltip(new Tooltip("Select the language"));
-            this.choicebox.setItems(FXCollections.observableArrayList(
-                    new Label("deck1").getText(),
-                    "deck 2"
-            ));
+            this.choicebox.getItems().addAll(this.partie.getListeDeck());
 
             BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
@@ -240,7 +240,7 @@ public class ControllerVueEvalQuestion implements Observer {
 
             }
 
-            Card carte = partie.getCurrentCard(object);
+            Card carte = partie.getCurrentCard(this.currentDeck);
             this.c = carte;
 
             if (carte != null) {
@@ -286,7 +286,7 @@ public class ControllerVueEvalQuestion implements Observer {
                         Anim.play();
                     }
                 }
-                if (carte.getType().equals("reponse") || this.mdr == 1) {
+                if (carte.getType().equals("reponse")) {
                     this.mdr = -1;
                     //this.RondAvancement.setProgress(0f);
                     //System.out.println("reponse");
@@ -299,6 +299,7 @@ public class ControllerVueEvalQuestion implements Observer {
                     if(temp.equals(rep)){
 
                         this.NbBonnesReponses++;
+                        this.partie.setScore(this.currentDeck,this.c,1);
 
                         Image image0 = new Image("/resources/img/smiley.png");
                         ImageView img = new ImageView();
@@ -330,7 +331,7 @@ public class ControllerVueEvalQuestion implements Observer {
 
                     if (!temp.equals(rep)){
 
-
+                        this.partie.setScore(this.currentDeck,this.c,-1);
                         Image image0 = new Image("/resources/img/SmileyTriste.png");
                         ImageView img = new ImageView();
                         img.setImage(image0);

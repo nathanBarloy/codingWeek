@@ -34,6 +34,7 @@ public class ControllerVueQuestion implements Observer {
     private int init = -1;
     private int NbBonnesReponses = 0;
     private int NbMoyenReponses = 0;
+    private int NbIdkReponses;
 
     @FXML
     private ProgressBar BonneReponsesBarre;
@@ -82,6 +83,8 @@ public class ControllerVueQuestion implements Observer {
     private boolean done;
     private boolean AChange;
     private String currentDeck;
+    private Card carte;
+
 
     public ControllerVueQuestion(Partie partie) {
         super();
@@ -118,6 +121,18 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void NvQuest() {
+        if (RadioParfait.isSelected()){
+            this.partie.setScore(this.currentDeck,this.carte,1);
+            this.NbBonnesReponses++;
+        }
+        if (RadioMoyen.isSelected()){
+            this.partie.setScore(this.currentDeck,this.carte,0);
+            this.NbMoyenReponses++;
+        }
+        if (RadioIdk.isSelected()){
+            this.partie.setScore(this.currentDeck,this.carte,-1);
+            this.NbIdkReponses++;
+        }
         if (this.currentDeck == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("ATTENTION");
@@ -135,12 +150,7 @@ public class ControllerVueQuestion implements Observer {
 
     public void valider() {
         this.Anim.stop();
-        if (RadioParfait.isSelected()){
-            this.NbBonnesReponses++;
-        }
-        if (RadioMoyen.isSelected()){
-            this.NbMoyenReponses++;
-        }
+
         if (!this.LabelQuestion.getText().equals("NotStartedYet")){
             partie.valider();
         }
@@ -230,7 +240,6 @@ public class ControllerVueQuestion implements Observer {
                 //final URL imageURL = getClass().getResource("../ressources/fond");
                 //final Image image1 = new Image(imageURL.toExternalForm());
 
-                this.choicebox.setTooltip(new Tooltip("Select the language"));
                 this.choicebox.getItems().addAll(this.partie.getListeDeck());
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
@@ -272,7 +281,7 @@ public class ControllerVueQuestion implements Observer {
 
                 }
 
-                Card carte = partie.getCurrentCard(currentDeck);
+                this.carte = partie.getCurrentCard(currentDeck);
 
 
 

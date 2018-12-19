@@ -162,6 +162,7 @@ public class Partie extends Observable{
             Alert alertt = new Alert(Alert.AlertType.ERROR);
             alertt.setTitle("ERREUR");
             alertt.setHeaderText("Vous avez fini le deck!");
+            this.reset();
             String mmessage = "";
 
             alertt.setContentText(mmessage);
@@ -228,6 +229,7 @@ public class Partie extends Observable{
     }
 
     public void reset() {
+        System.out.println("resetin");
         this.database.reset();
     }
 
@@ -247,5 +249,9 @@ public class Partie extends Observable{
     public String getFirstDeck() {
         return this.database.getFirstDeck();
 
+    }
+
+    public void setScore(String currentDeck, Card carte,int Score) {
+        this.database.setScore(currentDeck,carte,Score);
     }
 }
