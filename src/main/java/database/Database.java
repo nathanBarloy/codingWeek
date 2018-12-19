@@ -53,13 +53,15 @@ public class Database {
 
     public String addCard(String NomDeck, Card card) {
         String a =  "-1";
+        System.out.println("j'ajoute une carte,début");
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(NomDeck)){
                 this.listCardList.get(i).add(card);
                 Query query = new QueryAddCard(card);
 
                 try {
-                    System.out.println("j'ajoute une carte");
+                    System.out.println("j'ajoute une carte dans le deck" + NomDeck);
+                    System.out.println();
                     query.send();
                     a = query.getResponse();
                     return a;
