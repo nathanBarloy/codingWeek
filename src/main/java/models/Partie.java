@@ -43,7 +43,7 @@ public class Partie extends Observable{
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
         this.database.setDatabase();
-        System.out.println(this.database.getListCardList().size() + "decks par défault");
+        //System.out.println(this.database.getListCardList().size() + "decks par défault");
 
 
     }
@@ -56,7 +56,7 @@ public class Partie extends Observable{
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
         this.database.setDatabase();
-        System.out.println(this.database.getListCardList().size() + "decks par défault");
+        //System.out.println(this.database.getListCardList().size() + "decks par défault");
     }
 
     public Partie() {
