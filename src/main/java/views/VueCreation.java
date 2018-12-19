@@ -53,6 +53,7 @@ public class VueCreation implements Observer {
             nom.setText("");
             this.partie.setQuestEnCours(questionCarte);
             this.partie.setRepEnCours(reponseCarte);
+            this.partie.setNameEnCours(nomCarte);
             System.out.println("quest:" + partie.getQuestEnCours());
             Main.main.switchScene("/views/VueCard.fxml",this.partie);
 

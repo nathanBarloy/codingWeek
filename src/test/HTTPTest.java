@@ -1,5 +1,6 @@
 
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -93,15 +94,32 @@ public class HTTPTest {
     @Test
     public void getters() throws IOException, InterruptedException {
         query = new QueryGetUserList();
+        System.out.println("Users :");
         query.send();
         Thread.sleep(100);
         query = new QueryGetCardList();
-
+        System.out.println("Cards :");
         query.send();
         Thread.sleep(100);
         query = new QueryGetCardStackList();
+        System.out.println("CardLists :");
         query.send();
         Thread.sleep(100);
+
+    }
+
+    @Test
+    public void checks() throws IOException, InterruptedException {
+        query = new QueryCheckUsername("Amos");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("Amos existe-t-il ? " + query.getResponse());
+        //assertTrue(query.getResponse().contains("1"));
+        query = new QueryCheckUsername("toi");
+        query.send();
+        Thread.sleep(100);
+        System.out.println("Toi existe-t-il ? " + query.getResponse());
+        //assertTrue(query.getResponse().contains("0"));
 
     }
 }

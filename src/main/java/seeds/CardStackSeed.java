@@ -14,6 +14,11 @@ public class CardStackSeed {
         this.cardList = cardList;
     }
 
+
+    public CardStackSeed(CardList cardList) {
+        this.cardList = cardList;
+    }
+
     public void seed(){
         cardList.add(new Card("Carte 1", "Quel est le goût du sel ?", "Salé",player));
         cardList.add(new Card("Carte 2", "Quelle est la couleur du cheval blanc d'Henry IV ?", "Couleur sel", player));

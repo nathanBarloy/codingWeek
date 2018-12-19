@@ -235,8 +235,10 @@ public class ControllerVueQuestion implements Observer {
 
                 if (object == null){
                     if(this.done == false) {
+
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("ATTENTION");
+
                         alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
                         String message = "";
 
