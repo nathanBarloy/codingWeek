@@ -132,7 +132,7 @@ public class ControllerVueQuestion implements Observer {
 
     public int animation(){
         this.PaneAnim.setVisible(true);
-        Image image0 = new Image("resources/img/hand.png");
+        Image image0 = new Image("/resources/img/hand.png");
         ImageView img = new ImageView();
         img.setImage(image0);
         img.setFitHeight(250);
@@ -203,7 +203,7 @@ public class ControllerVueQuestion implements Observer {
     @Override
     public void update(Observable o, Object arg) {
             if (this.init == -1) {
-                Image image0 = new Image("resources/img/lotus.jpg");
+                Image image0 = new Image("/resources/img/lotus.jpg");
 
                 //final URL imageURL = getClass().getResource("../ressources/fond");
                 //final Image image1 = new Image(imageURL.toExternalForm());
@@ -235,8 +235,10 @@ public class ControllerVueQuestion implements Observer {
 
                 if (object == null){
                     if(this.done == false) {
+
                         Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Warning");
+                        alert.setTitle("ATTENTION");
+
                         alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
                         String message = "";
 

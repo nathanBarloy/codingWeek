@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueInscription">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1000.0">
@@ -44,6 +43,48 @@
                </children>
             </HBox>
          </bottom>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Nom d'utilisateur">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="utilisateur" maxWidth="400.0" prefWidth="250.0" promptText="nom d'utilisateur">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </TextField>
+                  <Label text="Mot de passe">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="motdepasse" maxWidth="400.0" promptText="mot de passe">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </PasswordField>
+                  <Label text="Confirmation du mot de passe">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="confirmation" maxWidth="400.0" promptText="mot de passe">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </VBox>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

@@ -1,8 +1,11 @@
 package models;
 
-import java.util.ArrayList;
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 
-public class CardList {
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class CardList implements Iterable<Card>{
     private Player author;
     private String name;
     private String description;
@@ -17,6 +20,14 @@ public class CardList {
 
     public CardList(String name, String description, Player author) {
         this.author = author;
+        this.name = name;
+        this.description = description;
+        cardStack = new ArrayList<Card>();
+        this.index = 0;
+        len = 0;
+    }
+
+    public CardList(String name, String description) {
         this.name = name;
         this.description = description;
         cardStack = new ArrayList<Card>();
@@ -111,5 +122,18 @@ public class CardList {
         return "CardList{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public Iterator<Card> iterator() {
+        return this.cardStack.iterator();
+    }
+
+    public ArrayList<String> getListeCarte() {
+        ArrayList<String> temp = new ArrayList<String>();
+        for (Card c : this.cardStack){
+            temp.add(c.getName());
+        }
+        return temp;
     }
 }

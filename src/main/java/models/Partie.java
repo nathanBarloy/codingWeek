@@ -6,6 +6,7 @@ import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class Partie extends Observable{
@@ -38,6 +39,8 @@ public class Partie extends Observable{
         this.cardList = cardList;
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
+        this.database.setDatabase();
+        System.out.println(this.database.getListCardList().size() + "decks par défault");
 
 
     }
@@ -91,28 +94,16 @@ public class Partie extends Observable{
         cardStackSeed.seed();
     }
 
-    public void setDatabase() {
-        CardList cardstack1 = new CardList("test1", "pour test ",player);
-        CardStackSeed cardStackSeed = new CardStackSeed(cardstack1,player);
-        cardStackSeed.seed();
 
-        CardList cardstack2 = new CardList("test2", "pour test ",player);
-        CardList cardstack3 = new CardList("test3", "pour test ",player);
-        CardList cardstack4 = new CardList("test3", "pour test ",player);
-        CardList cardstack5 = new CardList("test2", "pour test ",player);
-
-        database = new Database();
-        database.add(cardstack1);
-        database.add(cardstack2);
-        database.add(cardstack3);
-        database.add(cardstack4);
-        database.add(cardstack5);
-
-
-    }
 
     public void addCard(String NomDeck,Card card){
         this.database.addCard(NomDeck,card);
+    }
+    public void SupprimerCard(String NomDeck,Card card){
+        this.database.SupressCard(NomDeck,card);
+        setChanged();
+        notifyObservers();
+
     }
     //fin du code en dur
     //------------------------------------------------------------------------------------------------------------------
@@ -180,7 +171,25 @@ public class Partie extends Observable{
         QuestEnCours = questEnCours;
     }
 
+    public ArrayList<String> getDeckName() {
+        ArrayList<String> res = database.getDeckName();
+        return res;
+    }
+
     public void setNameEnCours(String nameEnCours) {
         this.NameEnCours = nameEnCours;
+    }
+
+    public Card getCard(String temp, String currentDeck) {
+        return this.database.getCard(temp,currentDeck);
+    }
+
+    public void Choisir() {
+        setChanged();
+        notifyObservers();
+    }
+
+    public ArrayList<String> getListeCarte(String currentDeck) {
+        return this.database.getListeCarte(currentDeck);
     }
 }
