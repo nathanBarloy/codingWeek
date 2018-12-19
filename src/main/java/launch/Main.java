@@ -14,6 +14,7 @@ import seeds.CardStackSeed;
 import views.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class  Main extends Application {
 
@@ -152,7 +153,6 @@ public class  Main extends Application {
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueCreation(p));
-                p.init();
                 Parent VueCreation = null;
 
                 VueCreation = loader2.load();
@@ -169,7 +169,6 @@ public class  Main extends Application {
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
                 loader2.setControllerFactory(iC -> new VueLogin(p));
-                p.init();
                 Parent VueLogin = null;
 
                 VueLogin = loader2.load();
@@ -223,7 +222,6 @@ public class  Main extends Application {
                 Parent VueMenu = null;
 
                 VueMenu = loader2.load();
-
 
 
                 stage.setTitle("Menu Principal");

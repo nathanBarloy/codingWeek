@@ -32,4 +32,16 @@ public class JSONParser {
         return new Card(name,question,answer,author);
     }
 
+    public Card[] JsonToCardList(String jsonCardList){
+
+        String[] jsonList=jsonCardList.replace("}{","}\n{").split("\n");
+        int n= jsonList.length;
+        Card[] cardList= new Card[n];
+        for(int i=0;i<n;i++) {
+            
+            cardList[i] = JsonToCard(jsonList[i]);
+        }
+        return cardList;
+    }
+
 }

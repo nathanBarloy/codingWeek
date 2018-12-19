@@ -294,7 +294,7 @@ public class ControllerVueQuestion implements Observer {
                                 public void handle(ActionEvent actionEvent) {
                                     RondAvancement.setProgress(0);
                                     try {
-                                        partie.valider();
+                                        //partie.valider();
                                     }
                                     catch (Exception e){
                                         //System.out.println("caught exception");
@@ -315,7 +315,25 @@ public class ControllerVueQuestion implements Observer {
                     this.progress += 1/size;
                     this.ProgressBar.setProgress(progress);
                     this.init = 1000;
+
                     this.partie.reset();
+                    /*
+                    try {
+                    Alert alertt = new Alert(Alert.AlertType.ERROR);
+                    alertt.setTitle("ERREUR");
+                    alertt.setHeaderText("Il n'y a plus de cartes, nous allons quitter");
+                    String mmessage = "";
+
+                    alertt.setContentText(mmessage);
+                    alertt.showAndWait();
+
+                     /*   Thread.sleep(3000);
+                        Main.main.switchScene("/views/VueMenu.fxml");
+                    } catch (InterruptedException e) {
+                        System.out.println("exception on waiting");
+                        e.printStackTrace();
+                    }*/
+
 
                 }
             }

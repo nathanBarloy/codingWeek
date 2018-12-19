@@ -163,6 +163,7 @@ public class Partie extends Observable{
 
             alertt.setContentText(mmessage);
             alertt.showAndWait();
+
             Main.main.switchScene("/views/VueMenu.fxml");
         }
     }
