@@ -50,6 +50,10 @@ public class VueCreation implements Observer {
             question.setText("");
             reponse.setText("");
             nom.setText("");
+            this.partie.setQuestEnCours(questionCarte);
+            this.partie.setRepEnCours(reponseCarte);
+            System.out.println("quest:" + partie.getQuestEnCours());
+            Main.main.switchScene("/views/VueCard.fxml",this.partie);
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

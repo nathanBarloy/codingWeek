@@ -2,8 +2,6 @@
 package views;
 
 
-import javafx.animation.*;
-import database.Database;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PathTransition;
@@ -14,18 +12,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.*;
-import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.util.Duration;
 import launch.Main;
 import models.*;
 
@@ -37,7 +31,14 @@ public class ControllerVueQuestion implements Observer {
     private Partie partie;
     private boolean but;
     private int init = -1;
+    private int NbBonnesReponses = 0;
+    private int NbMoyenReponses = 0;
 
+    @FXML
+    private ProgressBar BonneReponsesBarre;
+
+    @FXML
+    private Rectangle RectangleCarte;
 
     @FXML
     private Pane PaneAnim;
@@ -83,7 +84,7 @@ public class ControllerVueQuestion implements Observer {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
-        this.size = this.partie.getCardStack().getSize();
+        this.size = this.partie.getCardList().getSize();
         //this.progress = -1/this.size;
         this.progress = 0;
     }
@@ -118,7 +119,12 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void valider() {
-
+        if (RadioParfait.isSelected()){
+            this.NbBonnesReponses++;
+        }
+        if (RadioMoyen.isSelected()){
+            this.NbMoyenReponses++;
+        }
         if (!this.LabelQuestion.getText().equals("NotStartedYet")){
             partie.valider();
         }
@@ -126,7 +132,7 @@ public class ControllerVueQuestion implements Observer {
 
     public int animation(){
         this.PaneAnim.setVisible(true);
-        Image image0 = new Image("http://www.vanilladome.fr/perso/087/001.png");
+        Image image0 = new Image("resources/img/hand.png");
         ImageView img = new ImageView();
         img.setImage(image0);
         img.setFitHeight(250);
@@ -151,10 +157,53 @@ public class ControllerVueQuestion implements Observer {
         return 1;
 
     }
+
+    public int animation2(){
+        final Timeline timeline = new Timeline();
+        //timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setAutoReverse(true);
+        final KeyValue kv = new KeyValue(this.RectangleCarte.scaleYProperty(), 0.01);
+        final KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
+        final KeyValue kv2 = new KeyValue(this.RectangleCarte.scaleXProperty(), 0.01);
+        final KeyFrame kf2 = new KeyFrame(Duration.millis(200), kv2);
+        timeline.getKeyFrames().add(kf);
+        timeline.getKeyFrames().add(kf2);
+        timeline.setOnFinished(new EventHandler<ActionEvent>() {
+
+
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                final Timeline timeline2 = new Timeline();
+                timeline2.setAutoReverse(true);
+                final KeyValue kv = new KeyValue(RectangleCarte.scaleXProperty(), 1);
+                final KeyFrame kf = new KeyFrame(Duration.millis(200), kv);
+                final KeyValue kv2 = new KeyValue(RectangleCarte.scaleYProperty(), 1);
+                final KeyFrame kf2 = new KeyFrame(Duration.millis(200), kv2);
+                timeline2.getKeyFrames().add(kf);
+                timeline2.getKeyFrames().add(kf2);
+                timeline2.play();
+            }
+        });
+        timeline.play();
+        return 1;
+    }
+
+    public int animation3(){
+        final Timeline timeline2 = new Timeline();
+        timeline2.setAutoReverse(true);
+        final KeyValue kv2 = new KeyValue(this.RectangleCarte.scaleYProperty(), 1000);
+        final KeyFrame kf2 = new KeyFrame(Duration.millis(500), kv2);
+        timeline2.getKeyFrames().add(kf2);
+        timeline2.play();
+        return 1;
+    }
+
+
+
     @Override
     public void update(Observable o, Object arg) {
             if (this.init == -1) {
-                Image image0 = new Image("https://ma-credence-deco.com/2349-thickbox_default/lotus-et-lumiere-fond-blanc.jpg");
+                Image image0 = new Image("resources/img/lotus.jpg");
 
                 //final URL imageURL = getClass().getResource("../ressources/fond");
                 //final Image image1 = new Image(imageURL.toExternalForm());
@@ -207,8 +256,8 @@ public class ControllerVueQuestion implements Observer {
                 partie.setDatabase();
                 Database database = partie.getDatabase();
                 //en dur
-                List<CardStack>  cardStackList = database.getCardStack("test1");
-                CardStack cardStack = cardStackList.get(0);
+                List<CardList>  cardStackList = database.getCardList("test1");
+                CardList cardStack = cardStackList.get(0);
                 //fin de en dur
                 Card carte = cardStack.getCard();
 */
@@ -219,7 +268,10 @@ public class ControllerVueQuestion implements Observer {
                     //System.out.println(carte.getQuestion());
                     if (carte.getType().equals("question")) {
 
-                        int a = this.animation();
+                        this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
+
+                        int a = this.animation2();
+                        //int b = this.animation3();
                         //this.PaneAnim.getChildren().remove(img);
                         //this.PaneAnim.getChildren().remove(img);
                         //this.PaneAnim.setVisible(false);
@@ -261,8 +313,13 @@ public class ControllerVueQuestion implements Observer {
                                 @Override
                                 public void handle(ActionEvent actionEvent) {
                                     RondAvancement.setProgress(0);
-                                    partie.valider();
-                                    System.out.println("finished");
+                                    try {
+                                        partie.valider();
+                                    }
+                                    catch (Exception e){
+                                        //System.out.println("caught exception");
+                                    }
+                                    //System.out.println("finished");
                                 }
                             });
                             Anim.play();

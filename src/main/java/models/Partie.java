@@ -4,38 +4,43 @@ import database.Database;
 import javafx.scene.control.Alert;
 import launch.Main;
 import learning.LearningAlgo;
-import models.*;
 import seeds.CardStackSeed;
-import views.ControllerVueQuestion;
-import models.Player;
 
-import java.util.List;
 import java.util.Observable;
 
 public class Partie extends Observable{
     private Player player;
-    private CardStack cardStack;
+    private CardList cardList;
     private int nbCards;
     private Card CurrentCard;
     private Database database;
     private LearningAlgo learningAlgo;
+    private String QuestEnCours;
+    private String RepEnCours;
 
+    public String getQuestEnCours() {
+        return QuestEnCours;
+    }
+
+    public String getRepEnCours() {
+        return RepEnCours;
+    }
 
     //----------------------------------------------------------------------------------------------
     //Constructeur
-    public Partie(Player player, CardStack cardStack) {
+    public Partie(Player player, CardList cardList) {
         this.player = player;
-        this.cardStack = cardStack;
+        this.cardList = cardList;
         this.database = new Database();
-        this.nbCards = cardStack.getNbCards();
+        this.nbCards = cardList.getNbCards();
 
 
     }
     //-----------------------------------------------------------------------------------------------
     //Getter
-    public CardStack getCardStack() {
+    public CardList getCardList() {
 
-        return cardStack;
+        return cardList;
     }
 
     public Card getCurrentCard() {
@@ -49,10 +54,10 @@ public class Partie extends Observable{
         return CurrentCard; //sera récupéré en sql après
 /*
         //en dur
-        List<CardStack> cardStackList = database.getCardStack("test1");
-        CardStack cardStack = cardStackList.get(0);
+        List<CardList> cardStackList = database.getCardList("test1");
+        CardList cardList = cardStackList.get(0);
         //fin de en dur
-        Card card = cardStack.getCard();
+        Card card = cardList.getCard();
         return card;
 */
     }
@@ -76,20 +81,20 @@ public class Partie extends Observable{
         this.CurrentCard = card;
     }
 
-    public void setCardStack(CardStack cardStack) {
-        CardStackSeed cardStackSeed = new CardStackSeed(cardStack,player);
+    public void setCardList(CardList cardList) {
+        CardStackSeed cardStackSeed = new CardStackSeed(cardList,player);
         cardStackSeed.seed();
     }
 
     public void setDatabase() {
-        CardStack cardstack1 = new CardStack("test1", "pour test ",player);
+        CardList cardstack1 = new CardList("test1", "pour test ",player);
         CardStackSeed cardStackSeed = new CardStackSeed(cardstack1,player);
         cardStackSeed.seed();
 
-        CardStack cardstack2 = new CardStack("test2", "pour test ",player);
-        CardStack cardstack3 = new CardStack("test3", "pour test ",player);
-        CardStack cardstack4 = new CardStack("test3", "pour test ",player);
-        CardStack cardstack5 = new CardStack("test2", "pour test ",player);
+        CardList cardstack2 = new CardList("test2", "pour test ",player);
+        CardList cardstack3 = new CardList("test3", "pour test ",player);
+        CardList cardstack4 = new CardList("test3", "pour test ",player);
+        CardList cardstack5 = new CardList("test2", "pour test ",player);
 
         database = new Database();
         database.add(cardstack1);
@@ -120,7 +125,7 @@ public class Partie extends Observable{
     }
 
     public void NvQuest() {
-        this.CurrentCard = cardStack.pop();
+        this.CurrentCard = cardList.pop();
         if (this.CurrentCard != null) {
             this.CurrentCard.setType("question");
             setChanged();
@@ -154,4 +159,11 @@ public class Partie extends Observable{
     }
 
 
+    public void setRepEnCours(String repEnCours) {
+        RepEnCours = repEnCours;
+    }
+
+    public void setQuestEnCours(String questEnCours) {
+        QuestEnCours = questEnCours;
+    }
 }
