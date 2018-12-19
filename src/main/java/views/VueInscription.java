@@ -74,7 +74,7 @@ public class VueInscription implements Observer{
 
             }
 
-        } else {
+        } else { //si les informations entrées ne sont pas correctes
 
         }
 
