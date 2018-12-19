@@ -25,6 +25,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return ("nom du joueur : " + username + "\ndescription : ");
+        return ("nom du joueur : " + username + "\ndescription : " + description);
     }
 }
