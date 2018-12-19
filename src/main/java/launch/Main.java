@@ -39,15 +39,47 @@ public class  Main extends Application {
         Partie p = new Partie(player, cardList);
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/views/VueLogin.fxml"));
+        FXMLLoader loader2 = new FXMLLoader();
+        loader2.setLocation(getClass().getResource("/views/VueLogin.fxml"));
+        loader2.setControllerFactory(iC -> new VueLogin(p));
+        Parent VueLogin = null;
+
+        VueLogin = loader2.load();
+        p.init();
+
+
         stage.setTitle("Connexion");
-        stage.setScene(new Scene(root, 1000, 800));
+        stage.setScene(new Scene(VueLogin, 1000, 800));
         stage.show();
 
     }
 
     public void switchScene(String fxmlFile,Partie partie){//,String QuestCours,String RepCours) {
         try {
+
+            if (fxmlFile.equals("/views/VueEvalQuestion.fxml")) {
+                cardList = new CardList("default","always the same",player);
+                CardStackSeed cs = new CardStackSeed(cardList,player);
+                cs.seed();
+
+                Partie p = new Partie(player, cardList);
+                p.setCurrentCard(cardList.getCard());
+                BorderPane root = new BorderPane();
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new ControllerVueEvalQuestion(p));
+                Parent VueQuestion = null;
+
+                VueQuestion = loader2.load();
+                p.init();
+                root.setTop(VueQuestion);
+
+                stage.setTitle("Apprentissage");
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.show();
+
+            }
+
             if (fxmlFile.equals("/views/VueQuestion.fxml")) {
                 cardList = new CardList("default","always the same",player);
                 CardStackSeed cs = new CardStackSeed(cardList,player);
@@ -155,9 +187,23 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+                cardList = new CardList("default","always the same",player);
+                CardStackSeed cs = new CardStackSeed(cardList,player);
+                cs.seed();
+
+                Partie p = new Partie(player, cardList);
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new VueLogin(p));
+                p.init();
+                Parent VueLogin = null;
+
+                VueLogin = loader2.load();
+                p.init();
+
+
                 stage.setTitle("Connexion");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(VueLogin, 1000, 800));
                 stage.show();
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {
@@ -284,9 +330,23 @@ public class  Main extends Application {
 
             }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+                cardList = new CardList("default","always the same",player);
+                CardStackSeed cs = new CardStackSeed(cardList,player);
+                cs.seed();
+
+                Partie p = new Partie(player, cardList);
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new VueLogin(p));
+                p.init();
+                Parent VueLogin = null;
+
+                VueLogin = loader2.load();
+                p.init();
+
+
                 stage.setTitle("Connexion");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(VueLogin, 1000, 800));
                 stage.show();
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {

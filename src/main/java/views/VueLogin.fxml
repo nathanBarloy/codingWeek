@@ -76,14 +76,14 @@
                               <Insets right="70.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField fx:id="motdepasse1" prefHeight="60.0" prefWidth="300.0" promptText="Mot de passe">
+                        <PasswordField fx:id="motdepasse" prefHeight="60.0" prefWidth="300.0" promptText="mot de passe">
                            <font>
                               <Font size="24.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="70.0" />
                            </HBox.margin>
-                        </TextField>
+                        </PasswordField>
                      </children>
                   </HBox>
                   <Button mnemonicParsing="false" onAction="#connexion" prefHeight="60.0" prefWidth="220.0" text="Connexion" textFill="#2477eb">

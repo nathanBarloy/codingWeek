@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import launch.Main;
 import models.Partie;
+import queries.Query;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -48,6 +49,9 @@ public class VueCreation implements Observer {
 
         //System.out.println(questionCarte + "\n" + reponseCarte + "\n" + nomCarte);
         if ( !(questionCarte.equals("") || reponseCarte.equals("") || nomCarte.equals("") || nomDeck==null) ) {
+            //Query checkNom = new
+            //if ()
+
             question.setText("");
             reponse.setText("");
             nom.setText("");
@@ -72,7 +76,7 @@ public class VueCreation implements Observer {
                 message+= "La carte n'a pas de nom\n";
             }
             if (nomDeck==null) {
-                message += "aucun deck n'a été choisi\n";
+                message += "Aucun deck n'a été choisi\n";
             }
 
             alert.setContentText(message);
@@ -88,14 +92,8 @@ public class VueCreation implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (init) {
 
-            ArrayList<String> deckList = partie.getDeckName();
+            ArrayList<String> deckList = partie.getListeDeck();
             menuDeck.setItems(FXCollections.observableArrayList( deckList ));
-
-            
-        } else {
-
-        }
     }
 }
