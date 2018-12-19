@@ -17,6 +17,11 @@ public class Partie extends Observable{
     private LearningAlgo learningAlgo;
     private String QuestEnCours;
     private String RepEnCours;
+    private String NameEnCours;
+
+
+
+    public String getNameEnCours() { return NameEnCours; }
 
     public String getQuestEnCours() {
         return QuestEnCours;
@@ -106,6 +111,9 @@ public class Partie extends Observable{
 
     }
 
+    public void addCard(String NomDeck,Card card){
+        this.database.addCard(NomDeck,card);
+    }
     //fin du code en dur
     //------------------------------------------------------------------------------------------------------------------
 
@@ -165,5 +173,9 @@ public class Partie extends Observable{
 
     public void setQuestEnCours(String questEnCours) {
         QuestEnCours = questEnCours;
+    }
+
+    public void setNameEnCours(String nameEnCours) {
+        this.NameEnCours = nameEnCours;
     }
 }

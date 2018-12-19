@@ -43,7 +43,8 @@ public abstract class Query {
     public String getResponse() throws IOException {
         StringWriter writer = new StringWriter();
         IOUtils.copy(response, writer, "UTF-8");
-        return writer.toString();
+
+        return writer.toString().replaceAll("^\\s+","").replaceAll("\\s+$","");
     }
 
 }

@@ -1,7 +1,11 @@
 package database;
 
+import models.Card;
 import models.CardList;
+import queries.Query;
+import queries.QueryAddCard;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +43,28 @@ public class Database {
 
     public void add(CardList CardList) {
         this.listCardList.add(CardList);
+    }
+
+
+    public String addCard(String NomDeck, Card card) {
+        String a =  "-1";
+        for (int  i = 0;i<this.listCardList.size();i++){
+            if (this.listCardList.get(i).getName().equals(NomDeck)){
+                this.listCardList.get(i).add(card);
+                Query query = new QueryAddCard(card);
+
+                try {
+                    query.send();
+                    a = query.getResponse();
+                    return a;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("bug sur l'envoi de la requête");
+                }
+
+            }
+        }
+        return a;
     }
 
     public ArrayList<CardList> getCardList (String name){
