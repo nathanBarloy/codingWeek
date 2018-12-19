@@ -121,9 +121,25 @@ public class  Main extends Application {
                 stage.show();
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {
-                Parent root = FXMLLoader.load(getClass().getResource("/views/VueInscription.fxml"));
+
+                cardStack= new CardStack("default","always the same",player);
+                CardStackSeed cs = new CardStackSeed(cardStack,player);
+                cs.seed();
+
+                Partie p = new Partie(player,cardStack);
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new VueInscription(p));
+                p.init();
+                Parent vueInscription = null;
+
+
+                vueInscription = loader2.load();
+                p.init();
+
+
                 stage.setTitle("Inscription");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(vueInscription, 1000, 800));
                 stage.show();
             }
 
