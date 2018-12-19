@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class JSONTest {
     private Player player;
-    private Card card;
+    private Card[] cards;
     private JSONParser jsonParser;
     private Query query;
 
@@ -25,24 +25,24 @@ public class JSONTest {
     public void initialiser() throws Exception {
         player = new Player("Alexis","az");
 
-        card = new Card("la vérité blesse", "Qui est le plus salé du groupe? ", "Alexis<3", player.getUsername());
         jsonParser=new JSONParser();
 
     }
 
     @After
     public void nettoyer() throws Exception {
-        card = null;
+        cards = null;
         jsonParser = null;
     }
 
     @Test
     public void card() throws IOException {
-        query = new QueryGetCard("Cheval");
+        query = new QueryGetCardList();
         query.send();
 
-        card=jsonParser.JsonToCard(query.getResponse());
-        System.out.println(card.toString());
+        cards=jsonParser.JsonToCardList(query.getResponse());
+        for(Card c:cards)
+            System.out.println(c.toString());
 
     }
 }
