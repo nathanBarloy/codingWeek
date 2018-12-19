@@ -93,7 +93,7 @@ public class VueCreation implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
-            ArrayList<String> deckList = partie.getDeckName();
+            ArrayList<String> deckList = partie.getListeDeck();
             menuDeck.setItems(FXCollections.observableArrayList( deckList ));
     }
 }
