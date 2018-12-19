@@ -1,16 +1,33 @@
 package statistic;
 
 import models.Card;
+import models.CardList;
 
 public class Stat {
     /*récupère les stats utilisateurs*/
-    private int progession;
 
+
+    //------------------------------------------------------------------------------------------------------------------
+    //Constructor
     public Stat() {
     }
-
-    public int getStat(Card card ) {
-
-        return card.getUser_succes();
+    //------------------------------------------------------------------------------------------------------------------
+    //Getter
+    public int getStat(Card card) {
+        return card.getState();
     }
+
+    public double getProgession(CardList cardList) {
+        double progression = 0 ;
+        for (Card card : cardList) {
+            progression = progression + this.getStat(card);
+        }
+        progression = progression /3 * cardList.size()*100  ;
+        return progression;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //Setter
+
+
 }

@@ -6,11 +6,11 @@ public class Card {
     private  String answer;
     private String type;
     private String author;
-    private int state ;
     private int succes;
     private int fail ;
     private int  user_succes;
     private int user_fail;
+    private int state;
 
     //------------------------------------------------------------------------------------------------------------------
     //Constructor
@@ -70,6 +70,11 @@ public class Card {
     public String getText() {
         return text;
     }
+
+    public int getState() {
+        return state;
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //setter
     public void setType(String type) {
