@@ -21,7 +21,6 @@ public class CardListTest {
         this.cardList = new CardList();
         CardStackSeed cardStackSeed = new CardStackSeed(this.cardList);
         cardStackSeed.seed();
-        System.out.println(this.cardList.getSize());
     }
 
     @After
@@ -33,9 +32,9 @@ public class CardListTest {
 
         assertNotNull("card pas créée", cardList);
         assertEquals("carte1 ", "Carte 1", cardList.getCard().getName());
-        assertEquals("fin1 ", true, cardList.endCardList());
+        assertEquals("fin1 ", false, cardList.endCardList());
         assertEquals("carte2 ", "Carte 2" , cardList.getnextCard().getName());
-        assertEquals("fin2 ", true, cardList.endCardList());
+        assertEquals("fin2 ", false, cardList.endCardList());
         assertEquals("carte3", "Carte 3", cardList.getnextCard().getName());
         assertEquals("fin3 ", true, cardList.endCardList());
 

@@ -28,6 +28,10 @@ public class CardList {
         return author;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
     //copy du stack
     public CardList(CardList another) {
         this.name = another.name;
@@ -89,7 +93,7 @@ public class CardList {
     }
 
     public Card getnextCard() {
-        index++;
+        this.index++;
         if (this.index < len) {
 
             return this.cardStack.get(index);
@@ -98,7 +102,8 @@ public class CardList {
 
 
     public boolean endCardList(){
-        return (this.index <= len);
+        /*renvoie si on a lu toutes les cartes */
+        return !(this.index < len-1);
     }
 
     @Override
