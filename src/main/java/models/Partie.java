@@ -71,6 +71,7 @@ public class Partie extends Observable{
         ArrayList<String> res = new ArrayList<String>();
         List<CardList> temp = this.database.getListCardList();
         for (CardList c : temp){
+            System.out.println("getListeDeck:" + c.getName());
             res.add(c.getName());
         }
         return res;
@@ -149,8 +150,9 @@ public class Partie extends Observable{
         notifyObservers();
     }
 
-    public void NvQuest() {
-        this.CurrentCard = this.database.pop("test1");
+    public void NvQuest(String deck) {
+        this.deckEnCours = deck;
+        this.CurrentCard = this.database.pop(deckEnCours);
 
         if (this.CurrentCard != null) {
             this.CurrentCard.setType("question");
@@ -227,5 +229,20 @@ public class Partie extends Observable{
 
     public void reset() {
         this.database.reset();
+    }
+
+    public void deleteCardList(CardList cardList) {
+        this.database.deleteCardList(cardList);
+    }
+
+    public void addDeck(String text) {
+        this.database.addDeck(text,"une description",this.player.getUsername());
+        setChanged();
+        notifyObservers();
+    }
+
+    public String getFirstDeck() {
+        return this.database.getFirstDeck();
+
     }
 }

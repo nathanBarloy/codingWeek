@@ -84,6 +84,15 @@ public class VueDecks implements Observer {
             }
         }
     }
+
+    public void supprimerDeck() {
+        String temp = (String) this.comboBox.getValue();
+        if (temp!=null) {
+            // Supprime le deck FDP
+        }
+    }
+
+
     public void Retour(){
         Main.main.switchScene("/views/VueMenu.fxml", this.partie);
     }
@@ -101,10 +110,6 @@ public class VueDecks implements Observer {
             ObservableList<String> items =FXCollections.observableArrayList ();
             items.addAll(this.partie.getListeCarte(CurrentDeck));
             System.out.println(items.toString());
-            if (this.CurrentDeck.equals("Deck 1")) {
-                System.out.println("fuck");
-                items.add("test1");
-            }
             System.out.println("items:"+items.toString());
             this.listeView.setItems(items);
             this.choix = false;

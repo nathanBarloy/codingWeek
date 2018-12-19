@@ -26,6 +26,8 @@ import models.*;
 import java.util.*;
 
 public class ControllerVueEvalQuestion implements Observer {
+    private final Timeline timeline = new Timeline();
+    private final Timeline Anim = new Timeline();
     private ArrayList<String> liste = new ArrayList<String>();
     private double progress = 0.0;
     private Partie partie;
@@ -94,13 +96,13 @@ public class ControllerVueEvalQuestion implements Observer {
     }
 
     public void NvQuest() {
-
-        this.partie.NvQuest();
+        Anim.stop();
+        this.partie.NvQuest("test1");
 
     }
 
     public void valider() {
-        this.partie.timeout=true;
+        Anim.stop();
         if (!this.LabelQuestion.getText().equals("NotStartedYet")){
             partie.valider();
         }
@@ -260,7 +262,6 @@ public class ControllerVueEvalQuestion implements Observer {
                         this.mdr = -1;
                         //System.out.println("label : " + this.LabelQuestion.getText());
                         float f = 0;
-                        final Timeline Anim = new Timeline();
                         //timeline.setCycleCount(Timeline.FINITE);
                         Anim.setAutoReverse(false);
                         final KeyValue kv = new KeyValue(this.RondAvancement.progressProperty(), 1);
@@ -311,7 +312,6 @@ public class ControllerVueEvalQuestion implements Observer {
                         if (this.partie.timeout) {
                             this.RecPane.getChildren().add(img);
                         }
-                        Timeline timeline = new Timeline();
                         timeline.setAutoReverse(true);
                         KeyValue kv = new KeyValue(this.RecPane.rotateProperty(), 0);
                         KeyFrame kf = new KeyFrame(Duration.millis(1000), kv);

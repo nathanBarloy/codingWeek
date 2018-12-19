@@ -11,11 +11,19 @@ public class LearningAlgo {
     private CardList cardList;
     private CardList cardlistshow;
 
-    public LearningAlgo (CardList cardList ) {
+    public LearningAlgo (CardList cardList) {
 
-        this.cardList = new CardList(cardList);
+        this.cardList = cardList; //faire une cardList.copy
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //getter
+
+    public CardList getCardList() {
+        return cardList;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+    //genere si y'a des données existentes
     public  CardList generateCardList() {
         if (this.cardList.size() == 1 ){
             return this.cardList;
@@ -33,12 +41,28 @@ public class LearningAlgo {
             }
             return cardlistshow;
         }
+
     }
-   /*
-    public Card getCard(){
-        System.out.println("iici" +cardstack.getNbCards());
-        return this.cardstack.getCard();
-*/
+    //------------------------------------------------------------------------------------------------------------------
+    //distributeurs de card intelligent
+    public Card generateCard() {
+        //System.out.println(this.cardList.pop().getName());
+        Card card = this.cardList.pop();
+        System.out.println(card.getName());
+        if (card == null) {
+            System.out.println("cardnull");
+            this. cardList = this.cardList.generateCardListNotLearn();
+            return this.cardList.pop();
+        }
+
+        else return card;
+
+        //return cardList.pop().getName();
+
+    }
+
+
+
 
 
 }
