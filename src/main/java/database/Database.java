@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private List<String> listdecks;
-    private List<CardList> listCardList ;
+    private ArrayList<String> listdecks;
+    private ArrayList<CardList> listCardList ;
 
 
     //Construceur
@@ -26,7 +26,7 @@ public class Database {
     }
     //------------------------------------------------------------------------------------------------------------------
     //getter
-    public List<String> getListStack() {
+    public ArrayList<String> getListStack() {
         return listdecks;
     }
 
@@ -36,10 +36,10 @@ public class Database {
 
     //------------------------------------------------------------------------------------------------------------------
     //Setter
-    public void setListCardList(List<CardList> listCardSatck) {
+    public void setListCardList(ArrayList<CardList> listCardSatck) {
         this.listCardList = listCardList;
     }
-    public void setListStack(List<String> liststack) {
+    public void setListStack(ArrayList<String> liststack) {
         this.listdecks = liststack;
     }
 

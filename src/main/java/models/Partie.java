@@ -39,8 +39,8 @@ public class Partie extends Observable{
         this.cardList = cardList;
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
-        database.setDatabase();
-        System.out.println(this.database.getListStack().size());
+        this.database.setDatabase();
+        System.out.println(this.database.getListCardList().size() + "decks par défault");
 
 
     }
