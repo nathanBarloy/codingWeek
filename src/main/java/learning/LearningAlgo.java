@@ -9,15 +9,16 @@ public class LearningAlgo {
     /*gère la selection des cartes à afficher*/
     private int waitingtime = 10 ;
     private CardList cardstack;
-    private ArrayList<Card> cardlistshow;
+   // private ArrayList<Card> cardlistshow;
 
     public LearningAlgo (CardList cardstack ) {
+
         this.cardstack = new CardList(cardstack);
     }
 
     public Card getCard(){
-        System.out.println(cardstack.getCard().getName());
-        return cardstack.getCard();
+        System.out.println("iici" +cardstack.getNbCards());
+        return this.cardstack.getCard();
 
     }
 

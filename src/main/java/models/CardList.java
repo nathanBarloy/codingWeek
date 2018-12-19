@@ -11,17 +11,17 @@ public class CardList {
     int len;
 
 
-
     public CardList() {
         cardStack = new ArrayList<Card>();
     }
+
     public CardList(String name, String description, Player author) {
         this.author = author;
-        this.name=name;
-        this.description=description;
+        this.name = name;
+        this.description = description;
         cardStack = new ArrayList<Card>();
-        this.index =0;
-        len =0 ;
+        this.index = 0;
+        len = 0;
     }
 
     public Player getAuthor() {
@@ -30,8 +30,8 @@ public class CardList {
 
     //copy du stack
     public CardList(CardList another) {
-        this.name=another.name;
-        this.description=another.description;
+        this.name = another.name;
+        this.description = another.description;
         this.cardStack = new ArrayList<Card>();
         this.cardStack = another.cardStack;
     }
@@ -53,41 +53,58 @@ public class CardList {
         this.description = description;
     }
 
-    public void add(Card card){
+    public void add(Card card) {
         cardStack.add(card);
-        this.len ++;
+        this.len++;
     }
 
-    public Card pop(){
+    public Card pop() {
         return getnextCard();
     }
 
-    public int getNbCards(){
+    public int getNbCards() {
 
         return len;
     }
 
 
     public double getSize() {
+
         return this.cardStack.size();
     }
+
+    public double getSizeCardNotRead() {
+
+        return len-index;
+    }
+
+
 
     public Card getCard() {
 
         if (this.index < len) {
 
             return this.cardStack.get(index);
-        }
-
-        else return null;
+        } else return null;
     }
+
     public Card getnextCard() {
-        index ++;
+        index++;
         if (this.index < len) {
 
             return this.cardStack.get(index);
-        }
+        } else return null;
+    }
 
-        else return null;
+
+    public boolean endCardList(){
+        return !(this.index < len);
+    }
+
+    @Override
+    public String toString() {
+        return "CardList{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
