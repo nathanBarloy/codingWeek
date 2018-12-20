@@ -137,6 +137,7 @@ public class Database {
         CardList[] cardLists= JSONCardStackParser.JsonToCardStackList(JSONresponse);
         for(CardList c:cardLists)
             this.listCardList.add(c);
+        this.listCardList.add(new CardList("admin","contient toutes les cartes","admin"));
 
         query = new QueryGetCardList();
         query.send();
@@ -147,11 +148,12 @@ public class Database {
 
         for(CardList c:listCardList){
             c.setCardStack(this.listCard);
-
+            if (c.getName().equals("admin")) {
+                for(Card carte : listCard){
+                    c.add(carte);
+                }
+            }
         }
-
-
-
 
 
     }
