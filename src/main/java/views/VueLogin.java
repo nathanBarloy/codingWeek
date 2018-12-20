@@ -42,10 +42,10 @@ public class VueLogin implements Observer {
         res = check.getResponse();
         System.out.println(res);
 
-        if (res.equals("-2") && 1==2) { //si le nom entré est dans la BDD
+        if (res.equals("-2") ) { //si le nom entré est dans la BDD
             System.out.println("L'utilisateur n'existe pas");
 
-        }else if(res.equals("-3")&& 1 ==2) {
+        }else if(res.equals("-3")) {
             System.out.println("Password erroné");
 
         }else {
