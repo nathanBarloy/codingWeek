@@ -16,7 +16,7 @@ public class Database {
     private ArrayList<String> listdecks;
     private ArrayList<CardList> listCardList ;
     private ArrayList<Card> listCard;
-
+    private String sessionToken;
     //Construceur
     public Database() {
     listdecks=new ArrayList<String>();
@@ -89,7 +89,7 @@ public class Database {
 
     //en dur
 
-    public void setDatabase() throws IOException {
+    public void setDatabase() {
         Query query = new QueryGetCardStackList();
         query.send();
         String JSONresponse= query.getResponse();
