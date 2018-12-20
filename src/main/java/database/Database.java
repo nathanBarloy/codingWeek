@@ -2,6 +2,7 @@ package database;
 
 import json.JSONCardParser;
 import json.JSONCardStackParser;
+import json.JSONListCardListParser;
 import models.Card;
 import models.CardList;
 import queries.*;
@@ -11,6 +12,8 @@ import seeds.CardStackSeed;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Database {
     private ArrayList<CardList> listCardList ;
@@ -185,8 +188,32 @@ public class Database {
 
     //------------------------------------------------------------------------------------------------------------------
     //version hors ligne
-    public void setDatabaseLocal() {
+    public void exportDatabaselocal() {
 
+        JSONListCardListParser jsonListCardListParser = new JSONListCardListParser() ;
+        try {
+            JSONListCardListParser.ListCardListToJson(this.listCardList);
+        }catch (IOException e) {
+            System.out.println("bug sur l'export de la Base de donné");
+        }
+    }
+    public void importDatabaselocal() {
+        String filePath = "JSONS/listCardList.json";
+        String content = "";
+        try
+        {
+            content = new String ( Files.readAllBytes( Paths.get(filePath) ) );
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        //System.out.println(content);
+        JSONListCardListParser jsonListCardListParser = new JSONListCardListParser() ;
+        try {
+            this.listCardList = JSONListCardListParser.JsonToListCardList(content);
+        }catch (IOException e) {
+            System.out.println("bug sur l'export de la Base de donné");
+        }
     }
 
 

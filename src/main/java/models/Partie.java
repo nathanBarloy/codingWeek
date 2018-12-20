@@ -7,6 +7,7 @@ import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -253,5 +254,14 @@ public class Partie extends Observable{
 
     public void setScore(String currentDeck, Card carte,int Score) {
         this.database.setScore(currentDeck,carte,Score);
+    }
+
+    public void importDatabaseLocal(){
+        this.database.importDatabaselocal();
+
+    }
+    public void exportDatabaseLocal(){
+        this.database.exportDatabaselocal();
+
     }
 }

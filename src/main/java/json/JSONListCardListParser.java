@@ -1,6 +1,8 @@
 package json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import database.Database;
+import models.Card;
 import models.CardList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,42 +10,30 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import models.CardList;
 
-public class JSONListCardList {
-    public static String cardStackToJson(ArrayList<CardList> listCardList) throws IOException {
+public class JSONListCardListParser {
+
+    public static String ListCardListToJson(ArrayList<CardList> listCardList ) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File("JSONS/listCardList.json"), listCardList);
         return mapper.writeValueAsString(listCardList);
     }
 
-    public static CardList JsonToCardStack(JSONObject jsonCardStack){
-        String name=jsonCardStack.getString("name");
-        String description=jsonCardStack.getString("description");
-        ArrayList<Integer> cardIds = JSONCardIdParser.JsonToCardId(jsonCardStack.getJSONArray("cardIds"));
-        String author=jsonCardStack.getString("author");
-        CardList cl = new CardList(name,description,author);
-        cl.setCardIds(cardIds);
-        return cl;
-    }
+    public static ArrayList<CardList> JsonToListCardList(String jsonListCardList) throws IOException{
+        JSONCardStackParser cardStackParser = new JSONCardStackParser();
+        ArrayList<CardList> listArrayList = new ArrayList<CardList>();
+        JSONArray jsonArrayList= new JSONArray(jsonListCardList);
+        int n= jsonArrayList.length();
 
-    public static CardList JsonToCard(String jsonCardStack){
-        return JsonToCardStack(new JSONObject(jsonCardStack));
-    }
-
-    public static CardList[] JsonToCardStackList(String jsonCardStackList){
-
-        JSONArray jsonList= new JSONArray(jsonCardStackList);
-        int n= jsonList.length();
-        CardList[] cardList= new CardList[n];
 
         for(int i=0;i<n;i++) {
-
-            cardList[i] = JsonToCardStack(jsonList.getJSONObject(i));
-
-
+            listArrayList.add(cardStackParser.JsonToCardStack(jsonArrayList.getJSONObject(i)));
         }
-        return cardList;
+        return listArrayList;
     }
+
+
 
 
 
