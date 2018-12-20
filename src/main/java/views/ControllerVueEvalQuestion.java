@@ -526,6 +526,23 @@ public class ControllerVueEvalQuestion implements Observer {
                 while (s.charAt(j) != '<'){
 
                     txt = txt + s.charAt(j);
+
+                    for(int l=0; l<txt.length();++l) {
+                        char c = txt.charAt(l);
+                        // If there's a char left, we chan check if the current and the next char
+                        // form a surrogate pair
+                        if(l<txt.length()-1 && Character.isSurrogatePair(c, txt.charAt(l+1))) {
+                            // if so, the codepoint must be stored on a 32bit int as char is only 16bit
+                            int codePoint = txt.codePointAt(l);
+                            // show the code point and the char
+                            System.out.println(String.format("%6d:%s", codePoint, new String(new int[]{codePoint}, 0, 1)));
+                            ++l;
+                        }
+                        // else this can only be a "normal" char
+                        else
+                            System.out.println(String.format("%6d:%s", (int)c, c));
+                    }
+
                     System.out.println("je concatène : " + txt);
                     j++;
                 }
