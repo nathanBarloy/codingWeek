@@ -130,7 +130,9 @@ public class ControllerVueQuestion implements Observer {
             this.NbMoyenReponses++;
         }
         if (RadioIdk.isSelected()){
-            this.partie.setScore(this.currentDeck,this.carte,-1);
+            if (this.partie.getScore(this.currentDeck, this.carte) >= -2) {
+                this.partie.setScore(this.currentDeck, this.carte, -1);
+            }
             this.NbIdkReponses++;
         }
         if (this.currentDeck == null){/*

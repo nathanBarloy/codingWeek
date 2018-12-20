@@ -300,6 +300,16 @@ public class Database {
     }
 
 
-
-
+    public int getScore(String currentDeck, Card c) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals(currentDeck)){
+                for (Card carte : c1){
+                    if (carte.getName().equals(c.getName())){
+                        return c.getState();
+                    }
+                }
+            }
+        }
+        return -3;
+    }
 }

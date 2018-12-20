@@ -397,7 +397,9 @@ public class ControllerVueEvalQuestion implements Observer {
                         this.partie.timeout = false;
                     } else {
 
-                        this.partie.setScore(this.currentDeck,this.c,-1);
+                        if (this.partie.getScore(this.currentDeck,this.c)>=-2) {
+                            this.partie.setScore(this.currentDeck, this.c, -1);
+                        }
                         Image image0 = new Image("/resources/img/SmileyTriste.png");
                         ImageView img = new ImageView();
                         img.setImage(image0);
