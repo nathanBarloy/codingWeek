@@ -15,6 +15,8 @@ import java.util.List;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static json.JSONListCardListParser.JsonToListCardList;
+
 public class Database {
     private ArrayList<CardList> listCardList ;
     private ArrayList<Card> listCard;
@@ -110,7 +112,11 @@ public class Database {
     }
 
 
-    public String addCard(String NomDeck, Card card) {
+    public String addCard(String NomDeck, Card card , Boolean local) {
+        if (local){
+            getCardListString(NomDeck).add(card);
+            return "ajout de "+card.getName();
+        }
         String a =  "-1";
         //System.out.println("j'ajoute une carte,début");
         for (int  i = 0;i<this.listCardList.size();i++){
@@ -146,31 +152,41 @@ public class Database {
     //-----------------------------------------------------------------------------------------------------------------
     //Gestion en ligne
 
-    public void setDatabase() {
-        Query query = new QueryGetCardStackList();
-        query.send();
-        String JSONresponse= query.getResponse();
-        CardList[] cardLists= JSONCardStackParser.JsonToCardStackList(JSONresponse);
-        for(CardList c:cardLists)
-            this.listCardList.add(c);
-        this.listCardList.add(new CardList("admin","contient toutes les cartes","admin"));
+    public void setDatabase(boolean local) {
+        System.out.println("debut set database ");
+        if (local){
+          importDatabaselocal();
+          System.out.println("importlocal  ok");
+          return;
+        }
 
-        query = new QueryGetCardList();
-        query.send();
-        JSONresponse= query.getResponse();
-        Card[] cards= JSONCardParser.JsonToCardList(JSONresponse);
-        for(Card c:cards)
-            this.listCard.add(c);
+        else {
+            System.out.println("importonline ok");
 
-        for(CardList c:listCardList){
-            c.setCardStack(this.listCard);
-            if (c.getName().equals("admin")) {
-                for(Card carte : listCard){
-                    c.add(carte);
+            Query query = new QueryGetCardStackList();
+            query.send();
+            String JSONresponse = query.getResponse();
+            CardList[] cardLists = JSONCardStackParser.JsonToCardStackList(JSONresponse);
+            for (CardList c : cardLists)
+                this.listCardList.add(c);
+            this.listCardList.add(new CardList("admin", "contient toutes les cartes", "admin"));
+
+            query = new QueryGetCardList();
+            query.send();
+            JSONresponse = query.getResponse();
+            Card[] cards = JSONCardParser.JsonToCardList(JSONresponse);
+            for (Card c : cards)
+                this.listCard.add(c);
+
+            for (CardList c : listCardList) {
+                c.setCardStack(this.listCard);
+                if (c.getName().equals("admin")) {
+                    for (Card carte : listCard) {
+                        c.add(carte);
+                    }
                 }
             }
         }
-
 
     }
 
@@ -224,7 +240,7 @@ public class Database {
         //System.out.println(content);
         JSONListCardListParser jsonListCardListParser = new JSONListCardListParser() ;
         try {
-            this.listCardList = JSONListCardListParser.JsonToListCardList(content);
+            this.listCardList = JsonToListCardList(content);
         }catch (IOException e) {
             System.out.println("bug sur l'export de la Base de donné");
         }
@@ -262,7 +278,11 @@ public class Database {
     }
 
 
-    public void deleteCardList(CardList cardList) {
+    public void deleteCardList(CardList cardList ,boolean local) {
+        if (local ) {
+            this.listCardList.remove(cardList);
+            return ;
+        }
 
         Query query = new QueryDelCardStack(cardList);
         query.send();
@@ -277,10 +297,10 @@ public class Database {
         this.listCardList.remove(cardList);
 
     }
-    public void deleteCardList(String name) {
+    public void deleteCardList(String name ,boolean local) {
         for (CardList cardList : this.listCardList) {
             if (cardList.getName().equals(name)) {
-                this.deleteCardList(cardList);
+                this.deleteCardList(cardList , local);
                 return;
             }
         }
