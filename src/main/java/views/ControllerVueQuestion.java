@@ -130,10 +130,12 @@ public class ControllerVueQuestion implements Observer {
             this.NbMoyenReponses++;
         }
         if (RadioIdk.isSelected()){
+
             this.partie.setScore(this.currentDeck,this.carte,0);
+
             this.NbIdkReponses++;
         }
-        if (this.currentDeck == null){
+        if (this.currentDeck == null){/*
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("ATTENTION");
 
@@ -142,7 +144,7 @@ public class ControllerVueQuestion implements Observer {
 
             alert.setContentText(message);
             alert.showAndWait();
-            this.currentDeck = this.partie.getFirstDeck();
+            this.currentDeck = this.partie.getFirstDeck();*/
         }
         this.Anim.stop();
         this.partie.NvQuest(this.currentDeck);
@@ -262,7 +264,7 @@ public class ControllerVueQuestion implements Observer {
 
                 if (object == null){
                     if(this.done == false) {
-                        /*
+
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("ATTENTION");
 
@@ -271,7 +273,7 @@ public class ControllerVueQuestion implements Observer {
 
                         alert.setContentText(message);
                         alert.showAndWait();
-                        */
+
                     }
                     this.done = true;
                 }
@@ -342,7 +344,8 @@ public class ControllerVueQuestion implements Observer {
                     }
                     if (carte.getType().equals("reponse")) {
                         //this.RondAvancement.setProgress(0f);
-                        //System.out.println("reponse");
+                        //System.out.println("reponse :" + carte.getName());
+
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
                 } else {

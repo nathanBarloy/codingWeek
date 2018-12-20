@@ -271,28 +271,22 @@ public class ControllerVueEvalQuestion implements Observer {
             String txt = "";
             String object = (String) this.choicebox.getValue();
 
+
             if (object == null){
                 if(this.done == false) {
+                        /*
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("ATTENTION");
 
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("ATTENTION");
+                        alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
+                        String message = "";
 
-                    alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
-                    String message = "";
-                    //alert.setHeaderText("Choisissez un deck avant de commencer");
-                    //String message = "Vous ne pouvez pas commencer si vous n'avez pas choisi de deck";
-
-                    alert.setContentText(message);
-                    alert.showAndWait();
+                        alert.setContentText(message);
+                        alert.showAndWait();
+                        */
                 }
-                //this.done = true;
+                this.done = true;
             }
-            else{
-                //txt = object.getText();
-                //System.out.println("choix deck : "+ object);
-
-            }
-
             Card carte = partie.getCurrentCard(this.currentDeck);
             this.c = carte;
 
@@ -368,9 +362,8 @@ public class ControllerVueEvalQuestion implements Observer {
                             alert.setTitle("ATTENTION");
 
                             alert.setHeaderText("Un synonyme a été trouvé");
-                            String message = "";
 
-                            alert.setContentText(message);
+                            alert.setContentText("");
                             alert.showAndWait();
                         }
                         this.NbBonnesReponses++;
@@ -404,7 +397,9 @@ public class ControllerVueEvalQuestion implements Observer {
                         this.partie.timeout = false;
                     } else {
 
-                        this.partie.setScore(this.currentDeck,this.c,-1);
+                        if (this.partie.getScore(this.currentDeck,this.c)>=-2) {
+                            this.partie.setScore(this.currentDeck, this.c, -1);
+                        }
                         Image image0 = new Image("/resources/img/SmileyTriste.png");
                         ImageView img = new ImageView();
                         img.setImage(image0);
@@ -459,13 +454,15 @@ public class ControllerVueEvalQuestion implements Observer {
             in = new BufferedInputStream(urlConnection.getInputStream());
             readStream(in);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            System.out.println("prblème de request sur l'API : si vous avez entré une phrase, c'est normal..");
+            //e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("problème de request sur l'API : si vous avez entré une phrase, c'est normal..");
+            //e.printStackTrace();
         }
 
         if (in == null) {
-            System.out.println("merde: j'ai pas réussis à faire un get sur le lien");
+            System.out.println("j'ai pas réussis à faire un get sur le lien");
         } else {
 
             System.out.println("J'ai réussis à faire un get sur le lien");
@@ -526,6 +523,23 @@ public class ControllerVueEvalQuestion implements Observer {
                 while (s.charAt(j) != '<'){
 
                     txt = txt + s.charAt(j);
+
+                    for(int l=0; l<txt.length();++l) {
+                        char c = txt.charAt(l);
+                        // If there's a char left, we chan check if the current and the next char
+                        // form a surrogate pair
+                        if(l<txt.length()-1 && Character.isSurrogatePair(c, txt.charAt(l+1))) {
+                            // if so, the codepoint must be stored on a 32bit int as char is only 16bit
+                            int codePoint = txt.codePointAt(l);
+                            // show the code point and the char
+                            System.out.println(String.format("%6d:%s", codePoint, new String(new int[]{codePoint}, 0, 1)));
+                            ++l;
+                        }
+                        // else this can only be a "normal" char
+                        else
+                            System.out.println(String.format("%6d:%s", (int)c, c));
+                    }
+
                     System.out.println("je concatène : " + txt);
                     j++;
                 }

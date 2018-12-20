@@ -181,6 +181,10 @@ public class Partie extends Observable{
             Main.main.switchScene("/views/VueMenu.fxml");
         }
     }
+
+    public int getScore(String currentDeck,Card c){
+        return this.database.getScore(currentDeck,c);
+    }
     public void valider() {
         this.CurrentCard.setType("reponse");
         setChanged();

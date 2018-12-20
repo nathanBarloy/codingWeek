@@ -235,9 +235,11 @@ public class Database {
     //
 
 
+
     public void resetScores(String nomdeck) {
         getCardListString(nomdeck).resetScores();
     }
+
 
 
 
@@ -246,6 +248,7 @@ public class Database {
             //System.out.println("c1.size(): "+c1.size());
             c1.resetIndex();
             c1.resetType();
+
         }
     }
 
@@ -297,6 +300,16 @@ public class Database {
     }
 
 
-
-
+    public int getScore(String currentDeck, Card c) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals(currentDeck)){
+                for (Card carte : c1){
+                    if (carte.getName().equals(c.getName())){
+                        return c.getState();
+                    }
+                }
+            }
+        }
+        return -3;
+    }
 }
