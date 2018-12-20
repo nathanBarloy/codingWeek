@@ -16,28 +16,7 @@ public class QueryGetUser extends Query {
     public QueryGetUser(String username) {
         super("getUser");
         this.username=username;
+        this.parameters+="username="+username;
     }
 
-
-    public void send() throws IOException {
-
-
-// Request parameters and other properties.
-            params.add(new BasicNameValuePair("username", username));
-            request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }

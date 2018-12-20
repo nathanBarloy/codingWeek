@@ -338,13 +338,8 @@ public class ControllerVueEvalQuestion implements Observer {
                         temp = " ";
                     }
                     String rep = carte.getAnswer();
-                    try {
-                        URL url = new URL("https://fr.wiktionary.org/w/api.php?action=query&prop=extracts&format=json&titles=lol");
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
-                    this.QuerySynonym()
-                    if(temp.equals(rep)){
+
+                    if(partie.verifierReponse(rep,temp)){
 
                         this.NbBonnesReponses++;
                         this.partie.setScore(this.currentDeck,this.c,1);
@@ -375,9 +370,7 @@ public class ControllerVueEvalQuestion implements Observer {
                         });
                             timeline.play();
                         this.partie.timeout = false;
-                    }
-
-                    if (!temp.equals(rep)){
+                    } else {
 
                         this.partie.setScore(this.currentDeck,this.c,-1);
                         Image image0 = new Image("/resources/img/SmileyTriste.png");

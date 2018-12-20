@@ -14,28 +14,8 @@ public class QueryCheckCardStackName extends Query {
     public QueryCheckCardStackName(String cardstackname) {
         super("checkCardStackName");
         this.cardstackname=cardstackname;
-
+        this.parameters+="cardstackname="+cardstackname;
     }
 
 
-    public void send() throws IOException {
-
-
-// Request parameters and other properties.
-        params.add(new BasicNameValuePair("cardstackname", cardstackname ));
-        request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }
