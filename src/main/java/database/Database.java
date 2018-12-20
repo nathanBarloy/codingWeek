@@ -122,6 +122,10 @@ public class Database {
     }
 
 
+    public String getSessionToken() {
+        return sessionToken;
+    }
+
     public String addCard(String NomDeck, Card card , Boolean local) {
         if (local){
             getCardListString(NomDeck).add(card);
@@ -181,6 +185,7 @@ public class Database {
             System.out.println("importonline ok");
 
             Query query = new QueryGetCardStackList();
+            query.setToken(sessionToken);
             query.send();
             String JSONresponse = query.getResponse();
             CardList[] cardLists = JSONCardStackParser.JsonToCardStackList(JSONresponse);
@@ -189,6 +194,7 @@ public class Database {
             this.listCardList.add(new CardList("admin", "contient toutes les cartes", "admin"));
 
             query = new QueryGetCardList();
+            query.setToken(sessionToken);
             query.send();
             JSONresponse = query.getResponse();
             Card[] cards = JSONCardParser.JsonToCardList(JSONresponse);
@@ -308,6 +314,7 @@ public class Database {
         }
 
         Query query = new QueryDelCardStack(cardList);
+        query.setToken(sessionToken);
         query.send();
         if(query.getResponse().equals("1"))
             System.out.println("Deck supprimé");
@@ -337,6 +344,7 @@ public class Database {
             return ;
         }
         Query query = new QueryAddCardStack(c);
+        query.setToken(sessionToken);
         query.send();
         if(query.getResponse().equals("1"))
             System.out.println("addDeck:" + this.listCardList.size());

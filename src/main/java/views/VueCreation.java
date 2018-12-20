@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
-import queries.Query;
+
 
 import java.util.ArrayList;
 import java.util.Observable;
