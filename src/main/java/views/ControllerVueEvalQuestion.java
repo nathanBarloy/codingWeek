@@ -98,6 +98,7 @@ public class ControllerVueEvalQuestion implements Observer {
 
     public void NvQuest() {
         Anim.stop();
+        Reponse.setText("");
         this.partie.NvQuest(this.currentDeck);
 
     }
@@ -107,8 +108,13 @@ public class ControllerVueEvalQuestion implements Observer {
     public void valider() {
         Anim.stop();
         if (!this.LabelQuestion.getText().equals("NotStartedYet")){
-            partie.valider();
+            if (c.getType().equals("question")) {
+                partie.valider();
+            } else {
+                NvQuest();
+            }
         }
+
     }
 
     public int animation(){
@@ -228,11 +234,13 @@ public class ControllerVueEvalQuestion implements Observer {
 
                     alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
                     String message = "";
+                    //alert.setHeaderText("Choisissez un deck avant de commencer");
+                    //String message = "Vous ne pouvez pas commencer si vous n'avez pas choisi de deck";
 
                     alert.setContentText(message);
                     alert.showAndWait();
                 }
-                this.done = true;
+                //this.done = true;
             }
             else{
                 //txt = object.getText();
@@ -296,7 +304,7 @@ public class ControllerVueEvalQuestion implements Observer {
                         temp = " ";
                     }
                     String rep = carte.getAnswer();
-                    if(temp.equals(rep)){
+                    if(partie.verifierReponse(rep,temp)){
 
                         this.NbBonnesReponses++;
                         this.partie.setScore(this.currentDeck,this.c,1);
@@ -327,9 +335,7 @@ public class ControllerVueEvalQuestion implements Observer {
                         });
                             timeline.play();
                         this.partie.timeout = false;
-                    }
-
-                    if (!temp.equals(rep)){
+                    } else {
 
                         this.partie.setScore(this.currentDeck,this.c,-1);
                         Image image0 = new Image("/resources/img/SmileyTriste.png");

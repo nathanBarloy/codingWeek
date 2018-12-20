@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueLogin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueLogin">
    <children>
       <BorderPane layoutX="-2.0" layoutY="-4.0" prefHeight="800.0" prefWidth="1000.0">
          <bottom>
@@ -58,7 +63,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="178.0" prefWidth="1000.0">
                      <children>
-                        <TextField fx:id="utilisateur" prefHeight="60.0" prefWidth="300.0" promptText="Utilisateur">
+                        <TextField fx:id="utilisateur" onAction="#connexion" prefHeight="60.0" prefWidth="300.0" promptText="Utilisateur">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -66,7 +71,7 @@
                               <Insets right="70.0" />
                            </HBox.margin>
                         </TextField>
-                        <PasswordField fx:id="motdepasse" prefHeight="60.0" prefWidth="300.0" promptText="mot de passe">
+                        <PasswordField fx:id="motdepasse" onAction="#connexion" prefHeight="60.0" prefWidth="300.0" promptText="mot de passe">
                            <font>
                               <Font size="24.0" />
                            </font>
