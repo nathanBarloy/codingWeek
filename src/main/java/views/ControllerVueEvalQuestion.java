@@ -271,28 +271,22 @@ public class ControllerVueEvalQuestion implements Observer {
             String txt = "";
             String object = (String) this.choicebox.getValue();
 
+
             if (object == null){
                 if(this.done == false) {
+                        /*
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("ATTENTION");
 
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("ATTENTION");
+                        alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
+                        String message = "";
 
-                    alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
-                    String message = "";
-                    //alert.setHeaderText("Choisissez un deck avant de commencer");
-                    //String message = "Vous ne pouvez pas commencer si vous n'avez pas choisi de deck";
-
-                    alert.setContentText(message);
-                    alert.showAndWait();
+                        alert.setContentText(message);
+                        alert.showAndWait();
+                        */
                 }
-                //this.done = true;
+                this.done = true;
             }
-            else{
-                //txt = object.getText();
-                //System.out.println("choix deck : "+ object);
-
-            }
-
             Card carte = partie.getCurrentCard(this.currentDeck);
             this.c = carte;
 
@@ -368,9 +362,8 @@ public class ControllerVueEvalQuestion implements Observer {
                             alert.setTitle("ATTENTION");
 
                             alert.setHeaderText("Un synonyme a été trouvé");
-                            String message = "";
 
-                            alert.setContentText(message);
+                            alert.setContentText("");
                             alert.showAndWait();
                         }
                         this.NbBonnesReponses++;
@@ -459,13 +452,15 @@ public class ControllerVueEvalQuestion implements Observer {
             in = new BufferedInputStream(urlConnection.getInputStream());
             readStream(in);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            System.out.println("prblème de request sur l'API : si vous avez entré une phrase, c'est normal..");
+            //e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("problème de request sur l'API : si vous avez entré une phrase, c'est normal..");
+            //e.printStackTrace();
         }
 
         if (in == null) {
-            System.out.println("merde: j'ai pas réussis à faire un get sur le lien");
+            System.out.println("j'ai pas réussis à faire un get sur le lien");
         } else {
 
             System.out.println("J'ai réussis à faire un get sur le lien");

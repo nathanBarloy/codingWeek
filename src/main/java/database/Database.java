@@ -224,15 +224,13 @@ public class Database {
     //------------------------------------------------------------------------------------------------------------------
     //
 
-
-
-
     public void reset() {
         for (CardList c1 : listCardList){
             //System.out.println("c1.size(): "+c1.size());
             c1.resetIndex();
-            c1.resetType();
             c1.resetScores();
+            c1.resetType();
+
         }
     }
 
