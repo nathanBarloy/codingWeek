@@ -1,6 +1,7 @@
 package views;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -43,9 +44,23 @@ public class VueLogin implements Observer {
         System.out.println(res);
 
         if (res.equals("-2") ) { //si le nom entré est dans la BDD
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("L'utilisateur n'existe pas");
+            String message = "";
+
+            alert.setContentText(message);
+            alert.showAndWait();
             System.out.println("L'utilisateur n'existe pas");
 
         }else if(res.equals("-3")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Password erroné");
+            String message = "";
+
+            alert.setContentText(message);
+            alert.showAndWait();
             System.out.println("Password erroné");
 
         }else {
