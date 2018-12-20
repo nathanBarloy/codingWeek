@@ -296,7 +296,7 @@ public class ControllerVueQuestion implements Observer {
                         this.RondAvancement.setProgress(0.0F);
 
                         //gestion de ma barre de progression
-                        progress += 1/size;
+                        //progress += 1/size;
                         //System.out.println(this.partie.getDeckEnCours());
                         //System.out.println(this.currentDeck);
                         //progress =
@@ -346,9 +346,9 @@ public class ControllerVueQuestion implements Observer {
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
                 } else {
-                    //System.out.println("here");
+                    System.out.println("here");
                     //setpartie progress
-                    this.progress += 1/size;
+                    this.progress = this.partie.getProgressCurrentDeck();
                     this.ProgressBar.setProgress(progress);
                     this.init = 1000;
 
