@@ -92,6 +92,7 @@ public class VueDecks implements Observer {
             partie.deleteCardList(temp);
             comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
             comboBox.setValue(null);
+            listeView.setItems(FXCollections.observableArrayList());
         }
     }
 

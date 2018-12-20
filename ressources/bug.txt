@@ -1,0 +1,1 @@
+- Lorsque l'on défile les cartes, si il reste qu"un carte et que l'on appui sur suivant on arrête

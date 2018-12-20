@@ -122,18 +122,20 @@ public class ControllerVueQuestion implements Observer {
 
     public void NvQuest() {
         if (RadioParfait.isSelected()){
-            this.partie.setScore(this.currentDeck,this.carte,1);
+            this.partie.setScore(this.currentDeck,this.carte,3);
             this.NbBonnesReponses++;
         }
         if (RadioMoyen.isSelected()){
-            this.partie.setScore(this.currentDeck,this.carte,0);
+            this.partie.setScore(this.currentDeck,this.carte,1);
             this.NbMoyenReponses++;
         }
         if (RadioIdk.isSelected()){
-            this.partie.setScore(this.currentDeck,this.carte,-1);
+
+            this.partie.setScore(this.currentDeck,this.carte,0);
+
             this.NbIdkReponses++;
         }
-        if (this.currentDeck == null){
+        if (this.currentDeck == null){/*
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("ATTENTION");
 
@@ -142,7 +144,7 @@ public class ControllerVueQuestion implements Observer {
 
             alert.setContentText(message);
             alert.showAndWait();
-            this.currentDeck = this.partie.getFirstDeck();
+            this.currentDeck = this.partie.getFirstDeck();*/
         }
         this.Anim.stop();
         this.partie.NvQuest(this.currentDeck);
@@ -262,7 +264,7 @@ public class ControllerVueQuestion implements Observer {
 
                 if (object == null){
                     if(this.done == false) {
-                        /*
+
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("ATTENTION");
 
@@ -271,7 +273,7 @@ public class ControllerVueQuestion implements Observer {
 
                         alert.setContentText(message);
                         alert.showAndWait();
-                        */
+
                     }
                     this.done = true;
                 }
@@ -290,18 +292,18 @@ public class ControllerVueQuestion implements Observer {
 
                 if (carte != null) {
                     if (carte.getType().equals("question")) {
-                        this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
+                        this.BonneReponsesBarre.setProgress(3);
 
                         int a = this.animation2();
                         this.RondAvancement.setProgress(0.0F);
 
                         //gestion de ma barre de progression
-                        progress += 1/size;
+                        //progress += 1/size;
                         //System.out.println(this.partie.getDeckEnCours());
                         //System.out.println(this.currentDeck);
                         //progress =
-                        System.out.println(this.partie.getProgressCurrentDeck());
-
+                       // System.out.println(this.partie.getProgressCurrentDeck());
+                        progress = this.partie.getProgressCurrentDeck();
                         //gfin de la gestion de la barre de progression
                         this.ProgressBar.setProgress(progress);
                         //System.out.println("question");
@@ -342,13 +344,14 @@ public class ControllerVueQuestion implements Observer {
                     }
                     if (carte.getType().equals("reponse")) {
                         //this.RondAvancement.setProgress(0f);
-                        //System.out.println("reponse");
+                        //System.out.println("reponse :" + carte.getName());
+
                         this.LabelQuestion.setText(carte.getAnswer());
                     }
                 } else {
                     //System.out.println("here");
                     //setpartie progress
-                    this.progress += 1/size;
+                    this.progress =  this.partie.getProgressCurrentDeck();
                     this.ProgressBar.setProgress(progress);
                     this.init = 1000;
 
