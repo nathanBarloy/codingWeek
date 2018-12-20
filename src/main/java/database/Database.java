@@ -308,23 +308,28 @@ public class Database {
 
 
     public void deleteCardList(CardList cardList ,boolean local) {
-        if (local ) {
+        if (local) {
             this.listCardList.remove(cardList);
-            return ;
+            return;
         }
 
         Query query = new QueryDelCardStack(cardList);
         query.setToken(sessionToken);
         query.send();
-        if(query.getResponse().equals("1"))
+        if (query.getResponse().equals("1")) {
             System.out.println("Deck supprimé");
-        else if(query.getResponse().equals("0"))
+            this.listCardList.remove(cardList);
+        } else if (query.getResponse().equals("0"))
             System.out.println("Le deck n'a pas pu être supprimé");
-        else if(query.getResponse().equals("-1"))
+        else if (query.getResponse().equals("-1"))
             System.out.println("La requête n'a pas pu être traitée");
-        else if(query.getResponse().equals("2"))
+        else if (query.getResponse().equals("2"))
             System.out.println("Les dépendences de la cardstack n'ont pas pu être supprimées");
-        this.listCardList.remove(cardList);
+        else if (query.getResponse().equals("-3"))
+            System.out.println("Vous ne pouvez pas supprimer le deck des autres");
+        else {
+            System.out.println("Erreur : "+query.getResponse());
+        }
 
     }
     public void deleteCardList(String name ,boolean local) {
