@@ -46,6 +46,14 @@
                      <font>
                         <Font size="20.0" />
                      </font></Button>
+                  <Button mnemonicParsing="false" onAction="#resetStat" prefWidth="150.0" text="Effacer les statistiques du deck" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </right>

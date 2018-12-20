@@ -43,7 +43,7 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <Pane fx:id="PaneAnim" layoutX="36.0" layoutY="-9.0" prefHeight="185.0" prefWidth="424.0">
+                                <Pane fx:id="PaneAnim" layoutX="36.0" layoutY="1.0" prefHeight="175.0" prefWidth="424.0">
                            <children>
                                     <Pane layoutX="472.0" layoutY="27.0" prefHeight="220.0" prefWidth="67.0">
                                         <children>

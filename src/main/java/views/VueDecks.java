@@ -24,7 +24,7 @@ public class VueDecks implements Observer {
 
 
     private Partie partie;
-    private boolean init, deldeck;
+    private boolean init;
     private boolean choix = false;
     private String CurrentDeck;
     private boolean supress = false;
@@ -34,7 +34,6 @@ public class VueDecks implements Observer {
         this.partie = p;
         this.partie.addObserver(this);
         this.init = true;
-        deldeck = false;
     }
 
     public void Choisir(){
@@ -94,6 +93,10 @@ public class VueDecks implements Observer {
             comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
             comboBox.setValue(null);
         }
+    }
+
+    public void resetStat() {
+        partie.resetScores(CurrentDeck);
     }
 
 
