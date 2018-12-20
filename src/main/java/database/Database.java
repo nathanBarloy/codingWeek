@@ -235,6 +235,10 @@ public class Database {
     //
 
 
+    public void resetScores(String nomdeck) {
+        getCardListString(nomdeck).resetScores();
+    }
+
 
 
     public void reset() {
@@ -242,7 +246,6 @@ public class Database {
             //System.out.println("c1.size(): "+c1.size());
             c1.resetIndex();
             c1.resetType();
-            c1.resetScores();
         }
     }
 
