@@ -351,7 +351,7 @@ public class ControllerVueQuestion implements Observer {
                 } else {
                     //System.out.println("here");
                     //setpartie progress
-                    this.progress =  this.partie.getProgressCurrentDeck();
+                    this.progress =   0 ;//this.partie.getProgressCurrentDeck();
                     this.ProgressBar.setProgress(progress);
                     this.init = 1000;
 
