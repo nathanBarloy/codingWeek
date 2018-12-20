@@ -20,6 +20,9 @@ public class VueLogin implements Observer {
     private Partie partie;
 
     @FXML
+    private BorderPane borderpane;
+
+    @FXML
     private Pane pane;
 
     @FXML
@@ -89,6 +92,22 @@ public class VueLogin implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
+
+        Image image1 = new Image("/resources/img/lotus.jpg");
+        BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
+
+        Background background1 = new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0));
+
+        this.borderpane.setBackground(new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0)));
 
         Image image0 = new Image("/resources/img/flashcards.png");
 

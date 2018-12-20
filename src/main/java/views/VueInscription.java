@@ -3,6 +3,8 @@ package views;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
 import models.Player;
@@ -18,6 +20,8 @@ import java.util.Observer;
 public class VueInscription implements Observer{
     private Partie p;
 
+    @FXML
+    private BorderPane borderpane;
 
     @FXML
     private TextField utilisateur;
@@ -78,6 +82,20 @@ public class VueInscription implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
+        Image image1 = new Image("/resources/img/lotus.jpg");
+        BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
+
+        Background background1 = new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0));
+
+        this.borderpane.setBackground(new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0)));
 
     }
 }
