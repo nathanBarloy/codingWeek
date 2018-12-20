@@ -236,7 +236,7 @@ public class Database {
 
 
     public void resetScores(String nomdeck) {
-
+        getCardListString(nomdeck).resetScores();
     }
 
 
