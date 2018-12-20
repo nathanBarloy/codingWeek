@@ -272,8 +272,9 @@ public class Partie extends Observable{
         String s2 = averifier.toLowerCase();
         int dLev = distanceLevenshtein(s1,s2);
         //dLev = dLev/( (double) Math.max(s1.length(),s2.length()) );
-        int nbErr = (Math.min(s1.length(),s2.length())/5) +1;
-        return (nbErr>=dLev);
+        double n = (float) Math.min(s1.length(),s2.length());
+        double nbErr = n/10 + 3.0*Math.sqrt(n)/10.0;
+        return (dLev <= nbErr);
     }
 
 
