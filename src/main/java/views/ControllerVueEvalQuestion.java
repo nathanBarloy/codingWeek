@@ -44,6 +44,9 @@ public class ControllerVueEvalQuestion implements Observer {
     private int NbMoyenReponses = 0;
 
     @FXML
+    private Label username;
+
+    @FXML
     private AnchorPane RecPane;
 
 
@@ -94,7 +97,7 @@ public class ControllerVueEvalQuestion implements Observer {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
-        this.size = this.partie.getCardList().size();
+        //this.size = this.partie.getCardList().size();
         //this.progress = -1/this.size;
         this.progress = 0;
     }
@@ -212,6 +215,10 @@ public class ControllerVueEvalQuestion implements Observer {
         return 1;
     }
 
+    public void goStat() {
+        Main.main.switchScene("/views/Statistiques.fxml");
+    }
+
 
     public boolean QuerySynonym(URL url,String sol){
 
@@ -250,7 +257,9 @@ public class ControllerVueEvalQuestion implements Observer {
             //final URL imageURL = getClass().getResource("../ressources/fond");
             //final Image image1 = new Image(imageURL.toExternalForm());
 
+
             this.choicebox.getItems().addAll(this.partie.getListeDeck());
+            username.setText("utilisateur : " + partie.getPlayer().getUsername());
 
             BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 

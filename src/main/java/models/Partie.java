@@ -25,6 +25,7 @@ public class Partie extends Observable{
     public boolean timeout = false;
     private String currentDeck;
     private Stat stat;
+<<<<<<< HEAD
     private String sessionToken;
 
 
@@ -35,36 +36,53 @@ public class Partie extends Observable{
     public String getQuestEnCours() {
         return QuestEnCours;
     }
+=======
+    private boolean local;
 
-    public String getRepEnCours() {
-        return RepEnCours;
-    }
+
+>>>>>>> 8b9707e8ff61a782685bf4d1406efedab1cff6d4
+
 
     //----------------------------------------------------------------------------------------------
     //Constructeur
+<<<<<<< HEAD
     public Partie(Player player, CardList cardList) {
+=======
+
+    public Partie(Player player, CardList cardList) throws IOException {
+>>>>>>> 8b9707e8ff61a782685bf4d1406efedab1cff6d4
         this.player = player;
         this.cardList = cardList;
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
-        this.database.setDatabase();
+        //this.database.setDatabase();
+        this.local = false;
         //System.out.println(this.database.getListCardList().size() + "decks par défault");
 
 
     }
 
+<<<<<<< HEAD
     public Partie(Player player){
+=======
+    public Partie(Player player ) throws IOException {
+>>>>>>> 8b9707e8ff61a782685bf4d1406efedab1cff6d4
         this.player = player;
         this.cardList = new CardList("Default","Deck avec des cartes par défaut");
 
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
-        this.database.setDatabase();
+        //this.database.setDatabase(local);
         //System.out.println(this.database.getListCardList().size() + "decks par défault");
     }
 
+<<<<<<< HEAD
     public Partie()  {
         this(new Player("perso test"));
+=======
+    public Partie() throws IOException {
+        this.player = (new Player("perso test"));
+>>>>>>> 8b9707e8ff61a782685bf4d1406efedab1cff6d4
     }
 
     //-----------------------------------------------------------------------------------------------
@@ -118,11 +136,63 @@ public class Partie extends Observable{
         */
         return stat.getProgession(this.database.getCardListString( this.currentDeck));
     }
+    public double getProgressDeck(String namedeck){
+        this.stat = new Stat();
+        /*
+        System.out.println("current card dans partie  " +this.currentDeck);
+        System.out.println("partie trouvé  " +this.database.getCardListString( this.currentDeck).getName());
+        System.out.println("resultat 1ère carte " +this.database.getCardListString( this.currentDeck).getCard().getState());
+        */
+        return stat.getProgession(this.database.getCardListString( namedeck));
+    }
+
+    public String getNameEnCours() { return NameEnCours; }
+
+    public String getQuestEnCours() {
+        return QuestEnCours;
+    }
+
+    public String getRepEnCours() {
+        return RepEnCours;
+    }
+
+    public int getScore(String currentDeck,Card c){
+        return this.database.getScore(currentDeck,c);
+    }
+
+    public Card getCard(String temp, String currentDeck) {
+
+        return this.database.getCard(temp,currentDeck);
+
+    }
+    public ArrayList<String> getListeCarte(String currentDeck) {
+        return this.database.getListeCarte(currentDeck);
+    }
+
+    public String getcurrentDeck() {
+        return this.currentDeck;
+    }
+
+    public void setRepEnCours(String repEnCours) {
+        RepEnCours = repEnCours;
+    }
+
+    public void setQuestEnCours(String questEnCours) {
+        QuestEnCours = questEnCours;
+    }
+
+
 //-----------------------------------------------------------------------------------------------
     //Setter
 
+<<<<<<< HEAD
     public void setSessionToken(String sessionToken) {
         this.database.setSessionToken(sessionToken);
+=======
+    public void setDatabase(){
+         this.database = new Database();
+         this.database.setDatabase(this.local);
+>>>>>>> 8b9707e8ff61a782685bf4d1406efedab1cff6d4
     }
 
     public void setCurrentCard(Card card) {
@@ -136,16 +206,12 @@ public class Partie extends Observable{
 
 
 
-    public void addCard(String NomDeck,Card card){
-        this.database.addCard(NomDeck,card);
-    }
+
     public void SupprimerCard(String NomDeck,Card card){
         this.database.supressCard(NomDeck,card);
         setChanged();
         notifyObservers();
     }
-    //fin du code en dur
-    //------------------------------------------------------------------------------------------------------------------
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -154,10 +220,19 @@ public class Partie extends Observable{
     public void setNbCards(int nbCards) {
         this.nbCards = nbCards;
     }
+
+    public void setLocal(boolean local) {
+        this.local = local;
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //adder
     public void addCardCardList(String nameCardList , Card card) {
-        this.database.addCardCardList(nameCardList ,  card);
+        this.database.addCardCardList(nameCardList ,  card );
+    }
+    public void addCard(String NomDeck,Card card){
+
+        this.database.addCard(NomDeck,card , this.local);
     }
     //----------------------------------------------------------------------------------------------
     //Autres fonctions
@@ -184,14 +259,13 @@ public class Partie extends Observable{
 
             alertt.setContentText(mmessage);
             alertt.showAndWait();
-
-            Main.main.switchScene("/views/VueMenu.fxml");
+            System.out.println("here");
+            Main.main.switchScene("/views/Statistiques.fxml");
+            //Main.main.switchScene("/views/VueMenu.fxml");
         }
     }
 
-    public int getScore(String currentDeck,Card c){
-        return this.database.getScore(currentDeck,c);
-    }
+
     public void valider() {
         this.CurrentCard.setType("reponse");
         setChanged();
@@ -209,13 +283,7 @@ public class Partie extends Observable{
     }
 
 
-    public void setRepEnCours(String repEnCours) {
-        RepEnCours = repEnCours;
-    }
 
-    public void setQuestEnCours(String questEnCours) {
-        QuestEnCours = questEnCours;
-    }
 
     public ArrayList<String> getDeckName() {
         ArrayList<String> res = database.getDeckName();
@@ -226,24 +294,14 @@ public class Partie extends Observable{
         this.NameEnCours = nameEnCours;
     }
 
-    public Card getCard(String temp, String currentDeck) {
 
-        return this.database.getCard(temp,currentDeck);
-
-    }
 
     public void Choisir() {
         setChanged();
         notifyObservers();
     }
 
-    public ArrayList<String> getListeCarte(String currentDeck) {
-        return this.database.getListeCarte(currentDeck);
-    }
 
-    public String getcurrentDeck() {
-        return this.currentDeck;
-    }
 
     public void setcurrentDeck(String currentDeck) {
         this.currentDeck = currentDeck;
@@ -258,16 +316,16 @@ public class Partie extends Observable{
         this.database.reset();
     }
 
-    public void deleteCardList(CardList cardList) {
-        this.database.deleteCardList(cardList);
+    public void deleteCardList(CardList cardList  ) {
+        this.database.deleteCardList(cardList , this.local);
     }
-    public void deleteCardList(String name) {
-        this.database.deleteCardList(name);
+    public void deleteCardList(String name ) {
+        this.database.deleteCardList(name , this.local);
         init();
     }
 
     public void addDeck(String text) {
-        this.database.addDeck(text,"une description",this.player.getUsername());
+        this.database.addDeck(text,"une description",this.player.getUsername() , this.local);
         setChanged();
         notifyObservers();
     }
@@ -287,7 +345,9 @@ public class Partie extends Observable{
 
     }
     public void exportDatabaseLocal(){
-        this.database.exportDatabaselocal();
+        this.database.exportDatabaselocal(this.local);
+        System.out.println("export not");
+        return;
 
     }
 
@@ -296,7 +356,6 @@ public class Partie extends Observable{
         String s1 = reponse.toLowerCase();
         String s2 = averifier.toLowerCase();
         int dLev = distanceLevenshtein(s1,s2);
-        //dLev = dLev/( (double) Math.max(s1.length(),s2.length()) );
         double n = (float) Math.min(s1.length(),s2.length());
         double nbErr = n/10 + 3.0*Math.sqrt(n)/10.0;
         return (dLev <= nbErr);
@@ -337,5 +396,31 @@ public class Partie extends Observable{
         return d.get(n1).get(n2);
     }
 
+<<<<<<< HEAD
+=======
+    public CardList getDeck(String currentDeck) {
+        return this.database.getDeck(currentDeck);
+    }
+
+    public void setGoodRep(Card carte) {
+        this.database.setGoodRep(carte);
+    }
+    public void setMediumRep(Card carte) {
+        this.database.setMediumRep(carte);
+    }
+    public void setBadRep(Card carte) {
+        this.database.setBadRep(carte);
+    }
+
+    public int getGoodRep(String deck){
+        return this.database.getBonnesRep(deck);
+    }
+    public int getMediumRep(String deck){
+        return this.database.getMoyennesRep(deck);
+    }
+    public int getBadRep(String deck){
+        return this.database.getBadRep(deck);
+    }
+>>>>>>> 8b9707e8ff61a782685bf4d1406efedab1cff6d4
 }
 

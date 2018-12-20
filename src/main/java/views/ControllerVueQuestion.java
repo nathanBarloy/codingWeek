@@ -37,6 +37,9 @@ public class ControllerVueQuestion implements Observer {
     private int NbIdkReponses;
 
     @FXML
+    private Label username;
+
+    @FXML
     private ProgressBar BonneReponsesBarre;
 
     @FXML
@@ -90,7 +93,7 @@ public class ControllerVueQuestion implements Observer {
         super();
         this.partie = partie;
         this.partie.addObserver(this);
-        this.size = this.partie.getCardList().size();
+        //this.size = this.partie.getCardList().size();
         //this.progress = -1/this.size;
         this.progress = 0;
     }
@@ -124,16 +127,19 @@ public class ControllerVueQuestion implements Observer {
         if (RadioParfait.isSelected()){
             this.partie.setScore(this.currentDeck,this.carte,3);
             this.NbBonnesReponses++;
+            this.partie.setGoodRep(this.carte);
         }
         if (RadioMoyen.isSelected()){
             this.partie.setScore(this.currentDeck,this.carte,1);
             this.NbMoyenReponses++;
+            this.partie.setMediumRep(this.carte);
         }
         if (RadioIdk.isSelected()){
 
             this.partie.setScore(this.currentDeck,this.carte,0);
 
             this.NbIdkReponses++;
+            this.partie.setBadRep(this.carte);
         }
         if (this.currentDeck == null){/*
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -143,8 +149,8 @@ public class ControllerVueQuestion implements Observer {
             String message = "";
 
             alert.setContentText(message);
-            alert.showAndWait();
-            this.currentDeck = this.partie.getFirstDeck();*/
+            alert.showAndWait();*/
+            this.currentDeck = this.partie.getFirstDeck();
         }
         this.Anim.stop();
         this.partie.NvQuest(this.currentDeck);
@@ -231,6 +237,10 @@ public class ControllerVueQuestion implements Observer {
         return 1;
     }
 
+    public void goStat() {
+        Main.main.switchScene("/views/Statistiques.fxml");
+    }
+
 
 
     @Override
@@ -243,6 +253,8 @@ public class ControllerVueQuestion implements Observer {
                 //final Image image1 = new Image(imageURL.toExternalForm());
 
                 this.choicebox.getItems().addAll(this.partie.getListeDeck());
+                username.setText("utilisateur : " + partie.getPlayer().getUsername());
+
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
                 Background background1 = new Background(new BackgroundImage(image0,
@@ -351,7 +363,7 @@ public class ControllerVueQuestion implements Observer {
                 } else {
                     //System.out.println("here");
                     //setpartie progress
-                    this.progress =  this.partie.getProgressCurrentDeck();
+                    this.progress =   0 ;//this.partie.getProgressCurrentDeck();
                     this.ProgressBar.setProgress(progress);
                     this.init = 1000;
 

@@ -19,7 +19,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueLogin">
    <children>
-      <BorderPane layoutX="-2.0" layoutY="-4.0" prefHeight="600.0" prefWidth="800.0">
+      <BorderPane fx:id="borderpane" layoutX="-2.0" layoutY="-4.0" prefHeight="600.0" prefWidth="800.0">
          <bottom>
             <HBox alignment="CENTER" prefHeight="73.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
@@ -68,7 +68,7 @@
                               <Font size="24.0" />
                            </font>
                            <HBox.margin>
-                              <Insets right="70.0" />
+                              <Insets right="50.0" />
                            </HBox.margin>
                         </TextField>
                         <PasswordField fx:id="motdepasse" onAction="#connexion" prefHeight="50.0" prefWidth="250.0" promptText="mot de passe">
@@ -76,27 +76,38 @@
                               <Font size="24.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="70.0" />
+                              <Insets left="50.0" />
                            </HBox.margin>
                         </PasswordField>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#connexion" prefHeight="50.0" prefWidth="200.0" text="Connexion" textFill="#2477eb">
+                  <Button mnemonicParsing="false" onAction="#connexion" prefHeight="45.0" prefWidth="200.0" text="Connexion" textFill="#2477eb">
                      <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#inscription" prefHeight="50.0" prefWidth="200.0" text="Inscription">
-                     <font>
-                        <Font size="30.0" />
+                        <Font size="26.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#quitter" prefHeight="50.0" prefWidth="200.0" text="Quitter">
+                  <Button mnemonicParsing="false" onAction="#inscription" prefHeight="45.0" prefWidth="200.0" text="Inscription">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="26.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#connexionLocal" prefHeight="45.0" prefWidth="200.0" text="Mode Local">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#quitter" prefHeight="45.0" prefWidth="200.0" text="Quitter">
+                     <font>
+                        <Font size="25.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="70.0" />

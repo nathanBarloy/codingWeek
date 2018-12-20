@@ -20,6 +20,9 @@ public class VueLogin implements Observer {
     private Partie partie;
 
     @FXML
+    private BorderPane borderpane;
+
+    @FXML
     private Pane pane;
 
     @FXML
@@ -35,6 +38,8 @@ public class VueLogin implements Observer {
     }
 
     public void connexion() {
+        partie.setLocal(false);
+        partie.setDatabase();
         String nom = utilisateur.getText();
         String password = motdepasse.getText();
         String res = "0";
@@ -77,6 +82,16 @@ public class VueLogin implements Observer {
 
     }
 
+    public void connexionLocal() {
+
+        partie.setPlayer(new Player(""  ));
+        System.out.println("preimport");
+        partie.setLocal(true);
+        partie.setDatabase();
+        System.out.println("postimport");
+        Main.main.switchScene("/views/VueMenu.fxml");
+    }
+
 
     public void quitter() {
         Main.main.closeStage();
@@ -88,6 +103,22 @@ public class VueLogin implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
+
+        Image image1 = new Image("/resources/img/lotus.jpg");
+        BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
+
+        Background background1 = new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0));
+
+        this.borderpane.setBackground(new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0)));
 
         Image image0 = new Image("/resources/img/flashcards.png");
 

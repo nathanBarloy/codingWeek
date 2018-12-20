@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
 import queries.Query;
@@ -17,6 +19,9 @@ public class VueCreation implements Observer {
     private Partie partie;
     String nomCarte,questionCarte,reponseCarte,nomDeck;
     boolean init;
+
+    @FXML
+    private BorderPane borderpane;
 
     @FXML
     private TextField newdeck;
@@ -42,9 +47,14 @@ public class VueCreation implements Observer {
 
     public void AjouterDeck(){
         //System.out.println("AjouterDeck");
-        this.partie.addDeck(this.newdeck.getText());
 
-        this.newdeck.setText("");
+        String newnom = this.newdeck.getText();
+
+        if (!newnom.equals("")) {
+            this.partie.addDeck(newnom);
+
+            this.newdeck.setText("");
+        }
     }
 
     public void retour() {
@@ -102,7 +112,22 @@ public class VueCreation implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
-            ArrayList<String> deckList = partie.getListeDeck();
-            menuDeck.setItems(FXCollections.observableArrayList( deckList ));
+        Image image1 = new Image("/resources/img/lotus.jpg");
+        BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
+
+        Background background1 = new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0));
+
+        this.borderpane.setBackground(new Background(new BackgroundImage(image1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                bSize0)));
+
+        ArrayList<String> deckList = partie.getListeDeck();
+        menuDeck.setItems(FXCollections.observableArrayList( deckList ));
     }
 }

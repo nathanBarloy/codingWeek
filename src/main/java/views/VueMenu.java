@@ -1,6 +1,8 @@
 package views;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -12,6 +14,7 @@ import queries.QueryDelUser;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Optional;
 
 public class VueMenu implements Observer{
     Partie partie;
@@ -50,11 +53,21 @@ public class VueMenu implements Observer{
     }
 
     public void deconnexion() {
+        this.partie.exportDatabaseLocal();
         Main.main.switchScene("/views/VueLogin.fxml");
     }
 
     public void supprimerCompte() {
-        Query del = new QueryDelUser(partie.getPlayer());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmer Suppression");
+        alert.setHeaderText("Attention, vous allez supprimer votre compte");
+        alert.setContentText("Cette action sera irréversible");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // ... user chose OK
+            Query del = new QueryDelUser(partie.getPlayer());
 
             del.send();
             if(del.getResponse().equals("1")) {
@@ -63,6 +76,11 @@ public class VueMenu implements Observer{
             }else{
                 System.out.println("Erreur : "+del.getResponse());
             }
+
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
 
     }
 
