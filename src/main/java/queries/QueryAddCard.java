@@ -19,7 +19,7 @@ public class QueryAddCard extends Query {
     public QueryAddCard(Card card) {
         super("addCard");
         this.card=card;
-        parameters+="name="+card.getName()+"&question="+card.getQuestion()+"&answer="+"&type="+card.getType()+"&author="+card.getAuthor();
+        parameters+="name="+card.getName()+"&question="+card.getQuestion()+"&answer="+card.getAnswer()+"&type="+card.getType()+"&author="+card.getAuthor();
 
     }
 
