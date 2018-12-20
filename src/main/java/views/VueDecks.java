@@ -112,11 +112,11 @@ public class VueDecks implements Observer {
             this.init = false;
         }
         if (this.choix){
-            System.out.println("here");
+            //System.out.println("here");
             ObservableList<String> items =FXCollections.observableArrayList ();
             items.addAll(this.partie.getListeCarte(CurrentDeck));
-            System.out.println(items.toString());
-            System.out.println("items:"+items.toString());
+            //System.out.println(items.toString());
+            //System.out.println("items:"+items.toString());
             this.listeView.setItems(items);
             this.choix = false;
         }

@@ -250,7 +250,10 @@ public class Database {
 
     }
     public void addDeck(String s, String une_description, String text) {
-        this.listCardList.add(new CardList(s,une_description,text));
+        CardList deck = new CardList(s,une_description,text);
+        this.listCardList.add(deck);
+        Query query = new QueryAddCardStack(deck);
+        query.send();
         System.out.println("addDeck:" + this.listCardList.size());
     }
 

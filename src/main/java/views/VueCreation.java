@@ -41,7 +41,7 @@ public class VueCreation implements Observer {
     }
 
     public void AjouterDeck(){
-        System.out.println("AjouterDeck");
+        //System.out.println("AjouterDeck");
         this.partie.addDeck(this.newdeck.getText());
         this.newdeck.setText("");
     }
@@ -66,7 +66,7 @@ public class VueCreation implements Observer {
             this.partie.setRepEnCours(reponseCarte);
             this.partie.setNameEnCours(nomCarte);
             this.partie.setDeckEnCours((String)this.menuDeck.getValue());
-            System.out.println("quest:" + partie.getQuestEnCours());
+            //System.out.println("quest:" + partie.getQuestEnCours());
             Main.main.switchScene("/views/VueCard.fxml",this.partie);
 
         } else {
