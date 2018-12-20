@@ -61,7 +61,8 @@ public class VueInscription implements Observer{
 
                 Query query = new QueryAddUser(nom,mdp);
                 query.send();
-
+                    resp = query.getResponse();
+                System.out.println(resp);
 
                 retour();
 
