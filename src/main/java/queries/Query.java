@@ -11,9 +11,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,31 +27,77 @@ public abstract class Query {
 
     protected HttpPost request;
     protected List<NameValuePair> params;
-    protected InputStream response;
+    protected String parameters;
+    //protected InputStream response;
+    protected HttpsURLConnection httpsURLConnection;
+    protected URL url;
+    protected StringBuffer response;
 
 
     public Query(String action){
+
         this.action=action;
-        this.server= "http://saltycard.elmrini.fr/index.php?action=";
+        this.server= "https://saltycard.elmrini.fr/index.php?action=";
+
+        try {
+            url=new URL(this.server+this.action);
+            httpsURLConnection = (HttpsURLConnection) url.openConnection();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            httpsURLConnection.setRequestMethod("POST");
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        }
+
         httpClient = new DefaultHttpClient();
         request = new HttpPost(this.server+this.action);
         params = new ArrayList<NameValuePair>();
+        parameters = "";
+    }
 
+    public Query(String action, String token){
+        this(action);
+        parameters="sessid="+token+"&";
     }
 
 
+    public void send() {
+        httpsURLConnection.setDoOutput(true);
+        try {
+        DataOutputStream wr = new DataOutputStream(httpsURLConnection.getOutputStream());
 
-    public abstract void send() throws IOException;
+        wr.writeBytes(parameters);
+
+        wr.flush();
+        wr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String getResponse() {
         StringWriter writer = new StringWriter();
-        try{
-            IOUtils.copy(response, writer, "UTF-8");
-        }catch(IOException e){
-            System.out.println("Unable to create a String response from the HTTP response");
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(
+                    new InputStreamReader(httpsURLConnection.getInputStream()));
+
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        return writer.toString().replaceAll("^\\s+","").replaceAll("\\s+$","");
+        return response.toString();
     }
 
 }

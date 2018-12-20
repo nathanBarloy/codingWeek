@@ -33,6 +33,10 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
     // https://mvnrepository.com/artifact/org.codehaus.mojo.signature/java16-jrockit
     compile group: 'org.codehaus.mojo.signature', name: 'java16-jrockit', version: '1.0', ext: 'pom'
+    // https://mvnrepository.com/artifact/io.earcam.utilitarian/io.earcam.utilitarian.net
+    // https://mvnrepository.com/artifact/org.jboss.spec.javax.net.ssl/jboss-jsse-api_8.0_spec
+    compile group: 'org.jboss.spec.javax.net.ssl', name: 'jboss-jsse-api_8.0_spec', version: '1.0.0.Final'
+
 
 }
 
@@ -41,6 +45,8 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    
+    
 }
 
 jar {
