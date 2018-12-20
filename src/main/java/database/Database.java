@@ -249,6 +249,17 @@ public class Database {
 
 
     public void deleteCardList(CardList cardList) {
+
+        Query query = new QueryDelCardStack(cardList);
+        query.send();
+        if(query.getResponse().equals("1"))
+            System.out.println("Deck supprimé");
+        else if(query.getResponse().equals("0"))
+            System.out.println("Le deck n'a pas pu être supprimé");
+        else if(query.getResponse().equals("-1"))
+            System.out.println("La requête n'a pas pu être traitée");
+        else if(query.getResponse().equals("2"))
+            System.out.println("Les dépendences de la cardstack n'ont pas pu être supprimées");
         this.listCardList.remove(cardList);
 
     }
