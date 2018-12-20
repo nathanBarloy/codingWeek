@@ -104,7 +104,9 @@ public class CardList implements Iterable<Card>{
         }
         else{
             int a = (int) (Math.random()*(len));
-            if (this.cardStack.get(a).getState() <1){
+
+            if (this.cardStack.get(a).getState() <=1){
+
                 return this.cardStack.get(a);
             }
             else{

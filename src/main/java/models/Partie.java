@@ -25,6 +25,7 @@ public class Partie extends Observable{
     public boolean timeout = false;
     private String currentDeck;
     private Stat stat;
+    private boolean local;
 
 
     public String getNameEnCours() { return NameEnCours; }
@@ -45,6 +46,7 @@ public class Partie extends Observable{
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
         this.database.setDatabase();
+        this.local = false;
         //System.out.println(this.database.getListCardList().size() + "decks par défault");
 
 
