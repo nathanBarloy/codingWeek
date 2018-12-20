@@ -120,6 +120,7 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void retour() {
+        this.init = 10000;
         Main.main.switchScene("/views/VueMenu.fxml");
     }
 
