@@ -177,8 +177,9 @@ public class Partie extends Observable{
 
             alertt.setContentText(mmessage);
             alertt.showAndWait();
-
-            Main.main.switchScene("/views/VueMenu.fxml");
+            System.out.println("here");
+            Main.main.switchScene("/views/Statistiques.fxml");
+            //Main.main.switchScene("/views/VueMenu.fxml");
         }
     }
 
