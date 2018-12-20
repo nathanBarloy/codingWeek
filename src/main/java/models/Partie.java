@@ -71,7 +71,7 @@ public class Partie extends Observable{
         ArrayList<String> res = new ArrayList<String>();
         List<CardList> temp = this.database.getListCardList();
         for (CardList c : temp){
-            System.out.println("getListeDeck:" + c.getName());
+            //System.out.println("getListeDeck:" + c.getName());
             res.add(c.getName());
         }
         return res;
@@ -229,7 +229,7 @@ public class Partie extends Observable{
     }
 
     public void reset() {
-        System.out.println("resetin");
+        //System.out.println("resetin");
         this.database.reset();
     }
 

@@ -47,7 +47,7 @@ public class  Main extends Application {
 
 
         stage.setTitle("Connexion");
-        stage.setScene(new Scene(VueLogin, 1000, 800));
+        stage.setScene(new Scene(VueLogin, 800, 600));
         stage.show();
 
     }
@@ -69,7 +69,7 @@ public class  Main extends Application {
                 root.setTop(VueQuestion);
 
                 stage.setTitle("Apprentissage");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(root, 800, 600));
                 stage.show();
 
             }
@@ -88,7 +88,7 @@ public class  Main extends Application {
                 root.setTop(VueQuestion);
 
                 stage.setTitle("Apprentissage");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(root, 800, 600));
                 stage.show();
 
             }
@@ -105,7 +105,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Menu Principal");
-                stage.setScene(new Scene(VueMenu, 1000, 800));
+                stage.setScene(new Scene(VueMenu, 800, 600));
                 stage.show();
 
             }
@@ -124,7 +124,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Vue d'une Carte");
-                stage.setScene(new Scene(VueMenu, 1000, 800));
+                stage.setScene(new Scene(VueMenu, 800, 600));
                 stage.show();
 
             }
@@ -142,7 +142,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Vue des Decks");
-                stage.setScene(new Scene(VueDeck, 1000, 800));
+                stage.setScene(new Scene(VueDeck, 800, 600));
                 stage.show();
 
             }
@@ -163,7 +163,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Creation");
-                stage.setScene(new Scene(VueCreation, 1000, 800));
+                stage.setScene(new Scene(VueCreation, 800, 600));
                 stage.show();
 
             }
@@ -179,13 +179,13 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Connexion");
-                stage.setScene(new Scene(VueLogin, 1000, 800));
+                stage.setScene(new Scene(VueLogin, 800, 600));
                 stage.show();
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {
                 Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
                 stage.setTitle("Inscription");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(root, 800, 600));
                 stage.show();
             }
 
@@ -211,7 +211,7 @@ public class  Main extends Application {
                 root.setTop(VueQuestion);
 
                 stage.setTitle("Apprentissage");
-                stage.setScene(new Scene(root, 1000, 800));
+                stage.setScene(new Scene(root, 800, 600));
                 stage.show();
 
             }
@@ -228,7 +228,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Menu Principal");
-                stage.setScene(new Scene(VueMenu, 1000, 800));
+                stage.setScene(new Scene(VueMenu, 800, 600));
                 p.init();
                 stage.show();
 
@@ -249,7 +249,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Vue d'une Carte");
-                stage.setScene(new Scene(VueMenu, 1000, 800));
+                stage.setScene(new Scene(VueMenu, 800, 600));
                 stage.show();
 
             }
@@ -268,7 +268,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Vue des Decks");
-                stage.setScene(new Scene(VueDeck, 1000, 800));
+                stage.setScene(new Scene(VueDeck, 800, 600));
                 stage.show();
 
             }
@@ -290,7 +290,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Creation");
-                stage.setScene(new Scene(VueCreation, 1000, 800));
+                stage.setScene(new Scene(VueCreation, 800, 600));
                 stage.show();
 
             }
@@ -307,7 +307,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Connexion");
-                stage.setScene(new Scene(VueLogin, 1000, 800));
+                stage.setScene(new Scene(VueLogin, 800, 600));
                 stage.show();
             }
             if (fxmlFile.equals("/views/VueInscription.fxml")) {
@@ -325,7 +325,7 @@ public class  Main extends Application {
 
 
                 stage.setTitle("Inscription");
-                stage.setScene(new Scene(vueInscription, 1000, 800));
+                stage.setScene(new Scene(vueInscription, 800, 600));
                 stage.show();
             }
 

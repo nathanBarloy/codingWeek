@@ -16,59 +16,59 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueMenu">
    <children>
-      <BorderPane fx:id="borderpane" layoutX="-1.0" prefHeight="800.0" prefWidth="1000.0">
+      <BorderPane fx:id="borderpane" layoutX="-1.0" prefHeight="600.0" prefWidth="800.0">
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="408.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#lancerModeTest" prefHeight="60.0" prefWidth="250.0" text="Mode Entrainement">
+                        <Button mnemonicParsing="false" onAction="#lancerModeTest" prefHeight="55.0" prefWidth="230.0" text="Mode Entrainement">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="22.0" />
+                              <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#evaluation" prefHeight="60.0" prefWidth="250.0" text="Mode Evaluation">
+                        <Button mnemonicParsing="false" onAction="#evaluation" prefHeight="55.0" prefWidth="230.0" text="Mode Evaluation">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="22.0" />
+                              <Font size="20.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#lancerModeCreation" prefHeight="60.0" prefWidth="270.0" text="Mode Creation">
+                  <Button mnemonicParsing="false" onAction="#lancerModeCreation" prefHeight="55.0" prefWidth="240.0" text="Mode Creation">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#ConsulterDecks" prefHeight="60.0" prefWidth="270.0" text="Consulter Decks">
+                  <Button mnemonicParsing="false" onAction="#ConsulterDecks" prefHeight="55.0" prefWidth="240.0" text="Consulter Decks">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" onAction="#deconnexion" prefHeight="60.0" prefWidth="220.0" text="Deconnexion">
+                  <Button mnemonicParsing="false" onAction="#deconnexion" prefHeight="55.0" prefWidth="200.0" text="Deconnexion">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="100.0" />
+                        <Insets top="80.0" />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#quitter" prefHeight="60.0" prefWidth="220.0" text="Quitter">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#quitter" prefHeight="55.0" prefWidth="200.0" text="Quitter">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -79,7 +79,7 @@
                <children>
                   <Label fx:id="label" text="Label">
                      <font>
-                        <Font name="MathJax_Math-Italic" size="50.0" />
+                        <Font name="MathJax_Math-Italic" size="45.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="100.0" />
@@ -89,14 +89,14 @@
             </HBox>
          </top>
          <bottom>
-            <HBox alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#supprimerCompte" prefHeight="80.0" prefWidth="170.0" text="Supprimer Compte" textAlignment="CENTER" textFill="#da0606" wrapText="true">
+                  <Button mnemonicParsing="false" onAction="#supprimerCompte" prefHeight="70.0" prefWidth="140.0" text="Supprimer Compte" textAlignment="CENTER" textFill="#da0606" wrapText="true">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="20.0" />
                      </font>
                      <HBox.margin>
-                        <Insets bottom="30.0" right="40.0" />
+                        <Insets bottom="20.0" right="30.0" />
                      </HBox.margin>
                   </Button>
                </children>

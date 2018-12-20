@@ -260,6 +260,7 @@ public class Database {
 
     }
     public void addDeck(String s, String une_description, String text) {
+
         CardList c= new CardList(s,une_description,text);
         this.listCardList.add(c);
         Query query = new QueryAddCardStack(c);
@@ -268,6 +269,7 @@ public class Database {
             System.out.println("addDeck:" + this.listCardList.size());
         else
             System.out.println("Erreur d'ajout dans la database");
+
     }
 
 
