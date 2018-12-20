@@ -26,6 +26,7 @@ public class Database {
     public Database() {
     listCardList = new ArrayList<CardList>();
     listCard = new ArrayList<Card>();
+    sessionToken = "";
     }
     //------------------------------------------------------------------------------------------------------------------
     //getter
@@ -121,6 +122,10 @@ public class Database {
     }
 
 
+    public String getSessionToken() {
+        return sessionToken;
+    }
+
     public String addCard(String NomDeck, Card card , Boolean local) {
         if (local){
             getCardListString(NomDeck).add(card);
@@ -147,6 +152,8 @@ public class Database {
                         System.out.println("La carte n'a pas pu être ajoutée à la cardstack.");
                         System.out.println("Erreur : "+query.getResponse());
                     }
+                }else if(a.equals("0")){
+                    System.out.println("Il existe déjà une carte avec ce nom. Veuillez choisir un autre nom.");
                 }else{
                     System.out.println("La carte n'a pas pu être ajoutée en ligne");
                     System.out.println(a);
@@ -178,6 +185,7 @@ public class Database {
             System.out.println("importonline ok");
 
             Query query = new QueryGetCardStackList();
+            query.setToken(sessionToken);
             query.send();
             String JSONresponse = query.getResponse();
             CardList[] cardLists = JSONCardStackParser.JsonToCardStackList(JSONresponse);
@@ -186,6 +194,7 @@ public class Database {
             this.listCardList.add(new CardList("admin", "contient toutes les cartes", "admin"));
 
             query = new QueryGetCardList();
+            query.setToken(sessionToken);
             query.send();
             JSONresponse = query.getResponse();
             Card[] cards = JSONCardParser.JsonToCardList(JSONresponse);
@@ -210,16 +219,23 @@ public class Database {
         String a =  "-1";
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(nomDeck)){
-                this.listCardList.get(i).supprime(card);
+
                 Query query = new QueryDelCard(card);
+                query.setToken(sessionToken);
                 query.send();
                 a = query.getResponse();
-                if(a.equals("1"))
+                if(a.equals("1")){
+                    this.listCardList.get(i).supprime(card);
                     System.out.println("Carte enlevée");
+                }
+
                 else if(a.equals("0"))
                     System.out.println("La carte n'a pas pu être retirée");
                 else if(a.equals("-1"))
                     System.out.println("Les dépendances n'ont pas pu être retirées");
+                else if(a.equals("-3"))
+                    System.out.println("Erreur : vous ne pouvez pas supprimer les cartes des autres joueurs");
+
             return a;
 
 
@@ -298,6 +314,7 @@ public class Database {
         }
 
         Query query = new QueryDelCardStack(cardList);
+        query.setToken(sessionToken);
         query.send();
         if(query.getResponse().equals("1"))
             System.out.println("Deck supprimé");
@@ -327,6 +344,7 @@ public class Database {
             return ;
         }
         Query query = new QueryAddCardStack(c);
+        query.setToken(sessionToken);
         query.send();
         if(query.getResponse().equals("1"))
             System.out.println("addDeck:" + this.listCardList.size());
