@@ -53,7 +53,6 @@ public class VueLogin implements Observer {
             Main.main.switchScene("/views/VueMenu.fxml");
 
         }
-        Main.main.switchScene("/views/VueMenu.fxml");
 
 
 
