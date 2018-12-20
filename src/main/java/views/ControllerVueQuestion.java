@@ -146,8 +146,8 @@ public class ControllerVueQuestion implements Observer {
             String message = "";
 
             alert.setContentText(message);
-            alert.showAndWait();
-            this.currentDeck = this.partie.getFirstDeck();*/
+            alert.showAndWait();*/
+            this.currentDeck = this.partie.getFirstDeck();
         }
         this.Anim.stop();
         this.partie.NvQuest(this.currentDeck);
