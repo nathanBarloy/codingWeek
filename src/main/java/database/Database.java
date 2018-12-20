@@ -40,6 +40,9 @@ public class Database {
         return mylistCardList;
     }
 
+    public void setSessionToken(String sessionToken) {
+        this.sessionToken = sessionToken;
+    }
 
     public String getFirstDeck() {
         return listCardList.get(0).getName();
@@ -117,6 +120,8 @@ public class Database {
             if (this.listCardList.get(i).getName().equals(NomDeck)){
                 this.listCardList.get(i).add(card);
                 Query query = new QueryAddCard(card);
+                query.setToken(sessionToken);
+
                 query.send();
                 a = query.getResponse();
                 if(a.equals("1")) {
@@ -130,6 +135,7 @@ public class Database {
                     }
                 }else{
                     System.out.println("La carte n'a pas pu être ajoutée en ligne");
+                    System.out.println(a);
                 }
                 return a;
 

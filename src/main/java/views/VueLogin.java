@@ -38,9 +38,12 @@ public class VueLogin implements Observer {
         String nom = utilisateur.getText();
         String password = motdepasse.getText();
         String res = "0";
+        String token;
         Query check = new QueryCheckLogin(nom,password);
         check.send();
         res = check.getResponse();
+        token=check.getToken();
+        System.out.println(token);
         System.out.println(res);
 
         if (res.equals("-2") ) { //si le nom entré est dans la BDD
@@ -65,6 +68,7 @@ public class VueLogin implements Observer {
 
         }else {
             partie.setPlayer(new Player(nom));
+            partie.setSessionToken(token);
             Main.main.switchScene("/views/VueMenu.fxml");
 
         }
