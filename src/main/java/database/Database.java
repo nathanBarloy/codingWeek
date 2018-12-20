@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 public class Database {
     private ArrayList<CardList> listCardList ;
     private ArrayList<Card> listCard;
-
+    private String sessionToken;
     //Construceur
     public Database() {
     listCardList = new ArrayList<CardList>();
@@ -130,7 +130,7 @@ public class Database {
     //-----------------------------------------------------------------------------------------------------------------
     //Gestion en ligne
 
-    public void setDatabase() throws IOException {
+    public void setDatabase() {
         Query query = new QueryGetCardStackList();
         query.send();
         String JSONresponse= query.getResponse();

@@ -85,10 +85,7 @@ public abstract class Query {
         try {
             in = new BufferedReader(
                     new InputStreamReader(httpsURLConnection.getInputStream()));
-
             String inputLine;
-
-
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
@@ -96,7 +93,6 @@ public abstract class Query {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return response.toString();
     }
 

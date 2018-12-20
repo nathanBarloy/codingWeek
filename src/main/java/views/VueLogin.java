@@ -1,7 +1,5 @@
 package views;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,10 +12,6 @@ import models.Player;
 import queries.Query;
 import queries.QueryCheckUsername;
 
-
-import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.security.Key;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -41,19 +35,23 @@ public class VueLogin implements Observer {
     }
 
     public void connexion() {
-        String nom = utilisateur.getText(), res = "0";
+        String nom = utilisateur.getText();
+        String password = motdepasse.getText();
+        String res = "0";
         Query check = new QueryCheckUsername(nom);
+        check.send();
+        res = check.getResponse();
 
-            check.send();
-            res = check.getResponse();
 
-
-        if (res.equals("1")) { //si le nom entré est dans la BDD
+        if (res.equals("-2")) { //si le nom entré est dans la BDD
+            System.out.println("L'utilisateur n'existe pas");
+        }else if(res.equals("-3"))
+            System.out.println("Password erroné");
+        else
             partie.setPlayer(new Player(nom));
-            Main.main.switchScene("/views/VueMenu.fxml");
-        } else {
-            Main.main.switchScene("/views/VueMenu.fxml");
-        }
+
+        Main.main.switchScene("/views/VueMenu.fxml");
+
 
 
     }
