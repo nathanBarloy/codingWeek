@@ -59,15 +59,14 @@ public class VueInscription implements Observer{
             if (resp.equals("0")) { //si le nom n'existe pas (cas correct)
                 Player player = new Player(nom);
 
-                Query query = new QueryAddUser(player);
-
-                    query.send();
+                Query query = new QueryAddUser(nom,mdp);
+                query.send();
 
 
                 retour();
 
             } else { //si le nom existe (erreur)
-
+                System.out.println("Le nom existe déjà");
             }
 
         } else { //si les informations entrées ne sont pas correctes

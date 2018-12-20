@@ -11,12 +11,10 @@ import java.io.InputStream;
 
 public class QueryAddUser extends Query {
 
-    private Player player;
 
-    public QueryAddUser(Player player) {
+    public QueryAddUser(String player,String password) {
         super("addUser");
-        this.player=player;
-        this.parameters+="username="+player.getUsername()+"&description="+player.getDescription();
+        this.parameters+="username="+player+"&password="+password;
     }
 
 
