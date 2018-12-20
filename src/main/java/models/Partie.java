@@ -105,9 +105,12 @@ public class Partie extends Observable{
     }
 
     public double getProgressCurrentDeck(){
+        this.stat = new Stat();
+        /*
         System.out.println("current card dans partie  " +this.currentDeck);
         System.out.println("partie trouvé  " +this.database.getCardListString( this.currentDeck).getName());
         System.out.println("resultat 1ère carte " +this.database.getCardListString( this.currentDeck).getCard().getState());
+        */
         return stat.getProgession(this.database.getCardListString( this.currentDeck));
     }
 //-----------------------------------------------------------------------------------------------

@@ -299,7 +299,8 @@ public class ControllerVueQuestion implements Observer {
                         progress += 1/size;
                         //System.out.println(this.partie.getDeckEnCours());
                         //System.out.println(this.currentDeck);
-                        progress = this.partie.getProgressCurrentDeck();
+                        //progress =
+                        System.out.println(this.partie.getProgressCurrentDeck());
 
                         //gfin de la gestion de la barre de progression
                         this.ProgressBar.setProgress(progress);
