@@ -23,16 +23,12 @@ import java.util.List;
 public abstract class Query {
     protected String action;
     protected String server;
-    protected DefaultHttpClient httpClient;
 
-    protected HttpPost request;
-    protected List<NameValuePair> params;
     protected String parameters;
-    //protected InputStream response;
+
     protected HttpsURLConnection httpsURLConnection;
     protected URL url;
     protected StringBuffer response;
-
 
     public Query(String action){
 
@@ -53,9 +49,6 @@ public abstract class Query {
             e.printStackTrace();
         }
 
-        httpClient = new DefaultHttpClient();
-        request = new HttpPost(this.server+this.action);
-        params = new ArrayList<NameValuePair>();
         parameters = "";
     }
 
@@ -77,10 +70,17 @@ public abstract class Query {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        makeResponse();
+
     }
 
     public String getResponse() {
-        StringWriter writer = new StringWriter();
+
+
+        return response.toString();
+    }
+
+    private void makeResponse(){
         BufferedReader in = null;
         try {
             in = new BufferedReader(
@@ -93,7 +93,6 @@ public abstract class Query {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response.toString();
     }
 
 }

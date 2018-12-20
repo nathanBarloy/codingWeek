@@ -238,6 +238,10 @@ public class Partie extends Observable{
         this.currentDeck = currentDeck;
     }
 
+    public void resetScores(String nomdeck) {
+        database.resetScores(nomdeck);
+    }
+
     public void reset() {
         //System.out.println("resetin");
         this.database.reset();

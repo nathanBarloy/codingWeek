@@ -15,7 +15,6 @@ public class QueryDelCard extends Query {
 
     public QueryDelCard(Card card) {
         super("delCard");
-
         this.parameters+="name="+card.getName();
     }
 

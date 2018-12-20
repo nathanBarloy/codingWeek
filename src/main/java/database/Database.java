@@ -235,6 +235,10 @@ public class Database {
     //
 
 
+    public void resetScores(String nomdeck) {
+        getCardListString(nomdeck).resetScores();
+    }
+
 
 
     public void reset() {
@@ -242,7 +246,6 @@ public class Database {
             //System.out.println("c1.size(): "+c1.size());
             c1.resetIndex();
             c1.resetType();
-            c1.resetScores();
         }
     }
 
@@ -257,6 +260,17 @@ public class Database {
 
 
     public void deleteCardList(CardList cardList) {
+
+        Query query = new QueryDelCardStack(cardList);
+        query.send();
+        if(query.getResponse().equals("1"))
+            System.out.println("Deck supprimé");
+        else if(query.getResponse().equals("0"))
+            System.out.println("Le deck n'a pas pu être supprimé");
+        else if(query.getResponse().equals("-1"))
+            System.out.println("La requête n'a pas pu être traitée");
+        else if(query.getResponse().equals("2"))
+            System.out.println("Les dépendences de la cardstack n'ont pas pu être supprimées");
         this.listCardList.remove(cardList);
 
     }
