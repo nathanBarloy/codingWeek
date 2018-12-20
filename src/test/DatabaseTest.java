@@ -59,7 +59,10 @@ public class DatabaseTest {
         assertEquals("bug 1er errecherche ", database.getCardList("test1").get(1).getName(), "test1");
         assertEquals("bug 1er errecherche ", database.getCardList("test1").get(1).getDescription(), "pour test6");
         assertEquals("bug 1er errecherche ", database.getCardList("test1").get(0).getDescription(), "pour test1");
-       // assertEquals("bug 2eme recherche ", database.getCardList("test2"), databaseresultat2);
-       // assertEquals("bug vide", database.getCardList("testpas de correpondance"), databaseresultat3);*/
+        database.exportDatabaselocal();
+        Database databaseImportee = new  Database();
+        databaseImportee.importDatabaselocal();
+        //assertEquals("bugexport", database.getDeckName(), databaseImportee.getDeckName());
+
     }
 }
