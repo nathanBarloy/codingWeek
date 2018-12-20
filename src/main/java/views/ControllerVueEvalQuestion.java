@@ -104,6 +104,17 @@ public class ControllerVueEvalQuestion implements Observer {
     public void NvQuest() {
         Anim.stop();
         Reponse.setText("");
+        if (this.currentDeck == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ATTENTION");
+
+            alert.setHeaderText("Vous n'avez pas choisi de deck, le deck 1 est pris par défaut.");
+            String message = "";
+
+            alert.setContentText(message);
+            alert.showAndWait();
+            this.currentDeck = this.partie.getFirstDeck();
+        }
         this.partie.NvQuest(this.currentDeck);
 
     }
@@ -469,6 +480,7 @@ public class ControllerVueEvalQuestion implements Observer {
 
     private boolean Accepter(String temp, String s) {
         //id=\"Synonymes\"
+        System.out.println("Accepter");
         ArrayList<String> list = new ArrayList<String>();
         for (int i = 0;i<s.length();i++) {
             //System.out.println(s.charAt(i));
@@ -496,6 +508,8 @@ public class ControllerVueEvalQuestion implements Observer {
                 txt = "";
                 while (s.charAt(j) != '<'){
                     txt.concat(String.valueOf(s.charAt(j)));
+                    System.out.println("je concatène : " + s.charAt(j));
+                    j++;
                 }
                 System.out.println("j'ajoute : " + txt);
                 list.add(txt);
