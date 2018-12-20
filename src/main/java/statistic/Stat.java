@@ -25,7 +25,7 @@ public class Stat {
 
         }
         System.out.println(progression);
-        progression = progression /3 * cardList.size()/100  ;
+        progression = (progression /3) / cardList.size()  ;
 
         return progression;
     }

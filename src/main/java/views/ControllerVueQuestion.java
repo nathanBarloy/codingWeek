@@ -290,7 +290,7 @@ public class ControllerVueQuestion implements Observer {
 
                 if (carte != null) {
                     if (carte.getType().equals("question")) {
-                        this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
+                        this.BonneReponsesBarre.setProgress(3);
 
                         int a = this.animation2();
                         this.RondAvancement.setProgress(0.0F);
@@ -301,7 +301,7 @@ public class ControllerVueQuestion implements Observer {
                         //System.out.println(this.currentDeck);
                         //progress =
                         System.out.println(this.partie.getProgressCurrentDeck());
-
+                        progress = this.partie.getProgressCurrentDeck();
                         //gfin de la gestion de la barre de progression
                         this.ProgressBar.setProgress(progress);
                         //System.out.println("question");
