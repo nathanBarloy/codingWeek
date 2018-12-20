@@ -289,7 +289,7 @@ public class ControllerVueEvalQuestion implements Observer {
             }
             else{
                 //txt = object.getText();
-                System.out.println("choix deck : "+ object);
+                //System.out.println("choix deck : "+ object);
 
             }
 
