@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 public class Database {
     private ArrayList<CardList> listCardList ;
     private ArrayList<Card> listCard;
-
+    private String sessionToken;
     //Construceur
     public Database() {
     listCardList = new ArrayList<CardList>();
@@ -130,13 +130,14 @@ public class Database {
     //-----------------------------------------------------------------------------------------------------------------
     //Gestion en ligne
 
-    public void setDatabase() throws IOException {
+    public void setDatabase() {
         Query query = new QueryGetCardStackList();
         query.send();
         String JSONresponse= query.getResponse();
         CardList[] cardLists= JSONCardStackParser.JsonToCardStackList(JSONresponse);
         for(CardList c:cardLists)
             this.listCardList.add(c);
+        this.listCardList.add(new CardList("admin","contient toutes les cartes","admin"));
 
         query = new QueryGetCardList();
         query.send();
@@ -147,11 +148,12 @@ public class Database {
 
         for(CardList c:listCardList){
             c.setCardStack(this.listCard);
-
+            if (c.getName().equals("admin")) {
+                for(Card carte : listCard){
+                    c.add(carte);
+                }
+            }
         }
-
-
-
 
 
     }

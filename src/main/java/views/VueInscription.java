@@ -50,24 +50,23 @@ public class VueInscription implements Observer{
         if ( !(nom.length()<3 || mdp.length()<6 || !mdp.equals(confirm)) ) { //si informations sont correctes
             //ajouter utilisateur à la BDD
             Query check = new QueryCheckUsername(nom);
-            String resp = "1";
+            String resp = "error";
 
                 check.send();
                 resp = check.getResponse(); //on regarde si le nom entré existe déjà
-
+                System.out.println(resp);
 
             if (resp.equals("0")) { //si le nom n'existe pas (cas correct)
                 Player player = new Player(nom);
 
-                Query query = new QueryAddUser(player);
-
-                    query.send();
+                Query query = new QueryAddUser(nom,mdp);
+                query.send();
 
 
                 retour();
 
             } else { //si le nom existe (erreur)
-
+                System.out.println("Le nom existe déjà");
             }
 
         } else { //si les informations entrées ne sont pas correctes

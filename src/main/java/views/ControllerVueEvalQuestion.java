@@ -23,6 +23,11 @@ import javafx.scene.layout.*;
 import launch.Main;
 import models.*;
 
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 public class ControllerVueEvalQuestion implements Observer {
@@ -195,6 +200,33 @@ public class ControllerVueEvalQuestion implements Observer {
     }
 
 
+    public boolean QuerySynonym(URL url,String sol){
+
+        String rep = "";
+        try {
+            HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            rep = readStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (rep.equals(sol)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    private String readStream(InputStream in) {
+        if (in == null){
+            System.out.println("merde");
+        }
+        else {
+            System.out.println("readStream");
+        }
+        return "";
+    }
 
     @Override
     public void update(Observable o, Object arg) {
@@ -304,6 +336,19 @@ public class ControllerVueEvalQuestion implements Observer {
                         temp = " ";
                     }
                     String rep = carte.getAnswer();
+
+                    boolean b = this.QueryParse(temp);
+/*
+                        while ((inputLine = in.()) != null) {
+                            .append(inputLine);
+                        }
+                        try {
+                            in.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }*/
+
+
                     if(partie.verifierReponse(rep,temp)){
 
                         this.NbBonnesReponses++;
@@ -379,6 +424,84 @@ public class ControllerVueEvalQuestion implements Observer {
         if (this.init == -1) {
             this.init = 1;
         }
+    }
+
+    private boolean QueryParse(String temp) {
+        URL url = null;
+        InputStream in = null;
+        try {
+            url = new URL("https://fr.wiktionary.org/w/api.php?action=query&prop=extracts&format=json&titles=lol");
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            in = new BufferedInputStream(urlConnection.getInputStream());
+            readStream(in);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (in == null) {
+            System.out.println("merde: j'ai pas réussis à faire un get sur le lien");
+        } else {
+
+            System.out.println("J'ai réussis à faire un get sur le lien");
+            try {
+                StringBuilder sb = new StringBuilder();
+
+                BufferedReader r = new BufferedReader(new InputStreamReader(in), 1000);
+
+                for (String line = r.readLine(); line != null; line = r.readLine()) {
+
+                    sb.append(line);
+
+                }
+
+                in.close();
+
+                //System.out.println(sb.toString());
+                return this.Accepter(temp,sb.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    private boolean Accepter(String temp, String s) {
+        //id=\"Synonymes\"
+        ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0;i<s.length();i++) {
+            //System.out.println(s.charAt(i));
+            if (s.charAt(i) == 'i' && s.charAt(i+1) == 'd' && s.charAt(i+2) == '=' && s.charAt(i+4) == '"'&&
+            s.charAt(i+5) == 'S' && s.charAt(i+6) == 'y' && s.charAt(i+7) == 'n' && s.charAt(i+8) == 'o' &&
+                    s.charAt(i+9) == 'n' && s.charAt(i+10) == 'y' && s.charAt(i+11) == 'm' && s.charAt(i+12) == 'e' &&
+                    s.charAt(i+13) == 's'
+                    )
+            {
+                list.addAll(this.listSynonym(i+13,temp,s));
+
+            }
+
+        }
+        return list.contains(temp);
+    }
+
+    private ArrayList<String> listSynonym(int i,String temp,String s) {
+        int j = 0;
+        String txt = "";
+        ArrayList<String> list = new ArrayList<String>();
+        for (int k = i; k <s.length();k++){
+            if (s.charAt(k) == '>' && s.charAt(k+1) != '<'){
+                j = k;
+                txt = "";
+                while (s.charAt(j) != '<'){
+                    txt.concat(String.valueOf(s.charAt(j)));
+                }
+                System.out.println("j'ajoute : " + txt);
+                list.add(txt);
+            }
+        }
+        return list;
     }
 
 
