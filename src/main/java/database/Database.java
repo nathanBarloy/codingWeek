@@ -13,24 +13,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private ArrayList<String> listdecks;
     private ArrayList<CardList> listCardList ;
     private ArrayList<Card> listCard;
 
     //Construceur
     public Database() {
-    listdecks=new ArrayList<String>();
     listCardList = new ArrayList<CardList>();
     listCard = new ArrayList<Card>();
     }
     //------------------------------------------------------------------------------------------------------------------
     //getter
-    public ArrayList<String> getListStack() {
-        return listdecks;
+    public ArrayList<CardList> getListCardList() {
+        return listCardList;
     }
 
-    public List<CardList> getListCardList() {
-        return listCardList;
+    public ArrayList<CardList> getCardList (String name){
+        ArrayList<CardList> mylistCardList = new ArrayList<CardList>();
+        for (CardList cardstack : this.listCardList) {
+            if (cardstack.getName().equals(name)) {
+                mylistCardList.add(cardstack);
+            }
+        }
+        return mylistCardList;
+    }
+
+
+    public String getFirstDeck() {
+        return listCardList.get(0).getName();
+    }
+
+    public ArrayList<String> getDeckName() {
+        ArrayList<String> listdecks = new ArrayList<String>();
+        for (CardList cardList : this.listCardList) {
+            listdecks.add(cardList.getName());
+        }
+        return  listdecks;
+    }
+
+    public ArrayList<String> getListeCarte(String currentDeck) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals((currentDeck))) {
+                return c1.getListeCarte();
+            }
+        }
+        return new ArrayList<String>();
+    }
+
+    public Card getCard(String temp, String currentDeck) {
+        for (CardList c1 : listCardList){
+            if (c1.getName().equals((currentDeck))) {
+                for (Card c : c1) {
+                    if (c.getName().equals(temp)){
+                        return c;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -38,8 +77,18 @@ public class Database {
     public void setListCardList(ArrayList<CardList> listCardSatck) {
         this.listCardList = listCardList;
     }
-    public void setListStack(ArrayList<String> liststack) {
-        this.listdecks = liststack;
+
+
+    public void setScore(String currentDeck, Card carte,int score) {
+        for (CardList cardList : this.listCardList) {
+            if (cardList.getName().equals(currentDeck)) {
+                for (Card c : cardList){
+                    if (c.getName().equals(carte.getName())){
+                        c.setState(score);
+                    }
+                }
+            }
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -79,18 +128,7 @@ public class Database {
         getCardList (nameCardList).get(0).add(card);
     }
     //-----------------------------------------------------------------------------------------------------------------
-    public ArrayList<CardList> getCardList (String name){
-        ArrayList<CardList> mylistCardList = new ArrayList<CardList>();
-        for (CardList cardstack : this.listCardList) {
-            if (cardstack.getName().equals(name)) {
-                mylistCardList.add(cardstack);
-            }
-        }
-        return mylistCardList;
-    }
-
-
-    //en dur
+    //Gestion en ligne
 
     public void setDatabase() throws IOException {
         Query query = new QueryGetCardStackList();
@@ -118,7 +156,6 @@ public class Database {
 
     }
 
-    //
 
     public String SupressCard(String nomDeck, Card card) {
         if (card != null){
@@ -146,31 +183,18 @@ public class Database {
         return null;
     }
 
-    public Card getCard(String temp, String currentDeck) {
-        for (CardList c1 : listCardList){
-            if (c1.getName().equals((currentDeck))) {
-                for (Card c : c1) {
-                    if (c.getName().equals(temp)){
-                        return c;
-                    }
-                }
-            }
-        }
-        return null;
+    //------------------------------------------------------------------------------------------------------------------
+    //version hors ligne
+    public void setDatabaseLocal() {
+
     }
 
-    public ArrayList<String> getDeckName() {
-        return (ArrayList<String>) listdecks;
-    }
 
-    public ArrayList<String> getListeCarte(String currentDeck) {
-        for (CardList c1 : listCardList){
-            if (c1.getName().equals((currentDeck))) {
-                return c1.getListeCarte();
-            }
-        }
-        return new ArrayList<String>();
-    }
+    //------------------------------------------------------------------------------------------------------------------
+    //
+
+
+
 
     public void reset() {
         for (CardList c1 : listCardList){
@@ -208,21 +232,7 @@ public class Database {
         System.out.println("addDeck:" + this.listCardList.size());
     }
 
-    public String getFirstDeck() {
-        return listCardList.get(0).getName();
-
-    }
 
 
-    public void setScore(String currentDeck, Card carte,int score) {
-        for (CardList cardList : this.listCardList) {
-            if (cardList.getName().equals(currentDeck)) {
-                for (Card c : cardList){
-                    if (c.getName().equals(carte.getName())){
-                        c.setState(score);
-                    }
-                }
-            }
-        }
-    }
+
 }
