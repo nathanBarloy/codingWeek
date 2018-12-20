@@ -57,7 +57,7 @@ public class  Main extends Application {
 
             if (fxmlFile.equals("/views/VueEvalQuestion.fxml")) {
 
-                p.setCurrentCard(p.getCardList().getCard());
+                //p.setCurrentCard(p.getCardList().getCard());
                 BorderPane root = new BorderPane();
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));
@@ -230,7 +230,7 @@ public class  Main extends Application {
 
             if (fxmlFile.equals("/views/VueQuestion.fxml")) {
 
-                p.setCurrentCard(p.getCardList().getCard());
+               // p.setCurrentCard(p.getCardList().getCard());
                 BorderPane root = new BorderPane();
                 FXMLLoader loader2 = new FXMLLoader();
                 loader2.setLocation(getClass().getResource(fxmlFile));

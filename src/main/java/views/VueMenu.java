@@ -53,6 +53,7 @@ public class VueMenu implements Observer{
     }
 
     public void deconnexion() {
+        this.partie.exportDatabaseLocal();
         Main.main.switchScene("/views/VueLogin.fxml");
     }
 

@@ -38,6 +38,8 @@ public class VueLogin implements Observer {
     }
 
     public void connexion() {
+        partie.setLocal(false);
+        partie.setDatabase();
         String nom = utilisateur.getText();
         String password = motdepasse.getText();
         String res = "0";
@@ -77,7 +79,12 @@ public class VueLogin implements Observer {
     }
 
     public void connexionLocal() {
-        partie.setPlayer(new Player(""));
+
+        partie.setPlayer(new Player(""  ));
+        System.out.println("preimport");
+        partie.setLocal(true);
+        partie.setDatabase();
+        System.out.println("postimport");
         Main.main.switchScene("/views/VueMenu.fxml");
     }
 

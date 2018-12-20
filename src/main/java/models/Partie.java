@@ -32,30 +32,31 @@ public class Partie extends Observable{
 
     //----------------------------------------------------------------------------------------------
     //Constructeur
+
     public Partie(Player player, CardList cardList) throws IOException {
         this.player = player;
         this.cardList = cardList;
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
-        this.database.setDatabase();
+        //this.database.setDatabase();
         this.local = false;
         //System.out.println(this.database.getListCardList().size() + "decks par défault");
 
 
     }
 
-    public Partie(Player player) throws IOException {
+    public Partie(Player player ) throws IOException {
         this.player = player;
         this.cardList = new CardList("Default","Deck avec des cartes par défaut");
 
         this.database = new Database();
         this.nbCards = cardList.getNbCards();
-        this.database.setDatabase();
+        //this.database.setDatabase(local);
         //System.out.println(this.database.getListCardList().size() + "decks par défault");
     }
 
     public Partie() throws IOException {
-        this(new Player("perso test"));
+        this.player = (new Player("perso test"));
     }
 
     //-----------------------------------------------------------------------------------------------
@@ -156,6 +157,10 @@ public class Partie extends Observable{
 //-----------------------------------------------------------------------------------------------
     //Setter
 
+    public void setDatabase(){
+         this.database = new Database();
+         this.database.setDatabase(this.local);
+    }
 
     public void setCurrentCard(Card card) {
         this.CurrentCard = card;
@@ -183,13 +188,19 @@ public class Partie extends Observable{
     public void setNbCards(int nbCards) {
         this.nbCards = nbCards;
     }
+
+    public void setLocal(boolean local) {
+        this.local = local;
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //adder
     public void addCardCardList(String nameCardList , Card card) {
-        this.database.addCardCardList(nameCardList ,  card);
+        this.database.addCardCardList(nameCardList ,  card );
     }
     public void addCard(String NomDeck,Card card){
-        this.database.addCard(NomDeck,card);
+
+        this.database.addCard(NomDeck,card , this.local);
     }
     //----------------------------------------------------------------------------------------------
     //Autres fonctions
@@ -273,16 +284,16 @@ public class Partie extends Observable{
         this.database.reset();
     }
 
-    public void deleteCardList(CardList cardList) {
-        this.database.deleteCardList(cardList);
+    public void deleteCardList(CardList cardList  ) {
+        this.database.deleteCardList(cardList , this.local);
     }
-    public void deleteCardList(String name) {
-        this.database.deleteCardList(name);
+    public void deleteCardList(String name ) {
+        this.database.deleteCardList(name , this.local);
         init();
     }
 
     public void addDeck(String text) {
-        this.database.addDeck(text,"une description",this.player.getUsername());
+        this.database.addDeck(text,"une description",this.player.getUsername() , this.local);
         setChanged();
         notifyObservers();
     }
@@ -302,7 +313,9 @@ public class Partie extends Observable{
 
     }
     public void exportDatabaseLocal(){
-        this.database.exportDatabaselocal();
+        this.database.exportDatabaselocal(this.local);
+        System.out.println("export not");
+        return;
 
     }
 
