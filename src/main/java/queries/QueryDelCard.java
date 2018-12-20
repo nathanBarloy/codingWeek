@@ -11,11 +11,11 @@ import java.io.IOException;
 
 public class QueryDelCard extends Query {
 
-    private Card card;
+
 
     public QueryDelCard(Card card) {
         super("delCard");
-        this.card = card;
+
         this.parameters+="name="+card.getName();
     }
 

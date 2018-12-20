@@ -2,12 +2,10 @@
 package models;
 import database.Database;
 import javafx.scene.control.Alert;
-import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +120,7 @@ public class Partie extends Observable{
         this.database.addCard(NomDeck,card);
     }
     public void SupprimerCard(String NomDeck,Card card){
-        this.database.SupressCard(NomDeck,card);
+        this.database.supressCard(NomDeck,card);
         setChanged();
         notifyObservers();
 
