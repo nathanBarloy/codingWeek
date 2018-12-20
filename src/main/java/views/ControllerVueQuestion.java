@@ -37,6 +37,9 @@ public class ControllerVueQuestion implements Observer {
     private int NbIdkReponses;
 
     @FXML
+    private Label username;
+
+    @FXML
     private ProgressBar BonneReponsesBarre;
 
     @FXML
@@ -243,6 +246,8 @@ public class ControllerVueQuestion implements Observer {
                 //final Image image1 = new Image(imageURL.toExternalForm());
 
                 this.choicebox.getItems().addAll(this.partie.getListeDeck());
+                username.setText("utilisateur : " + partie.getPlayer().getUsername());
+
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
                 Background background1 = new Background(new BackgroundImage(image0,

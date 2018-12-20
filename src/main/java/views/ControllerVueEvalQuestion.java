@@ -44,6 +44,9 @@ public class ControllerVueEvalQuestion implements Observer {
     private int NbMoyenReponses = 0;
 
     @FXML
+    private Label username;
+
+    @FXML
     private AnchorPane RecPane;
 
 
@@ -250,7 +253,9 @@ public class ControllerVueEvalQuestion implements Observer {
             //final URL imageURL = getClass().getResource("../ressources/fond");
             //final Image image1 = new Image(imageURL.toExternalForm());
 
+
             this.choicebox.getItems().addAll(this.partie.getListeDeck());
+            username.setText("utilisateur : " + partie.getPlayer().getUsername());
 
             BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
