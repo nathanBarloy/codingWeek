@@ -105,7 +105,7 @@ public class VueDecks implements Observer {
     public void update(Observable o, Object arg) {
         if (this.init){
 
-            comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
+            this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
 
             //tests.
             //this.getviews = true;
