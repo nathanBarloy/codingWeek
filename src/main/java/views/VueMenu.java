@@ -54,6 +54,7 @@ public class VueMenu implements Observer{
 
     public void deconnexion() {
         this.partie.exportDatabaseLocal();
+        this.partie.setDatabase();
         Main.main.switchScene("/views/VueLogin.fxml");
     }
 
