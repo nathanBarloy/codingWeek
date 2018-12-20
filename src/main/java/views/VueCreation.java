@@ -66,7 +66,7 @@ public class VueCreation implements Observer {
             this.partie.setQuestEnCours(questionCarte);
             this.partie.setRepEnCours(reponseCarte);
             this.partie.setNameEnCours(nomCarte);
-            this.partie.setDeckEnCours((String)this.menuDeck.getValue());
+            this.partie.setcurrentDeck((String)this.menuDeck.getValue());
             //System.out.println("quest:" + partie.getQuestEnCours());
             Main.main.switchScene("/views/VueCard.fxml",this.partie);
 

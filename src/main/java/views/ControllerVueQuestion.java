@@ -294,7 +294,15 @@ public class ControllerVueQuestion implements Observer {
 
                         int a = this.animation2();
                         this.RondAvancement.setProgress(0.0F);
+
+                        //gestion de ma barre de progression
                         progress += 1/size;
+                        //System.out.println(this.partie.getDeckEnCours());
+                        //System.out.println(this.currentDeck);
+                        //progress =
+                        System.out.println(this.partie.getProgressCurrentDeck());
+
+                        //gfin de la gestion de la barre de progression
                         this.ProgressBar.setProgress(progress);
                         //System.out.println("question");
                         String temp ="mdr";//= this.LabelQuestion.getText();
@@ -339,6 +347,7 @@ public class ControllerVueQuestion implements Observer {
                     }
                 } else {
                     //System.out.println("here");
+                    //setpartie progress
                     this.progress += 1/size;
                     this.ProgressBar.setProgress(progress);
                     this.init = 1000;

@@ -75,6 +75,14 @@ public class Database {
         return null;
     }
 
+    public CardList getCardListString( String name ) {
+        for (CardList cardList : this.listCardList)  {
+            if (cardList.getName().equals(name)) {
+                return cardList ;
+            }
+        }
+        return null;
+    }
     //------------------------------------------------------------------------------------------------------------------
     //Setter
     public void setListCardList(ArrayList<CardList> listCardSatck) {
@@ -167,20 +175,22 @@ public class Database {
     }
 
 
-    public String SupressCard(String nomDeck, Card card) {
+    public String supressCard(String nomDeck, Card card) {
         if (card != null){
         String a =  "-1";
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(nomDeck)){
                 this.listCardList.get(i).supprime(card);
                 Query query = new QueryDelCard(card);
-                //System.out.println("je supprime la carte : " + card.getName());
-
-
-                    query.send();
-                    a = query.getResponse();
-                    //System.out.println(a);
-                    return a;
+                query.send();
+                a = query.getResponse();
+                if(a.equals("1"))
+                    System.out.println("Carte enlevée");
+                else if(a.equals("0"))
+                    System.out.println("La carte n'a pas pu être retirée");
+                else if(a.equals("-1"))
+                    System.out.println("Les dépendances n'ont pas pu être retirées");
+            return a;
 
 
                 }
