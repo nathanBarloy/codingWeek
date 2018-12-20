@@ -26,11 +26,7 @@ public class Card {
 
     }
     public Card (String name, String question, String answer, Player player){
-        this.name=name;
-        this.text=question;
-        this.answer=answer;
-        this.author=player.getUsername();
-        this.type = "question";
+        this(name,question,answer,player.getUsername());
 
     }
 
