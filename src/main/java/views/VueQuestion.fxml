@@ -87,7 +87,7 @@
                   <Pane prefHeight="55.0" prefWidth="589.0" BorderPane.alignment="CENTER" />
                </center>
                <right>
-                  <Button mnemonicParsing="false" prefHeight="50.0" text="Statistiques" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#goStat" prefHeight="50.0" text="Statistiques" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="20.0" top="10.0" />
                      </BorderPane.margin>

@@ -234,6 +234,10 @@ public class ControllerVueQuestion implements Observer {
         return 1;
     }
 
+    public void goStat() {
+        Main.main.switchScene("/views/Statistiques.fxml");
+    }
+
 
 
     @Override

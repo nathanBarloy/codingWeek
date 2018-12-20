@@ -215,6 +215,10 @@ public class ControllerVueEvalQuestion implements Observer {
         return 1;
     }
 
+    public void goStat() {
+        Main.main.switchScene("/views/Statistiques.fxml");
+    }
+
 
     public boolean QuerySynonym(URL url,String sol){
 
