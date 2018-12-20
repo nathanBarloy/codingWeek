@@ -56,7 +56,7 @@ public class VueInscription implements Observer{
                 resp = check.getResponse(); //on regarde si le nom entré existe déjà
                 System.out.println(resp);
 
-            if (resp.equals("1")) { //si le nom n'existe pas (cas correct)
+            if (resp.equals("0")) { //si le nom n'existe pas (cas correct)
                 Player player = new Player(nom);
 
                 Query query = new QueryAddUser(nom,mdp);
