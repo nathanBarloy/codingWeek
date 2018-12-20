@@ -75,6 +75,14 @@ public class Database {
         return null;
     }
 
+    public CardList getCardListString( String name ) {
+        for (CardList cardList : this.listCardList)  {
+            if (cardList.getName().equals(name)) {
+                return cardList ;
+            }
+        }
+        return null;
+    }
     //------------------------------------------------------------------------------------------------------------------
     //Setter
     public void setListCardList(ArrayList<CardList> listCardSatck) {
