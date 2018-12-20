@@ -9,8 +9,7 @@ import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
 import models.Player;
-import queries.Query;
-import queries.QueryCheckUsername;
+import queries.*;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -38,19 +37,22 @@ public class VueLogin implements Observer {
         String nom = utilisateur.getText();
         String password = motdepasse.getText();
         String res = "0";
-        Query check = new QueryCheckUsername(nom);
+        Query check = new QueryCheckLogin(nom,password);
         check.send();
         res = check.getResponse();
-
+        System.out.println(res);
 
         if (res.equals("-2")) { //si le nom entré est dans la BDD
             System.out.println("L'utilisateur n'existe pas");
-        }else if(res.equals("-3"))
-            System.out.println("Password erroné");
-        else
-            partie.setPlayer(new Player(nom));
 
-        Main.main.switchScene("/views/VueMenu.fxml");
+        }else if(res.equals("-3")) {
+            System.out.println("Password erroné");
+
+        }else {
+            partie.setPlayer(new Player(nom));
+            Main.main.switchScene("/views/VueMenu.fxml");
+
+        }
 
 
 
