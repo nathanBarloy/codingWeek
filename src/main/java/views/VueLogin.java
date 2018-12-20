@@ -92,9 +92,9 @@ public class VueLogin implements Observer {
 
         ImageView img = new ImageView();
         img.setImage(image0);
-        img.setFitHeight(275);
-        img.setFitWidth(700);
-        img.setLayoutX(200);
+        img.setFitHeight(220);
+        img.setFitWidth(500);
+        img.setLayoutX(150);
 
         this.pane.getChildren().add(img);
     }
