@@ -311,7 +311,6 @@ public class Partie extends Observable{
         String s1 = reponse.toLowerCase();
         String s2 = averifier.toLowerCase();
         int dLev = distanceLevenshtein(s1,s2);
-        //dLev = dLev/( (double) Math.max(s1.length(),s2.length()) );
         double n = (float) Math.min(s1.length(),s2.length());
         double nbErr = n/10 + 3.0*Math.sqrt(n)/10.0;
         return (dLev <= nbErr);
@@ -351,30 +350,9 @@ public class Partie extends Observable{
 
         return d.get(n1).get(n2);
     }
-    /*entier DistanceDeLevenshtein(caractere chaine1[1..longueurChaine1],
-                                 caractere chaine2[1..longueurChaine2])
-    // d est un tableau de longueurChaine1+1 rangées et longueurChaine2+1 colonnes
-    // d est indexé à partir de 0, les chaînes à partir de 1
-    déclarer entier d[0..longueurChaine1, 0..longueurChaine2]
-    // i et j itèrent sur chaine1 et chaine2
-    déclarer entier i, j, coûtSubstitution
 
-    pour i de 0 à longueurChaine1
-    d[i, 0] := i
-    pour j de 0 à longueurChaine2
-    d[0, j] := j
-
-    pour i de 1 à longueurChaine1
-    pour j de 1 à longueurChaine2
-    si chaine1[i-1] = chaine2[j-1] alors coûtSubstitution := 0
-    sinon coûtSubstitution := 1
-    d[i, j] := minimum(
-            d[i-1, j  ] + 1,                 // effacement du nouveau caractère de chaine1
-            d[i,   j-1] + 1,                 // insertion dans chaine2 du nouveau caractère de chaine1
-            d[i-1, j-1] + coûtSubstitution   // substitution
-    )
-
-    renvoyer d[longueurChaine1, longueurChaine2]
-    */
+    public CardList getDeck(String currentDeck) {
+        return this.database.getDeck(currentDeck);
+    }
 }
 

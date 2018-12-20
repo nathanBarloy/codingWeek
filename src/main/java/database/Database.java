@@ -42,7 +42,12 @@ public class Database {
 
 
     public String getFirstDeck() {
-        return listCardList.get(0).getName();
+        if (this.listCardList.get(0).getName() != null){
+            return listCardList.get(0).getName();
+        }
+        else{
+            return "admin";
+        }
     }
 
     public ArrayList<String> getDeckName() {
@@ -311,5 +316,14 @@ public class Database {
             }
         }
         return -3;
+    }
+
+    public CardList getDeck(String currentDeck) {
+        for (CardList c : this.listCardList){
+            if (c.getName().equals(currentDeck)) {
+                return c;
+            }
+        }
+        return null;
     }
 }

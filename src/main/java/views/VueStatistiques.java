@@ -8,12 +8,13 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
+import statistic.Stat;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class VueStatistiques implements Observer{
-    private String currentDeck;
+    private String currentDeck = this.partie.getFirstDeck();
 
     @FXML
     private BorderPane borderpane;
@@ -80,11 +81,12 @@ public class VueStatistiques implements Observer{
             PieChart3.setPrefHeight(1200);
             PieChart3.setPrefWidth(1200);
 
+            Stat stat = new Stat();
+            double progression = stat.getProgession(partie.getDeck(this.currentDeck));
+            PieChart1.getData().setAll(new PieChart.Data("Pourcentage fait",progression ),
+                    new PieChart.Data("Non fait", 1 - progression));
 
-            PieChart1.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
-                    new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
-                    new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
-            );
+
             PieChart2.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
                     new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
                     new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
@@ -98,10 +100,12 @@ public class VueStatistiques implements Observer{
         else{
             this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
 
-            PieChart1.getData().setAll(new PieChart.Data("Pommes", 5), new PieChart.Data("Oranges", 30),
-                    new PieChart.Data("Poires", 5), new PieChart.Data("Pêches", 2),
-                    new PieChart.Data("Citrons", 25), new PieChart.Data("Kiwis", 9)
-            );
+            Stat stat = new Stat();
+            double progression = stat.getProgession(partie.getDeck(this.currentDeck));
+            PieChart1.getData().setAll(new PieChart.Data("Pourcentage fait",progression ),
+                    new PieChart.Data("Non fait", 1 - progression));
+
+
             PieChart2.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
                     new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
                     new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
