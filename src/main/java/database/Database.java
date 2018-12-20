@@ -127,11 +127,13 @@ public class Database {
                 if(a.equals("1")) {
                     System.out.println("Carte ajoutée en ligne");
                     query = new QueryAddCardCardStack(card, this.listCardList.get(i));
+                    query.setToken(sessionToken);
                     query.send();
                     if (query.getResponse().equals("1")) {
                         System.out.println("Carte ajoutée à la liste en ligne");
                     } else {
                         System.out.println("La carte n'a pas pu être ajoutée à la cardstack.");
+                        System.out.println("Erreur : "+query.getResponse());
                     }
                 }else{
                     System.out.println("La carte n'a pas pu être ajoutée en ligne");
@@ -318,4 +320,6 @@ public class Database {
         }
         return -3;
     }
+
+    
 }
