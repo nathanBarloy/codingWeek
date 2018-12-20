@@ -44,6 +44,17 @@ public class VueStatistiques implements Observer{
     public void update(Observable o, Object arg) {
         if (this.init) {
             this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
+
+            PieChart1.setPrefHeight(1200);
+            PieChart1.setPrefWidth(1200);
+
+            PieChart2.setPrefHeight(1200);
+            PieChart2.setPrefWidth(1200);
+
+            PieChart3.setPrefHeight(1200);
+            PieChart3.setPrefWidth(1200);
+
+
             PieChart1.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
                     new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
                     new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
@@ -60,6 +71,7 @@ public class VueStatistiques implements Observer{
         }
         else{
             this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
+
             PieChart1.getData().setAll(new PieChart.Data("Pommes", 5), new PieChart.Data("Oranges", 30),
                     new PieChart.Data("Poires", 5), new PieChart.Data("Pêches", 2),
                     new PieChart.Data("Citrons", 25), new PieChart.Data("Kiwis", 9)
