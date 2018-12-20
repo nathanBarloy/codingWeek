@@ -23,6 +23,13 @@ import javafx.scene.layout.*;
 import launch.Main;
 import models.*;
 
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 public class ControllerVueEvalQuestion implements Observer {
@@ -195,6 +202,33 @@ public class ControllerVueEvalQuestion implements Observer {
     }
 
 
+    public boolean QuerySynonym(URL url,String sol){
+
+        String rep = "";
+        try {
+            HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            rep = readStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (rep.equals(sol)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    private String readStream(InputStream in) {
+        if (in == null){
+            System.out.println("merde");
+        }
+        else {
+            System.out.println("readStream");
+        }
+        return "";
+    }
 
     @Override
     public void update(Observable o, Object arg) {
@@ -304,6 +338,12 @@ public class ControllerVueEvalQuestion implements Observer {
                         temp = " ";
                     }
                     String rep = carte.getAnswer();
+                    try {
+                        URL url = new URL("https://fr.wiktionary.org/w/api.php?action=query&prop=extracts&format=json&titles=lol");
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    this.QuerySynonym()
                     if(temp.equals(rep)){
 
                         this.NbBonnesReponses++;
