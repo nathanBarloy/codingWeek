@@ -59,9 +59,10 @@ public class DatabaseTest {
         assertEquals("bug 1er errecherche ", database.getCardList("test1").get(1).getName(), "test1");
         assertEquals("bug 1er errecherche ", database.getCardList("test1").get(1).getDescription(), "pour test6");
         assertEquals("bug 1er errecherche ", database.getCardList("test1").get(0).getDescription(), "pour test1");
-        database.exportDatabaselocal();
+        // commenté pour pas détruire la base existante
+        /*database.exportDatabaselocal();
         Database databaseImportee = new  Database();
-        databaseImportee.importDatabaselocal();
+        databaseImportee.importDatabaselocal();*/
         //assertEquals("bugexport", database.getDeckName(), databaseImportee.getDeckName());
 
     }

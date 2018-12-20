@@ -35,7 +35,7 @@ public class VueLogin implements Observer {
     }
 
     public void connexion() {
-        partie.setLocal(true);
+        partie.setLocal(false);
         partie.setDatabase();
         String nom = utilisateur.getText();
         String password = motdepasse.getText();
