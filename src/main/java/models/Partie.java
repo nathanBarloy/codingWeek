@@ -7,6 +7,7 @@ import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -255,6 +256,17 @@ public class Partie extends Observable{
         this.database.setScore(currentDeck,carte,Score);
     }
 
+
+    public void importDatabaseLocal(){
+        this.database.importDatabaselocal();
+
+    }
+    public void exportDatabaseLocal(){
+        this.database.exportDatabaselocal();
+
+    }
+
+
     public boolean verifierReponse(String reponse,String averifier) {
         String s1 = reponse.toLowerCase();
         String s2 = averifier.toLowerCase();
@@ -324,3 +336,4 @@ public class Partie extends Observable{
     renvoyer d[longueurChaine1, longueurChaine2]
     */
 }
+
