@@ -254,7 +254,7 @@ public class CardList implements Iterable<Card>{
             }
         }
         len=cardStack.size();
-        
+
     }
 
 

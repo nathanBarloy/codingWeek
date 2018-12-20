@@ -55,12 +55,10 @@ public class VueMenu implements Observer{
 
     public void supprimerCompte() {
         Query del = new QueryDelUser(partie.getPlayer());
-        try {
+
             del.send();
             deconnexion();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override

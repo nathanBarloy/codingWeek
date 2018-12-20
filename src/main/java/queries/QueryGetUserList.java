@@ -17,24 +17,4 @@ public class QueryGetUserList extends Query {
 
     }
 
-
-    public void send() throws IOException {
-
-
-// Request parameters and other properties.
-
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }

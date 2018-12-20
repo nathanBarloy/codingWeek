@@ -110,16 +110,13 @@ public class Database {
                 this.listCardList.get(i).add(card);
                 Query query = new QueryAddCard(card);
 
-                try {
+
                     //System.out.println("j'ajoute une carte dans le deck" + NomDeck);
                     //System.out.println();
                     query.send();
                     a = query.getResponse();
                     return a;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    //System.out.println("bug sur l'envoi de la requête");
-                }
+
 
             }
         }
@@ -169,15 +166,12 @@ public class Database {
                 Query query = new QueryDelCard(card);
                 //System.out.println("je supprime la carte : " + card.getName());
 
-                try {
+
                     query.send();
                     a = query.getResponse();
                     //System.out.println(a);
                     return a;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    //System.out.println("bug sur l'envoi de la requête");
-                }
+
 
                 }
             }
@@ -244,11 +238,12 @@ public class Database {
 
     public void deleteCardList(CardList cardList) {
         this.listCardList.remove(cardList);
+
     }
     public void deleteCardList(String name) {
         for (CardList cardList : this.listCardList) {
             if (cardList.getName().equals(name)) {
-                this.listCardList.remove(cardList);
+                this.deleteCardList(cardList);
                 return;
             }
         }

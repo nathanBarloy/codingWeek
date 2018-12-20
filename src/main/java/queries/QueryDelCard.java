@@ -16,28 +16,8 @@ public class QueryDelCard extends Query {
     public QueryDelCard(Card card) {
         super("delCard");
         this.card = card;
+        this.parameters+="name="+card.getName();
     }
 
 
-    public void send() throws IOException {
-
-
-// Request parameters and other properties.
-            params.add(new BasicNameValuePair("name", card.getName()));
-            request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }
