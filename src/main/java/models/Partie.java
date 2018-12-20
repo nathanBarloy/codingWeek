@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import launch.Main;
 import learning.LearningAlgo;
 import seeds.CardStackSeed;
+import statistic.Stat;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class Partie extends Observable{
     private String RepEnCours;
     private String NameEnCours;
     public boolean timeout = false;
-    private String deckEnCours;
+    private String currentDeck;
+    private Stat stat;
 
 
     public String getNameEnCours() { return NameEnCours; }
@@ -101,6 +103,16 @@ public class Partie extends Observable{
     public Database getDatabase() {
         return database;
     }
+
+    public double getProgressCurrentDeck(){
+        this.stat = new Stat();
+        /*
+        System.out.println("current card dans partie  " +this.currentDeck);
+        System.out.println("partie trouvé  " +this.database.getCardListString( this.currentDeck).getName());
+        System.out.println("resultat 1ère carte " +this.database.getCardListString( this.currentDeck).getCard().getState());
+        */
+        return stat.getProgession(this.database.getCardListString( this.currentDeck));
+    }
 //-----------------------------------------------------------------------------------------------
     //Setter
 
@@ -149,8 +161,8 @@ public class Partie extends Observable{
     }
 
     public void NvQuest(String deck) {
-        this.deckEnCours = deck;
-        this.CurrentCard = this.database.pop(deckEnCours);
+        this.currentDeck = deck;
+        this.CurrentCard = this.database.pop(currentDeck);
 
         if (this.CurrentCard != null) {
             this.CurrentCard.setType("question");
@@ -218,12 +230,12 @@ public class Partie extends Observable{
         return this.database.getListeCarte(currentDeck);
     }
 
-    public String getDeckEnCours() {
-        return this.deckEnCours;
+    public String getcurrentDeck() {
+        return this.currentDeck;
     }
 
-    public void setDeckEnCours(String deckEnCours) {
-        this.deckEnCours = deckEnCours;
+    public void setcurrentDeck(String currentDeck) {
+        this.currentDeck = currentDeck;
     }
 
     public void reset() {
