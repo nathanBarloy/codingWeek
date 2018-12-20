@@ -167,6 +167,21 @@ public class  Main extends Application {
                 stage.show();
 
             }
+            if (fxmlFile.equals("/views/Statistiques.fxml")){
+                System.out.println("launching Statistiques");
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new VueStatistiques(p));
+                Parent VueStatistiques = null;
+
+                VueStatistiques = loader2.load();
+                p.init();
+
+
+                stage.setTitle("Statistiques");
+                stage.setScene(new Scene(VueStatistiques, 800, 600));
+                stage.show();
+            }
             if (fxmlFile.equals("/views/VueLogin.fxml")) {
                 p = new Partie();
                 FXMLLoader loader2 = new FXMLLoader();
@@ -197,6 +212,22 @@ public class  Main extends Application {
 
     public void switchScene(String fxmlFile) {
         try {
+            if (fxmlFile.equals("/views/Statistiques.fxml")){
+                System.out.println("launching Statistiques");
+                FXMLLoader loader2 = new FXMLLoader();
+                loader2.setLocation(getClass().getResource(fxmlFile));
+                loader2.setControllerFactory(iC -> new VueStatistiques(p));
+                Parent VueStatistiques = null;
+
+                VueStatistiques = loader2.load();
+                p.init();
+
+
+                stage.setTitle("Statistiques");
+                stage.setScene(new Scene(VueStatistiques, 800, 600));
+                stage.show();
+            }
+
             if (fxmlFile.equals("/views/VueQuestion.fxml")) {
 
                // p.setCurrentCard(p.getCardList().getCard());

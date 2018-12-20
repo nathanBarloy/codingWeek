@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.ComboBoxListCell;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import launch.Main;
 import models.Card;
 import models.Partie;
@@ -15,6 +17,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VueDecks implements Observer {
+
+    @FXML
+    private BorderPane borderpane;
 
     @FXML
     private ComboBox comboBox;
@@ -108,6 +113,21 @@ public class VueDecks implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (this.init){
+
+            Image image1 = new Image("/resources/img/lotus.jpg");
+            BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
+
+            Background background1 = new Background(new BackgroundImage(image1,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    bSize0));
+
+            this.borderpane.setBackground(new Background(new BackgroundImage(image1,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    bSize0)));
 
             this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
 

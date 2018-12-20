@@ -37,6 +37,9 @@ public class ControllerVueQuestion implements Observer {
     private int NbIdkReponses;
 
     @FXML
+    private Label username;
+
+    @FXML
     private ProgressBar BonneReponsesBarre;
 
     @FXML
@@ -143,8 +146,8 @@ public class ControllerVueQuestion implements Observer {
             String message = "";
 
             alert.setContentText(message);
-            alert.showAndWait();
-            this.currentDeck = this.partie.getFirstDeck();*/
+            alert.showAndWait();*/
+            this.currentDeck = this.partie.getFirstDeck();
         }
         this.Anim.stop();
         this.partie.NvQuest(this.currentDeck);
@@ -231,6 +234,10 @@ public class ControllerVueQuestion implements Observer {
         return 1;
     }
 
+    public void goStat() {
+        Main.main.switchScene("/views/Statistiques.fxml");
+    }
+
 
 
     @Override
@@ -243,6 +250,8 @@ public class ControllerVueQuestion implements Observer {
                 //final Image image1 = new Image(imageURL.toExternalForm());
 
                 this.choicebox.getItems().addAll(this.partie.getListeDeck());
+                username.setText("utilisateur : " + partie.getPlayer().getUsername());
+
                 BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
                 Background background1 = new Background(new BackgroundImage(image0,
