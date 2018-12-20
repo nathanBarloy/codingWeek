@@ -252,8 +252,14 @@ public class Database {
 
     }
     public void addDeck(String s, String une_description, String text) {
-        this.listCardList.add(new CardList(s,une_description,text));
-        System.out.println("addDeck:" + this.listCardList.size());
+        CardList c= new CardList(s,une_description,text);
+        this.listCardList.add(c);
+        Query query = new QueryAddCardStack(c);
+        query.send();
+        if(query.getResponse().equals("1"))
+            System.out.println("addDeck:" + this.listCardList.size());
+        else
+            System.out.println("Erreur d'ajout dans la database");
     }
 
 

@@ -43,6 +43,7 @@ public class VueCreation implements Observer {
     public void AjouterDeck(){
         System.out.println("AjouterDeck");
         this.partie.addDeck(this.newdeck.getText());
+
         this.newdeck.setText("");
     }
 
