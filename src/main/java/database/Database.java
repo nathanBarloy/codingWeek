@@ -109,13 +109,21 @@ public class Database {
             if (this.listCardList.get(i).getName().equals(NomDeck)){
                 this.listCardList.get(i).add(card);
                 Query query = new QueryAddCard(card);
-
-
-                    //System.out.println("j'ajoute une carte dans le deck" + NomDeck);
-                    //System.out.println();
+                query.send();
+                a = query.getResponse();
+                if(a.equals("1")) {
+                    System.out.println("Carte ajoutée en ligne");
+                    query = new QueryAddCardCardStack(card, this.listCardList.get(i));
                     query.send();
-                    a = query.getResponse();
-                    return a;
+                    if (query.getResponse().equals("1")) {
+                        System.out.println("Carte ajoutée à la liste en ligne");
+                    } else {
+                        System.out.println("La carte n'a pas pu être ajoutée à la cardstack.");
+                    }
+                }else{
+                    System.out.println("La carte n'a pas pu être ajoutée en ligne");
+                }
+                return a;
 
 
             }
