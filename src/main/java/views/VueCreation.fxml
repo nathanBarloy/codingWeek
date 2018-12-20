@@ -19,13 +19,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.VueCreation">
    <children>
-      <BorderPane prefHeight="800.0" prefWidth="1000.0">
+      <BorderPane prefHeight="600.0" prefWidth="800.0">
          <bottom>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#retour" prefHeight="60.0" prefWidth="150.0" text="Retour" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#retour" prefHeight="50.0" prefWidth="110.0" text="Retour" textAlignment="CENTER">
                      <font>
-                        <Font size="26.0" />
+                        <Font size="22.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -39,10 +39,10 @@
                <children>
                   <Label text="Question">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="26.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
                   <TextArea fx:id="question" prefHeight="180.0" prefWidth="581.0" promptText="Question" wrapText="true">
@@ -55,12 +55,12 @@
                   </TextArea>
                   <Label text="Réponse">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="26.0" />
                      </font>
                   </Label>
                   <TextArea fx:id="reponse" prefHeight="180.0" prefWidth="943.0" promptText="Réponse" wrapText="true">
                      <VBox.margin>
-                        <Insets bottom="70.0" />
+                        <Insets bottom="50.0" />
                      </VBox.margin>
                      <font>
                         <Font size="20.0" />
@@ -82,19 +82,19 @@
                </children></VBox>
          </center>
          <right>
-            <Button mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="149.0" text="Valider" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="138.0" text="Valider" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="30.0" />
+                  <Font size="28.0" />
                </font>
                <BorderPane.margin>
-                  <Insets left="40.0" right="20.0" />
+                  <Insets left="20.0" right="20.0" />
                </BorderPane.margin>
             </Button>
          </right>
          <top>
-            <Label text="Menu de création de carte" BorderPane.alignment="CENTER">
+            <Label text="Menu de création de carte" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="40.0" />
+                  <Font size="31.0" />
                </font>
                <BorderPane.margin>
                   <Insets top="30.0" />
@@ -102,19 +102,19 @@
             </Label>
          </top>
          <left>
-            <VBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="200.0" prefWidth="260.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="449.0" prefWidth="214.0" BorderPane.alignment="CENTER">
                <children>
-                  <ComboBox fx:id="menuDeck" prefWidth="200.0" promptText="choisir deck">
+                  <ComboBox fx:id="menuDeck" prefWidth="175.0" promptText="choisir deck">
                      <VBox.margin>
-                        <Insets bottom="50.0" left="20.0" right="40.0" />
+                        <Insets bottom="50.0" left="20.0" right="20.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <TextField fx:id="newdeck" promptText="nouveau deck">
+                  <TextField fx:id="newdeck" maxWidth="175.0" prefWidth="175.0" promptText="nouveau deck">
                      <VBox.margin>
-                        <Insets left="20.0" right="40.0" top="50.0" />
+                        <Insets left="20.0" right="20.0" top="50.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#AjouterDeck" prefHeight="39.0" prefWidth="157.0" text="Ajouter Deck">
+                  <Button mnemonicParsing="false" onAction="#AjouterDeck" prefHeight="39.0" prefWidth="130.0" text="Ajouter Deck">
                      <VBox.margin>
                         <Insets left="40.0" right="20.0" top="20.0" />
                      </VBox.margin>
