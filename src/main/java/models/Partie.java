@@ -367,5 +367,25 @@ public class Partie extends Observable{
     public CardList getDeck(String currentDeck) {
         return this.database.getDeck(currentDeck);
     }
+
+    public void setGoodRep(Card carte) {
+        this.database.setGoodRep(carte);
+    }
+    public void setMediumRep(Card carte) {
+        this.database.setMediumRep(carte);
+    }
+    public void setBadRep(Card carte) {
+        this.database.setBadRep(carte);
+    }
+
+    public int getGoodRep(String deck){
+        return this.database.getBonnesRep(deck);
+    }
+    public int getMediumRep(String deck){
+        return this.database.getMoyennesRep(deck);
+    }
+    public int getBadRep(String deck){
+        return this.database.getBadRep(deck);
+    }
 }
 

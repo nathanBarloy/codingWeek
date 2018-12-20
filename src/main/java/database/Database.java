@@ -9,6 +9,7 @@ import queries.*;
 
 import seeds.CardStackSeed;
 
+import java.io.CharArrayReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -347,5 +348,75 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public void setGoodRep(Card carte) {
+        for (CardList c : this.listCardList){
+            for (Card c1 : c){
+                if (c1.getName().equals(carte.getName())){
+                    c1.setNbBonnesReponses();
+                }
+            }
+        }
+    }
+    public void setMediumRep(Card carte) {
+        for (CardList c : this.listCardList){
+            for (Card c1 : c){
+                if (c1.getName().equals(carte.getName())){
+                    c1.setNbMoyennesReponses();
+                }
+            }
+        }
+    }
+    public void setBadRep(Card carte) {
+        for (CardList c : this.listCardList){
+            for (Card c1 : c){
+                if (c1.getName().equals(carte.getName())){
+                    c1.setNbFaussesReponses();
+                }
+            }
+        }
+    }
+
+    public int getBonnesRep(String deck){
+        int s = 0;
+        for (CardList c : this.listCardList){
+            if (c.getName().equals(deck)) {
+                s = 0;
+                for (Card c1 : c) {
+                    s += c1.getNbBonnesReponses();
+
+                }
+            }
+        }
+        return s;
+    }
+
+    public int getMoyennesRep(String deck){
+        int s = 0;
+        for (CardList c : this.listCardList){
+            if (c.getName().equals(deck)) {
+                s = 0;
+                for (Card c1 : c) {
+                    s += c1.getNbMoyennesReponses();
+
+                }
+            }
+        }
+        return s;
+    }
+
+    public int getBadRep(String deck) {
+        int s = 0;
+        for (CardList c : this.listCardList) {
+            if (c.getName().equals(deck)) {
+                s = 0;
+                for (Card c1 : c) {
+                    s += c1.getNbFaussesReponses();
+
+                }
+            }
+        }
+        return s;
     }
 }

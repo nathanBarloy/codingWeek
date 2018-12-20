@@ -14,7 +14,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VueStatistiques implements Observer{
-    private String currentDeck = this.partie.getFirstDeck();
+    private String currentDeck;
 
     @FXML
     private BorderPane borderpane;
@@ -32,7 +32,7 @@ public class VueStatistiques implements Observer{
     private PieChart PieChart3;
 
     private Partie partie;
-    private boolean init = true;
+    private int init = -1;
 
     public VueStatistiques(Partie p){
         super();
@@ -40,17 +40,19 @@ public class VueStatistiques implements Observer{
         this.partie.addObserver(this);
     }
     public void Retour(){
+        this.init = 20000;
         Main.main.switchScene("/views/VueMenu.fxml");
     }
 
     public void SwapDeck(){
+        this.init = 1;
         this.currentDeck = (String) this.comboBox.getValue();
         this.partie.Choisir();
     }
     @Override
     public void update(Observable o, Object arg) {
-        if (this.init) {
-
+        if (this.init == -1) {
+             this.currentDeck = this.partie.getFirstDeck();
             Image image1 = new Image("/resources/img/lotus.jpg");
             BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
@@ -86,18 +88,41 @@ public class VueStatistiques implements Observer{
             PieChart1.getData().setAll(new PieChart.Data("Pourcentage fait",progression ),
                     new PieChart.Data("Non fait", 1 - progression));
 
+            int tot = this.partie.getGoodRep(this.currentDeck)
+                    + this.partie.getMediumRep(this.currentDeck)
+                    + this.partie.getBadRep(this.currentDeck);
+            System.out.println("total : " + tot);
+            System.out.println("Nb Bonnes réponses:" + +this.partie.getGoodRep(this.currentDeck));
+            System.out.println("Nb Moyennes réponses:" + +this.partie.getMediumRep(this.currentDeck));
+            System.out.println("Nb Mauvaises réponses:" + +this.partie.getBadRep(this.currentDeck));
+            if (tot != 0) {
 
-            PieChart2.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
-                    new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
-                    new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
-            );
-            PieChart3.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
-                    new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
-                    new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
-            );
-            this.init = false;
+                PieChart2.getData().setAll(new PieChart.Data("Bonnes Réponses",
+                                this.partie.getGoodRep(this.currentDeck)),
+                        new PieChart.Data("Réponses Moyennes",
+                                this.partie.getMediumRep(this.currentDeck)),
+                        new PieChart.Data("Mauvaises Réponses",
+                                this.partie.getBadRep(this.currentDeck))
+                );
+            }
+            else{
+                PieChart2.getData().setAll(new PieChart.Data("Bonnes Réponses",
+                                0),
+                        new PieChart.Data("Réponses Moyennes",
+                                0),
+                        new PieChart.Data("Mauvaises Réponses",
+                                0)
+                );
+            }
+
+
+            /*
+            PieChart3.getData().setAll(new PieChart.Data("Pommes", 50),
+                    new PieChart.Data("Oranges", 30)
+            );*/
+            this.init = 0;
         }
-        else{
+        if(this.init == 1){
             this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
 
             Stat stat = new Stat();
@@ -105,15 +130,32 @@ public class VueStatistiques implements Observer{
             PieChart1.getData().setAll(new PieChart.Data("Pourcentage fait",progression ),
                     new PieChart.Data("Non fait", 1 - progression));
 
+            int tot = this.partie.getGoodRep(this.currentDeck)
+                    + this.partie.getMediumRep(this.currentDeck)
+                    + this.partie.getBadRep(this.currentDeck);
+            System.out.println("total : " + tot);
+            System.out.println("Nb Bonnes réponses:" + +this.partie.getGoodRep(this.currentDeck));
+            System.out.println("Nb Moyennes réponses:" + +this.partie.getMediumRep(this.currentDeck));
+            System.out.println("Nb Mauvaises réponses:" + +this.partie.getBadRep(this.currentDeck));
+            if (tot != 0) {
 
-            PieChart2.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
-                    new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
-                    new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
-            );
-            PieChart3.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),
-                    new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42),
-                    new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19)
-            );
+                PieChart2.getData().setAll(new PieChart.Data("Bonnes Réponses",
+                                this.partie.getGoodRep(this.currentDeck)),
+                        new PieChart.Data("Réponses Moyennes",
+                                this.partie.getMediumRep(this.currentDeck)),
+                        new PieChart.Data("Mauvaises Réponses",
+                                this.partie.getBadRep(this.currentDeck))
+                );
+            }
+            else{
+                PieChart2.getData().setAll(new PieChart.Data("Bonnes Réponses",
+                                0),
+                        new PieChart.Data("Réponses Moyennes",
+                                0),
+                        new PieChart.Data("Mauvaises Réponses",
+                                0)
+                );
+            }
         }
     }
 }
