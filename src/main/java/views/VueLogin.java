@@ -73,6 +73,11 @@ public class VueLogin implements Observer {
 
     }
 
+    public void connexionLocal() {
+        partie.setPlayer(new Player(""));
+        Main.main.switchScene("/views/VueMenu.fxml");
+    }
+
 
     public void quitter() {
         Main.main.closeStage();
