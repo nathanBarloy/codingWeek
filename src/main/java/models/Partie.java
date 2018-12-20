@@ -292,7 +292,7 @@ public class Partie extends Observable{
     }
 
     public void addDeck(String text) {
-        this.database.addDeck(text,"une description",this.player.getUsername());
+        this.database.addDeck(text,"une description",this.player.getUsername() , this.local);
         setChanged();
         notifyObservers();
     }
@@ -312,7 +312,9 @@ public class Partie extends Observable{
 
     }
     public void exportDatabaseLocal(){
-        this.database.exportDatabaselocal();
+        this.database.exportDatabaselocal(this.local);
+        System.out.println("export not");
+        return;
 
     }
 

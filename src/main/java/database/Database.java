@@ -218,8 +218,7 @@ public class Database {
 
     //------------------------------------------------------------------------------------------------------------------
     //version hors ligne
-    public void exportDatabaselocal() {
-
+    public void exportDatabaselocal(boolean local) {
         JSONListCardListParser jsonListCardListParser = new JSONListCardListParser() ;
         try {
             JSONListCardListParser.ListCardListToJson(this.listCardList);
@@ -306,10 +305,13 @@ public class Database {
         }
 
     }
-    public void addDeck(String s, String une_description, String text) {
+    public void addDeck(String s, String une_description, String text , boolean local) {
 
         CardList c= new CardList(s,une_description,text);
         this.listCardList.add(c);
+        if (local){
+            return ;
+        }
         Query query = new QueryAddCardStack(c);
         query.send();
         if(query.getResponse().equals("1"))
