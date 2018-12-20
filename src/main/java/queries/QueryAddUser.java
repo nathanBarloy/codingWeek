@@ -16,29 +16,8 @@ public class QueryAddUser extends Query {
     public QueryAddUser(Player player) {
         super("addUser");
         this.player=player;
+        this.parameters+="username="+player.getUsername()+"&description="+player.getDescription();
     }
 
 
-    public void send() throws IOException {
-
-
-// Request parameters and other properties.
-            params.add(new BasicNameValuePair("username", player.getUsername()));
-            params.add(new BasicNameValuePair("description", player.getDescription()));
-            request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }

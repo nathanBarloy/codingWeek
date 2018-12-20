@@ -15,28 +15,8 @@ public class QueryDelCardStack extends Query {
     public QueryDelCardStack(CardList cardStack) {
         super("delCardStack");
         this.cardStack = cardStack;
+        this.parameters+="name="+cardStack.getName();
     }
 
 
-    public void send() throws IOException {
-
-
-// Request parameters and other properties.
-            params.add(new BasicNameValuePair("name", cardStack.getName()));
-            request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }

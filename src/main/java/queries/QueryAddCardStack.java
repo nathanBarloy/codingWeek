@@ -15,30 +15,8 @@ public class QueryAddCardStack extends Query {
     public QueryAddCardStack(CardList cardList) {
         super("addCardStack");
         this.cardList = cardList;
+        this.parameters+="name="+cardList.getName()+"&description="+cardList.getDescription()+"&author="+cardList.getAuthor();
     }
 
 
-    public void send() throws IOException {
-
-
-// Request parameters and other properties.
-            params.add(new BasicNameValuePair("name", cardList.getName()));
-            params.add(new BasicNameValuePair("description", cardList.getDescription()));
-            params.add(new BasicNameValuePair("author", cardList.getAuthor()));
-            request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }

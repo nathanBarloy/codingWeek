@@ -38,7 +38,7 @@ public abstract class Query {
 
         this.action=action;
         this.server= "https://saltycard.elmrini.fr/index.php?action=";
-
+        this.response = new StringBuffer();
         try {
             url=new URL(this.server+this.action);
             httpsURLConnection = (HttpsURLConnection) url.openConnection();
@@ -87,7 +87,7 @@ public abstract class Query {
                     new InputStreamReader(httpsURLConnection.getInputStream()));
 
             String inputLine;
-            StringBuffer response = new StringBuffer();
+
 
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);

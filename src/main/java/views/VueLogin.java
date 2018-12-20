@@ -43,12 +43,10 @@ public class VueLogin implements Observer {
     public void connexion() {
         String nom = utilisateur.getText(), res = "0";
         Query check = new QueryCheckUsername(nom);
-        try {
+
             check.send();
             res = check.getResponse();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
         if (res.equals("1")) { //si le nom entré est dans la BDD
             partie.setPlayer(new Player(nom));

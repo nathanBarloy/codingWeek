@@ -15,28 +15,9 @@ public class QueryCheckUsername extends Query {
     public QueryCheckUsername(String player) {
         super("checkUsername");
         this.player=player;
-
+        this.parameters+="username="+player;
     }
 
 
-    public void send() throws IOException {
 
-
-// Request parameters and other properties.
-        params.add(new BasicNameValuePair("username", player ));
-        request.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-//Execute and get the response.
-            HttpResponse httpResponse = httpClient.execute(request);
-            HttpEntity entity = httpResponse.getEntity();
-
-            if (entity != null) {
-                try  {
-                    this.response = entity.getContent();
-                }catch (Exception e){
-
-                }
-            }
-
-
-    }
 }
