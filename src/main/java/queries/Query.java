@@ -76,7 +76,7 @@ public abstract class Query {
             if ("Set-Cookie".equalsIgnoreCase(headerFieldKey)) {
                 List<String> headerFieldValue = headerFields.get(headerFieldKey);
                 for (String headerValue : headerFieldValue) {
-                    
+
                     String[] fields = headerValue.split(";\\s*");
                     String cookieValue = fields[0];
                     String expires = null;
