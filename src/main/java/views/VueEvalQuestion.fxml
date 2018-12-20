@@ -75,22 +75,28 @@
             <top>
                 <BorderPane prefHeight="55.0" prefWidth="936.0" BorderPane.alignment="CENTER">
                     <left>
-                        <Label prefHeight="40.0" prefWidth="150.0" text="Nom Joueur" BorderPane.alignment="CENTER">
+                        <Label fx:id="username" text="Nom Joueur" BorderPane.alignment="CENTER">
                             <font>
-                                <Font size="20.0" />
+                                <Font size="26.0" />
                             </font>
+                     <BorderPane.margin>
+                        <Insets left="40.0" />
+                     </BorderPane.margin>
                         </Label>
                     </left>
-                    <right>
-                        <Label text="Informations Joueur" BorderPane.alignment="CENTER">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Label>
-                    </right>
                     <center>
                         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                     </center>
+               <right>
+                  <Button mnemonicParsing="false" prefHeight="40.0" text="Statistiques" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets right="20.0" top="10.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </right>
                 </BorderPane>
             </top>
             <right>
