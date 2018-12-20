@@ -57,7 +57,12 @@ public class VueMenu implements Observer{
         Query del = new QueryDelUser(partie.getPlayer());
 
             del.send();
-            deconnexion();
+            if(del.getResponse().equals("1")) {
+                System.out.println("User supprimé");
+                deconnexion();
+            }else{
+                System.out.println("Erreur : "+del.getResponse());
+            }
 
     }
 
