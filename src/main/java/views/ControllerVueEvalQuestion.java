@@ -1,7 +1,7 @@
 
 package views;
 
-
+import static java.nio.charset.StandardCharsets.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PathTransition;
@@ -28,6 +28,8 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class ControllerVueEvalQuestion implements Observer {
@@ -347,8 +349,8 @@ public class ControllerVueEvalQuestion implements Observer {
                         temp = " ";
                     }
                     String rep = carte.getAnswer();
-
-                    boolean b = this.QueryParse(temp);
+                    boolean b = false;
+                    b = this.QueryParse(temp,rep);
 /*
                         while ((inputLine = in.()) != null) {
                             .append(inputLine);
@@ -360,8 +362,17 @@ public class ControllerVueEvalQuestion implements Observer {
                         }*/
 
 
-                    if(partie.verifierReponse(rep,temp)){
+                    if(partie.verifierReponse(rep,temp) || b){
+                        if (b){
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("ATTENTION");
 
+                            alert.setHeaderText("Un synonyme a été trouvé");
+                            String message = "";
+
+                            alert.setContentText(message);
+                            alert.showAndWait();
+                        }
                         this.NbBonnesReponses++;
                         this.partie.setScore(this.currentDeck,this.c,1);
 
@@ -437,11 +448,13 @@ public class ControllerVueEvalQuestion implements Observer {
         }
     }
 
-    private boolean QueryParse(String temp) {
+    private boolean QueryParse(String temp,String rep) {
         URL url = null;
         InputStream in = null;
         try {
-            url = new URL("https://fr.wiktionary.org/w/api.php?action=query&prop=extracts&format=json&titles=lol");
+            url = new URL("https://fr.wiktionary.org/w/api.php?action=query&prop=extracts&format=json&titles=");
+            url = new URL(url + rep);
+            System.out.println(url);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             in = new BufferedInputStream(urlConnection.getInputStream());
             readStream(in);
@@ -487,7 +500,7 @@ public class ControllerVueEvalQuestion implements Observer {
             if (s.charAt(i) == 'i' && s.charAt(i+1) == 'd' && s.charAt(i+2) == '=' && s.charAt(i+4) == '"'&&
             s.charAt(i+5) == 'S' && s.charAt(i+6) == 'y' && s.charAt(i+7) == 'n' && s.charAt(i+8) == 'o' &&
                     s.charAt(i+9) == 'n' && s.charAt(i+10) == 'y' && s.charAt(i+11) == 'm' && s.charAt(i+12) == 'e' &&
-                    s.charAt(i+13) == 's'
+                    s.charAt(i+13) == 's' && s.charAt(i+14) != '_'
                     )
             {
                 list.addAll(this.listSynonym(i+13,temp,s));
@@ -502,17 +515,26 @@ public class ControllerVueEvalQuestion implements Observer {
         int j = 0;
         String txt = "";
         ArrayList<String> list = new ArrayList<String>();
-        for (int k = i; k <s.length();k++){
+        for (int k = i+1; k <s.length();k++){
+            if (s.charAt(k) == 'i' && s.charAt(k+1) == 'd'){
+                System.out.println("je stop");
+                return list;
+            }
             if (s.charAt(k) == '>' && s.charAt(k+1) != '<'){
-                j = k;
+                j = k+1;
                 txt = "";
                 while (s.charAt(j) != '<'){
-                    txt.concat(String.valueOf(s.charAt(j)));
-                    System.out.println("je concatène : " + s.charAt(j));
+
+                    txt = txt + s.charAt(j);
+                    System.out.println("je concatène : " + txt);
                     j++;
                 }
-                System.out.println("j'ajoute : " + txt);
-                list.add(txt);
+                if (!txt.equals("Synonymes") && !txt.equals("\\n")) {
+
+                    System.out.println("j'ajoute : " + txt);
+                    list.add(txt);
+                }
+
             }
         }
         return list;
