@@ -54,6 +54,7 @@ public class VueMenu implements Observer{
 
     public void deconnexion() {
         this.partie.exportDatabaseLocal();
+        this.partie.setDatabase();
         Main.main.switchScene("/views/VueLogin.fxml");
     }
 
@@ -68,9 +69,14 @@ public class VueMenu implements Observer{
         if (result.get() == ButtonType.OK){
             // ... user chose OK
             Query del = new QueryDelUser(partie.getPlayer());
-
+            del.setToken(this.partie.getDatabase().getSessionToken());
             del.send();
-            deconnexion();
+            if(del.getResponse().equals("1")) {
+                System.out.println("User supprimé");
+                deconnexion();
+            }else{
+                System.out.println("Erreur : "+del.getResponse());
+            }
 
         } else {
             // ... user chose CANCEL or closed the dialog

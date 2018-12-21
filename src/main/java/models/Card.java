@@ -9,9 +9,38 @@ public class Card {
     private int succes;
     private int fail ;
     private int  user_succes;
+
+    public int getNbBonnesReponses() {
+        return NbBonnesReponses;
+    }
+
+    public int getNbMoyennesReponses() {
+        return NbMoyennesReponses;
+    }
+
+    public int getNbFaussesReponses() {
+        return NbFaussesReponses;
+    }
+
     private int user_fail;
     private int state;
     private int id;
+
+    public void setNbBonnesReponses() {
+        NbBonnesReponses++;
+    }
+
+    public void setNbMoyennesReponses() {
+        NbMoyennesReponses++;
+    }
+
+    public void setNbFaussesReponses() {
+        NbFaussesReponses++;
+    }
+
+    private int NbBonnesReponses;
+    private int NbMoyennesReponses;
+    private int NbFaussesReponses;
     //------------------------------------------------------------------------------------------------------------------
     //Constructor
 

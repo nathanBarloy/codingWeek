@@ -120,6 +120,7 @@ public class ControllerVueQuestion implements Observer {
     }
 
     public void retour() {
+        this.init = 10000;
         Main.main.switchScene("/views/VueMenu.fxml");
     }
 
@@ -127,16 +128,19 @@ public class ControllerVueQuestion implements Observer {
         if (RadioParfait.isSelected()){
             this.partie.setScore(this.currentDeck,this.carte,3);
             this.NbBonnesReponses++;
+            this.partie.setGoodRep(this.carte);
         }
         if (RadioMoyen.isSelected()){
             this.partie.setScore(this.currentDeck,this.carte,1);
             this.NbMoyenReponses++;
+            this.partie.setMediumRep(this.carte);
         }
         if (RadioIdk.isSelected()){
 
             this.partie.setScore(this.currentDeck,this.carte,0);
 
             this.NbIdkReponses++;
+            this.partie.setBadRep(this.carte);
         }
         if (this.currentDeck == null){/*
             Alert alert = new Alert(Alert.AlertType.WARNING);

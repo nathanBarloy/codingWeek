@@ -103,6 +103,7 @@ public class ControllerVueEvalQuestion implements Observer {
     }
 
     public void retour() {
+        this.init = 100000;
         Main.main.switchScene("/views/VueMenu.fxml");
     }
 
@@ -532,31 +533,31 @@ public class ControllerVueEvalQuestion implements Observer {
                 while (s.charAt(j) != '<'){
 
                     txt = txt + s.charAt(j);
-
-                    for(int l=0; l<txt.length();++l) {
-                        char c = txt.charAt(l);
-                        // If there's a char left, we chan check if the current and the next char
-                        // form a surrogate pair
-                        if(l<txt.length()-1 && Character.isSurrogatePair(c, txt.charAt(l+1))) {
-                            // if so, the codepoint must be stored on a 32bit int as char is only 16bit
-                            int codePoint = txt.codePointAt(l);
-                            // show the code point and the char
-                            System.out.println(String.format("%6d:%s", codePoint, new String(new int[]{codePoint}, 0, 1)));
-                            ++l;
-                        }
-                        // else this can only be a "normal" char
-                        else
-                            System.out.println(String.format("%6d:%s", (int)c, c));
-                    }
-
                     System.out.println("je concatène : " + txt);
                     j++;
                 }
                 if (!txt.equals("Synonymes") && !txt.equals("\\n")) {
 
-                    System.out.println("j'ajoute : " + txt);
-                    list.add(txt);
-                }
+
+                    String res = "";
+                    String lol = "";
+                    for (int n = 0;n<txt.length();n++){
+                        lol = "";
+                        if (txt.charAt(n) == '\\' && txt.charAt(n+1) == 'u'){
+                            for (int l = 1;l<5;l++){
+                                lol = lol + txt.charAt(n+l+1);
+                            }
+                            System.out.println("here, lol :"+lol);
+                            res = res + Character.toString((char) Integer.parseInt(lol,16));
+                            n = n + 5;
+                        }
+                        else{
+                            res = res+ txt.charAt(n);
+                        }
+                    }
+                    System.out.println("j'ajoute : " + res);
+                    list.add(res);
+                }//Character.toString((char) Integer.parseint(ch,16));
 
             }
         }
