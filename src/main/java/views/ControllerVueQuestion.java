@@ -328,6 +328,7 @@ public class ControllerVueQuestion implements Observer {
                         progress = this.partie.getProgressCurrentDeck();
                         //gfin de la gestion de la barre de progression
                         this.ProgressBar.setProgress(progress);
+
                         //System.out.println("question");
                         String temp ="mdr";//= this.LabelQuestion.getText();
                         this.LabelQuestion.setText(carte.getQuestion());

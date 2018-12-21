@@ -263,6 +263,9 @@ public class CardList implements Iterable<Card>{
     public void resetScores() {
         for (Card c : this.cardStack) {
             c.setState(0,0);
+            c.setNbBonnesReponses(0);
+            c.setNbMoyennesReponses(0);
+            c.setNbFaussesReponses(0);
         }
     }
 

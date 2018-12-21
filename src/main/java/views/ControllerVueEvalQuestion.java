@@ -127,6 +127,8 @@ public class ControllerVueEvalQuestion implements Observer {
     }
     public void SwapDeck(){
         this.currentDeck = (String) this.choicebox.getValue();
+        System.out.println("i reset the scores");
+        this.partie.resetScores(this.currentDeck);
     }
     public void valider() {
         Anim.stop();
@@ -306,23 +308,33 @@ public class ControllerVueEvalQuestion implements Observer {
             if (carte != null) {
 
                 if (carte.getType().equals("question")) {
-                    this.partie.timeout = true;
-
                     int tot = this.partie.getGoodRep(this.currentDeck)
                             + this.partie.getMediumRep(this.currentDeck)
                             + this.partie.getBadRep(this.currentDeck);
                     if (tot != 0) {
-                        this.BonneReponsesBarre.setProgress(this.partie.getGoodRep(this.currentDeck) / tot);
+                        System.out.println("nb bonnes rep :" + this.partie.getGoodRep(this.currentDeck));
+                        System.out.println("nb tot :" + tot );
+                        this.BonneReponsesBarre.setProgress(((double)this.partie.getGoodRep(this.currentDeck))/
+                                (double) tot);
                     }
                     else{
                         System.out.println("tot = 0");
                     }
 
+                    progress = this.partie.getProgressCurrentDeck();
+                    //gfin de la gestion de la barre de progression
+                    this.ProgressBar.setProgress(progress);
+
+
+                    this.partie.timeout = true;
+
+
+
                     int a = this.animation2();
 
                     this.RondAvancement.setProgress(0.0F);
                     progress += 1/size;
-                    this.ProgressBar.setProgress(progress);
+                    //this.ProgressBar.setProgress(progress);
                     //System.out.println("question");
                     String temp ="mdr";//= this.LabelQuestion.getText();
                     //
@@ -378,6 +390,10 @@ public class ControllerVueEvalQuestion implements Observer {
 
 
                     if(partie.verifierReponse(rep,temp) || b){
+
+                        this.partie.setScore(this.currentDeck,this.c,3);
+                        this.partie.setGoodRep(this.c);
+
                         if (b){
                             Alert alert = new Alert(Alert.AlertType.WARNING);
                             alert.setTitle("ATTENTION");
@@ -417,6 +433,8 @@ public class ControllerVueEvalQuestion implements Observer {
                             timeline.play();
                         this.partie.timeout = false;
                     } else {
+                        this.partie.setScore(this.currentDeck,this.c,0);
+                        this.partie.setBadRep(this.c);
 
                         if (this.partie.getScore(this.currentDeck,this.c)>=-2) {
                             System.out.println("tu descend!");
@@ -454,7 +472,7 @@ public class ControllerVueEvalQuestion implements Observer {
                 }
             } else {
                 this.progress += 1/size;
-                this.ProgressBar.setProgress(progress);
+                //this.ProgressBar.setProgress(progress);
                 this.init = 1000;
                 this.partie.reset();
 
