@@ -45,7 +45,9 @@ public class VueMenu implements Observer{
         init = true;
         this.partie = p;
         this.partie.addObserver(this);
-        this.controllerMenu=new ControllerMenu(this.partie);
+
+        this.controllerMenu = new ControllerMenu(this.partie);
+
     }
 
     public void evaluation(){
@@ -91,13 +93,13 @@ public class VueMenu implements Observer{
             img3.setFitHeight(50);
             img3.setFitWidth(50);
 
-            /*
-            Image image4 = new Image("/resources/img/connexion.jpg");
+
+            Image image4 = new Image("/resources/img/logout.png");
             ImageView img4 = new ImageView(image4);
             this.buttonDeconnexion.setGraphic(img4);
             img4.setFitHeight(50);
             img4.setFitWidth(150);
-            */
+
 
             Image image0 = new Image("/resources/img/lotus.jpg");
 

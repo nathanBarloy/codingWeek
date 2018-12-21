@@ -52,7 +52,7 @@ public class HTTPTest {
 
     @Test
     public void users() throws IOException, InterruptedException {
-        query = new QueryAddUser(player1);
+       /* query = new QueryAddUser(player1);
         query.send();
         Thread.sleep(100);
         System.out.println("Reponse adduser 1 : "+query.getResponse());
@@ -63,7 +63,7 @@ public class HTTPTest {
         query.send();
         Thread.sleep(100);
         System.out.println("Reponse deluser 1 : "+query.getResponse());
-
+*/
     }
 
     @Test

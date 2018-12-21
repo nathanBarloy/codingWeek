@@ -60,7 +60,7 @@ public class Card {
     //Constructor
 
 
-    public Card (String name, String question, String answer, String player){
+    public Card (String name, String question, String answer, String player ){
         this.name=name;
         this.text=question;
         this.answer=answer;
@@ -71,6 +71,17 @@ public class Card {
     }
     public Card (String name, String question, String answer, Player player){
         this(name,question,answer,player.getUsername());
+
+    }
+    public Card (String name, String text, String answer, String type ,int user_succes ,int fail ,int succes){
+        this.name=name;
+        this.text=text;
+        this.answer=answer;
+        this.type = "question";
+        this.state = 0;
+        this.user_succes = user_succes;
+        this.fail=fail;
+        this.succes = succes;
 
     }
 
