@@ -79,11 +79,10 @@ public class VueInscription implements Observer{
 
                 alert.setContentText(message);
                 alert.showAndWait();
-                //System.out.println("Le nom existe déjà");
             }
 
         } else { //si les informations entrées ne sont pas correctes
-            if (nom.length()<3) {
+            if (nom.length()<3) { //erreur nom pas assez long
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR");
                 alert.setHeaderText("Nom pas assez long");
@@ -91,7 +90,7 @@ public class VueInscription implements Observer{
 
                 alert.setContentText(message);
                 alert.showAndWait();
-            } else if (mdp.length()<6) {
+            } else if (mdp.length()<6) { // erreur mdp pas assez long
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR");
                 alert.setHeaderText("Mot de passe pas assez long");
@@ -99,7 +98,7 @@ public class VueInscription implements Observer{
 
                 alert.setContentText(message);
                 alert.showAndWait();
-            } else if (!mdp.equals(confirm)) {
+            } else if (!mdp.equals(confirm)) { // erreur mdp non confirmé
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR");
                 alert.setHeaderText("Mauvaise confirmation du mot de passe");
