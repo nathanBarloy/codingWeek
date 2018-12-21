@@ -50,7 +50,7 @@
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button fx:id="buttonDeconnexion" mnemonicParsing="false" onAction="#deconnexion" prefHeight="55.0" prefWidth="200.0">
+                  <Button fx:id="buttonDeconnexion" mnemonicParsing="false" onAction="#deconnexion" prefHeight="50.0" prefWidth="150.0">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -58,7 +58,7 @@
                         <Insets top="80.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="buttonQuitter" alignment="CENTER" mnemonicParsing="false" onAction="#quitter" prefHeight="55.0" prefWidth="200.0">
+                  <Button fx:id="buttonQuitter" alignment="CENTER" mnemonicParsing="false" onAction="#quitter" prefHeight="50.0" prefWidth="150.0">
                      <font>
                         <Font size="22.0" />
                      </font>
