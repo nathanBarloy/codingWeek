@@ -2,6 +2,7 @@ package queries;
 
 import controllers.ControllerMenu;
 import database.Database;
+import javafx.scene.control.Alert;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -54,6 +55,14 @@ public abstract class Query {
             setToken(db.getSessionToken());
             parameters = "";
         } catch (Exception e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Erreur de connexion");
+            String message = "redirection vers la page de connexion...";
+
+            alert.setContentText(message);
+            alert.showAndWait();
 
             System.out.println("Erreur de connexion, redirection vers la page de connexion...");
             stringResponse="-1";
