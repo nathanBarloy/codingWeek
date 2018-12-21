@@ -2,6 +2,7 @@ package views;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -12,12 +13,16 @@ import models.Partie;
 import models.Player;
 import queries.*;
 
+import javax.swing.plaf.basic.BasicButtonUI;
 import java.util.Observable;
 import java.util.Observer;
 
 public class VueLogin implements Observer {
 
     private Partie partie;
+
+    @FXML
+    private Button buttonConnexion;
 
     @FXML
     private BorderPane borderpane;
@@ -103,6 +108,11 @@ public class VueLogin implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
+        Image image4 = new Image("/resources/img/connexion.jpg");
+        ImageView img4 = new ImageView(image4);
+        this.buttonConnexion.setGraphic(img4);
+        img4.setFitHeight(50);
+        img4.setFitWidth(150);
 
         Image image1 = new Image("/resources/img/lotus.jpg");
         BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);

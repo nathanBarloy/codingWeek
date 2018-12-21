@@ -76,7 +76,7 @@
                         </PasswordField>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#connexion" prefHeight="45.0" prefWidth="200.0" text="Connexion" textFill="#2477eb">
+                  <Button fx:id="buttonConnexion" mnemonicParsing="false" onAction="#connexion" prefHeight="45.0" prefWidth="200.0" textFill="#2477eb">
                      <font>
                         <Font size="26.0" />
                      </font>

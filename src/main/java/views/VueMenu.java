@@ -99,23 +99,23 @@ public class VueMenu implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         if (init) {
-            Image image2 = new Image("/resources/img/retour.png");
-            ImageView img = new ImageView(image2);
-            this.buttonQuitter.setGraphic(img);
-            img.setFitHeight(75);
-            img.setFitWidth(125);
+            Image image2 = new Image("/resources/img/quitter.jpg");
+            ImageView img2 = new ImageView(image2);
+            this.buttonQuitter.setGraphic(img2);
+            img2.setFitHeight(50);
+            img2.setFitWidth(150);
 
-            Image image3 = new Image("/resources/img/retour.png");
-            img = new ImageView(image2);
-            this.buttonSupprimer.setGraphic(img);
-            img.setFitHeight(75);
-            img.setFitWidth(125);
+            Image image3 = new Image("/resources/img/supprimer.jpg");
+            ImageView img3 = new ImageView(image3);
+            this.buttonSupprimer.setGraphic(img3);
+            img3.setFitHeight(50);
+            img3.setFitWidth(50);
 
-            Image image4 = new Image("/resources/img/retour.png");
-            img = new ImageView(image2);
-            this.buttonDeconnexion.setGraphic(img);
-            img.setFitHeight(75);
-            img.setFitWidth(125);
+            Image image4 = new Image("/resources/img/connexion.jpg");
+            ImageView img4 = new ImageView(image4);
+            this.buttonDeconnexion.setGraphic(img4);
+            img4.setFitHeight(50);
+            img4.setFitWidth(150);
 
 
             Image image0 = new Image("/resources/img/lotus.jpg");
