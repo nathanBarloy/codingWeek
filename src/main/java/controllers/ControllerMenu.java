@@ -6,29 +6,32 @@ import launch.Main;
 import models.Partie;
 import queries.Query;
 import queries.QueryDelUser;
+import queries.QueryLogout;
 import views.VueMenu;
 
 import java.util.Optional;
 
 public class ControllerMenu {
 
-    private VueMenu vueMenu;
+
     private Partie partie;
 
-    public ControllerMenu(VueMenu vueMenu, Partie partie) {
-        this.vueMenu = vueMenu;
+
+
+    public ControllerMenu(Partie partie){
         this.partie = partie;
     }
-
 
     public void quitter() {
         deconnexion();
         Main.main.closeStage();
     }
 
-    public void deconnexion() {
+    public void deconnexionSansConnexion() {
+        this.partie.setLocal(true);
         this.partie.exportDatabaseLocal();
         this.partie.setDatabase();
+
         Main.main.switchScene("/views/VueLogin.fxml");
     }
 
@@ -57,5 +60,12 @@ public class ControllerMenu {
         }
 
 
+    }
+
+
+    public void deconnexion(){
+            Query query= new QueryLogout(this.partie.getDatabase());
+            query.send();
+            deconnexionSansConnexion();
     }
 }

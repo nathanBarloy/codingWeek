@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
@@ -24,20 +25,27 @@ public class VueMenu implements Observer{
     ControllerMenu controllerMenu;
 
     @FXML
+    private Button buttonQuitter;
+
+    @FXML
+    private Button buttonSupprimer;
+
+    @FXML
+    private Button buttonDeconnexion;
+
+    @FXML
     private BorderPane borderpane;
 
     @FXML
     private Label label;
 
-    @FXML
-    private Button boutonSuppression;
 
     public VueMenu(Partie p){
         super();
         init = true;
         this.partie = p;
         this.partie.addObserver(this);
-        this.controllerMenu=new ControllerMenu(this,this.partie);
+        this.controllerMenu=new ControllerMenu(this.partie);
     }
 
     public void evaluation(){
@@ -71,6 +79,26 @@ public class VueMenu implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         if (init) {
+            Image image2 = new Image("/resources/img/quitter.jpg");
+            ImageView img2 = new ImageView(image2);
+            this.buttonQuitter.setGraphic(img2);
+            img2.setFitHeight(50);
+            img2.setFitWidth(150);
+
+            Image image3 = new Image("/resources/img/supprimer.png");
+            ImageView img3 = new ImageView(image3);
+            this.buttonSupprimer.setGraphic(img3);
+            img3.setFitHeight(50);
+            img3.setFitWidth(50);
+
+            /*
+            Image image4 = new Image("/resources/img/connexion.jpg");
+            ImageView img4 = new ImageView(image4);
+            this.buttonDeconnexion.setGraphic(img4);
+            img4.setFitHeight(50);
+            img4.setFitWidth(150);
+            */
+
             Image image0 = new Image("/resources/img/lotus.jpg");
 
             //final URL imageURL = getClass().getResource("../ressources/fond");
@@ -95,8 +123,8 @@ public class VueMenu implements Observer{
             label.setText("Bienvenue " + partie.getPlayer().getUsername());
 
             if (partie.isLocal()) {
-                boutonSuppression.setDisable(true);
-                boutonSuppression.setVisible(false);
+                buttonSupprimer.setDisable(true);
+                buttonSupprimer.setVisible(false);
             }
 
             init = false;

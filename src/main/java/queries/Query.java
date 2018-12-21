@@ -1,5 +1,6 @@
 package queries;
 
+import controllers.ControllerMenu;
 import database.Database;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
@@ -24,6 +25,7 @@ import java.util.Set;
 
 public abstract class Query {
 
+    protected ControllerMenu controllerMenu;
     protected String action;
     protected String server;
 
@@ -36,6 +38,7 @@ public abstract class Query {
     private String stringResponse;
 
     public Query(String action, Database db){
+        controllerMenu = new ControllerMenu(db.getPartie());
         this.db=db;
 
         token="";
@@ -46,23 +49,18 @@ public abstract class Query {
         try {
             url=new URL(this.server+this.action);
             httpsURLConnection = (HttpsURLConnection) url.openConnection();
-        } catch (MalformedURLException e) {
 
-            System.out.println("Error malformedurl: unable to connect");
-            e.printStackTrace();
-        } catch (IOException e) {
-
-            System.out.println("Error IO: unable to connect");
-            e.printStackTrace();
-        }
-        try {
             httpsURLConnection.setRequestMethod("POST");
-        } catch (ProtocolException e) {
+            setToken(db.getSessionToken());
+            parameters = "";
+        } catch (Exception e) {
 
-            e.printStackTrace();
+            System.out.println("Erreur de connexion, redirection vers la page de connexion...");
+            stringResponse="-1";
+            controllerMenu.deconnexionSansConnexion();
+
         }
-        setToken(db.getSessionToken());
-        parameters = "";
+
     }
 
     public String getToken() {
@@ -147,17 +145,15 @@ public abstract class Query {
             makeResponse();
             makeCookie();
 
-        }catch (UnknownHostException e){
 
-            System.out.println("Erreur : impossible de se connecter");
-        } catch (SSLException e){
 
-            System.out.println("Erreur de connexion SSL");
 
-        } catch (IOException e) {
 
-            System.out.println("Erreur de connexion IO");
-            e.printStackTrace();
+        } catch (Exception e) {
+
+            System.out.println("Erreur de connexion, redirection vers la page de connexion...");
+            stringResponse="-1";
+            controllerMenu.deconnexionSansConnexion();
         }
 
     }

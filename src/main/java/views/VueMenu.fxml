@@ -55,7 +55,7 @@
                      <font>
                         <Font size="24.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" onAction="#deconnexion" prefHeight="55.0" prefWidth="200.0" text="Deconnexion">
+                  <Button fx:id="buttonDeconnexion" mnemonicParsing="false" onAction="#deconnexion" prefHeight="55.0" prefWidth="200.0">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -63,7 +63,7 @@
                         <Insets top="80.0" />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#quitter" prefHeight="55.0" prefWidth="200.0" text="Quitter">
+                  <Button fx:id="buttonQuitter" alignment="CENTER" mnemonicParsing="false" onAction="#quitter" prefHeight="55.0" prefWidth="200.0">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -91,7 +91,9 @@
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="boutonSuppression" mnemonicParsing="false" onAction="#supprimerCompte" prefHeight="70.0" prefWidth="150.0" text="Supprimer Compte" textAlignment="CENTER" textFill="#da0606" wrapText="true">
+
+                  <Button fx:id="buttonSupprimer" mnemonicParsing="false" onAction="#supprimerCompte" prefHeight="70.0" prefWidth="150.0" textAlignment="CENTER" textFill="#da0606" wrapText="true">
+
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

@@ -61,12 +61,12 @@
          <bottom>
             <HBox alignment="CENTER_LEFT" prefHeight="96.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="buttonRetour" mnemonicParsing="false" onAction="#Retour" prefHeight="44.0" prefWidth="121.0" text="Retour">
+                  <Button fx:id="buttonRetour" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#Retour" prefHeight="59.0" prefWidth="162.0" textFill="TRANSPARENT">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="50.0" />
+                        <Insets bottom="10.0" left="10.0" />
                      </HBox.margin>
                   </Button>
                </children>
