@@ -4,8 +4,11 @@ import database.Database;
 import javafx.scene.control.Alert;
 import launch.Main;
 import learning.LearningAlgo;
+import queries.Query;
+import queries.QueryCheckLogin;
 import seeds.CardStackSeed;
 import statistic.Stat;
+import views.VueLogin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,7 +45,7 @@ public class Partie extends Observable{
 
         this.player = player;
         this.cardList = cardList;
-        this.database = new Database();
+        this.database = new Database(this);
         this.nbCards = cardList.getNbCards();
         //this.database.setDatabase();
         this.local = false;
@@ -57,7 +60,7 @@ public class Partie extends Observable{
         this.player = player;
         this.cardList = new CardList("Default","Deck avec des cartes par défaut");
 
-        this.database = new Database();
+        this.database = new Database(this);
         this.nbCards = cardList.getNbCards();
         //this.database.setDatabase(local);
         //System.out.println(this.database.getListCardList().size() + "decks par défault");
@@ -174,7 +177,7 @@ public class Partie extends Observable{
         this.database.setSessionToken(sessionToken);
     }
     public void setDatabase(){
-         this.database = new Database();
+         this.database = new Database(this);
          this.database.setDatabase(this.local);
 
     }
@@ -407,6 +410,9 @@ public class Partie extends Observable{
     public int getBadRep(String deck){
         return this.database.getBadRep(deck);
     }
+
+
+
 
 }
 

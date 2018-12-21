@@ -1,5 +1,6 @@
 package views;
 
+import controllers.ControllerMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -21,6 +22,7 @@ import java.util.Optional;
 public class VueMenu implements Observer{
     Partie partie;
     boolean init;
+    ControllerMenu controllerMenu;
 
     @FXML
     private Button buttonQuitter;
@@ -42,6 +44,7 @@ public class VueMenu implements Observer{
         init = true;
         this.partie = p;
         this.partie.addObserver(this);
+        this.controllerMenu=new ControllerMenu(this.partie);
     }
 
     public void evaluation(){
@@ -60,39 +63,15 @@ public class VueMenu implements Observer{
     }
 
     public void quitter() {
-        Main.main.closeStage();
+        controllerMenu.quitter();
     }
 
     public void deconnexion() {
-        this.partie.exportDatabaseLocal();
-        this.partie.setDatabase();
-        Main.main.switchScene("/views/VueLogin.fxml");
+        controllerMenu.deconnexion();
     }
 
     public void supprimerCompte() {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmer Suppression");
-        alert.setHeaderText("Attention, vous allez supprimer votre compte");
-        alert.setContentText("Cette action sera irréversible");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            // ... user chose OK
-            Query del = new QueryDelUser(partie.getDatabase(),partie.getPlayer());
-            
-            del.send();
-            if(del.getResponse().equals("1")) {
-                System.out.println("User supprimé");
-                deconnexion();
-            }else{
-                System.out.println("Erreur : "+del.getResponse());
-            }
-
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
-
+        controllerMenu.supprimerCompte();
 
     }
 

@@ -6,6 +6,7 @@ import json.JSONCardStackParser;
 import json.JSONListCardListParser;
 import models.Card;
 import models.CardList;
+import models.Partie;
 import queries.*;
 
 import seeds.CardStackSeed;
@@ -23,12 +24,19 @@ public class Database {
     private ArrayList<CardList> listCardList ;
     private ArrayList<Card> listCard;
     private String sessionToken;
+    private Partie partie;
     //Construceur
-    public Database() {
-    listCardList = new ArrayList<CardList>();
-    listCard = new ArrayList<Card>();
-    sessionToken = "";
+    public Database(Partie partie) {
+        this.partie = partie;
+        listCardList = new ArrayList<CardList>();
+        listCard = new ArrayList<Card>();
+        sessionToken = "";
     }
+
+    public Partie getPartie() {
+        return partie;
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //getter
     public ArrayList<CardList> getListCardList() {
@@ -177,10 +185,8 @@ public class Database {
         if (local){
           importDatabaselocal();
           System.out.println("importlocal  ok");
-          return;
-        }
 
-        else {
+        } else {
             System.out.println("importonline ok");
 
             Query query = new QueryGetCardStackList(this);
