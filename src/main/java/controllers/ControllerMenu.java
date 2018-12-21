@@ -12,14 +12,14 @@ import java.util.Optional;
 
 public class ControllerMenu {
 
-    private VueMenu vueMenu;
+
     private Partie partie;
 
-    public ControllerMenu(VueMenu vueMenu, Partie partie) {
-        this.vueMenu = vueMenu;
+   
+
+    public ControllerMenu(Partie partie){
         this.partie = partie;
     }
-
 
     public void quitter() {
         deconnexion();

@@ -10,11 +10,11 @@ import views.VueLogin;
 
 public class ControllerLogin {
 
-    private VueLogin vueLogin;
+
     private Partie partie;
 
-    public ControllerLogin(VueLogin vueLogin, Partie partie) {
-        this.vueLogin = vueLogin;
+    public ControllerLogin(Partie partie) {
+
         this.partie = partie;
     }
 
