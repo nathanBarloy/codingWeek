@@ -33,7 +33,7 @@ public class VueMenu implements Observer{
         init = true;
         this.partie = p;
         this.partie.addObserver(this);
-        this.controllerMenu=new ControllerMenu(this,this.partie);
+        this.controllerMenu=new ControllerMenu(this.partie);
     }
 
     public void evaluation(){
