@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -12,8 +13,8 @@ public class QueryGetCardStack extends Query {
 
     private String name;
 
-    public QueryGetCardStack(String name) {
-        super("getCardStack");
+    public QueryGetCardStack(Database db, String name) {
+        super("getCardStack",db);
         this.name=name;
         this.parameters+="name="+name;
     }

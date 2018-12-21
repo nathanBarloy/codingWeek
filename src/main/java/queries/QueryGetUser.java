@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Player;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -13,8 +14,8 @@ public class QueryGetUser extends Query {
 
     private String username;
 
-    public QueryGetUser(String username) {
-        super("getUser");
+    public QueryGetUser(Database db, String username) {
+        super("getUser",db);
         this.username=username;
         this.parameters+="username="+username;
     }

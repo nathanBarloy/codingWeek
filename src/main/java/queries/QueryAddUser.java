@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Player;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,8 +13,8 @@ import java.io.InputStream;
 public class QueryAddUser extends Query {
 
 
-    public QueryAddUser(String player,String password) {
-        super("addUser");
+    public QueryAddUser( Database db,String player, String password) {
+        super("addUser",db);
         this.parameters+="username="+player+"&password="+password;
     }
 

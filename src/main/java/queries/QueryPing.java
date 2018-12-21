@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Card;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -11,8 +12,8 @@ import java.io.IOException;
 public class QueryPing extends Query {
 
 
-    public QueryPing() {
-        super("ping");
+    public QueryPing(Database db) {
+        super("ping",db);
 
     }
 
