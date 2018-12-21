@@ -17,3 +17,8 @@ Ce projet a été réalisé pendant la coding week de Télécom nancy.
 # Lancer l'application
 * java -jar codingweek_grp014-all.jar
 * Si ça ne fonctionne pas : ./gradlew run
+* 
+
+# Lien de la vidéo youtube
+Penser à bien lire la description, elle contient des informations importantes.
+https://www.youtube.com/watch?v=EcVGdxzzDpI&feature=youtu.be
