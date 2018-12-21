@@ -3,6 +3,7 @@ package views;
 import controllers.ControllerMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -27,6 +28,9 @@ public class VueMenu implements Observer{
 
     @FXML
     private Label label;
+
+    @FXML
+    private Button boutonSuppression;
 
     public VueMenu(Partie p){
         super();
@@ -89,6 +93,12 @@ public class VueMenu implements Observer{
 
             //System.out.println(label);
             label.setText("Bienvenue " + partie.getPlayer().getUsername());
+
+            if (partie.isLocal()) {
+                boutonSuppression.setDisable(true);
+                boutonSuppression.setVisible(false);
+            }
+
             init = false;
         } else {
 

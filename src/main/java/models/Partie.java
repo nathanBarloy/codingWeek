@@ -168,6 +168,10 @@ public class Partie extends Observable{
         QuestEnCours = questEnCours;
     }
 
+    public boolean isLocal() {
+        return local;
+    }
+
 
 //-----------------------------------------------------------------------------------------------
     //Setter
