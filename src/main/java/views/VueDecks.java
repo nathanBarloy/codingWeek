@@ -123,13 +123,16 @@ public class VueDecks implements Observer {
             BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
             Image image2 = new Image("/resources/img/retour.png");
-
+            ImageView img = new ImageView(image2);
+            this.buttonRetour.setGraphic(img);
+            img.setFitHeight(75);
+            img.setFitWidth(125);
             Background background1 = new Background(new BackgroundImage(image2,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.DEFAULT,
                     bSize0));
-            this.buttonRetour.setBackground(background1);
+
             this.borderpane.setBackground(new Background(new BackgroundImage(image1,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,

@@ -3,8 +3,10 @@ package views;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
@@ -15,6 +17,9 @@ import java.util.Observer;
 
 public class VueStatistiques implements Observer{
     private String currentDeck;
+
+    @FXML
+    private Button buttonRetour;
 
     @FXML
     private BorderPane borderpane;
@@ -52,6 +57,12 @@ public class VueStatistiques implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         if (this.init == -1) {
+            Image image2 = new Image("/resources/img/retour.png");
+            ImageView img = new ImageView(image2);
+            img.setFitHeight(75);
+            img.setFitWidth(125);
+            this.buttonRetour.setGraphic(img);
+
              this.currentDeck = this.partie.getFirstDeck();
             Image image1 = new Image("/resources/img/lotus.jpg");
             BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
@@ -123,7 +134,12 @@ public class VueStatistiques implements Observer{
             this.init = 0;
         }
         if(this.init == 1){
-            this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));
+            this.comboBox.setItems(FXCollections.observableArrayList(partie.getListeDeck()));Image image2 = new Image("/resources/img/retour.png");
+            ImageView img = new ImageView(image2);
+            img.setFitHeight(75);
+            img.setFitWidth(125);
+            this.buttonRetour.setGraphic(img);
+
 
             Stat stat = new Stat();
             double progression = stat.getProgession(partie.getDeck(this.currentDeck));

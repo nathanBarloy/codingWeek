@@ -21,7 +21,7 @@
             <Label text="Label" BorderPane.alignment="CENTER" />
          </bottom>
          <right>
-            <Button mnemonicParsing="false" onAction="#Retour" text="Retour" BorderPane.alignment="CENTER">
+            <Button fx:id="buttonRetour" mnemonicParsing="false" onAction="#Retour" prefHeight="49.0" prefWidth="96.0" BorderPane.alignment="CENTER">
                <font>
                   <Font size="26.0" />
                </font>

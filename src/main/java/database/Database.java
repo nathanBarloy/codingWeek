@@ -187,10 +187,8 @@ public class Database {
         if (local){
           importDatabaselocal();
           System.out.println("importlocal  ok");
-          return;
-        }
 
-        else {
+        } else {
             System.out.println("importonline ok");
 
             Query query = new QueryGetCardStackList(this);
