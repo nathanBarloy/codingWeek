@@ -2,3 +2,4 @@
 -Faire l'algo d'apprentissage (Olivier) 
 -faire l'export du online to local
 - rajouter un message = pas connecté 
+- losque nous ne sommes plus connecté passer en mode local. (la base de donné n'est pas à réimporter)
