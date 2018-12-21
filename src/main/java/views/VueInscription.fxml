@@ -77,7 +77,7 @@
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="confirmation" maxWidth="400.0" promptText="mot de passe">
+                  <PasswordField fx:id="confirmation" maxWidth="400.0" onAction="#validerInscription" promptText="mot de passe">
                      <font>
                         <Font size="22.0" />
                      </font>

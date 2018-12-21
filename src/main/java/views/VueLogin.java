@@ -59,7 +59,7 @@ public class VueLogin implements Observer {
 
             alert.setContentText(message);
             alert.showAndWait();
-            System.out.println("L'utilisateur n'existe pas");
+            //System.out.println("L'utilisateur n'existe pas");
 
         }else if(res.equals("-3")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -129,6 +129,7 @@ public class VueLogin implements Observer {
         img.setImage(image0);
         img.setFitHeight(220);
         img.setFitWidth(500);
+        img.setLayoutY(-30);
         img.setLayoutX(150);
 
         this.pane.getChildren().add(img);

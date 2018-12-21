@@ -76,7 +76,7 @@ public abstract class Query {
             if ("Set-Cookie".equalsIgnoreCase(headerFieldKey)) {
                 List<String> headerFieldValue = headerFields.get(headerFieldKey);
                 for (String headerValue : headerFieldValue) {
-                    System.out.println("Cookie Found...");
+
                     String[] fields = headerValue.split(";\\s*");
                     String cookieValue = fields[0];
                     String expires = null;
@@ -106,7 +106,7 @@ public abstract class Query {
                             cookieJoined[i]=cookie[i+1];
 
                         token=String.join("=",cookieJoined);
-                        System.out.println("Le cookie de session est "+token);
+
                     }
                 }
 
