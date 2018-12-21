@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,6 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLException;
 import java.io.*;
 import java.net.*;
 import java.util.Iterator;
@@ -30,8 +32,14 @@ public abstract class Query {
     protected HttpsURLConnection httpsURLConnection;
     protected URL url;
     protected StringBuffer response;
+    protected Database db;
+    private String stringResponse;
 
-    public Query(String action){
+    public Query(String action, Database db){
+        this.db=db;
+
+        token="";
+        stringResponse="-1";
         this.action=action;
         this.server= "https://saltycard.elmrini.fr/index.php?action=";
         this.response = new StringBuffer();
@@ -39,16 +47,21 @@ public abstract class Query {
             url=new URL(this.server+this.action);
             httpsURLConnection = (HttpsURLConnection) url.openConnection();
         } catch (MalformedURLException e) {
+
+            System.out.println("Error malformedurl: unable to connect");
             e.printStackTrace();
         } catch (IOException e) {
+
+            System.out.println("Error IO: unable to connect");
             e.printStackTrace();
         }
         try {
             httpsURLConnection.setRequestMethod("POST");
         } catch (ProtocolException e) {
+
             e.printStackTrace();
         }
-
+        setToken(db.getSessionToken());
         parameters = "";
     }
 
@@ -56,14 +69,14 @@ public abstract class Query {
         return token;
     }
 
-    public Query(String action, String token){
-        this(action);
+    public Query(String action, Database db, String token){
+        this(action,db);
         setToken(token);
     }
 
     public void setToken(String token){
-
-        httpsURLConnection.setRequestProperty("Cookie", "PHPSESSID="+token+";");
+        if(!("".equals(token)))
+            httpsURLConnection.setRequestProperty("Cookie", "PHPSESSID="+token+";");
     }
 
     public void makeCookie(){
@@ -106,6 +119,9 @@ public abstract class Query {
                             cookieJoined[i]=cookie[i+1];
 
                         token=String.join("=",cookieJoined);
+                        db.setSessionToken(token);
+                        System.out.println("cookie : " + token);
+
 
                     }
                 }
@@ -121,24 +137,33 @@ public abstract class Query {
     public void send() {
         httpsURLConnection.setDoOutput(true);
         try {
-        DataOutputStream wr = new DataOutputStream(httpsURLConnection.getOutputStream());
+            System.out.println("token : " + db.getSessionToken());
+            DataOutputStream wr = new DataOutputStream(httpsURLConnection.getOutputStream());
 
-        wr.writeBytes(parameters);
+            wr.writeBytes(parameters);
 
-        wr.flush();
-        wr.close();
+            wr.flush();
+            wr.close();
+            makeResponse();
+            makeCookie();
+
+        }catch (UnknownHostException e){
+
+            System.out.println("Erreur : impossible de se connecter");
+        } catch (SSLException e){
+
+            System.out.println("Erreur de connexion SSL");
+
         } catch (IOException e) {
+
+            System.out.println("Erreur de connexion IO");
             e.printStackTrace();
         }
-        makeResponse();
-        makeCookie();
 
     }
 
     public String getResponse() {
-
-
-        return response.toString();
+        return stringResponse;
     }
 
     private void makeResponse(){
@@ -151,7 +176,9 @@ public abstract class Query {
                 response.append(inputLine);
             }
             in.close();
+            stringResponse=response.toString();
         } catch (IOException e) {
+
             e.printStackTrace();
         }
     }

@@ -79,8 +79,8 @@ public class VueMenu implements Observer{
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             // ... user chose OK
-            Query del = new QueryDelUser(partie.getPlayer());
-            del.setToken(this.partie.getDatabase().getSessionToken());
+            Query del = new QueryDelUser(partie.getDatabase(),partie.getPlayer());
+            
             del.send();
             if(del.getResponse().equals("1")) {
                 System.out.println("User supprimé");

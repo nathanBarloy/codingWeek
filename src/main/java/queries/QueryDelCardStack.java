@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.CardList;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,8 +13,8 @@ public class QueryDelCardStack extends Query {
 
     private CardList cardStack;
 
-    public QueryDelCardStack(CardList cardStack) {
-        super("delCardStack");
+    public QueryDelCardStack(Database db, CardList cardStack) {
+        super("delCardStack",db);
         this.cardStack = cardStack;
         this.parameters+="name="+cardStack.getName();
     }
