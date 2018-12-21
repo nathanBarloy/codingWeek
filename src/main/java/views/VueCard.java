@@ -14,6 +14,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VueCard implements Observer {
+
+    @FXML
+    private Button buttonValider;
     @FXML
     private Button buttonRetour;
     @FXML
@@ -54,6 +57,14 @@ public class VueCard implements Observer {
         img.setFitHeight(75);
         img.setFitWidth(125);
         this.buttonRetour.setGraphic(img);
+
+        Image image3 = new Image("/resources/img/valider.png");
+        ImageView img3 = new ImageView(image3);
+        img3.setFitHeight(50);
+        img3.setFitWidth(60);
+        this.buttonValider.setGraphic(img3);
+
+
         this.LabelQuestion.setText(this.partie.getQuestEnCours());
         this.LabelReponse.setText(this.partie.getRepEnCours());
         this.LabelNom.setText(this.partie.getNameEnCours());

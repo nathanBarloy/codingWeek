@@ -77,7 +77,7 @@
                </children></VBox>
          </center>
          <right>
-            <Button mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="138.0" text="Valider" BorderPane.alignment="CENTER">
+            <Button fx:id="buttonValider" mnemonicParsing="false" onAction="#valider" prefHeight="25.0" prefWidth="138.0" BorderPane.alignment="CENTER">
                <font>
                   <Font size="28.0" />
                </font>

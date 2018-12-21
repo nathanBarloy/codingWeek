@@ -108,7 +108,7 @@ public class VueLogin implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
-        Image image4 = new Image("/resources/img/connexion.jpg");
+        Image image4 = new Image("/resources/img/connexion.png");
         ImageView img4 = new ImageView(image4);
         this.buttonConnexion.setGraphic(img4);
         img4.setFitHeight(50);

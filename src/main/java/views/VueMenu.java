@@ -105,18 +105,19 @@ public class VueMenu implements Observer{
             img2.setFitHeight(50);
             img2.setFitWidth(150);
 
-            Image image3 = new Image("/resources/img/supprimer.jpg");
+            Image image3 = new Image("/resources/img/supprimer.png");
             ImageView img3 = new ImageView(image3);
             this.buttonSupprimer.setGraphic(img3);
             img3.setFitHeight(50);
             img3.setFitWidth(50);
 
+            /*
             Image image4 = new Image("/resources/img/connexion.jpg");
             ImageView img4 = new ImageView(image4);
             this.buttonDeconnexion.setGraphic(img4);
             img4.setFitHeight(50);
             img4.setFitWidth(150);
-
+            */
 
             Image image0 = new Image("/resources/img/lotus.jpg");
 
