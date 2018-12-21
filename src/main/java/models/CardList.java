@@ -81,6 +81,10 @@ public class CardList implements Iterable<Card>{
         return description;
     }
 
+    public ArrayList<Card> getCardStack() {
+        return cardStack;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -176,8 +180,13 @@ public class CardList implements Iterable<Card>{
     }
 
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-
+    public void setLen(int len) {
+        this.len = len;
+    }
 
     public boolean endCardList(){
         /*renvoie  true si on a lu toutes les cartes  false sinon*/

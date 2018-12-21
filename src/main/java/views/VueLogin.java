@@ -43,7 +43,9 @@ public class VueLogin implements Observer {
         super();
         this.partie = p;
         this.partie.addObserver(this);
-        this.controllerLogin = new ControllerLogin( partie);
+
+        this.controllerLogin = new ControllerLogin(this.partie);
+
     }
 
 
