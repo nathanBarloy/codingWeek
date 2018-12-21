@@ -136,15 +136,13 @@ public class Database {
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(NomDeck)){
                 this.listCardList.get(i).add(card);
-                Query query = new QueryAddCard(card);
-                query.setToken(sessionToken);
+                Query query = new QueryAddCard(this,card);
 
                 query.send();
                 a = query.getResponse();
                 if(a.equals("1")) {
                     System.out.println("Carte ajoutée en ligne");
-                    query = new QueryAddCardCardStack(card, this.listCardList.get(i));
-                    query.setToken(sessionToken);
+                    query = new QueryAddCardCardStack(this,card, this.listCardList.get(i));
                     query.send();
                     if (query.getResponse().equals("1")) {
                         System.out.println("Carte ajoutée à la liste en ligne");
@@ -184,8 +182,8 @@ public class Database {
         else {
             System.out.println("importonline ok");
 
-            Query query = new QueryGetCardStackList();
-            query.setToken(sessionToken);
+            Query query = new QueryGetCardStackList(this);
+
             query.send();
             String JSONresponse = query.getResponse();
             CardList[] cardLists = JSONCardStackParser.JsonToCardStackList(JSONresponse);
@@ -193,8 +191,8 @@ public class Database {
                 this.listCardList.add(c);
             this.listCardList.add(new CardList("admin", "contient toutes les cartes", "admin"));
 
-            query = new QueryGetCardList();
-            query.setToken(sessionToken);
+            query = new QueryGetCardList(this);
+
             query.send();
             JSONresponse = query.getResponse();
             Card[] cards = JSONCardParser.JsonToCardList(JSONresponse);
@@ -220,8 +218,8 @@ public class Database {
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(nomDeck)){
 
-                Query query = new QueryDelCard(card);
-                query.setToken(sessionToken);
+                Query query = new QueryDelCard(this,card);
+
                 query.send();
                 a = query.getResponse();
                 if(a.equals("1")){
@@ -313,8 +311,8 @@ public class Database {
             return;
         }
 
-        Query query = new QueryDelCardStack(cardList);
-        query.setToken(sessionToken);
+        Query query = new QueryDelCardStack(this,cardList);
+
         query.send();
         if (query.getResponse().equals("1")) {
             System.out.println("Deck supprimé");
@@ -348,8 +346,8 @@ public class Database {
         if (local){
             return ;
         }
-        Query query = new QueryAddCardStack(c);
-        query.setToken(sessionToken);
+        Query query = new QueryAddCardStack(this,c);
+
         query.send();
         if(query.getResponse().equals("1"))
             System.out.println("addDeck:" + this.listCardList.size());

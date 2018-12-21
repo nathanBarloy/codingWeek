@@ -44,7 +44,7 @@ public class VueLogin implements Observer {
         String password = motdepasse.getText();
         String res = "0";
         String token;
-        Query check = new QueryCheckLogin(nom,password);
+        Query check = new QueryCheckLogin(partie.getDatabase(),nom,password);
         check.send();
         res = check.getResponse();
         token=check.getToken();
@@ -73,7 +73,6 @@ public class VueLogin implements Observer {
 
         }else {
             partie.setPlayer(new Player(nom));
-            partie.setSessionToken(token);
             Main.main.switchScene("/views/VueMenu.fxml");
 
         }

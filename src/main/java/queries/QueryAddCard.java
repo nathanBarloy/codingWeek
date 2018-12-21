@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Card;
 import models.Player;
 import org.apache.http.HttpEntity;
@@ -16,8 +17,8 @@ public class QueryAddCard extends Query {
 
     private Card card;
 
-    public QueryAddCard(Card card) {
-        super("addCard");
+    public QueryAddCard( Database db,Card card) {
+        super("addCard",db);
         this.card=card;
         parameters+="name="+card.getName()+"&question="+card.getQuestion()+"&answer="+card.getAnswer()+"&type="+card.getType()+"&author="+card.getAuthor();
 

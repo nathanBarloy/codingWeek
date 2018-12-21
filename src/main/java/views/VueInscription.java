@@ -13,12 +13,11 @@ import queries.QueryAddUser;
 import queries.QueryCheckUsername;
 
 
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
 public class VueInscription implements Observer{
-    private Partie p;
+    private Partie partie;
 
     @FXML
     private BorderPane borderpane;
@@ -33,10 +32,10 @@ public class VueInscription implements Observer{
     private PasswordField confirmation;
 
 
-    public VueInscription(Partie p) {
+    public VueInscription(Partie partie) {
         super();
-        this.p = p;
-        p.addObserver(this);
+        this.partie = partie;
+        partie.addObserver(this);
     }
 
 
@@ -53,7 +52,7 @@ public class VueInscription implements Observer{
 
         if ( !(nom.length()<3 || mdp.length()<6 || !mdp.equals(confirm)) ) { //si informations sont correctes
             //ajouter utilisateur à la BDD
-            Query check = new QueryCheckUsername(nom);
+            Query check = new QueryCheckUsername(partie.getDatabase(),nom);
             String resp = "error";
 
                 check.send();
@@ -63,7 +62,7 @@ public class VueInscription implements Observer{
             if (resp.equals("0")) { //si le nom n'existe pas (cas correct)
                 Player player = new Player(nom);
 
-                Query query = new QueryAddUser(nom,mdp);
+                Query query = new QueryAddUser(partie.getDatabase(),nom,mdp);
                 query.send();
                     resp = query.getResponse();
                 System.out.println(resp);

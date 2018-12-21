@@ -24,20 +24,14 @@ dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     //compile 'com.google.guava:guava:23.0'
 
-    // Use JUnit test framework
+    
     testCompile 'junit:junit:4.12'
     compile 'org.json:json:20180813'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
-    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore
     compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.10'
-    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
-    // https://mvnrepository.com/artifact/commons-io/commons-io
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
-    // https://mvnrepository.com/artifact/org.codehaus.mojo.signature/java16-jrockit
     compile group: 'org.codehaus.mojo.signature', name: 'java16-jrockit', version: '1.0', ext: 'pom'
-    // https://mvnrepository.com/artifact/io.earcam.utilitarian/io.earcam.utilitarian.net
-    // https://mvnrepository.com/artifact/org.jboss.spec.javax.net.ssl/jboss-jsse-api_8.0_spec
     compile group: 'org.jboss.spec.javax.net.ssl', name: 'jboss-jsse-api_8.0_spec', version: '1.0.0.Final'
 
 

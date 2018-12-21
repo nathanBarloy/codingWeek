@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Card;
 import models.CardList;
 import org.apache.http.HttpEntity;
@@ -14,8 +15,8 @@ public class QueryAddCardCardStack extends Query {
     private CardList cardList;
     private Card card;
 
-    public QueryAddCardCardStack(Card card,CardList cardList) {
-        super("addCardCardStack");
+    public QueryAddCardCardStack( Database db, Card card, CardList cardList) {
+        super("addCardCardStack",db);
         this.cardList = cardList;
         this.card=card;
         parameters+="cardname="+card.getName()+"&cardstackname="+cardList.getName();

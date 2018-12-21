@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -11,8 +12,8 @@ public class QueryCheckCardStackName extends Query {
 
     private String cardstackname;
 
-    public QueryCheckCardStackName(String cardstackname) {
-        super("checkCardStackName");
+    public QueryCheckCardStackName( Database db,String cardstackname) {
+        super("checkCardStackName",db);
         this.cardstackname=cardstackname;
         this.parameters+="cardstackname="+cardstackname;
     }
