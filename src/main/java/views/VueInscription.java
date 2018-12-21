@@ -1,6 +1,7 @@
 package views;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -71,7 +72,14 @@ public class VueInscription implements Observer{
                 retour();
 
             } else { //si le nom existe (erreur)
-                System.out.println("Le nom existe déjà");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Ce nom a déjà été pris");
+                String message = "";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+                //System.out.println("Le nom existe déjà");
             }
 
         } else { //si les informations entrées ne sont pas correctes
