@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Player;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,8 +13,8 @@ public class QueryGetCardListUser extends Query {
 
     private String player;
 
-    public QueryGetCardListUser(String player) {
-        super("getCardListUser");
+    public QueryGetCardListUser(Database db, String player) {
+        super("getCardListUser",db);
         this.player=player;
         this.parameters+="username="+player;
     }

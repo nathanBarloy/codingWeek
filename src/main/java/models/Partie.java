@@ -227,10 +227,12 @@ public class Partie extends Observable{
     }
 
     public void NvQuest(String deck) {
+        System.out.println("je suis là");
         this.currentDeck = deck;
         this.CurrentCard = this.database.pop(currentDeck);
 
         if (this.CurrentCard != null) {
+            System.out.println("pas de pb! il reste des cartes");
             this.CurrentCard.setType("question");
             setChanged();
             notifyObservers();
@@ -320,6 +322,7 @@ public class Partie extends Observable{
     }
 
     public void setScore(String currentDeck, Card carte,int Score) {
+        System.out.println("here");
         this.database.setScore(currentDeck,carte,Score);
     }
 

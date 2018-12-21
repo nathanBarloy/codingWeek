@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Player;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,8 +13,8 @@ public class QueryGetUserList extends Query {
 
     private Player player;
 
-    public QueryGetUserList() {
-        super("getUserList");
+    public QueryGetUserList(Database db) {
+        super("getUserList",db);
 
     }
 

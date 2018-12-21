@@ -1,6 +1,7 @@
 package views;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -13,12 +14,11 @@ import queries.QueryAddUser;
 import queries.QueryCheckUsername;
 
 
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
 public class VueInscription implements Observer{
-    private Partie p;
+    private Partie partie;
 
     @FXML
     private BorderPane borderpane;
@@ -33,10 +33,10 @@ public class VueInscription implements Observer{
     private PasswordField confirmation;
 
 
-    public VueInscription(Partie p) {
+    public VueInscription(Partie partie) {
         super();
-        this.p = p;
-        p.addObserver(this);
+        this.partie = partie;
+        partie.addObserver(this);
     }
 
 
@@ -53,7 +53,7 @@ public class VueInscription implements Observer{
 
         if ( !(nom.length()<3 || mdp.length()<6 || !mdp.equals(confirm)) ) { //si informations sont correctes
             //ajouter utilisateur à la BDD
-            Query check = new QueryCheckUsername(nom);
+            Query check = new QueryCheckUsername(partie.getDatabase(),nom);
             String resp = "error";
 
                 check.send();
@@ -63,7 +63,7 @@ public class VueInscription implements Observer{
             if (resp.equals("0")) { //si le nom n'existe pas (cas correct)
                 Player player = new Player(nom);
 
-                Query query = new QueryAddUser(nom,mdp);
+                Query query = new QueryAddUser(partie.getDatabase(),nom,mdp);
                 query.send();
                     resp = query.getResponse();
                 System.out.println(resp);
@@ -71,10 +71,43 @@ public class VueInscription implements Observer{
                 retour();
 
             } else { //si le nom existe (erreur)
-                System.out.println("Le nom existe déjà");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Ce nom a déjà été pris");
+                String message = "";
+
+                alert.setContentText(message);
+                alert.showAndWait();
             }
 
         } else { //si les informations entrées ne sont pas correctes
+            if (nom.length()<3) { //erreur nom pas assez long
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Nom pas assez long");
+                String message = "il faut au moins 3 caractères";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            } else if (mdp.length()<6) { // erreur mdp pas assez long
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Mot de passe pas assez long");
+                String message = "il faut au moins 6 caractères";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            } else if (!mdp.equals(confirm)) { // erreur mdp non confirmé
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Mauvaise confirmation du mot de passe");
+                String message = "confirmez votre mot de passe";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            }
+
+
 
         }
 

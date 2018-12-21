@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Player;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,8 +13,8 @@ public class QueryDelUser extends Query {
 
     private Player player;
 
-    public QueryDelUser(Player player) {
-        super("delUser");
+    public QueryDelUser(Database db, Player player) {
+        super("delUser",db);
         this.player=player;
         this.parameters+="username="+player.getUsername();
     }

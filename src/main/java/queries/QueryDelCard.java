@@ -1,5 +1,6 @@
 package queries;
 
+import database.Database;
 import models.Card;
 import models.Player;
 import org.apache.http.HttpEntity;
@@ -13,8 +14,8 @@ public class QueryDelCard extends Query {
 
 
 
-    public QueryDelCard(Card card) {
-        super("delCard");
+    public QueryDelCard(Database db, Card card) {
+        super("delCard",db);
         this.parameters+="name="+card.getName();
     }
 

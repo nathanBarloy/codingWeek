@@ -44,7 +44,7 @@ public class VueLogin implements Observer {
         String password = motdepasse.getText();
         String res = "0";
         String token;
-        Query check = new QueryCheckLogin(nom,password);
+        Query check = new QueryCheckLogin(partie.getDatabase(),nom,password);
         check.send();
         res = check.getResponse();
         token=check.getToken();
@@ -59,7 +59,7 @@ public class VueLogin implements Observer {
 
             alert.setContentText(message);
             alert.showAndWait();
-            System.out.println("L'utilisateur n'existe pas");
+            //System.out.println("L'utilisateur n'existe pas");
 
         }else if(res.equals("-3")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -73,7 +73,6 @@ public class VueLogin implements Observer {
 
         }else {
             partie.setPlayer(new Player(nom));
-            partie.setSessionToken(token);
             Main.main.switchScene("/views/VueMenu.fxml");
 
         }
@@ -129,6 +128,7 @@ public class VueLogin implements Observer {
         img.setImage(image0);
         img.setFitHeight(220);
         img.setFitWidth(500);
+        img.setLayoutY(-30);
         img.setLayoutX(150);
 
         this.pane.getChildren().add(img);
