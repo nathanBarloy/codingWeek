@@ -11,3 +11,9 @@ Ce projet a été réalisé pendant la coding week de Télécom nancy.
 * jour 1 : gradle configuré, permet de créer un jar du projet. Début de modèle, et d'interface graphique.
 * jour 2 : Interfaces et menus fonctionnels, mais pas de relation avec la base de données. Amélioration du modèle.
 * jour 3 : mise en relation avec la base de donnée, amélioration de l'apprentissage, design plus ergonomique. L'application est utilisable. Cependant, le jar ne marche plus, a cause de la relation avec la base de données.
+
+
+
+# Lancer l'application
+* java -jar codingweek_grp014-all.jar
+* Si ça ne fonctionne pas : ./gradlew run
