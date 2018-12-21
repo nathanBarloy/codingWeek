@@ -8,6 +8,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class QueryDelUser extends Query {
 
@@ -16,7 +18,11 @@ public class QueryDelUser extends Query {
     public QueryDelUser(Database db, Player player) {
         super("delUser",db);
         this.player=player;
-        this.parameters+="username="+player.getUsername();
+        try {
+            this.parameters+="username="+ URLEncoder.encode(player.getUsername(),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
 

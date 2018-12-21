@@ -9,13 +9,19 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class QueryAddUser extends Query {
 
 
     public QueryAddUser( Database db,String player, String password) {
         super("addUser",db);
-        this.parameters+="username="+player+"&password="+password;
+        try {
+            this.parameters+="username="+ URLEncoder.encode(player,"UTF-8")+"&password="+URLEncoder.encode(password,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
 
