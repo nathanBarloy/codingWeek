@@ -412,60 +412,7 @@ public class Partie extends Observable{
     }
 
 
-    public void connexion(VueLogin view) {
-        this.setLocal(false);
-        this.setDatabase();
-        String nom = view.getUtilisateur().getText();
-        String password = view.getMotdepasse().getText();
-        String res = "0";
-        String token;
-        Query check = new QueryCheckLogin(this.getDatabase(),nom,password);
-        check.send();
-        res = check.getResponse();
-        token=check.getToken();
-        System.out.println(token);
-        System.out.println(res);
 
-        if (res.equals("-2") ) { //si le nom entré est dans la BDD
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("L'utilisateur n'existe pas");
-            String message = "";
-
-            alert.setContentText(message);
-            alert.showAndWait();
-            //System.out.println("L'utilisateur n'existe pas");
-
-        }else if(res.equals("-3")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Password erroné");
-            String message = "";
-
-            alert.setContentText(message);
-            alert.showAndWait();
-            System.out.println("Password erroné");
-
-        }else {
-            this.setPlayer(new Player(nom));
-            Main.main.switchScene("/views/VueMenu.fxml");
-
-        }
-
-
-
-    }
-
-    public void connexionLocal() {
-
-        this.setPlayer(new Player(""  ));
-
-        System.out.println("preimport");
-        this.setLocal(true);
-        this.setDatabase();
-        System.out.println("postimport");
-        Main.main.switchScene("/views/VueMenu.fxml");
-    }
 
 }
 

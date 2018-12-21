@@ -1,5 +1,6 @@
 package views;
 
+import controllers.ControllerLogin;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -31,10 +32,13 @@ public class VueLogin implements Observer {
     @FXML
     private PasswordField motdepasse;
 
+    private ControllerLogin controllerLogin;
+
     public VueLogin(Partie p){
         super();
         this.partie = p;
         this.partie.addObserver(this);
+        this.controllerLogin = new ControllerLogin(this, partie);
     }
 
 
@@ -94,13 +98,13 @@ public class VueLogin implements Observer {
 
     public void connexion() {
 
-        partie.connexion(this);
+        controllerLogin.connexion(this);
 
 
     }
 
     public void connexionLocal() {
 
-        partie.connexionLocal();
+        controllerLogin.connexionLocal();
     }
 }

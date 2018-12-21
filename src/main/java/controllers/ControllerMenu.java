@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import launch.Main;
 import models.Partie;
 import queries.Query;
@@ -19,22 +21,8 @@ public class ControllerMenu {
     }
 
 
-    public void evaluation(){
-        Main.main.switchScene("/views/VueEvalQuestion.fxml",this.partie);
-    }
-
-    public void ConsulterDecks(){
-        Main.main.switchScene("/views/Decks.fxml",this.partie);
-    }
-    public void lancerModeTest() {
-        Main.main.switchScene("/views/VueQuestion.fxml");
-    }
-
-    public void lancerModeCreation() {
-        Main.main.switchScene("/views/VueCreation.fxml");
-    }
-
     public void quitter() {
+        deconnexion();
         Main.main.closeStage();
     }
 
