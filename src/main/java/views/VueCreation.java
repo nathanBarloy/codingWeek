@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
@@ -19,6 +20,9 @@ public class VueCreation implements Observer {
     private Partie partie;
     String nomCarte,questionCarte,reponseCarte,nomDeck;
     boolean init;
+
+    @FXML
+    private Button buttonRetour;
 
     @FXML
     private BorderPane borderpane;
@@ -111,6 +115,11 @@ public class VueCreation implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        Image image2 = new Image("/resources/img/retour.png");
+        ImageView img = new ImageView(image2);
+        img.setFitHeight(75);
+        img.setFitWidth(125);
+        this.buttonRetour.setGraphic(img);
 
         Image image1 = new Image("/resources/img/lotus.jpg");
         BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);

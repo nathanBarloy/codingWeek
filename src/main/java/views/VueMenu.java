@@ -2,9 +2,11 @@ package views;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Partie;
@@ -19,6 +21,15 @@ import java.util.Optional;
 public class VueMenu implements Observer{
     Partie partie;
     boolean init;
+
+    @FXML
+    private Button buttonQuitter;
+
+    @FXML
+    private Button buttonSupprimer;
+
+    @FXML
+    private Button buttonDeconnexion;
 
     @FXML
     private BorderPane borderpane;
@@ -88,6 +99,25 @@ public class VueMenu implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         if (init) {
+            Image image2 = new Image("/resources/img/retour.png");
+            ImageView img = new ImageView(image2);
+            this.buttonQuitter.setGraphic(img);
+            img.setFitHeight(75);
+            img.setFitWidth(125);
+
+            Image image3 = new Image("/resources/img/retour.png");
+            img = new ImageView(image2);
+            this.buttonSupprimer.setGraphic(img);
+            img.setFitHeight(75);
+            img.setFitWidth(125);
+
+            Image image4 = new Image("/resources/img/retour.png");
+            img = new ImageView(image2);
+            this.buttonDeconnexion.setGraphic(img);
+            img.setFitHeight(75);
+            img.setFitWidth(125);
+
+
             Image image0 = new Image("/resources/img/lotus.jpg");
 
             //final URL imageURL = getClass().getResource("../ressources/fond");

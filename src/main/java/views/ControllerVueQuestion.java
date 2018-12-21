@@ -37,6 +37,9 @@ public class ControllerVueQuestion implements Observer {
     private int NbIdkReponses;
 
     @FXML
+    private Button buttonRetour;
+
+    @FXML
     private Label username;
 
     @FXML
@@ -249,6 +252,11 @@ public class ControllerVueQuestion implements Observer {
     @Override
     public void update(Observable o, Object arg) {
             if (this.init == -1) {
+                Image image2 = new Image("/resources/img/retour.png");
+                ImageView img = new ImageView(image2);
+                img.setFitHeight(75);
+                img.setFitWidth(125);
+                this.buttonRetour.setGraphic(img);
                 this.partie.reset();
                 Image image0 = new Image("/resources/img/lotus.jpg");
 
