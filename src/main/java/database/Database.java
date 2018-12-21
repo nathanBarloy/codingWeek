@@ -10,7 +10,9 @@ import queries.*;
 
 import seeds.CardStackSeed;
 
+import java.io.BufferedWriter;
 import java.io.CharArrayReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -250,10 +252,17 @@ public class Database {
     public void exportDatabaselocal(boolean local) {
         JSONListCardListParser jsonListCardListParser = new JSONListCardListParser() ;
         try {
-            JSONListCardListParser.ListCardListToJson(this.listCardList);
+
+            String filePath = "JSONS/listCardList.json";
+            String str = JSONListCardListParser.ListCardListToJson(this.listCardList);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            writer.write(str);
+
+            writer.close();
         }catch (IOException e) {
             System.out.println("bug sur l'export de la Base de donné");
         }
+
     }
     public void importDatabaselocal() {
         String filePath = "JSONS/listCardList.json";
