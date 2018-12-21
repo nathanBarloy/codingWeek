@@ -22,11 +22,14 @@ public class Stat {
         if (cardList.size()>0) {
             for (Card card : cardList) {
                 //System.out.println(card.getName() +": stat = " +  this.getStat(card));
+                //if (this.getStat(card) > 3){
+                  //  progression ++;
+                //}
                 progression = progression + this.getStat(card);
 
             }
         }
-        progression = (progression /3) / cardList.size()  ;
+        progression = progression/(cardList.size()*4)  ;
 
         return progression;
     }

@@ -129,5 +129,6 @@ public class VueCreation implements Observer {
 
         ArrayList<String> deckList = partie.getListeDeck();
         menuDeck.setItems(FXCollections.observableArrayList( deckList ));
+        //menuDeck.setValue(partie.getDeckName());
     }
 }

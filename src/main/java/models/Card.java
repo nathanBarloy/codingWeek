@@ -38,6 +38,21 @@ public class Card {
         NbFaussesReponses++;
     }
 
+
+    public void setNbBonnesReponses(int i) {
+        NbBonnesReponses = i;
+    }
+
+    public void setNbMoyennesReponses(int i) {
+        NbMoyennesReponses = i;
+    }
+
+    public void setNbFaussesReponses(int i) {
+        NbFaussesReponses=  i;
+    }
+
+
+
     private int NbBonnesReponses;
     private int NbMoyennesReponses;
     private int NbFaussesReponses;
@@ -141,7 +156,7 @@ public class Card {
     }
 
     public void setState(int state) {
-        this.state = state;
+        this.state = this.state + state;
     }
 
     public void setState(int state, int state2) {

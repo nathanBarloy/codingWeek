@@ -1,5 +1,6 @@
 package database;
 
+import javafx.scene.control.Alert;
 import json.JSONCardParser;
 import json.JSONCardStackParser;
 import json.JSONListCardListParser;
@@ -314,18 +315,26 @@ public class Database {
         Query query = new QueryDelCardStack(this,cardList);
 
         query.send();
+
         if (query.getResponse().equals("1")) {
             System.out.println("Deck supprimé");
             this.listCardList.remove(cardList);
-        } else if (query.getResponse().equals("0"))
+        } else if (query.getResponse().equals("0")) {
             System.out.println("Le deck n'a pas pu être supprimé");
-        else if (query.getResponse().equals("-1"))
+        } else if (query.getResponse().equals("-1")) {
             System.out.println("La requête n'a pas pu être traitée");
-        else if (query.getResponse().equals("2"))
+        } else if (query.getResponse().equals("2")) {
             System.out.println("Les dépendences de la cardstack n'ont pas pu être supprimées");
-        else if (query.getResponse().equals("-3"))
+        } else if (query.getResponse().equals("-3")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Vous ne pouvez pas supprimer le deck des autres");
+            String message = "";
+
+            alert.setContentText(message);
+            alert.showAndWait();
             System.out.println("Vous ne pouvez pas supprimer le deck des autres");
-        else {
+        } else {
             System.out.println("Erreur : "+query.getResponse());
         }
 
@@ -342,17 +351,26 @@ public class Database {
     public void addDeck(String s, String une_description, String text , boolean local) {
 
         CardList c= new CardList(s,une_description,text);
-        this.listCardList.add(c);
+
         if (local){
             return ;
         }
         Query query = new QueryAddCardStack(this,c);
 
         query.send();
-        if(query.getResponse().equals("1"))
+        if(query.getResponse().equals("1")) {
+            this.listCardList.add(c);
             System.out.println("addDeck:" + this.listCardList.size());
-        else
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Ce deck n'a pas pu être ajouté");
+            String message = "";
+
+            alert.setContentText(message);
+            alert.showAndWait();
             System.out.println("Erreur d'ajout dans la database");
+        }
 
     }
 

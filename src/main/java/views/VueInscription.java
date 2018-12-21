@@ -1,6 +1,7 @@
 package views;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -70,10 +71,43 @@ public class VueInscription implements Observer{
                 retour();
 
             } else { //si le nom existe (erreur)
-                System.out.println("Le nom existe déjà");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Ce nom a déjà été pris");
+                String message = "";
+
+                alert.setContentText(message);
+                alert.showAndWait();
             }
 
         } else { //si les informations entrées ne sont pas correctes
+            if (nom.length()<3) { //erreur nom pas assez long
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Nom pas assez long");
+                String message = "il faut au moins 3 caractères";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            } else if (mdp.length()<6) { // erreur mdp pas assez long
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Mot de passe pas assez long");
+                String message = "il faut au moins 6 caractères";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            } else if (!mdp.equals(confirm)) { // erreur mdp non confirmé
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Mauvaise confirmation du mot de passe");
+                String message = "confirmez votre mot de passe";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            }
+
+
 
         }
 

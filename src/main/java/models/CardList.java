@@ -105,7 +105,7 @@ public class CardList implements Iterable<Card>{
         else{
             int a = (int) (Math.random()*(len));
 
-            if (this.cardStack.get(a).getState() <=1){
+            if (this.cardStack.get(a).getState() <=3){
 
                 return this.cardStack.get(a);
             }
@@ -263,6 +263,9 @@ public class CardList implements Iterable<Card>{
     public void resetScores() {
         for (Card c : this.cardStack) {
             c.setState(0,0);
+            c.setNbBonnesReponses(0);
+            c.setNbMoyennesReponses(0);
+            c.setNbFaussesReponses(0);
         }
     }
 
