@@ -104,6 +104,7 @@ public class ControllerVueEvalQuestion implements Observer {
 
     public void retour() {
         this.init = 100000;
+        this.ProgressBar.setProgress(1);
         Main.main.switchScene("/views/VueMenu.fxml");
     }
 
@@ -297,6 +298,8 @@ public class ControllerVueEvalQuestion implements Observer {
                 }
                 this.done = true;
             }
+
+
             Card carte = partie.getCurrentCard(this.currentDeck);
             this.c = carte;
 
@@ -305,7 +308,15 @@ public class ControllerVueEvalQuestion implements Observer {
                 if (carte.getType().equals("question")) {
                     this.partie.timeout = true;
 
-                    this.BonneReponsesBarre.setProgress(NbBonnesReponses/size);
+                    int tot = this.partie.getGoodRep(this.currentDeck)
+                            + this.partie.getMediumRep(this.currentDeck)
+                            + this.partie.getBadRep(this.currentDeck);
+                    if (tot != 0) {
+                        this.BonneReponsesBarre.setProgress(this.partie.getGoodRep(this.currentDeck) / tot);
+                    }
+                    else{
+                        System.out.println("tot = 0");
+                    }
 
                     int a = this.animation2();
 
@@ -408,6 +419,7 @@ public class ControllerVueEvalQuestion implements Observer {
                     } else {
 
                         if (this.partie.getScore(this.currentDeck,this.c)>=-2) {
+                            System.out.println("tu descend!");
                             this.partie.setScore(this.currentDeck, this.c, -1);
                         }
                         Image image0 = new Image("/resources/img/SmileyTriste.png");

@@ -4,10 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import launch.Main;
 import models.Card;
@@ -17,6 +19,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VueDecks implements Observer {
+
+    @FXML
+    private Button buttonRetour;
 
     @FXML
     private BorderPane borderpane;
@@ -117,12 +122,14 @@ public class VueDecks implements Observer {
             Image image1 = new Image("/resources/img/lotus.jpg");
             BackgroundSize bSize0 = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
-            Background background1 = new Background(new BackgroundImage(image1,
+            Image image2 = new Image("/resources/img/retour.png");
+
+            Background background1 = new Background(new BackgroundImage(image2,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.DEFAULT,
                     bSize0));
-
+            this.buttonRetour.setBackground(background1);
             this.borderpane.setBackground(new Background(new BackgroundImage(image1,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,

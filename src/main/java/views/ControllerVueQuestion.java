@@ -119,8 +119,10 @@ public class ControllerVueQuestion implements Observer {
         RadioMoyen.setSelected(false);
     }
 
-    public void retour() {
+    public void retour() throws InterruptedException {
         this.init = 10000;
+        this.ProgressBar.setProgress(1);
+        Thread.sleep(500);
         Main.main.switchScene("/views/VueMenu.fxml");
     }
 
@@ -305,8 +307,15 @@ public class ControllerVueQuestion implements Observer {
 
                 if (carte != null) {
                     if (carte.getType().equals("question")) {
-                        this.BonneReponsesBarre.setProgress(3);
-
+                        int tot = this.partie.getGoodRep(this.currentDeck)
+                                + this.partie.getMediumRep(this.currentDeck)
+                                + this.partie.getBadRep(this.currentDeck);
+                        if (tot != 0) {
+                            System.out.println("nb bonnes rep :" + this.partie.getGoodRep(this.currentDeck));
+                            System.out.println("nb tot :" + tot );
+                            this.BonneReponsesBarre.setProgress(((double)this.partie.getGoodRep(this.currentDeck))/
+                                    (double) tot);
+                        }
                         int a = this.animation2();
                         this.RondAvancement.setProgress(0.0F);
 
