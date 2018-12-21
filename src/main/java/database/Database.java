@@ -147,6 +147,8 @@ public class Database {
         for (int  i = 0;i<this.listCardList.size();i++){
             if (this.listCardList.get(i).getName().equals(NomDeck)){
                 this.listCardList.get(i).add(card);
+
+
                 Query query = new QueryAddCard(this,card);
 
                 query.send();

@@ -39,7 +39,7 @@ public class VueCard implements Observer {
 
 
     public void Valider(){
-        this.partie.addCard(NomDeck, new Card(this.partie.getNameEnCours(), this.partie.getQuestEnCours(),
+                this.partie.addCard(NomDeck, new Card(this.partie.getNameEnCours(), this.partie.getQuestEnCours(),
                 this.partie.getRepEnCours(), this.partie.getPlayer()));
         Main.main.switchScene("/views/VueCreation.fxml", this.partie);
     }
