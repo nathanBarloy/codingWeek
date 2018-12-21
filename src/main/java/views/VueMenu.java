@@ -25,6 +25,12 @@ public class VueMenu implements Observer{
     ControllerMenu controllerMenu;
 
     @FXML
+    private Button boutonCreation;
+
+    @FXML
+    private Button boutonDeck;
+
+    @FXML
     private Button buttonQuitter;
 
     @FXML
@@ -127,6 +133,10 @@ public class VueMenu implements Observer{
             if (partie.isLocal()) {
                 buttonSupprimer.setDisable(true);
                 buttonSupprimer.setVisible(false);
+                boutonCreation.setDisable(true);
+                boutonCreation.setVisible(false);
+                boutonDeck.setDisable(true);
+                boutonDeck.setVisible(false);
             }
 
             init = false;
