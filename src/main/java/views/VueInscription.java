@@ -83,6 +83,33 @@ public class VueInscription implements Observer{
             }
 
         } else { //si les informations entrées ne sont pas correctes
+            if (nom.length()<3) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Nom pas assez long");
+                String message = "il faut au moins 3 caractères";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            } else if (mdp.length()<6) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Mot de passe pas assez long");
+                String message = "il faut au moins 6 caractères";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            } else if (!mdp.equals(confirm)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Mauvaise confirmation du mot de passe");
+                String message = "confirmez votre mot de passe";
+
+                alert.setContentText(message);
+                alert.showAndWait();
+            }
+
+
 
         }
 
