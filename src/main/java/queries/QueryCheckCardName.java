@@ -7,15 +7,21 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class QueryCheckCardName extends Query {
 
     private String cardname;
 
-    public QueryCheckCardName(String cardname, Database db) {
+    public QueryCheckCardName(String cardname, Database db)  {
         super("checkCardName",db);
         this.cardname=cardname;
-        this.parameters+="cardname="+cardname;
+        try {
+            this.parameters+="cardname="+ URLEncoder.encode(cardname,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
 

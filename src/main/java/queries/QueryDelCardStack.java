@@ -8,6 +8,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class QueryDelCardStack extends Query {
 
@@ -16,7 +18,11 @@ public class QueryDelCardStack extends Query {
     public QueryDelCardStack(Database db, CardList cardStack) {
         super("delCardStack",db);
         this.cardStack = cardStack;
-        this.parameters+="name="+cardStack.getName();
+        try {
+            this.parameters+="name="+ URLEncoder.encode(cardStack.getName(),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
 

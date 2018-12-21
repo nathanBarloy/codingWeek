@@ -160,6 +160,14 @@ public abstract class Query {
 
         } catch (Exception e) {
 
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Erreur de connexion");
+            String message = "redirection vers la page de connexion...";
+
+            alert.setContentText(message);
+            alert.showAndWait();
+
             System.out.println("Erreur de connexion, redirection vers la page de connexion...");
             stringResponse="-1";
             controllerMenu.deconnexionSansConnexion();

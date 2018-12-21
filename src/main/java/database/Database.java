@@ -236,12 +236,22 @@ public class Database {
                     System.out.println("Carte enlevée");
                 }
 
-                else if(a.equals("0"))
+                else if(a.equals("0")) {
                     System.out.println("La carte n'a pas pu être retirée");
-                else if(a.equals("-1"))
+                } else if(a.equals("-1")) {
                     System.out.println("Les dépendances n'ont pas pu être retirées");
-                else if(a.equals("-3"))
+                }else if(a.equals("-3")) {
+
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR");
+                    alert.setHeaderText("Vous ne pouvez pas supprimer les cartes des autres");
+                    String message = "";
+
+                    alert.setContentText(message);
+                    alert.showAndWait();
+
                     System.out.println("Erreur : vous ne pouvez pas supprimer les cartes des autres joueurs");
+                }
 
             return a;
 
